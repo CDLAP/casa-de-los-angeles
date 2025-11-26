@@ -118,7 +118,7 @@ export default function Hero() {
                   {/* Logo COMPLETO */}
                   <div className="relative w-56 h-56 md:w-[294px] md:h-[294px] lg:w-[368px] lg:h-[368px]">
                     <Image
-                      src="/images/logo-cdla.png"
+                      src="/images/logo-CDLA.png"
                       alt="Casa de los Ángeles Logo"
                       fill
                       className="object-contain drop-shadow-2xl"
