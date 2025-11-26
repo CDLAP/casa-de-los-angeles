@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Casa De Los Ángeles | Centro de Cultura & Bistro | Puebla</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --gold: #C9A961;
+            --gold-dark: #A08447;
+            --gold-light: #E4D4A8;
+            --black: #1A1A1A;
+            --cream: #FAF8F3;
+            --white: #FFFFFF;
+            --gray: #666;
+            --light-gray: #f5f5f5;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: var(--black);
+            background-color: var(--cream);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Mobile First - Loading Screen */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--cream);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            animation: fadeOut 2s forwards 2s;
+        }
+
+        .loader-logo {
+            width: 200px;
+            height: 200px;
+            background-image: url('./assets/logo-LCDLA.jpg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .loader-text {
+            margin-top: 20px;
+            color: var(--gold);
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+
+        /* Mobile Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--cream);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .logo-container {
+            height: 50px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 45px;
+            width: auto;
+        }
+
+        /* Mobile Menu Button */
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            position: relative;
+            z-index: 1002;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background-color: var(--gold-dark);
+            margin: 3px 0;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Mobile Menu */
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 350px;
+            height: 100vh;
+            background: var(--white);
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            transition: right 0.3s ease;
+            z-index: 1001;
+            overflow-y: auto;
+        }
+
+        .nav-menu.active {
+            right: 0;
+        }
+
+        .nav-menu-content {
+            padding: 80px 30px 30px;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-bottom: 25px;
+        }
+
+        .nav-menu a {
+            color: var(--black);
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            display: block;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:active,
+        .nav-menu a:hover {
+            color: var(--gold);
+        }
+
+        .nav-menu a:active::after,
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Menu Overlay */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Mobile Hero Section */
+        .hero {
+            margin-top: 65px;
+            min-height: calc(100vh - 65px);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--white) 50%, var(--cream) 100%);
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--gold-light) 0%, transparent 40%);
+            opacity: 0.1;
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            animation: fadeInUp 1.5s ease;
+            max-width: 100%;
+        }
+
+        .hero-logo {
+            width: 280px;
+            max-width: 80vw;
+            height: auto;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.1));
+        }
+
+        .hero-title {
+            font-size: clamp(28px, 7vw, 48px);
+            color: var(--gold-dark);
+            margin-bottom: 15px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(14px, 4vw, 20px);
+            color: var(--gray);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .hero-description {
+            font-size: clamp(14px, 4vw, 18px);
+            color: var(--gray);
+            max-width: 500px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+            padding: 0 10px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Buttons */
+        .btn-elegant {
+            display: inline-block;
+            padding: 15px 35px;
+            border: 1px solid var(--gold);
+            color: var(--gold-dark);
+            text-decoration: none;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            background: transparent;
+            font-weight: 500;
+        }
+
+        .btn-elegant:active {
+            transform: scale(0.98);
+        }
+
+        /* Sections Mobile First */
+        section {
+            padding: 60px 20px;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 6vw, 42px);
+            text-align: center;
+            margin-bottom: 15px;
+            color: var(--gold-dark);
+            font-weight: 400;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 40px;
+            font-size: clamp(14px, 3vw, 18px);
+            font-style: italic;
+            padding: 0 10px;
+            line-height: 1.5;
+        }
+
+        /* About Section Mobile */
+        .about {
+            background: var(--white);
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .about-text {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--gray);
+            text-align: justify;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .about-image::after {
+            content: '👼';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 80px;
+            opacity: 0.3;
+        }
+
+        /* Experience Cards Mobile */
+        .experiences {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .experience-card {
+            background: var(--white);
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+        }
+
+        .experience-card:active {
+            transform: scale(0.98);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .experience-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .experience-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--black);
+            font-weight: 400;
+        }
+
+        .experience-description {
+            color: var(--gray);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* Menu Section Mobile */
+        .menu-preview {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--white) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .menu-category {
+            background: var(--white);
+            padding: 25px 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .menu-category h3 {
+            color: var(--gold-dark);
+            font-size: 22px;
+            margin-bottom: 20px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--gold-light);
+        }
+
+        .menu-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dotted rgba(201, 169, 97, 0.3);
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .menu-item-name {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: var(--black);
+            font-weight: 500;
+        }
+
+        .menu-item-description {
+            font-size: 13px;
+            color: var(--gray);
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        /* Contact Section Mobile */
+        .contact {
+            background: var(--light-gray);
+        }
+
+        .contact-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .contact-info {
+            background: var(--white);
+            padding: 30px 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .contact-item {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-icon {
+            color: var(--gold);
+            font-size: 24px;
+            margin-top: 2px;
+            min-width: 30px;
+        }
+
+        .contact-details h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: var(--black);
+            font-weight: 500;
+        }
+
+        .contact-details p {
+            color: var(--gray);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .contact-details a {
+            color: var(--gold-dark);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-details a:active {
+            color: var(--gold);
+        }
+
+        /* Reservation Form Mobile */
+        .reservation-form {
+            background: var(--white);
+            padding: 30px 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .reservation-form h3 {
+            font-size: 24px;
+            margin-bottom: 25px;
+            color: var(--gold-dark);
+            text-align: center;
+            font-weight: 400;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--black);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 11px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e0e0e0;
+            background: var(--cream);
+            font-family: inherit;
+            font-size: 14px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .form-group select {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 20px;
+            padding-right: 40px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: var(--white);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 15px;
+            background: var(--gold);
+            color: var(--white);
+            border: none;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .form-submit:active {
+            transform: scale(0.98);
+            background: var(--gold-dark);
+        }
+
+        /* Footer Mobile */
+        footer {
+            background: var(--black);
+            color: var(--cream);
+            padding: 50px 20px 30px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            width: 150px;
+            height: auto;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .footer-info {
+            margin-bottom: 25px;
+        }
+
+        .footer-info p {
+            margin-bottom: 8px;
+            opacity: 0.8;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        .social-links a {
+            color: var(--cream);
+            font-size: 28px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .social-links a:active {
+            transform: scale(0.9);
+            background: var(--gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(250, 248, 243, 0.2);
+            margin-top: 25px;
+            padding-top: 20px;
+            font-size: 11px;
+            opacity: 0.6;
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            z-index: 998;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            font-size: 28px;
+        }
+
+        .whatsapp-float:active {
+            transform: scale(0.9);
+        }
+
+        /* Tablet Styles (768px and up) */
+        @media (min-width: 768px) {
+            .nav-container {
+                padding: 15px 30px;
+            }
+
+            .logo-img {
+                height: 55px;
+            }
+
+            .hero {
+                margin-top: 85px;
+                min-height: calc(100vh - 85px);
+                padding: 40px;
+            }
+
+            .hero-logo {
+                width: 350px;
+            }
+
+            section {
+                padding: 80px 40px;
+            }
+
+            .about-content {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+                align-items: center;
+            }
+
+            .about-image {
+                height: 400px;
+            }
+
+            .experiences {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .menu-categories {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .contact-content {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+        }
+
+        /* Desktop Styles (1024px and up) */
+        @media (min-width: 1024px) {
+            /* Desktop Navigation */
+            .menu-toggle {
+                display: none;
+            }
+
+            .nav-menu {
+                position: static;
+                width: auto;
+                max-width: none;
+                height: auto;
+                background: transparent;
+                box-shadow: none;
+                overflow: visible;
+            }
+
+            .nav-menu-content {
+                padding: 0;
+            }
+
+            .nav-menu ul {
+                display: flex;
+                gap: 40px;
+                margin: 0;
+            }
+
+            .nav-menu li {
+                margin: 0;
+            }
+
+            .nav-menu a {
+                font-size: 14px;
+                color: var(--black);
+                text-transform: uppercase;
+                letter-spacing: 1.5px;
+                padding: 5px 0;
+            }
+
+            .menu-overlay {
+                display: none !important;
+            }
+
+            .container {
+                max-width: 1200px;
+            }
+
+            .hero-logo {
+                width: 400px;
+            }
+
+            .experiences {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .menu-categories {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            /* Hover effects for desktop */
+            .btn-elegant:hover {
+                background: var(--gold);
+                color: var(--white);
+                transform: translateY(-2px);
+                box-shadow: 0 5px 20px rgba(201, 169, 97, 0.3);
+            }
+
+            .experience-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            }
+
+            .social-links a:hover {
+                color: var(--gold);
+                background: rgba(201, 169, 97, 0.2);
+                transform: translateY(-3px);
+            }
+
+            .whatsapp-float:hover {
+                transform: scale(1.1);
+                box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+            }
+
+            .form-submit:hover {
+                background: var(--gold-dark);
+                transform: translateY(-2px);
+                box-shadow: 0 5px 20px rgba(160, 132, 71, 0.4);
+            }
+        }
+
+        /* Large Desktop (1440px and up) */
+        @media (min-width: 1440px) {
+            .container {
+                max-width: 1400px;
+            }
+
+            section {
+                padding: 100px 60px;
+            }
+
+            .hero-logo {
+                width: 500px;
+            }
+        }
+
+        /* Animations for scroll reveal */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Print styles */
+        @media print {
+            nav, .whatsapp-float, .menu-toggle {
+                display: none !important;
+            }
+        }
+
+        /* Accessibility */
+        :focus {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader">
+        <div class="loader-logo"></div>
+        <div class="loader-text">Bienvenidos</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo-container">
+                <img src="./assets/logo-LCDLA.jpg" alt="Casa De Los Ángeles" class="logo-img">
+            </div>
+            
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <nav class="nav-menu" id="navMenu">
+                <div class="nav-menu-content">
+                    <ul>
+                        <li><a href="#home">Inicio</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#experiencia">Experiencia</a></li>
+                        <li><a href="#bistro">Bistró</a></li>
+                        <li><a href="#eventos">Eventos</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </nav>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <img src="./assets/logo-LCDLA.jpg" alt="Casa De Los Ángeles" class="hero-logo">
+            <h1 class="hero-title">Casa De Los Ángeles</h1>
+            <p class="hero-subtitle">Centro de Cultura & Bistró</p>
+            <p class="hero-description">
+                Un espacio único en el corazón histórico de Puebla donde la cultura, 
+                la gastronomía y el arte convergen en una experiencia sublime
+            </p>
+            <a href="#contacto" class="btn-elegant">Reservar Mesa</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="nosotros" class="about">
+        <div class="container">
+            <h2 class="section-title">Nuestra Historia</h2>
+            <p class="section-subtitle">Un legado de excelencia y tradición</p>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Fundada por Elisabeth Brand y Taboada, Casa De Los Ángeles representa 
+                        la perfecta fusión entre la rica herencia cultural de Puebla y la 
+                        sofisticación contemporánea. Ubicada en la emblemática Avenida Don Juan 
+                        de Palafox y Mendoza 222, en el corazón del Centro Histórico.
+                    </p>
+                    <p>
+                        Nuestra casa es un santuario de arte, cultura y gastronomía excepcional.
+                        Cada rincón ha sido cuidadosamente diseñado para ofrecer una experiencia 
+                        única, donde los visitantes pueden disfrutar de exposiciones de arte, 
+                        eventos culturales exclusivos y una propuesta gastronómica que honra 
+                        las tradiciones poblanas con un toque de vanguardia internacional.
+                    </p>
+                    <p>
+                        Nuestro compromiso es preservar y compartir el patrimonio cultural de 
+                        Puebla, creando un espacio donde el pasado y el presente se encuentran 
+                        en perfecta armonía.
+                    </p>
+                </div>
+                <div class="about-image"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experiencia" class="experience-section">
+        <div class="container">
+            <h2 class="section-title">La Experiencia Casa De Los Ángeles</h2>
+            <p class="section-subtitle">Donde cada momento se convierte en un recuerdo inolvidable</p>
+            
+            <div class="experiences">
+                <div class="experience-card fade-in">
+                    <div class="experience-icon">🎨</div>
+                    <h3 class="experience-title">Galería de Arte</h3>
+                    <p class="experience-description">
+                        Exposiciones rotativas de artistas locales e internacionales 
+                        en un espacio que respira historia y modernidad.
+                    </p>
+                </div>
+                
+                <div class="experience-card fade-in">
+                    <div class="experience-icon">🍷</div>
+                    <h3 class="experience-title">Bistró Gourmet</h3>
+                    <p class="experience-description">
+                        Alta cocina poblana con influencias internacionales, 
+                        maridajes exclusivos y una cava excepcional.
+                    </p>
+                </div>
+                
+                <div class="experience-card fade-in">
+                    <div class="experience-icon">🎭</div>
+                    <h3 class="experience-title">Eventos Culturales</h3>
+                    <p class="experience-description">
+                        Conciertos íntimos, lecturas de poesía, presentaciones 
+                        de libros y encuentros culturales exclusivos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bistro Menu Preview -->
+    <section id="bistro" class="menu-preview">
+        <div class="container">
+            <h2 class="section-title">Bistró Casa De Los Ángeles</h2>
+            <p class="section-subtitle">
+                Una experiencia culinaria que celebra los sabores de Puebla con elegancia contemporánea
+            </p>
+            
+            <div class="menu-categories">
+                <div class="menu-category fade-in">
+                    <h3>Entradas Selectas</h3>
+                    <div class="menu-item">
+                        <h4 class="menu-item-name">Chalupas de Trufa Negra</h4>
+                        <p class="menu-item-description">Tradicionales chalupas poblanas con aceite de trufa y queso de cabra</p>
+                    </div>
+                    <div class="menu-item">
+                        <h4 class="menu-item-name">Carpaccio de Res Añejada</h4>
+                        <p class="menu-item-description">Con reducción de chile pasilla y cristales de sal de Zapotitlán</p>
+                    </div>
+                    <div class="menu-item">
+                        <h4 class="menu-item-name">Molotes de Quelites</h4>
+                        <p class="menu-item-description">Rellenos de quelites orgánicos con espuma de queso Oaxaca</p>
+                    </div>
+                </div>
+                
+                <div class="menu-category fade-in">
+                    <h3>Platos Principales</h3>
+                    <div class="menu-item">
+                        <h4 class="menu-item-name">Mole Barroco</h4>
+                        <p class="menu-item-description">Nuestra interpretación del mole poblano con pechuga de pato confitada</p>
+                    </div>
+                    <div class="menu-item">
+                        <h4 class="menu-item-name">Filete de Robalo</h4>
+                        <p class="menu-item-description">En costra de pipián verde con vegetales orgánicos del huerto</p>
+                    </div>
+                    <div class="menu-item">
+                        <h4 class="menu-item-name">Chile en Nogada Deconstruido</h4>
+                        <p class="menu-item-description">Una reinterpretación moderna del clásico poblano</p>
+                    </div>
+                </div>
+                
+                <div class="menu-category fade-in">
+                    <h3>Postres Artesanales</h3>
+                    <div class="menu-item">
+                        <h4 class="menu-item-name">Camote Celestial</h4>
+                        <p class="menu-item-description">Reinvención del tradicional camote poblano con helado de vainilla de Papantla</p>
+                    </div>
+                    <div class="menu-item">
+                        <h4 class="menu-item-name">Tortitas de Santa Clara Deconstruidas</h4>
+                        <p class="menu-item-description">Con espuma de pepita y coulis de frutas de temporada</p>
+                    </div>
+                    <div class="menu-item">
+                        <h4 class="menu-item-name">Borrachitos de la Casa</h4>
+                        <p class="menu-item-description">Pequeños bizcochos con licores artesanales poblanos</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#contacto" class="btn-elegant">Hacer Reservación</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="eventos" class="events-section">
+        <div class="container">
+            <h2 class="section-title">Eventos Especiales</h2>
+            <p class="section-subtitle">Celebra tus momentos más importantes con nosotros</p>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Casa De Los Ángeles es el escenario perfecto para eventos privados, 
+                        celebraciones corporativas, bodas íntimas y reuniones familiares especiales.
+                    </p>
+                    <p>
+                        Nuestros espacios históricos pueden adaptarse a sus necesidades, 
+                        ofreciendo un ambiente único y exclusivo para hasta 150 invitados.
+                        Contamos con servicio de catering personalizado, montajes especiales 
+                        y un equipo dedicado a hacer de su evento una experiencia inolvidable.
+                    </p>
+                    <p>
+                        Contacte con nuestra directora, Elisabeth Brand y Taboada, 
+                        para diseñar juntos el evento de sus sueños.
+                    </p>
+                </div>
+                <div class="about-image"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="contact">
+        <div class="container">
+            <h2 class="section-title">Visítanos</h2>
+            <p class="section-subtitle">Estamos esperándote en el corazón de Puebla</p>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h3>Dirección</h3>
+                            <p>Avenida Don Juan de Palafox y Mendoza 222<br>
+                            72000 Centro Histórico, Puebla, México</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-details">
+                            <h3>Teléfono</h3>
+                            <p><a href="tel:+522831493783">+52 283 1493 783</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-details">
+                            <h3>Correo Electrónico</h3>
+                            <p><a href="mailto:direccion@casadelosangeles.com">direccion@casadelosangeles.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">🕐</div>
+                        <div class="contact-details">
+                            <h3>Horarios</h3>
+                            <p>Martes a Domingo: 13:00 - 23:00<br>
+                            Lunes: Cerrado</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reservation-form">
+                    <h3>Reservaciones</h3>
+                    <form id="reservationForm">
+                        <div class="form-group">
+                            <label for="name">Nombre Completo</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Teléfono</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="date">Fecha</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="time">Hora</label>
+                            <select id="time" name="time" required>
+                                <option value="">Seleccione una hora</option>
+                                <option value="13:00">13:00</option>
+                                <option value="14:00">14:00</option>
+                                <option value="15:00">15:00</option>
+                                <option value="16:00">16:00</option>
+                                <option value="17:00">17:00</option>
+                                <option value="18:00">18:00</option>
+                                <option value="19:00">19:00</option>
+                                <option value="20:00">20:00</option>
+                                <option value="21:00">21:00</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="guests">Número de Personas</label>
+                            <select id="guests" name="guests" required>
+                                <option value="">Seleccione</option>
+                                <option value="1">1 Persona</option>
+                                <option value="2">2 Personas</option>
+                                <option value="3">3 Personas</option>
+                                <option value="4">4 Personas</option>
+                                <option value="5">5 Personas</option>
+                                <option value="6">6 Personas</option>
+                                <option value="7+">Más de 6 Personas</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Solicitudes Especiales</label>
+                            <textarea id="message" name="message" placeholder="Alergias, celebraciones especiales, preferencias..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="form-submit">Confirmar Reservación</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <img src="./assets/logo-LCDLA.jpg" alt="Casa De Los Ángeles" class="footer-logo">
+            <div class="footer-info">
+                <p>Centro de Cultura & Bistró</p>
+                <p>Fundadora y Directora: Elisabeth Brand y Taboada</p>
+                <p>Avenida Don Juan de Palafox y Mendoza 222, Centro Histórico</p>
+                <p>72000 Puebla, México</p>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" title="Facebook">📘</a>
+                <a href="#" title="Instagram">📷</a>
+                <a href="#" title="Twitter">🐦</a>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Casa De Los Ángeles. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/522831493783" class="whatsapp-float" target="_blank" title="Contáctanos por WhatsApp">
+        💬
+    </a>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+        });
+
+        menuOverlay.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+        });
+
+        // Close menu on link click (mobile)
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navigation background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.boxShadow = '0 5px 20px rgba(0,0,0,0.15)';
+            } else {
+                nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Form submission handler
+        document.getElementById('reservationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simulate form submission
+            alert(`¡Gracias por su reservación, ${data.name}!\n\nHemos recibido su solicitud para ${data.guests} persona(s) el día ${data.date} a las ${data.time}.\n\nLe enviaremos una confirmación a ${data.email}.`);
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Remove loader after page loads
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelector('.loader').style.display = 'none';
+            }, 2500);
+        });
+
+        // Set minimum date as today for reservation form
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').setAttribute('min', today);
+    </script>
+</body>
+</html>

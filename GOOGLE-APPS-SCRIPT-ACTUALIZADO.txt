@@ -1,0 +1,40 @@
+// CÓDIGO ACTUALIZADO PARA GOOGLE APPS SCRIPT
+// Copia este código completo y pégalo en tu Apps Script
+
+function doPost(e) {
+  try {
+    const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    
+    // Obtener datos de FormData
+    const params = e.parameter;
+    
+    // Crear timestamp en zona horaria de México
+    const timestamp = new Date().toLocaleString('es-MX', { 
+      timeZone: 'America/Mexico_City' 
+    });
+    
+    // Agregar fila con los datos
+    sheet.appendRow([
+      timestamp,
+      params.nombre || '',
+      params.email || '',
+      params.telefono || '',
+      params.fecha || '',
+      params.hora || '',
+      params.personas || '',
+      params.mensaje || 'N/A'
+    ]);
+    
+    return ContentService.createTextOutput(JSON.stringify({
+      'status': 'success',
+      'message': 'Datos guardados correctamente'
+    })).setMimeType(ContentService.MimeType.JSON);
+    
+  } catch (error) {
+    Logger.log('Error: ' + error.toString());
+    return ContentService.createTextOutput(JSON.stringify({
+      'status': 'error',
+      'message': error.toString()
+    })).setMimeType(ContentService.MimeType.JSON);
+  }
+}

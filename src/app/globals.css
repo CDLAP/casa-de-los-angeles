@@ -1,0 +1,355 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   CASA DE LOS ÁNGELES - GLOBAL STYLES
+   Premium Restaurant Website
+   ============================================ */
+
+/* === FONTS === */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lato:wght@300;400;700&display=swap');
+
+/* === BASE STYLES === */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Optimización para scroll nativo suave */
+    scroll-padding-top: 80px; /* Espacio para header fijo */
+  }
+
+  body {
+    @apply font-sans text-charcoal bg-cream;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* Smooth scroll nativo optimizado */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-gold/30 text-charcoal;
+  }
+
+  /* Focus styles */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-gold;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-cream-200;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gold/50 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gold;
+  }
+}
+
+/* === TYPOGRAPHY === */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-medium tracking-tight;
+  }
+
+  h1 {
+    @apply text-display-xl;
+  }
+
+  h2 {
+    @apply text-display-lg;
+  }
+
+  h3 {
+    @apply text-display-md;
+  }
+
+  h4 {
+    @apply text-display-sm;
+  }
+
+  p {
+    @apply text-base md:text-lg leading-relaxed;
+  }
+
+  a {
+    @apply transition-colors duration-300;
+  }
+}
+
+/* === COMPONENTS === */
+@layer components {
+  /* Container */
+  .container-custom {
+    @apply w-full max-w-7xl mx-auto px-5 md:px-8 lg:px-12;
+  }
+
+  /* Section spacing */
+  .section {
+    @apply py-section;
+  }
+
+  .section-sm {
+    @apply py-section-sm;
+  }
+
+  /* Elegant Button */
+  .btn-elegant {
+    @apply inline-flex items-center justify-center
+           px-8 py-4
+           border border-gold text-gold-dark
+           text-sm uppercase tracking-[0.2em] font-sans font-medium
+           transition-all duration-500 ease-smooth
+           relative overflow-hidden;
+  }
+
+  .btn-elegant::before {
+    content: '';
+    @apply absolute inset-0 bg-gold
+           transform -translate-x-full
+           transition-transform duration-500 ease-smooth;
+    z-index: -1;
+  }
+
+  .btn-elegant:hover::before {
+    @apply translate-x-0;
+  }
+
+  .btn-elegant:hover {
+    @apply text-white border-gold;
+  }
+
+  /* Filled Button */
+  .btn-filled {
+    @apply inline-flex items-center justify-center
+           px-8 py-4
+           bg-gold text-white
+           text-sm uppercase tracking-[0.2em] font-sans font-medium
+           transition-all duration-300 ease-smooth
+           hover:bg-gold-dark;
+  }
+
+  /* Text Link */
+  .link-elegant {
+    @apply relative text-gold-dark font-medium;
+  }
+
+  .link-elegant::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-px bg-gold
+           transition-all duration-300 ease-smooth;
+  }
+
+  .link-elegant:hover::after {
+    @apply w-full;
+  }
+
+  /* Section Title */
+  .section-title {
+    @apply font-serif text-display-md text-gold-dark text-center mb-4;
+  }
+
+  .section-subtitle {
+    @apply font-sans text-lg text-charcoal-50 text-center italic max-w-2xl mx-auto;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-white rounded-2xl shadow-lg overflow-hidden
+           transition-all duration-500 ease-smooth;
+  }
+
+  .card:hover {
+    @apply shadow-2xl -translate-y-2;
+  }
+
+  /* Divider */
+  .divider {
+    @apply w-24 h-px bg-gradient-gold mx-auto my-8;
+  }
+
+  /* Image container with overlay */
+  .image-container {
+    @apply relative overflow-hidden;
+  }
+
+  .image-container::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent
+           opacity-0 transition-opacity duration-500;
+  }
+
+  .image-container:hover::after {
+    @apply opacity-100;
+  }
+}
+
+/* === UTILITIES === */
+@layer utilities {
+  /* Text gradient */
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent bg-gradient-gold;
+  }
+
+  /* Backdrop blur */
+  .glass {
+    @apply bg-white/80 backdrop-blur-md;
+  }
+
+  .glass-dark {
+    @apply bg-charcoal/80 backdrop-blur-md;
+  }
+
+  /* Aspect ratios */
+  .aspect-golden {
+    aspect-ratio: 1.618 / 1;
+  }
+
+  /* Hide scrollbar */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Mask for text reveal */
+  .mask-text {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  /* Animation delays */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+  .delay-600 { animation-delay: 600ms; }
+  .delay-700 { animation-delay: 700ms; }
+  .delay-800 { animation-delay: 800ms; }
+}
+
+/* === ANIMATIONS === */
+@layer utilities {
+  /* Fade animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Reveal animation for text */
+  @keyframes revealText {
+    from {
+      clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+    }
+    to {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    }
+  }
+
+  /* Scale animations */
+  @keyframes scaleUp {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Parallax */
+  .parallax {
+    will-change: transform;
+  }
+}
+
+/* === LOADER === */
+.loader {
+  @apply fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-cream;
+}
+
+.loader-logo {
+  @apply w-48 h-48 animate-pulse-soft;
+}
+
+.loader-text {
+  @apply mt-6 text-gold uppercase tracking-[0.3em] text-sm font-sans;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .container-custom {
+    @apply px-5;
+  }
+}
+
+/* === PRINT === */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
