@@ -54,7 +54,7 @@ const menuCategories = [
       {
         name: 'Soda Framboise',
         description: 'Frambuesa madura con limón; fresca, vibrante y frutal, con aroma intenso. (420 ml)',
-        price: '$89',
+        price: '89',
       },
       {
         name: 'Soda Lavande',
@@ -86,7 +86,7 @@ const menuCategories = [
       {
         name: 'Fraïse',
         description: 'Relleno de mermelada artesanal mexicana de 100% fresa. Dulzor natural y textura suave. (180 g)',
-        price: '$92',
+        price: '92',
       },
       {
         name: 'Crème de Noisette',
