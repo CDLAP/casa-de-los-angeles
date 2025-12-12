@@ -12,32 +12,32 @@ const menuCategories = [
       {
         name: 'Café Américain Gourmet',
         description: 'Nuestro Café de altura: suave y aromático, con notas frutales y un toque ligero de chocolate. (355 ml)',
-        price: '$68',
+        price: '68',
       },
       {
         name: 'Café à la Vanille Française',
         description: 'Espresso con leche infusionada con vainilla francesa auténtica. Terminado con Chantilly. (355 ml)',
-        price: '$95',
+        price: '95',
       },
       {
         name: 'Café au Lait',
         description: 'El clásico francés: espresso aromático con leche caliente. Suave y reconfortante. (355 ml)',
-        price: '$70',
+        price: '70',
       },
       {
         name: 'Café au Chocolat',
         description: 'Espresso intenso con chocolate real y leche caliente; fuerte y dulce, con sabor a cacao. (355 ml)',
-        price: '$89',
+        price: '89',
       },
       {
         name: 'Chocolat Chantilly',
         description: 'Chocolate parisino espeso, 100% cacao, cubierto con crema Chantilly que se derrite. (355 ml)',
-        price: '$129',
+        price: '129',
       },
       {
         name: 'Thé Gourmet',
         description: 'Selección rotativa de tés europeos. Aromas limpios, delicados y de temporada. (355 ml)',
-        price: '$78',
+        price: '78',
       },
     ],
   },
@@ -49,7 +49,7 @@ const menuCategories = [
       {
         name: 'Agua Mineral de la Casa',
         description: 'Burbuja fina, sabor limpio y refrescante; perfecta para acompañar cualquier platillo. (420 ml)',
-        price: '$65',
+        price: '65',
       },
       {
         name: 'Soda Framboise',
@@ -59,17 +59,17 @@ const menuCategories = [
       {
         name: 'Soda Lavande',
         description: 'Lavanda suave con limón fresco; aromática, ligera y con perfil floral elegante. (420 ml)',
-        price: '$92',
+        price: '92',
       },
       {
         name: 'Soda Mandarine',
         description: 'Mandarina brillante con matices de naranja; cítrica, jugosa y refrescante. (420 ml)',
-        price: '$95',
+        price: '95',
       },
       {
         name: 'Soda Fleur de Sureau',
         description: 'Flor de saúco europea con limón; delicada, floral y con carácter refinado. (420 ml)',
-        price: '$98',
+        price: '98',
       },
     ],
   },
@@ -81,7 +81,7 @@ const menuCategories = [
       {
         name: 'De Paris',
         description: 'Croissant parisino clásico, hecho con mantequilla pura. Crujiente por fuera y suave por dentro. (180 g)',
-        price: '$58',
+        price: '58',
       },
       {
         name: 'Fraïse',
@@ -91,17 +91,17 @@ const menuCategories = [
       {
         name: 'Crème de Noisette',
         description: 'Crema francesa de avellana, de sabor tostado y textura cremosa. (180 g)',
-        price: '$90',
+        price: '90',
       },
       {
         name: 'À la Dijonnaise',
         description: 'Jamón a las hierbas finas y gruyère suizo derretido, con un toque de Dijon francesa. (180 g)',
-        price: '$126',
+        price: '126',
       },
       {
         name: 'Du Matin',
         description: 'Relleno de huevo cremoso al estilo francés. Disponible solo por la mañana. (180 g)',
-        price: '$112',
+        price: '112',
       },
     ],
   },
@@ -113,22 +113,22 @@ const menuCategories = [
       {
         name: 'Parisien',
         description: 'Jamón a las hierbas finas con gruyère suizo. Sabor clásico francés y reconfortante. (180 g)',
-        price: '$139',
+        price: '139',
       },
       {
         name: 'Provençal',
         description: 'Brie francés cremoso con miel de abeja y nuez pecana tostada. Dulce y crujiente. (180 g)',
-        price: '$149',
+        price: '149',
       },
       {
         name: 'Toscana',
         description: 'Jamón serrano con pesto italiano gourmet y parmesano fresco. Intenso y sabroso. (180 g)',
-        price: '$158',
+        price: '158',
       },
       {
         name: 'Niçoise',
         description: 'Atún mediterráneo con paté de aceituna y ensalada casera. Fresco y aromático. (180 g)',
-        price: '$148',
+        price: '148',
       },
     ],
   },
