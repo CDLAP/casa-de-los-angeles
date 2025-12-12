@@ -1,0 +1,25 @@
+# Robots.txt para Casa de los Ángeles Puebla
+# https://www.casadelosangelespuebla.com
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.casadelosangelespuebla.com/sitemap.xml
+
+# Bloquear archivos de desarrollo
+Disallow: /_next/static/development/
+Disallow: /api/
+
+# Permitir crawlers de redes sociales
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /

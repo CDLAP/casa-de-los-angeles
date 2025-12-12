@@ -121,8 +121,11 @@ export default function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 2.7 }}
+            aria-label="Abrir menú de navegación"
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
           >
-            <Menu size={24} />
+            <Menu size={24} aria-hidden="true" />
           </motion.button>
         </div>
       </motion.header>
@@ -142,6 +145,10 @@ export default function Header() {
 
             {/* Menu Panel */}
             <motion.div
+              id="mobile-menu"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Menú de navegación"
               className="fixed top-0 right-0 w-[80%] max-w-sm h-full bg-cream z-[70] xl:hidden shadow-2xl"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
@@ -154,8 +161,9 @@ export default function Header() {
                   className="absolute top-5 right-5 p-2 text-charcoal z-10"
                   onClick={() => setIsMobileMenuOpen(false)}
                   whileTap={{ scale: 0.95 }}
+                  aria-label="Cerrar menú de navegación"
                 >
-                  <X size={24} />
+                  <X size={24} aria-hidden="true" />
                 </motion.button>
 
                 {/* Logo - Más pequeño y arriba de todo */}
@@ -172,7 +180,7 @@ export default function Header() {
                 </div>
 
                 {/* Nav Links */}
-                <nav className="space-y-1 mt-6 flex-1">
+                <nav className="space-y-1 mt-6 flex-1" aria-label="Navegación principal">
                   {navLinks.map((link, index) => (
                     <motion.div
                       key={link.href}
