@@ -5,148 +5,130 @@ import { motion, useInView, AnimatePresence } from 'framer-motion'
 
 const menuCategories = [
   {
-    id: 'desayunos',
-    name: 'Desayunos',
-    initial: 'D',
-    items: [
-      {
-        name: 'Croissant au Camembert',
-        description: 'Camembert francés suavemente derretido, miel tibia y nueces tostadas sobre un croissant crujiente y mantequilloso.',
-        price: '',
-      },
-      {
-        name: 'Croissant à la Dijonnaise',
-        description: 'Jamón a las finas hierbas y gruyère fundido, realzados con una delicada Dijon francesa.',
-        price: '',
-      },
-      {
-        name: 'Croissant du Matin',
-        description: 'Huevos revueltos al estilo francés, sedosos y suaves, servidos dentro de croissant recién calentado.',
-        price: '',
-      },
-      {
-        name: 'Croissant Fraïse',
-        description: 'Croissant tibio con mermelada francesa de fresa, dulce y aromática.',
-        price: '',
-      },
-      {
-        name: 'Croissant au Chocolat',
-        description: 'Relleno de chocolate francés fundido con una textura cremosa e indulgente.',
-        price: '',
-      },
-      {
-        name: 'Croissant de Paris',
-        description: 'Clásico, simple y perfectamente crujiente; puro sabor mantequilla.',
-        price: '',
-      },
-      {
-        name: 'Baguette Provençal',
-        description: 'Queso Brie cremoso con miel tibia sobre baguette dorada; una combinación elegante y reconfortante.',
-        price: '',
-      },
-      {
-        name: 'Baguette Toscana',
-        description: 'Jamón serrano premium con pesto casero y parmesano recién rallado, intensa y gourmet.',
-        price: '',
-      },
-      {
-        name: 'Baguette Parisien',
-        description: 'Jamón a las finas hierbas acompañado de gruyère derretido; un clásico de la tradición parisina.',
-        price: '',
-      },
-      {
-        name: 'Baguette Niçoise',
-        description: 'Preparación fresca de atún con ensalada y aderezo mediterráneo; ligera, equilibrada y aromática.',
-        price: '',
-      },
-    ],
-  },
-  {
     id: 'bebidas',
     name: 'Bebidas',
     initial: 'B',
     items: [
       {
-        name: 'Americano Gourmet',
-        description: 'Café de tueste medio con aroma limpio y perfil equilibrado.',
-        price: '',
+        name: 'Café Américain Gourmet',
+        description: 'Nuestro Café de altura: suave y aromático, con notas frutales y un toque ligero de chocolate. (355 ml)',
+        price: '$68',
       },
       {
-        name: 'Latte',
-        description: 'Café espresso con leche vaporizada, sedoso y cremoso.',
-        price: '',
+        name: 'Café à la Vanille Française',
+        description: 'Espresso con leche infusionada con vainilla francesa auténtica. Terminado con Chantilly. (355 ml)',
+        price: '$95',
       },
       {
-        name: 'Capuccino',
-        description: 'Espresso intenso con espuma abundante y textura aireada.',
-        price: '',
+        name: 'Café au Lait',
+        description: 'El clásico francés: espresso aromático con leche caliente. Suave y reconfortante. (355 ml)',
+        price: '$70',
       },
       {
-        name: 'Mocha',
-        description: 'Espresso mezclado con chocolate y leche; dulce, reconfortante y aromático.',
-        price: '',
+        name: 'Café au Chocolat',
+        description: 'Espresso intenso con chocolate real y leche caliente; fuerte y dulce, con sabor a cacao. (355 ml)',
+        price: '$89',
       },
       {
-        name: 'Caramel Latte',
-        description: 'Latte suave con caramelo artesanal, dulce y elegante.',
-        price: '',
+        name: 'Chocolat Chantilly',
+        description: 'Chocolate parisino espeso, 100% cacao, cubierto con crema Chantilly que se derrite. (355 ml)',
+        price: '$129',
       },
       {
-        name: 'Salted Caramel Latte',
-        description: 'Caramelo salado con espresso y leche; mezcla perfecta entre dulce y salado.',
-        price: '',
-      },
-      {
-        name: 'Chocolate Caliente Français',
-        description: 'Receta tradicional francesa con yema; textura espesa y sabor profundo.',
-        price: '',
-      },
-      {
-        name: 'Chocolat Maison Chantilly',
-        description: 'Chocolate francés espeso coronado con crema batida fresca.',
-        price: '',
-      },
-      {
-        name: 'Matcha',
-        description: 'Té verde japonés batido al momento; sabor suave, vegetal y armonioso.',
-        price: '',
-      },
-      {
-        name: 'Thé Glacé Durazno',
-        description: 'Té frío de durazno, refrescante y ligero.',
-        price: '',
-      },
-      {
-        name: 'Thé Glacé Fruits Rouges',
-        description: 'Té frío infusionado con frutos rojos intensos; fresco y vibrante.',
-        price: '',
-      },
-      {
-        name: 'Soda Lavande',
-        description: 'Lavanda natural con miel y limón; floral, ligera y refrescante.',
-        price: '',
-      },
-      {
-        name: 'Soda Romarin',
-        description: 'Romero fresco infusionado con cítricos; herbal y energizante.',
-        price: '',
-      },
-      {
-        name: 'Soda Framboise',
-        description: 'Frambuesa con hierbabuena y limón; dulce, fresca y vibrante.',
-        price: '',
+        name: 'Thé Gourmet',
+        description: 'Selección rotativa de tés europeos. Aromas limpios, delicados y de temporada. (355 ml)',
+        price: '$78',
       },
     ],
   },
   {
-    id: 'postres',
-    name: 'Postres',
-    initial: 'P',
+    id: 'sodas',
+    name: 'Sodas',
+    initial: 'S',
     items: [
       {
-        name: 'Variedad Rotativa',
-        description: 'Los dulces son seleccionados y cambian regularmente para ofrecer una gran variedad de postres franceses, dulces poblanos y especialidades internacionales. ¡Déjate sorprender!',
-        price: '',
+        name: 'Agua Mineral de la Casa',
+        description: 'Burbuja fina, sabor limpio y refrescante; perfecta para acompañar cualquier platillo. (420 ml)',
+        price: '$65',
+      },
+      {
+        name: 'Soda Framboise',
+        description: 'Frambuesa madura con limón; fresca, vibrante y frutal, con aroma intenso. (420 ml)',
+        price: '$89',
+      },
+      {
+        name: 'Soda Lavande',
+        description: 'Lavanda suave con limón fresco; aromática, ligera y con perfil floral elegante. (420 ml)',
+        price: '$92',
+      },
+      {
+        name: 'Soda Mandarine',
+        description: 'Mandarina brillante con matices de naranja; cítrica, jugosa y refrescante. (420 ml)',
+        price: '$95',
+      },
+      {
+        name: 'Soda Fleur de Sureau',
+        description: 'Flor de saúco europea con limón; delicada, floral y con carácter refinado. (420 ml)',
+        price: '$98',
+      },
+    ],
+  },
+  {
+    id: 'croissants',
+    name: 'Croissants',
+    initial: 'C',
+    items: [
+      {
+        name: 'De Paris',
+        description: 'Croissant parisino clásico, hecho con mantequilla pura. Crujiente por fuera y suave por dentro. (180 g)',
+        price: '$58',
+      },
+      {
+        name: 'Fraïse',
+        description: 'Relleno de mermelada artesanal mexicana de 100% fresa. Dulzor natural y textura suave. (180 g)',
+        price: '$92',
+      },
+      {
+        name: 'Crème de Noisette',
+        description: 'Crema francesa de avellana, de sabor tostado y textura cremosa. (180 g)',
+        price: '$90',
+      },
+      {
+        name: 'À la Dijonnaise',
+        description: 'Jamón a las hierbas finas y gruyère suizo derretido, con un toque de Dijon francesa. (180 g)',
+        price: '$126',
+      },
+      {
+        name: 'Du Matin',
+        description: 'Relleno de huevo cremoso al estilo francés. Disponible solo por la mañana. (180 g)',
+        price: '$112',
+      },
+    ],
+  },
+  {
+    id: 'baguettes',
+    name: 'Baguettes',
+    initial: 'B',
+    items: [
+      {
+        name: 'Parisien',
+        description: 'Jamón a las hierbas finas con gruyère suizo. Sabor clásico francés y reconfortante. (180 g)',
+        price: '$139',
+      },
+      {
+        name: 'Provençal',
+        description: 'Brie francés cremoso con miel de abeja y nuez pecana tostada. Dulce y crujiente. (180 g)',
+        price: '$149',
+      },
+      {
+        name: 'Toscana',
+        description: 'Jamón serrano con pesto italiano gourmet y parmesano fresco. Intenso y sabroso. (180 g)',
+        price: '$158',
+      },
+      {
+        name: 'Niçoise',
+        description: 'Atún mediterráneo con paté de aceituna y ensalada casera. Fresco y aromático. (180 g)',
+        price: '$148',
       },
     ],
   },
@@ -155,7 +137,7 @@ const menuCategories = [
 export default function MenuSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
-  const [activeCategory, setActiveCategory] = useState('desayunos')
+  const [activeCategory, setActiveCategory] = useState('bebidas')
 
   const activeCategoryData = menuCategories.find(cat => cat.id === activeCategory)
   const activeItems = activeCategoryData?.items || []
@@ -189,7 +171,7 @@ export default function MenuSection() {
 
         {/* Tabs elegantes */}
         <motion.div
-          className="flex justify-center gap-2 mb-16"
+          className="flex flex-wrap justify-center gap-2 mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -198,7 +180,7 @@ export default function MenuSection() {
             <button
               key={category.id}
               onClick={() => setActiveCategory(category.id)}
-              className={`relative px-8 py-3 font-serif text-lg transition-all duration-300 ${
+              className={`relative px-6 md:px-8 py-3 font-serif text-base md:text-lg transition-all duration-300 ${
                 activeCategory === category.id
                   ? 'text-gold'
                   : 'text-cream/70 hover:text-gold'
@@ -287,7 +269,7 @@ export default function MenuSection() {
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.8 }}
         >
-          Les prix sont disponibles sur demande • Menú sujeto a disponibilidad
+          Todos nuestros precios incluyen IVA • Menú sujeto a disponibilidad
         </motion.p>
       </div>
     </section>
