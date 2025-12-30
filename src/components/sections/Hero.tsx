@@ -13,8 +13,8 @@ export default function Hero() {
   const [isEventModalOpen, setIsEventModalOpen] = useState(false)
   
   const slides = [
-    { id: 'main', type: 'main' },
-    { id: 'event', type: 'event' }
+    { id: 'main', type: 'main' }
+    // { id: 'event', type: 'event' } // TEMPORALMENTE OCULTO - Evento 31 Dic
   ]
 
   // Auto-rotate cada 15 segundos
@@ -189,6 +189,7 @@ export default function Hero() {
           </motion.div>
         )}
 
+        {/* TEMPORALMENTE OCULTO - SLIDE DEL EVENTO 31 DICIEMBRE
         {currentSlide === 1 && (
           <motion.div
             key="slide-event"
@@ -257,8 +258,10 @@ export default function Hero() {
             </div>
           </motion.div>
         )}
+        FIN DEL BLOQUE OCULTO */}
       </AnimatePresence>
 
+      {/* TEMPORALMENTE OCULTO - Navigation Controls (solo necesarios cuando hay más de 1 slide)
       {/* Navigation Controls - DOTS ULTRA REFINADOS */}
       
       {/* Dots minimalistas - Parte inferior central */}
@@ -297,6 +300,7 @@ export default function Hero() {
       >
         <ChevronRight size={48} strokeWidth={1} />
       </button>
+      FIN CONTROLES OCULTOS */}
 
       {/* Scroll indicator */}
       <motion.div
