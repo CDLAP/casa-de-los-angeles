@@ -6,20 +6,23 @@ import { ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react'
 import Image from 'next/image'
 import EventModal from '../modals/EventModal'
 
+// =====================================================
+// CONTROL: Cambiar a true para mostrar slide del evento
+const SHOW_EVENT_SLIDE = false
+// =====================================================
+
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null)
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
   const [isEventModalOpen, setIsEventModalOpen] = useState(false)
   
-  const slides = [
-    { id: 'main', type: 'main' }
-    // { id: 'event', type: 'event' } // TEMPORALMENTE OCULTO - Evento 31 Dic
-  ]
+  const slides = SHOW_EVENT_SLIDE 
+    ? [{ id: 'main', type: 'main' }, { id: 'event', type: 'event' }]
+    : [{ id: 'main', type: 'main' }]
 
-  // Auto-rotate cada 15 segundos
   useEffect(() => {
-    if (!isAutoPlaying) return
+    if (!isAutoPlaying || slides.length === 1) return
     
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length)
@@ -58,17 +61,9 @@ export default function Hero() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {/* SLIDE 1: Hero Original - COMPLETO */}
-            
-            {/* Elegant Background - Multi-layer - VERDE CAFETERÍA */}
             <div className="absolute inset-0">
-              {/* Base gradient - Verde bosque */}
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-forest via-emerald-dark to-emerald-800" />
-              
-              {/* Radial gold glow - mantener lujo */}
               <div className="absolute inset-0 bg-gradient-radial from-gold/10 via-transparent to-transparent" />
-              
-              {/* Elegant pattern overlay */}
               <div 
                 className="absolute inset-0 opacity-5"
                 style={{
@@ -76,12 +71,9 @@ export default function Hero() {
                   backgroundSize: '100px 100px'
                 }}
               />
-              
-              {/* Subtle vignette */}
               <div className="absolute inset-0 bg-gradient-to-t from-emerald-900 via-transparent to-emerald-forest/50" />
             </div>
 
-            {/* Decorative geometric elements - Verde + Dorado */}
             <div className="absolute inset-0 opacity-10 pointer-events-none">
               <motion.div 
                 className="absolute top-20 left-10 w-64 h-64 border border-gold rounded-full"
@@ -101,10 +93,7 @@ export default function Hero() {
               />
             </div>
 
-            {/* Content */}
             <div className="relative z-10 text-center text-white px-5 max-w-5xl mx-auto h-screen flex flex-col items-center justify-center">
-              
-              {/* Logo Principal - Elemento Central */}
               <motion.div
                 className="mb-6 flex justify-center"
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -112,10 +101,7 @@ export default function Hero() {
                 transition={{ duration: 1.2, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
                 <div className="relative">
-                  {/* Glow effect behind logo */}
                   <div className="absolute inset-0 blur-3xl bg-gold/20 scale-150" />
-                  
-                  {/* Logo COMPLETO */}
                   <div className="relative w-56 h-56 md:w-[294px] md:h-[294px] lg:w-[368px] lg:h-[368px]">
                     <Image
                       src="/images/logo-CDLA.png"
@@ -128,7 +114,6 @@ export default function Hero() {
                 </div>
               </motion.div>
 
-              {/* Subtitle */}
               <motion.p
                 className="text-gold-light uppercase tracking-[0.4em] text-sm md:text-base mb-8 font-light"
                 initial={{ opacity: 0 }}
@@ -138,7 +123,6 @@ export default function Hero() {
                 Cafetería & Centro de Cultura
               </motion.p>
 
-              {/* Elegant divider */}
               <motion.div
                 className="flex items-center justify-center gap-4 mb-10"
                 initial={{ scaleX: 0 }}
@@ -150,7 +134,6 @@ export default function Hero() {
                 <div className="w-16 h-px bg-gradient-to-l from-transparent to-emerald-sage" />
               </motion.div>
 
-              {/* Description */}
               <motion.p
                 className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed font-light"
                 initial={{ opacity: 0, y: 20 }}
@@ -161,7 +144,6 @@ export default function Hero() {
                 la cultura y el arte se encuentran en una experiencia sublime
               </motion.p>
 
-              {/* CTA Buttons */}
               <motion.div
                 className="flex flex-col sm:flex-row gap-4 justify-center"
                 initial={{ opacity: 0, y: 20 }}
@@ -189,8 +171,7 @@ export default function Hero() {
           </motion.div>
         )}
 
-        {/* TEMPORALMENTE OCULTO - SLIDE DEL EVENTO 31 DICIEMBRE
-        {currentSlide === 1 && (
+        {SHOW_EVENT_SLIDE && currentSlide === 1 && (
           <motion.div
             key="slide-event"
             className="absolute inset-0"
@@ -199,9 +180,6 @@ export default function Hero() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {/* SLIDE 2: Evento Fin de Año - MINIMALISTA LUXURY */}
-            
-            {/* Foto fullscreen */}
             <div className="absolute inset-0">
               <div 
                 className="absolute inset-0 bg-cover bg-center"
@@ -209,19 +187,15 @@ export default function Hero() {
                   backgroundImage: `url('/images/fin-de-año-2025.png')`,
                 }}
               />
-              {/* Overlay oscuro para legibilidad */}
               <div className="absolute inset-0 bg-black/40" />
             </div>
 
-            {/* Content - MINIMALISTA EXTREMO */}
             <div className="relative z-10 text-center text-white h-screen flex flex-col items-center justify-center px-5">
-              
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.3 }}
               >
-                {/* Fecha GIGANTE en serif dorado */}
                 <h1 className="font-serif text-[80px] md:text-[120px] lg:text-[160px] text-gold leading-none mb-6 tracking-tight">
                   31
                 </h1>
@@ -232,20 +206,16 @@ export default function Hero() {
                   2025
                 </p>
                 
-                {/* Línea dorada sutil */}
                 <div className="w-24 h-px bg-gradient-gold mx-auto mb-8" />
                 
-                {/* Título del evento */}
                 <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-white mb-6 tracking-wide">
                   Fiesta de Fin de Año
                 </h2>
                 
-                {/* Descripción mínima */}
                 <p className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light leading-relaxed">
                   Celebra el nuevo año con nosotros en una noche inolvidable
                 </p>
                 
-                {/* Botón único dorado */}
                 <motion.button
                   onClick={() => setIsEventModalOpen(true)}
                   className="inline-block px-12 py-5 bg-gold text-charcoal font-sans text-sm uppercase tracking-[0.3em] font-medium transition-all hover:bg-gold-light hover:shadow-2xl hover:shadow-gold/50 cursor-pointer"
@@ -258,51 +228,47 @@ export default function Hero() {
             </div>
           </motion.div>
         )}
-        FIN DEL BLOQUE OCULTO */}
       </AnimatePresence>
 
-      {/* TEMPORALMENTE OCULTO - Navigation Controls (solo necesarios cuando hay más de 1 slide)
-      {/* Navigation Controls - DOTS ULTRA REFINADOS */}
-      
-      {/* Dots minimalistas - Parte inferior central */}
-      <div className="absolute bottom-24 left-0 right-0 flex justify-center items-center gap-6 z-20">
-        {slides.map((_, index) => (
+      {SHOW_EVENT_SLIDE && slides.length > 1 && (
+        <>
+          <div className="absolute bottom-24 left-0 right-0 flex justify-center items-center gap-6 z-20">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className="group p-2"
+                aria-label={`Go to slide ${index + 1}`}
+              >
+                <div
+                  className={`transition-all duration-500 rounded-full ${
+                    currentSlide === index
+                      ? 'w-1.5 h-1.5 bg-gold shadow-sm shadow-gold/50'
+                      : 'w-1.5 h-1.5 border border-gold/30 group-hover:border-gold/60'
+                  }`}
+                />
+              </button>
+            ))}
+          </div>
+
           <button
-            key={index}
-            onClick={() => goToSlide(index)}
-            className="group p-2"
-            aria-label={`Go to slide ${index + 1}`}
+            onClick={prevSlide}
+            className="absolute left-8 top-1/2 -translate-y-1/2 z-20 text-gold/50 hover:text-gold transition-all opacity-0 hover:opacity-100 group-hover:opacity-100"
+            aria-label="Previous slide"
           >
-            <div
-              className={`transition-all duration-500 rounded-full ${
-                currentSlide === index
-                  ? 'w-1.5 h-1.5 bg-gold shadow-sm shadow-gold/50'
-                  : 'w-1.5 h-1.5 border border-gold/30 group-hover:border-gold/60'
-              }`}
-            />
+            <ChevronLeft size={48} strokeWidth={1} />
           </button>
-        ))}
-      </div>
+          
+          <button
+            onClick={nextSlide}
+            className="absolute right-8 top-1/2 -translate-y-1/2 z-20 text-gold/50 hover:text-gold transition-all opacity-0 hover:opacity-100 group-hover:opacity-100"
+            aria-label="Next slide"
+          >
+            <ChevronRight size={48} strokeWidth={1} />
+          </button>
+        </>
+      )}
 
-      {/* Arrows - Laterales (solo visible en hover) */}
-      <button
-        onClick={prevSlide}
-        className="absolute left-8 top-1/2 -translate-y-1/2 z-20 text-gold/50 hover:text-gold transition-all opacity-0 hover:opacity-100 group-hover:opacity-100"
-        aria-label="Previous slide"
-      >
-        <ChevronLeft size={48} strokeWidth={1} />
-      </button>
-      
-      <button
-        onClick={nextSlide}
-        className="absolute right-8 top-1/2 -translate-y-1/2 z-20 text-gold/50 hover:text-gold transition-all opacity-0 hover:opacity-100 group-hover:opacity-100"
-        aria-label="Next slide"
-      >
-        <ChevronRight size={48} strokeWidth={1} />
-      </button>
-      FIN CONTROLES OCULTOS */}
-
-      {/* Scroll indicator */}
       <motion.div
         className="absolute bottom-8 left-0 right-0 flex justify-center text-gold/50 z-20"
         initial={{ opacity: 0, y: -20 }}
@@ -317,7 +283,6 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* Event Modal */}
       <EventModal isOpen={isEventModalOpen} onClose={() => setIsEventModalOpen(false)} />
     </section>
   )
