@@ -174,50 +174,42 @@ export default function MenuSection() {
           <h2 className="font-serif text-6xl md:text-7xl text-gold mb-4 tracking-tight">Nuestro Menú</h2>
         </motion.div>
 
-        {/* Tabs verticales - Estilo Alta Gama */}
-        <motion.nav
-          className="flex flex-col items-center gap-3 md:gap-4 mb-16"
+        {/* Tabs horizontales con scroll en móvil */}
+        <motion.div
+          className="mb-16 -mx-5 md:mx-0"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          {menuCategories.map((category, index) => (
-            <motion.button
-              key={category.id}
-              onClick={() => setActiveCategory(category.id)}
-              className={`relative font-serif italic text-xl md:text-2xl tracking-wide transition-all duration-500 py-2 ${
-                activeCategory === category.id
-                  ? 'text-gold'
-                  : 'text-cream/40 hover:text-cream/70'
-              }`}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              {/* Decorador izquierdo */}
-              <span 
-                className={`absolute -left-8 top-1/2 -translate-y-1/2 text-sm transition-all duration-500 ${
-                  activeCategory === category.id ? 'opacity-100 text-gold' : 'opacity-0'
+          <nav className="flex md:justify-center gap-2 md:gap-8 overflow-x-auto no-scrollbar px-5 md:px-0 pb-2">
+            {menuCategories.map((category, index) => (
+              <motion.button
+                key={category.id}
+                onClick={() => setActiveCategory(category.id)}
+                className={`relative font-serif italic text-lg md:text-xl whitespace-nowrap transition-all duration-500 py-2 px-4 md:px-6 flex-shrink-0 ${
+                  activeCategory === category.id
+                    ? 'text-gold'
+                    : 'text-cream/40 hover:text-cream/70'
                 }`}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                whileTap={{ scale: 0.98 }}
               >
-                ✦
-              </span>
-              
-              {category.name}
-              
-              {/* Decorador derecho */}
-              <span 
-                className={`absolute -right-8 top-1/2 -translate-y-1/2 text-sm transition-all duration-500 ${
-                  activeCategory === category.id ? 'opacity-100 text-gold' : 'opacity-0'
-                }`}
-              >
-                ✦
-              </span>
-            </motion.button>
-          ))}
-        </motion.nav>
+                {category.name}
+                
+                {/* Indicador sutil debajo del activo */}
+                {activeCategory === category.id && (
+                  <motion.div
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-gold rounded-full"
+                    layoutId="activeIndicator"
+                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                  />
+                )}
+              </motion.button>
+            ))}
+          </nav>
+        </motion.div>
 
         {/* Menu Items - Layout Editorial Francés */}
         <AnimatePresence mode="wait">

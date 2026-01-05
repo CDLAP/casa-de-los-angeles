@@ -74,7 +74,7 @@ export default function Hero() {
               <div className="absolute inset-0 bg-gradient-to-t from-emerald-900 via-transparent to-emerald-forest/50" />
             </div>
 
-            <div className="absolute inset-0 opacity-10 pointer-events-none">
+            <div className="absolute inset-0 opacity-10 pointer-events-none overflow-hidden">
               <motion.div 
                 className="absolute top-20 left-10 w-64 h-64 border border-gold rounded-full"
                 animate={{ 

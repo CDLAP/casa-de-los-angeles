@@ -98,7 +98,7 @@ export default function Events() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="relative">
+            <div className="relative pb-4 pr-4 md:pb-8 md:pr-8">
               {/* Main image */}
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl">
                 <div 
@@ -110,12 +110,12 @@ export default function Events() {
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 to-transparent" />
               </div>
 
-              {/* Decorative frame */}
-              <div className="absolute -top-4 -left-4 w-full h-full border-2 border-gold/30 rounded-2xl -z-10" />
+              {/* Decorative frame - hidden on mobile */}
+              <div className="absolute -top-4 -left-4 w-full h-full border-2 border-gold/30 rounded-2xl -z-10 hidden md:block" />
 
               {/* Floating badge */}
               <motion.div
-                className="absolute -bottom-6 -right-6 bg-gold text-charcoal p-6 rounded-xl shadow-xl"
+                className="absolute -bottom-3 -right-3 md:-bottom-6 md:-right-6 bg-gold text-charcoal p-4 md:p-6 rounded-xl shadow-xl"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.6, delay: 0.8 }}
