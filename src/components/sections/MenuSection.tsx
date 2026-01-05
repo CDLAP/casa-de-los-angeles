@@ -185,7 +185,7 @@ export default function MenuSection() {
             <motion.button
               key={category.id}
               onClick={() => setActiveCategory(category.id)}
-              className={`relative font-serif text-xl md:text-2xl tracking-wide transition-all duration-500 py-2 ${
+              className={`relative font-serif italic text-xl md:text-2xl tracking-wide transition-all duration-500 py-2 ${
                 activeCategory === category.id
                   ? 'text-gold'
                   : 'text-cream/40 hover:text-cream/70'
@@ -248,7 +248,7 @@ export default function MenuSection() {
                     <div className="flex-1">
                       {/* Nombre y precio con línea punteada */}
                       <div className="flex items-baseline gap-2 mb-2">
-                        <h3 className="font-serif text-xl text-gold group-hover:text-gold-light transition-colors">
+                        <h3 className="font-serif italic text-xl text-gold group-hover:text-gold-light transition-colors">
                           {item.name}
                         </h3>
                         <div className="flex-1 border-b border-dotted border-gold/40 min-w-[20px] mb-1" />
