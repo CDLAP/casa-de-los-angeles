@@ -96,7 +96,7 @@ export default function Contact() {
                 <h3 className="font-serif text-base sm:text-lg text-charcoal mb-2">Horarios</h3>
                 <p className="text-charcoal-50 text-sm leading-relaxed">
                   Lunes a Domingo<br />
-                  8:00 AM a 8:00 PM
+                  8:00 AM a 10:00 PM
                 </p>
               </div>
 

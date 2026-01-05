@@ -10,6 +10,7 @@ import Experience from '@/components/sections/Experience'
 import MenuSection from '@/components/sections/MenuSection'
 // import Gallery from '@/components/sections/Gallery'
 import Events from '@/components/sections/Events'
+import Team from '@/components/sections/Team'
 import Contact from '@/components/sections/Contact'
 
 // Register GSAP plugins
@@ -26,6 +27,7 @@ export default function Home() {
       <MenuSection />
       {/* <Gallery /> */}
       <Events />
+      <Team />
       <Contact />
     </>
   )
