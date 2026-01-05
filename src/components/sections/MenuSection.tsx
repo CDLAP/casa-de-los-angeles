@@ -174,34 +174,50 @@ export default function MenuSection() {
           <h2 className="font-serif text-6xl md:text-7xl text-gold mb-4 tracking-tight">Nuestro Menú</h2>
         </motion.div>
 
-        {/* Tabs elegantes */}
-        <motion.div
-          className="flex flex-wrap justify-center gap-2 mb-16"
+        {/* Tabs verticales - Estilo Alta Gama */}
+        <motion.nav
+          className="flex flex-col items-center gap-3 md:gap-4 mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          {menuCategories.map((category) => (
-            <button
+          {menuCategories.map((category, index) => (
+            <motion.button
               key={category.id}
               onClick={() => setActiveCategory(category.id)}
-              className={`relative px-6 md:px-8 py-3 font-serif text-base md:text-lg transition-all duration-300 ${
+              className={`relative font-serif text-xl md:text-2xl tracking-wide transition-all duration-500 py-2 ${
                 activeCategory === category.id
                   ? 'text-gold'
-                  : 'text-cream/70 hover:text-gold'
+                  : 'text-cream/40 hover:text-cream/70'
               }`}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
+              {/* Decorador izquierdo */}
+              <span 
+                className={`absolute -left-8 top-1/2 -translate-y-1/2 text-sm transition-all duration-500 ${
+                  activeCategory === category.id ? 'opacity-100 text-gold' : 'opacity-0'
+                }`}
+              >
+                ✦
+              </span>
+              
               {category.name}
-              {activeCategory === category.id && (
-                <motion.div
-                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-gold"
-                  layoutId="activeTab"
-                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                />
-              )}
-            </button>
+              
+              {/* Decorador derecho */}
+              <span 
+                className={`absolute -right-8 top-1/2 -translate-y-1/2 text-sm transition-all duration-500 ${
+                  activeCategory === category.id ? 'opacity-100 text-gold' : 'opacity-0'
+                }`}
+              >
+                ✦
+              </span>
+            </motion.button>
           ))}
-        </motion.div>
+        </motion.nav>
 
         {/* Menu Items - Layout Editorial Francés */}
         <AnimatePresence mode="wait">
