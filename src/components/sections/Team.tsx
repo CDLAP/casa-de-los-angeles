@@ -21,6 +21,10 @@ const team = [
     name: 'Lea',
     image: '/images/team/lea.png',
   },
+  {
+    name: 'Oswaldo',
+    image: '/images/team/oswaldo.png',
+  },
 ]
 
 export default function Team() {
@@ -47,11 +51,13 @@ export default function Team() {
         </motion.div>
 
         {/* Team Grid - Formato 4:5 */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 lg:gap-10 max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-6 lg:gap-8 max-w-6xl mx-auto">
           {team.map((member, index) => (
             <motion.div
               key={member.name}
-              className="flex flex-col items-center"
+              className={`flex flex-col items-center ${
+                index === 4 ? 'col-span-2 md:col-span-1 max-w-[50%] md:max-w-full mx-auto' : ''
+              }`}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 + index * 0.15 }}
