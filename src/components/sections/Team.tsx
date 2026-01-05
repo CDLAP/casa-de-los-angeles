@@ -22,8 +22,8 @@ const team = [
     image: '/images/team/lea.png',
   },
   {
-    name: 'Oswaldo',
-    image: '/images/team/oswaldo.png',
+    name: 'Osvaldo',
+    image: '/images/team/osvaldo.png',
   },
 ]
 
@@ -56,7 +56,7 @@ export default function Team() {
             <motion.div
               key={member.name}
               className={`flex flex-col items-center ${
-                index === 4 ? 'col-span-2 md:col-span-1 max-w-[50%] md:max-w-full mx-auto' : ''
+                index === 4 ? 'col-span-2 md:col-span-1 w-[calc(50%-12px)] md:w-full mx-auto' : ''
               }`}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
