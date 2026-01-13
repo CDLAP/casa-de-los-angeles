@@ -111,7 +111,7 @@ export const metadata: Metadata = {
   // Iconos
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/images/logo-short-1000x1000.png', sizes: 'any', type: 'image/png' },
       { url: '/images/logo-short-1000x1000.png', sizes: '32x32', type: 'image/png' },
       { url: '/images/logo-short-1000x1000.png', sizes: '16x16', type: 'image/png' },
       { url: '/images/logo-short-1000x1000.png', sizes: '192x192', type: 'image/png' },
@@ -120,7 +120,7 @@ export const metadata: Metadata = {
     apple: [
       { url: '/images/logo-short-1000x1000.png', sizes: '180x180', type: 'image/png' },
     ],
-    shortcut: '/favicon.ico',
+    shortcut: '/images/logo-short-1000x1000.png',
   },
   
   // Manifest PWA
