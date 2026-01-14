@@ -82,21 +82,28 @@ export default function Bazar() {
                   <Calendar className="w-5 h-5 text-emerald" />
                   <div>
                     <p className="text-xs text-charcoal-50 uppercase tracking-wider">Fecha</p>
-                    <p className="text-charcoal font-medium">Próximamente</p>
+                    <p className="text-charcoal font-medium">16, 17 y 18 de Enero 2026</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <Clock className="w-5 h-5 text-emerald" />
                   <div>
                     <p className="text-xs text-charcoal-50 uppercase tracking-wider">Horario</p>
-                    <p className="text-charcoal font-medium">10:00 AM - 6:00 PM</p>
+                    <p className="text-charcoal font-medium">11:00 AM - 9:00 PM</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <MapPin className="w-5 h-5 text-emerald" />
                   <div>
                     <p className="text-xs text-charcoal-50 uppercase tracking-wider">Lugar</p>
-                    <p className="text-charcoal font-medium">Casa de los Ángeles</p>
+                    <a 
+                      href="https://maps.app.goo.gl/Vy9N3wGUC4BKLHPcA" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-charcoal font-medium hover:text-gold transition-colors underline decoration-gold/30 hover:decoration-gold"
+                    >
+                      Casa de los Ángeles
+                    </a>
                   </div>
                 </div>
               </div>
