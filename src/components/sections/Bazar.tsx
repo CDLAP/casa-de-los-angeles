@@ -2,28 +2,28 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { ShoppingBag, Gem, Palette, Gift, Clock, MapPin, Calendar } from 'lucide-react'
+import { ShoppingBag, Gem, Palette, Gift, Clock, MapPin, Calendar, Sparkles } from 'lucide-react'
 
 const bazarCategories = [
   {
-    icon: Gem,
-    title: 'Joyería Artesanal',
-    description: 'Piezas únicas elaboradas por artesanos locales con materiales de primera calidad.',
-  },
-  {
     icon: Palette,
-    title: 'Arte & Decoración',
-    description: 'Obras de artistas poblanos y piezas decorativas que transformarán tus espacios.',
+    title: 'Diseño & Moda',
+    description: 'Piezas únicas de diseñadores independientes con estilo y personalidad.',
   },
   {
-    icon: ShoppingBag,
-    title: 'Moda & Accesorios',
-    description: 'Ropa y complementos de diseñadores independientes con estilo único.',
+    icon: Gem,
+    title: 'Arte & Decoración',
+    description: 'Obras y objetos decorativos que transformarán tus espacios.',
   },
   {
     icon: Gift,
     title: 'Regalos Especiales',
-    description: 'Encuentra el detalle perfecto entre nuestra selección curada de productos.',
+    description: 'Encuentra el detalle perfecto entre nuestra selección curada.',
+  },
+  {
+    icon: Sparkles,
+    title: 'Productos Gourmet',
+    description: 'Delicias artesanales y productos selectos para paladares exigentes.',
   },
 ]
 
@@ -42,12 +42,16 @@ export default function Bazar() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="font-serif text-display-md text-gold-dark mb-6">
-              Bazar de los Ángeles
+              Mercado de los Ángeles
             </h2>
+            <p className="text-charcoal-50 text-lg leading-relaxed mb-4">
+              Un mercado boutique donde las marcas brillan y la experiencia para el visitante 
+              es siempre agradable. Creado con cariño, intención y visión en el corazón del 
+              Centro Histórico de Puebla.
+            </p>
             <p className="text-charcoal-50 text-lg leading-relaxed mb-8">
-              Descubre una experiencia única de compras en el corazón del Centro Histórico de Puebla. 
-              Nuestro bazar reúne a los mejores artesanos y diseñadores locales en un ambiente 
-              elegante y acogedor.
+              Disfruta de un espacio al aire libre con encanto arquitectónico, a media cuadra 
+              del Zócalo, donde encontrarás una selección cuidada de marcas locales e independientes.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-6 mb-10">
@@ -116,15 +120,17 @@ export default function Bazar() {
               transition={{ duration: 0.6, delay: 0.6 }}
             >
               <p className="text-charcoal-50 mb-6">
-                ¿Interesado en participar como expositor? Contáctanos para más información.
+                ¿Te gustaría participar como expositor? Contáctanos para conocer los espacios disponibles.
               </p>
               <motion.a
-                href="#contacto"
+                href="https://wa.me/522206224222?text=Hola,%20me%20interesa%20participar%20como%20expositor%20en%20el%20Mercado%20de%20los%20%C3%81ngeles"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-elegant"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Más Información
+                Quiero ser Expositor
               </motion.a>
             </motion.div>
           </motion.div>
@@ -159,8 +165,8 @@ export default function Bazar() {
                 transition={{ duration: 0.6, delay: 0.8 }}
               >
                 <div className="text-center">
-                  <span className="block text-3xl font-serif mb-1">+20</span>
-                  <span className="text-xs uppercase tracking-wider">Expositores</span>
+                  <span className="block text-2xl font-serif mb-1">Entrada</span>
+                  <span className="text-sm uppercase tracking-wider">Libre</span>
                 </div>
               </motion.div>
             </div>
