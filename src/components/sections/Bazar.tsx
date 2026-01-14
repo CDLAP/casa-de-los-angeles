@@ -101,12 +101,12 @@ export default function Bazar() {
                   <div>
                     <p className="text-xs text-charcoal-50 uppercase tracking-wider">Lugar</p>
                     <a 
-                      href="https://maps.app.goo.gl/Vy9N3wGUC4BKLHPcA" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-charcoal font-medium hover:text-gold transition-colors underline decoration-gold/30 hover:decoration-gold"
+                    href="https://www.google.com/maps/search/?api=1&query=Casa+de+los+Angeles+Palafox+222+Puebla" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-charcoal font-medium hover:text-gold transition-colors underline decoration-gold/30 hover:decoration-gold"
                     >
-                      Casa de los Ángeles
+                    Casa de los Ángeles
                     </a>
                   </div>
                 </div>
