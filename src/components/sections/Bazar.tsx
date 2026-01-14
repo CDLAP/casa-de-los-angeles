@@ -143,15 +143,15 @@ export default function Bazar() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="relative pb-4 pr-4 md:pb-8 md:pr-8">
-              {/* Main image placeholder */}
-              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl bg-gradient-to-br from-emerald/20 to-gold/20">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center p-8">
-                    <ShoppingBag className="w-20 h-20 text-gold/40 mx-auto mb-4" />
-                    <p className="text-charcoal-50 text-sm uppercase tracking-wider">Imagen próximamente</p>
-                  </div>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/20 to-transparent" />
+              {/* Main image */}
+              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl">
+                <div 
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{
+                    backgroundImage: `url('/images/bazar.png')`,
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 to-transparent" />
               </div>
 
               {/* Decorative frame - hidden on mobile */}
