@@ -167,7 +167,7 @@ export default function MenuSection() {
             <div className="w-12 h-px bg-gradient-gold" />
           </div>
           
-          <h2 className="font-serif text-6xl md:text-7xl text-gold mb-4 tracking-tight">Nuestro Menú</h2>
+          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-gold mb-4 tracking-tight">Nuestro Menú</h2>
         </motion.div>
 
         {/* Tabs horizontales con scroll en móvil */}
