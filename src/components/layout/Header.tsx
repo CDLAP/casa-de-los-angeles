@@ -10,9 +10,10 @@ const navLinks = [
   { href: '#inicio', label: 'Inicio' },
   { href: '#nosotros', label: 'Nosotros' },
   { href: '#experiencia', label: 'Experiencia' },
-  { href: '#menu', label: 'Menú' },
+  // { href: '#menu', label: 'Menú' },
   // { href: '#galeria', label: 'Galería' },
-  { href: '#eventos', label: 'Eventos' },
+  // { href: '#eventos', label: 'Eventos' },
+  { href: '#bazar', label: 'Bazar' },
   { href: '#contacto', label: 'Contacto' },
 ]
 
