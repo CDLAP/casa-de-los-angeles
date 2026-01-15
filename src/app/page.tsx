@@ -7,7 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Hero from '@/components/sections/Hero'
 import About from '@/components/sections/About'
 import Experience from '@/components/sections/Experience'
-// import MenuSection from '@/components/sections/MenuSection'
+import MenuSection from '@/components/sections/MenuSection'
 // import Gallery from '@/components/sections/Gallery'
 // import Events from '@/components/sections/Events'
 import Bazar from '@/components/sections/Bazar'
@@ -25,7 +25,7 @@ export default function Home() {
       <Hero />
       <About />
       <Experience />
-      {/* <MenuSection /> */}
+      <MenuSection />
       {/* <Gallery /> */}
       {/* <Events /> */}
       <Bazar />
