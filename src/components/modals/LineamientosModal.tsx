@@ -64,11 +64,16 @@ export default function LineamientosModal({ isOpen, onClose }: LineamientosModal
                     El Mercado de los Ángeles se realiza en los patios de Casa de los Ángeles, 
                     en una ubicación privilegiada del Centro Histórico de Puebla:
                   </p>
-                  <address className="not-italic bg-gold/10 p-4 rounded-lg mb-4">
+                  <a 
+                    href="https://www.google.com/maps/search/?api=1&query=Casa+de+los+Angeles+Palafox+222+Puebla"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block not-italic bg-gold/10 p-4 rounded-lg mb-4 hover:bg-gold/20 transition-colors"
+                  >
                     <strong className="text-charcoal">Av. Don Juan de Palafox y Mendoza 222</strong><br />
                     Centro Histórico, Puebla, C.P. 72000<br />
-                    <span className="text-gold-dark">A media cuadra del Zócalo</span>
-                  </address>
+                    <span className="text-gold-dark underline">A media cuadra del Zócalo → Ver en Google Maps</span>
+                  </a>
                   <p className="text-sm text-charcoal-50">
                     Es un espacio al aire libre con encanto arquitectónico y gran flujo peatonal. 
                     Durante el evento ofrecemos música ambiental, activaciones en la entrada y 
