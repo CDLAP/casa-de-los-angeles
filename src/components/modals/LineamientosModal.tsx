@@ -33,7 +33,7 @@ export default function LineamientosModal({ isOpen, onClose }: LineamientosModal
             {/* Header */}
             <div className="bg-emerald text-white px-6 md:px-10 py-6 flex items-center justify-between flex-shrink-0">
               <div>
-                <h2 className="font-serif text-2xl md:text-3xl">Mercado de los Ángeles</h2>
+                <h2 className="font-serif text-2xl md:text-3xl">Boutique y Mercado de las Maravillas</h2>
                 <p className="text-white/80 text-sm mt-1">Lineamientos para Expositores</p>
               </div>
               <button
@@ -52,7 +52,7 @@ export default function LineamientosModal({ isOpen, onClose }: LineamientosModal
                 {/* Intro */}
                 <div className="text-center border-b border-gold/20 pb-8">
                   <p className="text-charcoal-50 text-lg leading-relaxed">
-                    Gracias por tu interés en formar parte del Mercado de los Ángeles. 
+                    Gracias por tu interés en formar parte de la Boutique y Mercado de las Maravillas. 
                     Un mercado boutique donde las marcas brillan, las ventas fluyen y 
                     la experiencia para el visitante es siempre agradable.
                   </p>

@@ -5,7 +5,7 @@ import { motion, useInView } from 'framer-motion'
 import { ShoppingBag, Gem, Palette, Gift, Clock, MapPin, Calendar, Sparkles, FileText } from 'lucide-react'
 import LineamientosModal from '@/components/modals/LineamientosModal'
 
-const bazarCategories = [
+const boutiqueCategories = [
   {
     icon: Palette,
     title: 'Diseño & Moda',
@@ -28,7 +28,7 @@ const bazarCategories = [
   },
 ]
 
-export default function Bazar() {
+export default function Boutique() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -58,7 +58,7 @@ export default function Bazar() {
               </p>
 
               <div className="grid sm:grid-cols-2 gap-6 mb-10">
-                {bazarCategories.map((category, index) => (
+                {boutiqueCategories.map((category, index) => (
                   <motion.div
                     key={category.title}
                     className="flex gap-4"

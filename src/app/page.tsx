@@ -10,7 +10,7 @@ import Experience from '@/components/sections/Experience'
 import MenuSection from '@/components/sections/MenuSection'
 // import Gallery from '@/components/sections/Gallery'
 // import Events from '@/components/sections/Events'
-import Bazar from '@/components/sections/Bazar'
+import Boutique from '@/components/sections/Boutique'
 import Team from '@/components/sections/Team'
 import Contact from '@/components/sections/Contact'
 
@@ -28,7 +28,7 @@ export default function Home() {
       <MenuSection />
       {/* <Gallery /> */}
       {/* <Events /> */}
-      <Bazar />
+      <Boutique />
       <Team />
       <Contact />
     </>

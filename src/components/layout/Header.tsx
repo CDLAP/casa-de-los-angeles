@@ -13,7 +13,7 @@ const navLinks = [
   // { href: '#menu', label: 'Menú' },
   // { href: '#galeria', label: 'Galería' },
   // { href: '#eventos', label: 'Eventos' },
-  { href: '#bazar', label: 'Bazar' },
+  { href: '#boutique', label: 'Boutique' },
   { href: '#contacto', label: 'Contacto' },
 ]
 
