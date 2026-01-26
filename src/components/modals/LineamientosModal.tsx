@@ -111,15 +111,22 @@ export default function LineamientosModal({ isOpen, onClose }: LineamientosModal
                 <Section icon={DollarSign} title="Espacios y Costos">
                   <div className="grid md:grid-cols-2 gap-4 mb-6">
                     <div className="border border-gold/30 p-5 rounded-lg text-center">
-                      <span className="text-3xl font-serif text-gold-dark">$300</span>
-                      <span className="text-charcoal-50 text-sm"> MXN/día</span>
-                      <p className="font-medium mt-2">Mesa Chica</p>
+                      <span className="text-3xl font-serif text-gold-dark">$350</span>
+                      <span className="text-charcoal-50 text-sm"> MXN</span>
+                      <p className="font-medium mt-2">Por Día</p>
                     </div>
                     <div className="border-2 border-gold bg-gold/5 p-5 rounded-lg text-center">
-                      <span className="text-3xl font-serif text-gold-dark">$600</span>
-                      <span className="text-charcoal-50 text-sm"> MXN/día</span>
-                      <p className="font-medium mt-2">Mesa Grande <span className="text-xs text-gold-dark">(Zona Premium)</span></p>
+                      <span className="text-3xl font-serif text-gold-dark">$1,000</span>
+                      <span className="text-charcoal-50 text-sm"> MXN</span>
+                      <p className="font-medium mt-2">Fin de Semana Completo</p>
+                      <p className="text-xs text-gold-dark mt-1">Viernes, Sábado y Domingo</p>
                     </div>
+                  </div>
+                  <div className="bg-emerald/5 p-4 rounded-lg mb-4">
+                    <p className="text-sm text-charcoal font-medium">📢 Sistema por Puja</p>
+                    <p className="text-sm text-charcoal-50 mt-1">
+                      A partir de 4 semanas antes del evento, los espacios se asignan mediante sistema de puja.
+                    </p>
                   </div>
                   <p className="text-sm text-charcoal-50">
                     Cada espacio incluye mesa, mantel y una silla. El cupo es limitado y realizamos 
