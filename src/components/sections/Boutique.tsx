@@ -89,7 +89,7 @@ export default function Boutique() {
                     <Calendar className="w-5 h-5 text-emerald" />
                     <div>
                       <p className="text-xs text-charcoal-50 uppercase tracking-wider">Fecha</p>
-                      <p className="text-charcoal font-medium">16, 17 y 18 de Enero 2026</p>
+                      <p className="text-charcoal font-medium">30, 31 Ene y 1 Feb 2026</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
