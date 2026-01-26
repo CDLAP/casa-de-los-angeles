@@ -88,7 +88,7 @@ export default function LineamientosModal({ isOpen, onClose }: LineamientosModal
                       <h4 className="font-serif text-emerald mb-2">Montaje</h4>
                       <p className="text-sm text-charcoal-50">
                         Ingreso desde las <strong>8:00 am</strong><br />
-                        Listo a más tardar <strong>11:00 am</strong>
+                        Listo a más tardar <strong>9:00 am</strong>
                       </p>
                     </div>
                     <div className="bg-emerald/5 p-4 rounded-lg">
