@@ -10,10 +10,6 @@ const team = [
     image: '/images/team/elisabeth.png',
   },
   {
-    name: 'Aldo',
-    image: '/images/team/aldo.png',
-  },
-  {
     name: 'Emilio',
     image: '/images/team/emilio.png',
   },
@@ -47,7 +43,7 @@ export default function Team() {
         </motion.div>
 
         {/* Team Grid - Formato 4:5 */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 lg:gap-10 max-w-5xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 lg:gap-10 max-w-4xl mx-auto">
           {team.map((member, index) => (
             <motion.div
               key={member.name}
