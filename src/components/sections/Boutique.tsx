@@ -96,7 +96,7 @@ export default function Boutique() {
                     <Clock className="w-5 h-5 text-emerald" />
                     <div>
                       <p className="text-xs text-charcoal-50 uppercase tracking-wider">Horario</p>
-                      <p className="text-charcoal font-medium">11:00 AM - 9:00 PM</p>
+                      <p className="text-charcoal font-medium">9:00 AM - 9:00 PM</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
