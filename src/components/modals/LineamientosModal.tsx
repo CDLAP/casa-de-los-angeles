@@ -94,14 +94,14 @@ export default function LineamientosModal({ isOpen, onClose }: LineamientosModal
                     <div className="bg-emerald/5 p-4 rounded-lg">
                       <h4 className="font-serif text-emerald mb-2">Venta</h4>
                       <p className="text-sm text-charcoal-50">
-                        <strong>11:00 am - 9:00 pm</strong><br />
-                        Los tres días del evento
+                        <strong>9:00 am - 9:00 pm</strong><br />
+                        Viernes, Sábados y Domingos
                       </p>
                     </div>
                     <div className="bg-emerald/5 p-4 rounded-lg">
                       <h4 className="font-serif text-emerald mb-2">Desmontaje</h4>
                       <p className="text-sm text-charcoal-50">
-                        Último día a partir de las <strong>8:00 pm</strong>
+                        Último día a partir de las <strong>9:00 pm</strong>
                       </p>
                     </div>
                   </div>
@@ -129,10 +129,8 @@ export default function LineamientosModal({ isOpen, onClose }: LineamientosModal
 
                 {/* Servicios */}
                 <Section icon={Sparkles} title="Servicios para Expositores">
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                    <ServiceItem emoji="🍽️" name="Comida del día" price="$50" />
+                  <div className="grid grid-cols-2 gap-3 max-w-xs mx-auto">
                     <ServiceItem emoji="☕" name="Café" price="Costo preferencial" />
-                    <ServiceItem emoji="🥪" name="Sandwiches" price="Por la mañana" />
                     <ServiceItem emoji="💧" name="Agua natural" price="Gratis" />
                   </div>
                 </Section>
