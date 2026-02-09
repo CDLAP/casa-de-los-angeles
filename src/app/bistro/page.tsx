@@ -8,127 +8,207 @@ import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react'
 
 const menuCategories = [
   {
-    id: 'especialidades',
-    name: 'Especialidades',
+    id: 'entrees',
+    name: 'Entrées',
+    subtitle: 'Para comenzar',
     items: [
       {
-        name: 'Americano Gourmet',
-        description: 'Nuestro Café de altura: suave y aromático; con notas frutales y un toque ligero de chocolate. (355 ml)',
-        price: '78',
+        name: 'Soupe à l\'Oignon Gratinée',
+        description: 'Sopa de cebolla caramelizada lentamente con caldo de res, gratinada con gruyère fundido y crostini dorado.',
+        price: '145',
       },
       {
-        name: 'Café Parisíno',
-        description: 'El clásico francés: espresso aromático con leche caliente; suave y reconfortante. (355 ml)',
-        price: '85',
+        name: 'Crème de Champignons',
+        description: 'Crema sedosa de hongos mixtos con un toque de trufa, aceite de oliva y crotón de hierbas.',
+        price: '135',
       },
       {
-        name: 'Café au Chocolat',
-        description: 'Espresso intenso con chocolate real y leche caliente; fuerte y dulce, con sabor a cacao. (355 ml)',
-        price: '105',
+        name: 'Salade Niçoise',
+        description: 'Atún sellado, huevo pochado, ejotes, papa, aceituna niçoise, tomate y vinagreta de mostaza Dijon.',
+        price: '189',
       },
       {
-        name: 'Vainilla Francesa',
-        description: 'Espresso con leche infusionada con vainilla francesa; terminado con Chantilly. (355 ml)',
-        price: '110',
+        name: 'Salade de Chèvre Chaud',
+        description: 'Queso de cabra gratinado sobre crostini, lechugas mixtas, nuez caramelizada y vinagreta de miel.',
+        price: '175',
       },
       {
-        name: 'Chocolat Chantilly',
-        description: 'Chocolate parisino espeso, 100% cacao; cubierto con crema Chantilly que se derrite. (355 ml)',
-        price: '129',
+        name: 'Tabla de Quesos Franceses',
+        description: 'Selección de brie, camembert, comté y roquefort; acompañados de frutos secos, miel y pan artesanal.',
+        price: '295',
       },
       {
-        name: 'Thé Gourmet',
-        description: 'Selección rotativa de tés europeos; aromas limpios, delicados y de temporada. (355 ml)',
-        price: '85',
+        name: 'Tartare de Saumon',
+        description: 'Salmón fresco cortado a cuchillo con alcaparras, cebollín, mostaza antigua y tostadas de pan brioche.',
+        price: '235',
       },
     ],
   },
   {
-    id: 'sodas',
-    name: 'Sodas Artesanales',
+    id: 'plats',
+    name: 'Plats Principaux',
+    subtitle: 'Nuestros platillos fuertes',
     items: [
       {
-        name: 'Agua Mineral de la Casa',
-        description: 'Burbuja fina, sabor limpio y refrescante; perfecta para acompañar cualquier platillo. (420 ml)',
-        price: '65',
+        name: 'Steak Frites',
+        description: 'Corte de res a la parrilla con mantequilla de hierbas finas, papas fritas estilo parisino y ensalada verde.',
+        price: '345',
       },
       {
-        name: 'Dulce Frambuesa',
-        description: 'Frambuesa madura con limón; fresca, vibrante y frutal, con aroma intenso. (420 ml)',
+        name: 'Coq au Vin',
+        description: 'Pollo braseado en vino tinto con champiñones, cebollitas pearl, tocino y puré de papa.',
+        price: '285',
+      },
+      {
+        name: 'Saumon en Croûte',
+        description: 'Filete de salmón envuelto en hojaldre dorado con espinacas, crema de eneldo y vegetales de temporada.',
+        price: '325',
+      },
+      {
+        name: 'Quiche Lorraine',
+        description: 'Quiche clásico de tocino, gruyère y crema; servido con ensalada de arúgula y vinagreta de limón.',
+        price: '195',
+      },
+      {
+        name: 'Crêpe de Ratatouille',
+        description: 'Crêpe salada rellena de ratatouille provenzal con berenjena, calabacín, pimiento y queso de cabra gratinado.',
+        price: '185',
+      },
+      {
+        name: 'Risotto aux Champignons',
+        description: 'Arroz arborio cremoso con hongos silvestres, parmesano reggiano, mantequilla y trufa negra.',
+        price: '265',
+      },
+      {
+        name: 'Filet Mignon au Poivre',
+        description: 'Medallón de filete con salsa de pimienta verde al cognac, gratin dauphinois y espárragos.',
+        price: '425',
+      },
+      {
+        name: 'Pasta Provençale',
+        description: 'Pappardelle fresco con tomates cherry confitados, aceitunas, albahaca, alcaparras y aceite de oliva extra virgen.',
+        price: '215',
+      },
+    ],
+  },
+  {
+    id: 'desserts',
+    name: 'Desserts',
+    subtitle: 'El final perfecto',
+    items: [
+      {
+        name: 'Crème Brûlée',
+        description: 'Crema de vainilla de Madagascar con costra de azúcar caramelizada al momento. El clásico francés por excelencia.',
+        price: '135',
+      },
+      {
+        name: 'Mousse au Chocolat',
+        description: 'Mousse aireado de chocolate belga al 70%, con Chantilly y frambuesas frescas.',
+        price: '145',
+      },
+      {
+        name: 'Tarte Tatin',
+        description: 'Tarta invertida de manzana caramelizada con hojaldre crujiente y helado de vainilla.',
+        price: '155',
+      },
+      {
+        name: 'Crêpes Suzette',
+        description: 'Crêpes flameadas con salsa de mantequilla, Grand Marnier y naranja; con helado de vainilla.',
+        price: '175',
+      },
+      {
+        name: 'Profiteroles au Chocolat',
+        description: 'Tres profiteroles rellenos de crema pastelera con salsa caliente de chocolate y almendras tostadas.',
+        price: '155',
+      },
+      {
+        name: 'Fondant au Chocolat',
+        description: 'Bizcocho tibio de chocolate con centro líquido, frutos rojos y crema Chantilly.',
+        price: '165',
+      },
+    ],
+  },
+  {
+    id: 'boissons',
+    name: 'Boissons',
+    subtitle: 'Bebidas sin alcohol',
+    items: [
+      {
+        name: 'Limonade Maison',
+        description: 'Limonada artesanal con hierbabuena fresca, miel de agave y un toque de jengibre.',
+        price: '85',
+      },
+      {
+        name: 'Citron Pressé',
+        description: 'Limón recién exprimido servido con agua mineral y jarabe de azúcar; tú decides el dulzor.',
+        price: '75',
+      },
+      {
+        name: 'Thé Glacé à la Pêche',
+        description: 'Té helado de durazno con un toque de lavanda; refrescante y aromático.',
         price: '89',
       },
       {
-        name: 'Limón & Lavanda',
-        description: 'Lavanda suave con limón fresco; aromática, ligera y con perfil floral elegante. (420 ml)',
-        price: '92',
+        name: 'Jus d\'Orange Frais',
+        description: 'Jugo de naranja natural recién exprimido. Sencillo y perfecto.',
+        price: '75',
       },
       {
-        name: 'Mandarina Refrescante',
-        description: 'Mandarina brillante con matices de naranja; cítrica, jugosa y refrescante. (420 ml)',
+        name: 'Agua Mineral de la Casa',
+        description: 'Burbuja fina importada; perfecta para acompañar cualquier platillo.',
+        price: '65',
+      },
+      {
+        name: 'Sodas Artesanales',
+        description: 'Frambuesa, Limón & Lavanda, Mandarina o Flor de Saúco. Todas naturales y hechas en casa.',
         price: '95',
-      },
-      {
-        name: 'Flor de Verano',
-        description: 'Flor de saúco europea con limón; delicada, floral y con carácter refinado. (420 ml)',
-        price: '98',
       },
     ],
   },
   {
-    id: 'croissants',
-    name: 'Croissants Français',
-    subtitle: 'Nuestros Croissants son artesanales y elaborados con Mantequilla pura.',
+    id: 'vins',
+    name: 'Vins & Cocktails',
+    subtitle: 'Nuestra carta de vinos y cócteles',
     items: [
       {
-        name: 'Croissant Parisien',
-        description: 'Mantequilla auténtica, dorado por fuera y suave por dentro; servido caliente con aroma y textura hojaldrada.',
-        price: '68',
+        name: 'Copa de Vino Tinto',
+        description: 'Selección de la casa: Cabernet Sauvignon, Merlot o Malbec. Servido a temperatura ideal.',
+        price: '145',
       },
       {
-        name: 'Croissant Fraise',
-        description: 'Tibio, relleno de mermelada de fresa artesanal; contraste delicioso entre lo crujiente y lo frutal.',
-        price: '80',
+        name: 'Copa de Vino Blanco',
+        description: 'Chardonnay o Sauvignon Blanc de nuestra cava; fresco, ligero y aromático.',
+        price: '135',
       },
       {
-        name: 'Croissant Chocolat',
-        description: 'Caliente, con crema de chocolate y avellana; sabor profundo y textura suave.',
-        price: '95',
+        name: 'Kir Royale',
+        description: 'Champagne con licor de cassis; elegante, burbujeante y con notas de frutos rojos.',
+        price: '195',
       },
       {
-        name: 'Croissant Provençal',
-        description: 'Jamón a las hierbas finas y queso gruyère; aromas delicados y combinación equilibrada.',
-        price: '149',
+        name: 'French 75',
+        description: 'Gin, jugo de limón, jarabe simple y champagne; efervescente, cítrico y sofisticado.',
+        price: '185',
       },
       {
-        name: 'Croissant Serrano',
-        description: 'Jamón serrano y queso parmesano; sabores intensos y elegantes con mantequilla.',
-        price: '179',
-      },
-    ],
-  },
-  {
-    id: 'desayunos',
-    name: 'Desayunos',
-    items: [
-      {
-        name: 'Petit Desayuno',
-        description: 'Croissant Parisien caliente, café del día; jugo de naranja natural. Ligero y fresco.',
-        price: '129',
+        name: 'Aperol Spritz',
+        description: 'Aperol, prosecco y agua mineral con rodaja de naranja; amargo, refrescante e italiano.',
+        price: '175',
       },
       {
-        name: 'Desayuno París',
-        description: 'Croissant Parisien con una bebida gourmet a elegir. Un clásico parisino para empezar el día.',
-        price: '159',
+        name: 'Sidecar',
+        description: 'Cognac, Cointreau y jugo de limón; equilibrado, fuerte y con borde de azúcar.',
+        price: '195',
       },
       {
-        name: 'Desayuno Gourmet',
-        description: 'Croissant Parisien, prensa francesa en mesa; jugo de naranja y mermelada artesanal.',
-        price: '229',
+        name: 'Sangría de la Maison',
+        description: 'Vino tinto con frutas de temporada, brandy, canela y un toque de naranja. Jarra para compartir.',
+        price: '345',
       },
       {
-        name: 'Tabla Francesa para Dos',
-        description: 'Dos croissants Parisien calientes, mermelada artesanal; queso francés, jugo de naranja y dos bebidas a elegir. Ideal para compartir.',
-        price: '390',
+        name: 'Botella de Vino',
+        description: 'Consulta nuestra carta de vinos con etiquetas selectas de Francia, España, Argentina y México.',
+        price: '450+',
       },
     ],
   },
@@ -137,7 +217,7 @@ const menuCategories = [
 export default function BistroPage() {
   const menuRef = useRef<HTMLDivElement>(null)
   const isMenuInView = useInView(menuRef, { once: true, margin: '-100px' })
-  const [activeCategory, setActiveCategory] = useState('especialidades')
+  const [activeCategory, setActiveCategory] = useState('entrees')
 
   const activeCategoryData = menuCategories.find(cat => cat.id === activeCategory)
   const activeItems = activeCategoryData?.items || []
@@ -399,11 +479,9 @@ export default function BistroPage() {
                             {item.name}
                           </h3>
                           <div className="flex-1 border-b border-dotted border-gold/40 min-w-[20px] mb-1" />
-                          {item.price && (
-                            <span className="font-serif text-lg text-gold whitespace-nowrap">
-                              ${item.price}
-                            </span>
-                          )}
+                          <span className="font-serif text-lg text-gold whitespace-nowrap">
+                            ${item.price}
+                          </span>
                         </div>
                         
                         <p className="text-cream/65 text-sm leading-relaxed font-light">
