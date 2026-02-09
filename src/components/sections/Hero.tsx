@@ -168,7 +168,7 @@ export default function Hero() {
                 </motion.a>
                 <motion.a
                   href="/bistro"
-                  className="px-10 py-4 bg-bistro text-white font-sans text-sm uppercase tracking-[0.2em] font-medium transition-all hover:bg-bistro-light hover:shadow-2xl hover:shadow-bistro/50"
+                  className="px-10 py-4 bg-gold text-emerald-900 font-sans text-sm uppercase tracking-[0.2em] font-medium transition-all hover:bg-gold-light hover:shadow-2xl hover:shadow-gold/50"
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >
