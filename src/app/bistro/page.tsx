@@ -219,7 +219,7 @@ export default function BistroPage() {
           >
             <div className="relative">
               <div className="absolute inset-0 blur-3xl bg-gold/15 scale-150" />
-              <div className="relative w-40 h-40 md:w-56 md:h-56">
+              <div className="relative w-56 h-56 md:w-[294px] md:h-[294px] lg:w-[368px] lg:h-[368px]">
                 <Image
                   src="/images/logo-CDLA.png"
                   alt="Casa de los Ángeles Logo"
