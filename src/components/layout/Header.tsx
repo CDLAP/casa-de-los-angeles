@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -18,6 +19,8 @@ const navLinks = [
 ]
 
 export default function Header() {
+  const pathname = usePathname()
+  const isBistro = pathname === '/bistro'
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
@@ -100,11 +103,15 @@ export default function Header() {
               transition={{ delay: 3.2 }}
             >
               <Link
-                href="#reservar"
+                href={isBistro ? '/bistro#reservar' : '/#reservar'}
                 className={`px-5 py-2.5 text-sm uppercase tracking-[0.15em] border-2 transition-all duration-300 ${
-                  isScrolled 
-                    ? 'border-emerald bg-emerald text-white hover:bg-emerald-light hover:border-emerald-light' 
-                    : 'border-emerald bg-emerald/90 text-white hover:bg-emerald hover:border-emerald-light'
+                  isBistro
+                    ? (isScrolled
+                        ? 'border-gold bg-gold text-white hover:bg-gold-light hover:border-gold-light'
+                        : 'border-gold bg-gold/90 text-white hover:bg-gold hover:border-gold-light')
+                    : (isScrolled 
+                        ? 'border-emerald bg-emerald text-white hover:bg-emerald-light hover:border-emerald-light' 
+                        : 'border-emerald bg-emerald/90 text-white hover:bg-emerald hover:border-emerald-light')
                 }`}
               >
                 Reservar
@@ -208,8 +215,8 @@ export default function Header() {
                   transition={{ delay: 0.5 }}
                 >
                   <Link
-                    href="#reservar"
-                    className="block w-full py-4 bg-gold text-white text-center uppercase tracking-[0.15em] text-sm font-medium"
+                    href={isBistro ? '/bistro#reservar' : '/#reservar'}
+                    className={`block w-full py-4 text-white text-center uppercase tracking-[0.15em] text-sm font-medium ${isBistro ? 'bg-gold' : 'bg-emerald'}`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Reservar Mesa
