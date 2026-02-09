@@ -7,14 +7,14 @@ import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 
 const navLinks = [
-  { href: '#inicio', label: 'Inicio' },
-  { href: '#nosotros', label: 'Nosotros' },
-  { href: '#experiencia', label: 'Experiencia' },
+  { href: '/#inicio', label: 'Inicio' },
+  { href: '/#nosotros', label: 'Nosotros' },
+  { href: '/#experiencia', label: 'Experiencia' },
   { href: '/bistro', label: 'Bistró' },
-  // { href: '#galeria', label: 'Galería' },
-  // { href: '#eventos', label: 'Eventos' },
-  { href: '#boutique', label: 'Boutique' },
-  { href: '#contacto', label: 'Contacto' },
+  // { href: '/#galeria', label: 'Galería' },
+  // { href: '/#eventos', label: 'Eventos' },
+  { href: '/#boutique', label: 'Boutique' },
+  { href: '/#contacto', label: 'Contacto' },
 ]
 
 export default function Header() {

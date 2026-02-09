@@ -151,7 +151,7 @@ export default function Hero() {
                 transition={{ duration: 0.8, delay: 1.4 }}
               >
                 <motion.a
-                  href="#cafe"
+                  href="#menu"
                   className="px-10 py-4 bg-emerald text-white font-sans text-sm uppercase tracking-[0.2em] font-medium transition-all hover:bg-emerald-light hover:shadow-2xl hover:shadow-emerald/50"
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
