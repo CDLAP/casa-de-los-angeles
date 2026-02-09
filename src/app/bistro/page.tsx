@@ -179,7 +179,7 @@ export default function BistroPage() {
   return (
     <div className="min-h-screen bg-bistro">
       {/* ═══ HERO BISTRÓ ═══ */}
-      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Fondo con textura */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-bistro-dark via-bistro to-bistro-600" />
