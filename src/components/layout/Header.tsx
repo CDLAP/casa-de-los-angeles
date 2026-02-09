@@ -10,7 +10,7 @@ const navLinks = [
   { href: '#inicio', label: 'Inicio' },
   { href: '#nosotros', label: 'Nosotros' },
   { href: '#experiencia', label: 'Experiencia' },
-  // { href: '#menu', label: 'Menú' },
+  { href: '/bistro', label: 'Bistró' },
   // { href: '#galeria', label: 'Galería' },
   // { href: '#eventos', label: 'Eventos' },
   { href: '#boutique', label: 'Boutique' },

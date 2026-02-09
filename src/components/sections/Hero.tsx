@@ -120,7 +120,7 @@ export default function Hero() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
-                Cafetería & Centro de Cultura
+                Café • Cultura & Bistró
               </motion.p>
 
               <motion.div
@@ -151,20 +151,28 @@ export default function Hero() {
                 transition={{ duration: 0.8, delay: 1.4 }}
               >
                 <motion.a
-                  href="#reservar"
+                  href="#cafe"
                   className="px-10 py-4 bg-gold text-emerald-900 font-sans text-sm uppercase tracking-[0.2em] font-medium transition-all hover:bg-gold-light hover:shadow-2xl hover:shadow-gold/50"
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Visitar Cafetería
+                  Café
                 </motion.a>
                 <motion.a
-                  href="#menu"
+                  href="#cultura"
                   className="px-10 py-4 bg-emerald text-white font-sans text-sm uppercase tracking-[0.2em] font-medium transition-all hover:bg-emerald-light hover:shadow-2xl hover:shadow-emerald/50"
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Ver Menú
+                  Cultura
+                </motion.a>
+                <motion.a
+                  href="/bistro"
+                  className="px-10 py-4 bg-bistro text-white font-sans text-sm uppercase tracking-[0.2em] font-medium transition-all hover:bg-bistro-light hover:shadow-2xl hover:shadow-bistro/50"
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Bistró
                 </motion.a>
               </motion.div>
             </div>

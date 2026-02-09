@@ -10,8 +10,8 @@ const team = [
     image: '/images/team/elisabeth.png',
   },
   {
-    name: 'Emilio',
-    image: '/images/team/emilio.png',
+    name: 'Daniel',
+    image: '/images/team/daniel.png',
   },
   {
     name: 'Osvaldo',
