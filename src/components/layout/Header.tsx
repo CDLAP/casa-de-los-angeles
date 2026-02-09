@@ -23,6 +23,29 @@ export default function Header() {
   const isBistro = pathname === '/bistro'
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('')
+
+  // Track active section via IntersectionObserver
+  useEffect(() => {
+    if (isBistro) {
+      setActiveSection('/bistro')
+      return
+    }
+    const sections = document.querySelectorAll('section[id]')
+    if (!sections.length) return
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(`/#${entry.target.id}`)
+          }
+        })
+      },
+      { rootMargin: '-40% 0px -40% 0px', threshold: 0 }
+    )
+    sections.forEach((s) => observer.observe(s))
+    return () => observer.disconnect()
+  }, [isBistro, pathname])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -86,12 +109,16 @@ export default function Header() {
               >
                 <Link
                   href={link.href}
-                  className={`text-sm uppercase tracking-[0.15em] font-sans transition-all duration-300 hover:text-gold relative group ${
-                    isScrolled ? 'text-charcoal' : 'text-white'
+                  className={`text-sm uppercase tracking-[0.15em] font-sans transition-all duration-300 relative group ${
+                    activeSection === link.href || (link.href === '/bistro' && isBistro)
+                      ? 'text-gold'
+                      : isScrolled ? 'text-charcoal hover:text-gold' : 'text-white hover:text-gold'
                   }`}
                 >
                   {link.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-gold transition-all duration-300 group-hover:w-full" />
+                  {activeSection !== link.href && !(link.href === '/bistro' && isBistro) && (
+                    <span className="absolute -bottom-1 left-0 w-0 h-px bg-gold transition-all duration-300 group-hover:w-full" />
+                  )}
                 </Link>
               </motion.div>
             ))}
