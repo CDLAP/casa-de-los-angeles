@@ -152,7 +152,7 @@ export default function Hero() {
               >
                 <motion.a
                   href="#cafe"
-                  className="px-10 py-4 bg-gold text-emerald-900 font-sans text-sm uppercase tracking-[0.2em] font-medium transition-all hover:bg-gold-light hover:shadow-2xl hover:shadow-gold/50"
+                  className="px-10 py-4 bg-emerald text-white font-sans text-sm uppercase tracking-[0.2em] font-medium transition-all hover:bg-emerald-light hover:shadow-2xl hover:shadow-emerald/50"
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -160,7 +160,7 @@ export default function Hero() {
                 </motion.a>
                 <motion.a
                   href="#cultura"
-                  className="px-10 py-4 bg-emerald text-white font-sans text-sm uppercase tracking-[0.2em] font-medium transition-all hover:bg-emerald-light hover:shadow-2xl hover:shadow-emerald/50"
+                  className="px-10 py-4 bg-gold text-emerald-900 font-sans text-sm uppercase tracking-[0.2em] font-medium transition-all hover:bg-gold-light hover:shadow-2xl hover:shadow-gold/50"
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >

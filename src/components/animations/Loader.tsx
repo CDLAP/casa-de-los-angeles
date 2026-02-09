@@ -95,7 +95,7 @@ export default function Loader() {
             animate={{ opacity: 0.7 }}
             transition={{ delay: 0.5, duration: 0.6 }}
           >
-            Cafetería & Centro de Cultura
+            Café • Cultura & Bistró
           </motion.p>
 
           {/* Progress bar */}
