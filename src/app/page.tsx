@@ -6,8 +6,6 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Hero from '@/components/sections/Hero'
 import About from '@/components/sections/About'
-import Cafe from '@/components/sections/Cafe'
-import Arte from '@/components/sections/Arte'
 import Experience from '@/components/sections/Experience'
 import MenuSection from '@/components/sections/MenuSection'
 // import Gallery from '@/components/sections/Gallery'
@@ -26,8 +24,6 @@ export default function Home() {
     <>
       <Hero />
       <About />
-      <Cafe />
-      <Arte />
       <Experience />
       <MenuSection />
       {/* <Gallery /> */}
