@@ -480,7 +480,7 @@ export default function BistroPage() {
                           </h3>
                           <div className="flex-1 border-b border-dotted border-gold/40 min-w-[20px] mb-1" />
                           <span className="font-serif text-lg text-gold whitespace-nowrap">
-                            ${item.price}
+                            {item.price}
                           </span>
                         </div>
                         
