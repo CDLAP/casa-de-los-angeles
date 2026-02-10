@@ -11,6 +11,7 @@ const navLinks = [
   { href: '/#inicio', label: 'Inicio' },
   { href: '/#nosotros', label: 'Nosotros' },
   { href: '/#experiencia', label: 'Experiencia' },
+  { href: '/cultura', label: 'Cultura' },
   { href: '/bistro', label: 'Bistró' },
   // { href: '/#galeria', label: 'Galería' },
   // { href: '/#eventos', label: 'Eventos' },
@@ -21,6 +22,7 @@ const navLinks = [
 export default function Header() {
   const pathname = usePathname()
   const isBistro = pathname === '/bistro'
+  const isCultura = pathname === '/cultura'
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('')
@@ -29,6 +31,10 @@ export default function Header() {
   useEffect(() => {
     if (isBistro) {
       setActiveSection('/bistro')
+      return
+    }
+    if (isCultura) {
+      setActiveSection('/cultura')
       return
     }
     const sections = document.querySelectorAll('section[id]')
@@ -45,7 +51,7 @@ export default function Header() {
     )
     sections.forEach((s) => observer.observe(s))
     return () => observer.disconnect()
-  }, [isBistro, pathname])
+  }, [isBistro, isCultura, pathname])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -110,13 +116,13 @@ export default function Header() {
                 <Link
                   href={link.href}
                   className={`text-sm uppercase tracking-[0.15em] font-sans transition-all duration-300 relative group ${
-                    activeSection === link.href || (link.href === '/bistro' && isBistro)
+                    activeSection === link.href || (link.href === '/bistro' && isBistro) || (link.href === '/cultura' && isCultura)
                       ? 'text-gold'
                       : isScrolled ? 'text-charcoal hover:text-gold' : 'text-white hover:text-gold'
                   }`}
                 >
                   {link.label}
-                  {activeSection !== link.href && !(link.href === '/bistro' && isBistro) && (
+                  {activeSection !== link.href && !(link.href === '/bistro' && isBistro) && !(link.href === '/cultura' && isCultura) && (
                     <span className="absolute -bottom-1 left-0 w-0 h-px bg-gold transition-all duration-300 group-hover:w-full" />
                   )}
                 </Link>
@@ -130,9 +136,9 @@ export default function Header() {
               transition={{ delay: 3.2 }}
             >
               <Link
-                href={isBistro ? '/bistro#reservar' : '/#reservar'}
+                href={isBistro ? '/bistro#reservar' : isCultura ? '/cultura#contacto-cultura' : '/#reservar'}
                 className={`px-5 py-2.5 text-sm uppercase tracking-[0.15em] border-2 transition-all duration-300 ${
-                  isBistro
+                  isBistro || isCultura
                     ? (isScrolled
                         ? 'border-gold bg-gold text-white hover:bg-gold-light hover:border-gold-light'
                         : 'border-gold bg-gold/90 text-white hover:bg-gold hover:border-gold-light')
@@ -242,8 +248,8 @@ export default function Header() {
                   transition={{ delay: 0.5 }}
                 >
                   <Link
-                    href={isBistro ? '/bistro#reservar' : '/#reservar'}
-                    className={`block w-full py-4 text-white text-center uppercase tracking-[0.15em] text-sm font-medium ${isBistro ? 'bg-gold' : 'bg-emerald'}`}
+                    href={isBistro ? '/bistro#reservar' : isCultura ? '/cultura#contacto-cultura' : '/#reservar'}
+                    className={`block w-full py-4 text-white text-center uppercase tracking-[0.15em] text-sm font-medium ${isBistro || isCultura ? 'bg-gold' : 'bg-emerald'}`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Reservar Mesa
