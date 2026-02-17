@@ -8,207 +8,107 @@ import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react'
 
 const menuCategories = [
   {
-    id: 'entrees',
-    name: 'Entrées',
-    subtitle: 'Para comenzar',
+    id: 'tablas',
+    name: 'Tablas para Compartir',
+    subtitle: '',
     items: [
       {
-        name: 'Soupe à l\'Oignon Gratinée',
-        description: 'Sopa de cebolla caramelizada lentamente con caldo de res, gratinada con gruyère fundido y crostini dorado.',
-        price: '145',
-      },
-      {
-        name: 'Crème de Champignons',
-        description: 'Crema sedosa de hongos mixtos con un toque de trufa, aceite de oliva y crotón de hierbas.',
-        price: '135',
-      },
-      {
-        name: 'Salade Niçoise',
-        description: 'Atún sellado, huevo pochado, ejotes, papa, aceituna niçoise, tomate y vinagreta de mostaza Dijon.',
-        price: '189',
-      },
-      {
-        name: 'Salade de Chèvre Chaud',
-        description: 'Queso de cabra gratinado sobre crostini, lechugas mixtas, nuez caramelizada y vinagreta de miel.',
-        price: '175',
-      },
-      {
-        name: 'Tabla de Quesos Franceses',
-        description: 'Selección de brie, camembert, comté y roquefort; acompañados de frutos secos, miel y pan artesanal.',
+        name: 'Tabla de Charcutería · Individual',
+        description: 'Selección de quesos curados y salami europeo, acompañados de uvas frescas, galletas artesanales y baguette tostada. (260 g)',
         price: '295',
       },
       {
-        name: 'Tartare de Saumon',
-        description: 'Salmón fresco cortado a cuchillo con alcaparras, cebollín, mostaza antigua y tostadas de pan brioche.',
-        price: '235',
+        name: 'Tabla de Charcutería · Para Dos',
+        description: 'Quesos seleccionados, jamón serrano y salami europeo, con fruta fresca, galletas artesanales y baguette crujiente. (670 g) Pensada para compartir sin prisa.',
+        price: '495',
+      },
+      {
+        name: 'Tabla Vegetariana Gourmet',
+        description: 'Selección de quesos (incluye queso de cabra), uvas frescas, tomatitos cherry, galletas artesanales y baguette tostada. (720 g)',
+        price: '445',
       },
     ],
   },
   {
-    id: 'plats',
-    name: 'Plats Principaux',
-    subtitle: 'Nuestros platillos fuertes',
+    id: 'vinos',
+    name: 'Vinos',
+    subtitle: '',
     items: [
       {
-        name: 'Steak Frites',
-        description: 'Corte de res a la parrilla con mantequilla de hierbas finas, papas fritas estilo parisino y ensalada verde.',
-        price: '345',
-      },
-      {
-        name: 'Coq au Vin',
-        description: 'Pollo braseado en vino tinto con champiñones, cebollitas pearl, tocino y puré de papa.',
-        price: '285',
-      },
-      {
-        name: 'Saumon en Croûte',
-        description: 'Filete de salmón envuelto en hojaldre dorado con espinacas, crema de eneldo y vegetales de temporada.',
-        price: '325',
-      },
-      {
-        name: 'Quiche Lorraine',
-        description: 'Quiche clásico de tocino, gruyère y crema; servido con ensalada de arúgula y vinagreta de limón.',
-        price: '195',
-      },
-      {
-        name: 'Crêpe de Ratatouille',
-        description: 'Crêpe salada rellena de ratatouille provenzal con berenjena, calabacín, pimiento y queso de cabra gratinado.',
-        price: '185',
-      },
-      {
-        name: 'Risotto aux Champignons',
-        description: 'Arroz arborio cremoso con hongos silvestres, parmesano reggiano, mantequilla y trufa negra.',
-        price: '265',
-      },
-      {
-        name: 'Filet Mignon au Poivre',
-        description: 'Medallón de filete con salsa de pimienta verde al cognac, gratin dauphinois y espárragos.',
-        price: '425',
-      },
-      {
-        name: 'Pasta Provençale',
-        description: 'Pappardelle fresco con tomates cherry confitados, aceitunas, albahaca, alcaparras y aceite de oliva extra virgen.',
-        price: '215',
-      },
-    ],
-  },
-  {
-    id: 'desserts',
-    name: 'Desserts',
-    subtitle: 'El final perfecto',
-    items: [
-      {
-        name: 'Crème Brûlée',
-        description: 'Crema de vainilla de Madagascar con costra de azúcar caramelizada al momento. El clásico francés por excelencia.',
-        price: '135',
-      },
-      {
-        name: 'Mousse au Chocolat',
-        description: 'Mousse aireado de chocolate belga al 70%, con Chantilly y frambuesas frescas.',
+        name: 'Copa de Vino',
+        description: 'Tinto, blanco o lambrusco. (150 ml)',
         price: '145',
-      },
-      {
-        name: 'Tarte Tatin',
-        description: 'Tarta invertida de manzana caramelizada con hojaldre crujiente y helado de vainilla.',
-        price: '155',
-      },
-      {
-        name: 'Crêpes Suzette',
-        description: 'Crêpes flameadas con salsa de mantequilla, Grand Marnier y naranja; con helado de vainilla.',
-        price: '175',
-      },
-      {
-        name: 'Profiteroles au Chocolat',
-        description: 'Tres profiteroles rellenos de crema pastelera con salsa caliente de chocolate y almendras tostadas.',
-        price: '155',
-      },
-      {
-        name: 'Fondant au Chocolat',
-        description: 'Bizcocho tibio de chocolate con centro líquido, frutos rojos y crema Chantilly.',
-        price: '165',
-      },
-    ],
-  },
-  {
-    id: 'boissons',
-    name: 'Boissons',
-    subtitle: 'Bebidas sin alcohol',
-    items: [
-      {
-        name: 'Limonade Maison',
-        description: 'Limonada artesanal con hierbabuena fresca, miel de agave y un toque de jengibre.',
-        price: '85',
-      },
-      {
-        name: 'Citron Pressé',
-        description: 'Limón recién exprimido servido con agua mineral y jarabe de azúcar; tú decides el dulzor.',
-        price: '75',
-      },
-      {
-        name: 'Thé Glacé à la Pêche',
-        description: 'Té helado de durazno con un toque de lavanda; refrescante y aromático.',
-        price: '89',
-      },
-      {
-        name: 'Jus d\'Orange Frais',
-        description: 'Jugo de naranja natural recién exprimido. Sencillo y perfecto.',
-        price: '75',
-      },
-      {
-        name: 'Agua Mineral de la Casa',
-        description: 'Burbuja fina importada; perfecta para acompañar cualquier platillo.',
-        price: '65',
-      },
-      {
-        name: 'Sodas Artesanales',
-        description: 'Frambuesa, Limón & Lavanda, Mandarina o Flor de Saúco. Todas naturales y hechas en casa.',
-        price: '95',
-      },
-    ],
-  },
-  {
-    id: 'vins',
-    name: 'Vins & Cocktails',
-    subtitle: 'Nuestra carta de vinos y cócteles',
-    items: [
-      {
-        name: 'Copa de Vino Tinto',
-        description: 'Selección de la casa: Cabernet Sauvignon, Merlot o Malbec. Servido a temperatura ideal.',
-        price: '145',
-      },
-      {
-        name: 'Copa de Vino Blanco',
-        description: 'Chardonnay o Sauvignon Blanc de nuestra cava; fresco, ligero y aromático.',
-        price: '135',
-      },
-      {
-        name: 'Kir Royale',
-        description: 'Champagne con licor de cassis; elegante, burbujeante y con notas de frutos rojos.',
-        price: '195',
-      },
-      {
-        name: 'French 75',
-        description: 'Gin, jugo de limón, jarabe simple y champagne; efervescente, cítrico y sofisticado.',
-        price: '185',
-      },
-      {
-        name: 'Aperol Spritz',
-        description: 'Aperol, prosecco y agua mineral con rodaja de naranja; amargo, refrescante e italiano.',
-        price: '175',
-      },
-      {
-        name: 'Sidecar',
-        description: 'Cognac, Cointreau y jugo de limón; equilibrado, fuerte y con borde de azúcar.',
-        price: '195',
-      },
-      {
-        name: 'Sangría de la Maison',
-        description: 'Vino tinto con frutas de temporada, brandy, canela y un toque de naranja. Jarra para compartir.',
-        price: '345',
       },
       {
         name: 'Botella de Vino',
-        description: 'Consulta nuestra carta de vinos con etiquetas selectas de Francia, España, Argentina y México.',
-        price: '450+',
+        description: 'Consulta nuestra selección del momento. (750 ml)',
+        price: 'Desde 480',
+      },
+    ],
+  },
+  {
+    id: 'paquetes',
+    name: 'Paquetes',
+    subtitle: 'Experiencias pensadas para compartir y quedarse un poco más',
+    items: [
+      {
+        name: 'Tabla para Dos & Vino de la Casa',
+        description: 'Tabla de charcutería para dos personas acompañada de una botella de vino a elegir (tinto, blanco o lambrusco). (670 g + 750 ml)',
+        price: '895',
+      },
+      {
+        name: 'Tabla Grande & Dos Botellas de Vino',
+        description: 'Tabla generosa para compartir, acompañada de dos botellas de vino. (950 g + 1,500 ml) Ideal para mesas grandes o celebraciones pequeñas.',
+        price: '1,490',
+      },
+    ],
+  },
+  {
+    id: 'complementos',
+    name: 'Complementos',
+    subtitle: '',
+    items: [
+      {
+        name: 'Baguette Tostada Extra',
+        description: '(80 g)',
+        price: '45',
+      },
+      {
+        name: 'Porción Extra de Queso',
+        description: '(40 g)',
+        price: '65',
+      },
+      {
+        name: 'Porción Extra de Jamón o Salami',
+        description: '(40 g)',
+        price: '75',
+      },
+    ],
+  },
+  {
+    id: 'bebidas',
+    name: 'Bebidas',
+    subtitle: '',
+    items: [
+      {
+        name: 'Agua Mineral Perrier',
+        description: '(330 ml)',
+        price: '65',
+      },
+      {
+        name: 'Café Americano',
+        description: '(355 ml)',
+        price: '78',
+      },
+      {
+        name: 'Té Gourmet a elegir',
+        description: '(355 ml)',
+        price: '85',
+      },
+      {
+        name: 'Sodas Artesanales',
+        description: 'Pregunta por nuestras variedades. (355 ml)',
+        price: '',
       },
     ],
   },
@@ -217,7 +117,7 @@ const menuCategories = [
 export default function BistroPage() {
   const menuRef = useRef<HTMLDivElement>(null)
   const isMenuInView = useInView(menuRef, { once: true, margin: '-100px' })
-  const [activeCategory, setActiveCategory] = useState('entrees')
+  const [activeCategory, setActiveCategory] = useState('tablas')
 
   const activeCategoryData = menuCategories.find(cat => cat.id === activeCategory)
   const activeItems = activeCategoryData?.items || []
@@ -513,7 +413,7 @@ export default function BistroPage() {
             animate={isMenuInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.8 }}
           >
-            Todos nuestros precios incluyen IVA • Menú sujeto a disponibilidad
+            Todos nuestros productos se preparan al momento y están pensados para compartirse y disfrutarse sin prisa • Todos nuestros precios incluyen IVA
           </motion.p>
         </div>
       </section>
