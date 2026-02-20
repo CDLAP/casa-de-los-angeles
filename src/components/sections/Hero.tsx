@@ -93,7 +93,7 @@ export default function Hero() {
               />
             </div>
 
-            <div className="relative z-10 text-center text-white px-5 max-w-5xl mx-auto h-screen flex flex-col items-center justify-center">
+            <div className="relative z-10 text-center text-white px-5 max-w-5xl mx-auto h-screen flex flex-col items-center justify-center pt-12 md:pt-16">
               <motion.div
                 className="mb-6 flex justify-center"
                 initial={{ opacity: 0, scale: 0.8 }}
