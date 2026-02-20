@@ -114,9 +114,6 @@ const menuCategories = [
   },
 ]
 
-// ═══ TOGGLE: cambiar a false para mostrar el menú completo ═══
-const COMING_SOON = true
-
 export default function BistroPage() {
   const menuRef = useRef<HTMLDivElement>(null)
   const isMenuInView = useInView(menuRef, { once: true, margin: '-100px' })
@@ -257,42 +254,26 @@ export default function BistroPage() {
             francesa en el corazón histórico de Puebla
           </motion.p>
 
-          {/* Scroll indicator / Coming Soon */}
-          {COMING_SOON ? (
-            <motion.div
-              className="mt-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.5, duration: 0.8 }}
+          {/* Scroll indicator */}
+          <motion.div
+            className="flex justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5 }}
+          >
+            <motion.a
+              href="#menu-bistro"
+              className="px-10 py-4 bg-gold text-bistro-dark font-sans text-sm uppercase tracking-[0.2em] font-medium transition-all hover:bg-gold-light hover:shadow-2xl hover:shadow-gold/30"
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <div className="inline-block px-10 py-5 border border-gold/30 rounded-lg bg-bistro-dark/30 backdrop-blur-sm">
-                <p className="font-serif italic text-2xl sm:text-3xl text-gold mb-2">Próximamente</p>
-                <p className="text-cream/50 text-sm font-light">Estamos preparando algo especial para ti</p>
-              </div>
-            </motion.div>
-          ) : (
-            <motion.div
-              className="flex justify-center"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.5 }}
-            >
-              <motion.a
-                href="#menu-bistro"
-                className="px-10 py-4 bg-gold text-bistro-dark font-sans text-sm uppercase tracking-[0.2em] font-medium transition-all hover:bg-gold-light hover:shadow-2xl hover:shadow-gold/30"
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Ver Menú
-              </motion.a>
-            </motion.div>
-          )}
+              Ver Menú
+            </motion.a>
+          </motion.div>
         </div>
       </section>
 
-      {!COMING_SOON && (
-      <>
-      {/* ═══ MENÚ ═══ */}
+      {/* ═══ MENÚ ═══ */
       <section id="menu-bistro" ref={menuRef} className="py-20 md:py-28 relative overflow-hidden">
         {/* Pattern de fondo */}
         <div className="absolute inset-0 opacity-5">
@@ -641,8 +622,6 @@ export default function BistroPage() {
           </div>
         </div>
       </section>
-      </>
-      )}
     </div>
   )
 }
