@@ -273,7 +273,7 @@ export default function BistroPage() {
         </div>
       </section>
 
-      {/* ═══ MENÚ ═══ */
+      {/* ═══ MENÚ ═══ */}
       <section id="menu-bistro" ref={menuRef} className="py-20 md:py-28 relative overflow-hidden">
         {/* Pattern de fondo */}
         <div className="absolute inset-0 opacity-5">
