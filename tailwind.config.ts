@@ -87,8 +87,8 @@ const config: Config = {
         'display-sm': ['clamp(1.5rem, 3vw, 2.5rem)', { lineHeight: '1.3' }],
       },
       spacing: {
-        'section': 'clamp(4rem, 10vw, 8rem)',
-        'section-sm': 'clamp(2rem, 5vw, 4rem)',
+        'section': 'clamp(3rem, 8vw, 8rem)',
+        'section-sm': 'clamp(1.5rem, 4vw, 4rem)',
       },
       animation: {
         'fade-in': 'fadeIn 0.8s ease-out forwards',

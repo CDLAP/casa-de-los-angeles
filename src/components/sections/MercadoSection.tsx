@@ -90,7 +90,7 @@ export default function MercadoSection() {
                     <Calendar className="w-5 h-5 text-emerald" />
                     <div>
                       <p className="text-xs text-charcoal-50 uppercase tracking-wider">Fecha</p>
-                      <p className="text-charcoal font-medium">30, 31 Ene y 1 Feb 2026</p>
+                      <p className="text-charcoal font-medium">Viernes, Sábados y Domingos</p>
                     </div>
                   </div>
                   <div className="flex flex-col items-center lg:flex-row lg:items-center gap-2 lg:gap-3">
