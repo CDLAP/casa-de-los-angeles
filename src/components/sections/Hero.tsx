@@ -2,18 +2,14 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { useHeroTheme } from '@/context/HeroThemeContext'
 
 export default function Hero() {
-  const heroTheme = useHeroTheme()
-  const isWine = heroTheme === 'wine'
-
   return (
     <>
-      {/* BLOQUE 1: Ángel + título + texto sobre fondo verde/vino */}
+      {/* BLOQUE 1: Ángel + título + texto sobre fondo guinda */}
       <section 
         id="inicio" 
-        className={`w-full min-h-screen flex items-center justify-center ${isWine ? 'bg-[#3F1F26]' : 'bg-[#1A3A2E]'}`}
+        className="w-full min-h-screen flex items-center justify-center bg-[#3F1F26]"
       >
         <div className="max-w-4xl mx-auto text-center px-5">
           {/* Ángel */}
@@ -69,7 +65,7 @@ export default function Hero() {
 
           <motion.a
             href="/#contacto"
-            className={`inline-block mt-6 px-8 py-3 text-sm uppercase tracking-[0.2em] font-light border transition-all duration-300 ${isWine ? 'border-gold/50 text-gold hover:bg-gold hover:text-[#3F1F26]' : 'border-gold/50 text-gold hover:bg-gold hover:text-[#1A3A2E]'}`}
+            className="inline-block mt-6 px-8 py-3 text-sm uppercase tracking-[0.2em] font-light border border-gold/50 text-gold transition-all duration-300 hover:bg-gold hover:text-[#3F1F26]"
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.4 }}

@@ -12,7 +12,6 @@ import CafeSection from '@/components/sections/CafeSection'
 // import Events from '@/components/sections/Events'
 import Boutique from '@/components/sections/Boutique'
 import Atelier from '@/components/sections/Atelier'
-import Sombrereria from '@/components/sections/Sombrereria'
 import RuedaPrensa from '@/components/sections/RuedaPrensa'
 import Contact from '@/components/sections/Contact'
 
@@ -32,7 +31,6 @@ export default function Home() {
       {/* <Events /> */}
       <Boutique />
       <Atelier />
-      <Sombrereria />
       <RuedaPrensa />
       <Contact />
     </>

@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useHeroTheme } from '@/context/HeroThemeContext'
 
 const leftLinks = [
   { href: '/#menu', label: 'Café' },
@@ -15,7 +14,6 @@ const leftLinks = [
 ]
 
 const rightLinks = [
-  { href: '/#sombrereria', label: 'Sombrería' },
   { href: '/#rueda-de-prensa', label: 'Prensa' },
   { href: '/#contacto', label: 'Contacto' },
 ]
@@ -26,8 +24,6 @@ export default function Header() {
   const pathname = usePathname()
   const isBistro = pathname === '/bistro'
   const isCultura = pathname === '/cultura'
-  const heroTheme = useHeroTheme()
-  const isWine = heroTheme === 'wine'
   const [isScrolled, setIsScrolled] = useState(false)
   const [showAngel, setShowAngel] = useState(false)
   const [activeSection, setActiveSection] = useState('')
@@ -71,7 +67,7 @@ export default function Header() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled 
           ? 'bg-cream/95 backdrop-blur-md shadow-lg py-4' 
-          : isWine ? 'bg-[#3F1F26] py-8' : 'bg-[#1A3A2E] py-8'
+          : 'bg-[#3F1F26] py-8'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
