@@ -19,7 +19,8 @@ export default function About() {
         >
           <h2 className="section-title">Casa de los Ángeles</h2>
           <p className="section-subtitle">
-            En el corazón de Puebla, detrás de una fachada histórica, existe un lugar donde el tiempo no se detuvo: se transformó.
+            En el corazón de Puebla, detrás de una fachada histórica,<br />
+            existe un lugar donde el tiempo no se detuvo: se transformó.
           </p>
           <div className="divider" />
         </motion.div>
