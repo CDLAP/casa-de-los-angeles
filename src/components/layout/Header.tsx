@@ -55,12 +55,12 @@ export default function Header() {
       animate={{ y: 0 }}
       transition={{ duration: 0.8, delay: 2.5, ease: [0.25, 0.46, 0.45, 0.94] }}
     >
-      <nav className="flex items-center justify-center gap-3 sm:gap-4 md:gap-6 xl:gap-8 px-3 flex-wrap">
+      <nav className="flex items-center justify-center gap-6 sm:gap-8 md:gap-10 xl:gap-14 px-4 flex-wrap">
         {navLinks.map((link) => (
           <Link
             key={link.href}
             href={link.href}
-            className={`text-[10px] sm:text-xs xl:text-sm uppercase tracking-[0.08em] sm:tracking-[0.12em] xl:tracking-[0.15em] font-sans transition-all duration-300 whitespace-nowrap ${
+            className={`text-xs sm:text-sm xl:text-base uppercase tracking-[0.12em] sm:tracking-[0.15em] xl:tracking-[0.2em] font-sans transition-all duration-300 whitespace-nowrap py-2 ${
               activeSection === link.href
                 ? 'text-gold'
                 : isScrolled ? 'text-charcoal hover:text-gold' : 'text-cream/90 hover:text-gold'

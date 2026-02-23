@@ -20,18 +20,18 @@ export default function Hero() {
       </section>
 
       {/* BLOQUE 2: Pleca guinda con ángel como sello */}
-      <section className="relative w-full bg-[#3F1F26] pb-20 md:pb-24 pt-24 md:pt-32">
+      <section className="relative w-full bg-[#3F1F26] pb-20 md:pb-24 pt-28 md:pt-36">
         {/* Línea dorada separadora */}
         <div className="absolute top-0 left-0 right-0 h-px bg-gold/60" />
 
         {/* Ángel como sello sobre la línea */}
         <motion.div
-          className="absolute left-1/2 -translate-x-1/2 -top-16 md:-top-20 z-10"
+          className="absolute left-1/2 -translate-x-1/2 -top-20 md:-top-24 z-10"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
-          <div className="relative w-32 h-32 md:w-40 md:h-40">
+          <div className="relative w-40 h-40 md:w-48 md:h-48">
             <Image
               src="/images/logo-short-1000x1000.png"
               alt="Casa de los Ángeles"
@@ -45,7 +45,7 @@ export default function Hero() {
         <div className="max-w-4xl mx-auto text-center px-5">
           {/* Casa de los Ángeles */}
           <motion.h1
-            className="font-serif text-2xl md:text-4xl text-gold tracking-wide mb-4"
+            className="font-serif text-3xl md:text-5xl text-gold tracking-wide mb-4"
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
