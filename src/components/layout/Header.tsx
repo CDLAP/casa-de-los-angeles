@@ -8,9 +8,9 @@ import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 
 const navLinks = [
-  { href: '/#nosotros', label: 'Museo' },
   { href: '/#menu', label: 'Café' },
-  { href: '/#boutique', label: 'Mercado' },
+  { href: '/#nosotros', label: 'Museo' },
+  { href: '/#boutique', label: 'Boutique' },
   { href: '/#atelier', label: 'Atelier' },
   { href: '/#sombrereria', label: 'Sombrería' },
   { href: '/#rueda-de-prensa', label: 'Ruedas de Prensa' },
