@@ -11,7 +11,10 @@ const navLinks = [
   { href: '/#boutique', label: 'Boutique' },
   { href: '/#atelier', label: 'Atelier' },
   { href: '/#rueda-de-prensa', label: 'Prensa' },
+  { href: '/#relaciones-publicas', label: 'RP' },
   { href: '/#mercado', label: 'Mercado' },
+  { href: '/eventos', label: 'Eventos' },
+  { href: '/promocion', label: 'Promo' },
   { href: '/#contacto', label: 'Contacto' },
 ]
 
@@ -19,12 +22,16 @@ export default function Header() {
   const pathname = usePathname()
   const isBistro = pathname === '/bistro'
   const isCultura = pathname === '/cultura'
+  const isEventos = pathname === '/eventos'
+  const isPromocion = pathname === '/promocion'
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('')
 
   useEffect(() => {
     if (isBistro) { setActiveSection('/bistro'); return }
     if (isCultura) { setActiveSection('/cultura'); return }
+    if (isEventos) { setActiveSection('/eventos'); return }
+    if (isPromocion) { setActiveSection('/promocion'); return }
     const sections = document.querySelectorAll('section[id]')
     if (!sections.length) return
     const observer = new IntersectionObserver(
@@ -37,7 +44,7 @@ export default function Header() {
     )
     sections.forEach((s) => observer.observe(s))
     return () => observer.disconnect()
-  }, [isBistro, isCultura, pathname])
+  }, [isBistro, isCultura, isEventos, isPromocion, pathname])
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50)
@@ -62,7 +69,7 @@ export default function Header() {
             key={link.href}
             href={link.href}
             className={`text-[11px] sm:text-sm xl:text-base uppercase tracking-[0.08em] sm:tracking-[0.15em] xl:tracking-[0.2em] font-sans transition-all duration-300 whitespace-nowrap py-2 ${
-              link.href === '/#contacto' ? 'hidden sm:inline' : ''
+              (link.href === '/#contacto' || link.href === '/#relaciones-publicas') ? 'hidden sm:inline' : ''
             } ${
               activeSection === link.href
                 ? 'text-gold'
