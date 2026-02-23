@@ -144,37 +144,7 @@ export default function Hero() {
                 la cultura y el arte se encuentran en una experiencia sublime
               </motion.p>
 
-              <motion.div
-                className="flex flex-col sm:flex-row gap-4 justify-center"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1.4 }}
-              >
-                <motion.a
-                  href="#menu"
-                  className="px-10 py-4 bg-emerald text-white font-sans text-sm uppercase tracking-[0.2em] font-medium transition-all hover:bg-emerald-light hover:shadow-2xl hover:shadow-emerald/50"
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Café
-                </motion.a>
-                <motion.a
-                  href="/cultura"
-                  className="px-10 py-4 bg-emerald text-white font-sans text-sm uppercase tracking-[0.2em] font-medium transition-all hover:bg-emerald-light hover:shadow-2xl hover:shadow-emerald/50"
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Cultura
-                </motion.a>
-                <motion.a
-                  href="/bistro"
-                  className="px-10 py-4 bg-gold text-emerald-900 font-sans text-sm uppercase tracking-[0.2em] font-medium transition-all hover:bg-gold-light hover:shadow-2xl hover:shadow-gold/50"
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Bistró
-                </motion.a>
-              </motion.div>
+
             </div>
           </motion.div>
         )}
