@@ -78,7 +78,7 @@ export default function Hero() {
             {/* Pleca elegante en la parte inferior */}
             <div className="absolute bottom-0 left-0 right-0 z-10">
               <motion.div
-                className="bg-emerald-forest/85 backdrop-blur-md border-t border-gold/30 py-6 md:py-8 px-5"
+                className={`backdrop-blur-md border-t border-gold/30 py-6 md:py-8 px-5 ${isWine ? 'bg-bistro-dark/85' : 'bg-emerald-forest/85'}`}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
