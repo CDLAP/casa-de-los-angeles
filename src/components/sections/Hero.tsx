@@ -61,21 +61,22 @@ export default function Hero() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {/* Foto de la fachada */}
-            <div className="relative h-[55vh] md:h-[75vh]">
+            {/* Foto de la fachada — completa, sin recorte */}
+            <div className="relative w-full">
               <Image
                 src="/images/casa.png"
                 alt="Casa de los Ángeles - Fachada"
-                fill
-                className="object-cover object-center"
+                width={2000}
+                height={1333}
+                className="w-full h-auto block"
                 priority
                 sizes="100vw"
               />
             </div>
 
-            {/* Pleca sólida justo debajo de la foto */}
+            {/* Pleca sólida verde pino flat */}
             <motion.div
-              className={`border-t border-gold/30 py-10 md:py-12 px-5 ${isWine ? 'bg-bistro-dark' : 'bg-emerald-forest'}`}
+              className={`py-10 md:py-12 px-5 ${isWine ? 'bg-[#3F1F26]' : 'bg-[#1A3A2E]'}`}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
