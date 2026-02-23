@@ -16,6 +16,7 @@ const navLinks = [
   // { href: '/#galeria', label: 'Galería' },
   // { href: '/#eventos', label: 'Eventos' },
   { href: '/#boutique', label: 'Boutique' },
+  { href: '/#rueda-de-prensa', label: 'Prensa' },
   { href: '/#contacto', label: 'Contacto' },
 ]
 

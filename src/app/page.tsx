@@ -11,6 +11,7 @@ import MenuSection from '@/components/sections/MenuSection'
 // import Gallery from '@/components/sections/Gallery'
 // import Events from '@/components/sections/Events'
 import Boutique from '@/components/sections/Boutique'
+import RuedaPrensa from '@/components/sections/RuedaPrensa'
 import Team from '@/components/sections/Team'
 import Contact from '@/components/sections/Contact'
 
@@ -29,6 +30,7 @@ export default function Home() {
       {/* <Gallery /> */}
       {/* <Events /> */}
       <Boutique />
+      <RuedaPrensa />
       <Team />
       <Contact />
     </>
