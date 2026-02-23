@@ -75,41 +75,24 @@ export default function Hero() {
               <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/40 to-transparent" />
             </div>
 
-            {/* Pleca dorada en la parte inferior */}
+            {/* Pleca elegante en la parte inferior */}
             <div className="absolute bottom-0 left-0 right-0 z-10">
               <motion.div
-                className="bg-gold/90 backdrop-blur-sm py-6 md:py-8 px-5"
+                className="bg-emerald-forest/85 backdrop-blur-md border-t border-gold/30 py-6 md:py-8 px-5"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
-                <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
-                  {/* Logo pequeño */}
-                  <motion.div
-                    className="mb-3"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8, delay: 1 }}
-                  >
-                    <div className="relative w-14 h-14 md:w-16 md:h-16">
-                      <Image
-                        src="/images/logo-CDLA.png"
-                        alt="Casa de los Ángeles"
-                        fill
-                        className="object-contain"
-                      />
-                    </div>
-                  </motion.div>
-
-                  <p className="text-emerald-forest font-serif text-lg md:text-2xl font-medium mb-2 tracking-wide">
-                    Café & Bistró de los Ángeles
+                <div className="max-w-4xl mx-auto text-center">
+                  <p className="text-gold font-serif text-lg md:text-2xl font-medium mb-3 tracking-[0.15em]">
+                    Café &bull; Arte &bull; Boutique
                   </p>
-                  <div className="flex items-center justify-center gap-3 mb-2">
-                    <div className="w-10 h-px bg-emerald-forest/30" />
-                    <div className="w-1.5 h-1.5 rotate-45 bg-emerald-forest/30" />
-                    <div className="w-10 h-px bg-emerald-forest/30" />
+                  <div className="flex items-center justify-center gap-3 mb-3">
+                    <div className="w-10 h-px bg-gold/40" />
+                    <div className="w-1.5 h-1.5 rotate-45 bg-gold/40" />
+                    <div className="w-10 h-px bg-gold/40" />
                   </div>
-                  <p className="text-emerald-forest/70 text-sm md:text-base max-w-xl mx-auto leading-relaxed font-light">
+                  <p className="text-cream/80 text-sm md:text-base max-w-xl mx-auto leading-relaxed font-light">
                     Un espacio único en el corazón histórico de Puebla donde el café artesanal, 
                     la cultura y el arte se encuentran
                   </p>
