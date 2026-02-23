@@ -2,38 +2,40 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Mic, Camera, Wifi, Users, MonitorPlay, ShieldCheck, Coffee, UtensilsCrossed, Check } from 'lucide-react'
+import { Coffee, UtensilsCrossed, Croissant, Check, Clock, Monitor, ClipboardList, Camera, Plus } from 'lucide-react'
 
-const features = [
+const baseIncludes = [
+  'Uso del espacio por 2 horas',
+  'Montaje tipo conferencia',
+  'Bocina y micrófono incluidos',
+  'Café americano ilimitado',
+  'Agua natural',
+  'Personal de apoyo',
+  'Limpieza antes y después',
+  'Conexión eléctrica para equipo',
+]
+
+const extras = [
   {
-    icon: Mic,
-    title: 'Mobiliario Completo',
-    description: 'Mesas, sillas, atril y todo el mobiliario necesario para la realización de su conferencia de prensa.',
+    icon: Clock,
+    title: 'Hora extra del espacio',
+    price: '$800 MXN',
+  },
+  {
+    icon: Monitor,
+    title: 'Pantalla para presentaciones',
+    price: '$1,000 MXN',
+    note: 'Sin proyector incluido',
+  },
+  {
+    icon: ClipboardList,
+    title: 'Registro de invitados / recepción',
+    price: '$400 MXN',
   },
   {
     icon: Camera,
-    title: 'Iluminación & Acústica',
-    description: 'Ambientes con luz natural e iluminación controlada, acústica óptima para grabación profesional.',
-  },
-  {
-    icon: Wifi,
-    title: 'Conectividad',
-    description: 'WiFi de alta velocidad y soporte técnico para transmisiones en vivo y streaming.',
-  },
-  {
-    icon: Users,
-    title: 'Capacidad Flexible',
-    description: 'Configuraciones modulares para grupos de 10 a 70 personas según el formato de su evento.',
-  },
-  {
-    icon: MonitorPlay,
-    title: 'Equipamiento Audiovisual',
-    description: 'Pantallas, proyección y sistema de sonido disponibles para presentaciones impactantes.',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Privacidad & Exclusividad',
-    description: 'Acceso controlado y espacios privados que garantizan la confidencialidad de su evento.',
+    title: 'Fotografía del evento',
+    price: 'Desde $1,500 MXN',
   },
 ]
 
@@ -57,7 +59,7 @@ export default function RuedaPrensa() {
         >
           <h2 className="section-title">Ruedas de Prensa</h2>
           <p className="section-subtitle">
-            Un escenario histórico y sofisticado para sus conferencias de prensa y eventos mediáticos.
+            Atmósfera de casona histórica con todo lo necesario para su conferencia de prensa.
           </p>
           <div className="divider" />
         </motion.div>
@@ -105,19 +107,19 @@ export default function RuedaPrensa() {
               El escenario perfecto para su mensaje
             </h3>
             <p className="text-charcoal-50 text-lg leading-relaxed mb-6">
-              Casa de los Ángeles ofrece un entorno único e inigualable para la realización de ruedas de prensa 
-              y conferencias mediáticas. Nuestra casona del siglo XVIII, ubicada en el corazón del centro 
-              histórico de Puebla, brinda un marco de distinción y elegancia que eleva cualquier evento de comunicación.
+              Casa de los Ángeles ofrece un entorno único para la realización de ruedas de prensa 
+              y conferencias mediáticas. Nuestra casona del siglo XVIII, en el corazón del centro 
+              histórico de Puebla, brinda un marco de distinción que eleva cualquier evento de comunicación.
             </p>
             <p className="text-charcoal-50 text-lg leading-relaxed mb-8">
-              Ya sea para lanzamientos de productos, anuncios corporativos, presentaciones institucionales o 
-              conferencias de prensa, nuestros espacios se adaptan a sus necesidades con atención impecable 
-              y servicio de catering premium.
+              Ideal para comunicados oficiales, lanzamientos de productos, anuncios corporativos 
+              y presentaciones institucionales ante medios. Usted trae su mensaje, nosotros ponemos 
+              la atmósfera y el servicio.
             </p>
 
             {/* Key highlights */}
             <div className="flex flex-wrap gap-3 mb-8">
-              {['Catering Gourmet', 'Ubicación Céntrica', 'Servicio Personalizado'].map((tag) => (
+              {['Casona Histórica', 'Ubicación Céntrica', 'Servicio Completo', 'Audio Incluido'].map((tag) => (
                 <span 
                   key={tag}
                   className="px-4 py-2 bg-gold/10 text-gold-dark text-sm font-medium rounded-full"
@@ -147,13 +149,14 @@ export default function RuedaPrensa() {
         >
           <h3 className="font-serif text-display-sm text-gold-dark text-center mb-4">Paquetes</h3>
           <p className="text-charcoal-50 text-center mb-12 max-w-2xl mx-auto">
-            Servicio para 20 personas con todo lo necesario para una conferencia de prensa exitosa.
+            Hasta 20 personas · Todo incluido para una conferencia de prensa profesional.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Paquete Esencial */}
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            
+            {/* Paquete Base Café */}
             <motion.div
-              className="relative rounded-2xl border-2 border-gold/20 bg-cream/30 p-8 md:p-10 hover:border-gold/40 hover:shadow-xl transition-all duration-500"
+              className="relative rounded-2xl border-2 border-gold/20 bg-cream/30 p-8 hover:border-gold/40 hover:shadow-xl transition-all duration-500 flex flex-col"
               whileHover={{ y: -4 }}
             >
               <div className="flex items-center gap-4 mb-6">
@@ -161,31 +164,24 @@ export default function RuedaPrensa() {
                   <Coffee className="w-6 h-6 text-gold-dark" />
                 </div>
                 <div>
-                  <h4 className="font-serif text-2xl text-charcoal">Esencial</h4>
-                  <p className="text-sm text-charcoal-50">Conferencia + Coffee Break</p>
+                  <h4 className="font-serif text-xl text-charcoal">Paquete Base</h4>
+                  <p className="text-sm text-charcoal-50">Conferencia + Café</p>
                 </div>
               </div>
 
-              <div className="mb-8">
+              <div className="mb-6">
                 <div className="flex items-baseline gap-1">
-                  <span className="font-serif text-4xl text-gold-dark">$2,500</span>
+                  <span className="font-serif text-3xl md:text-4xl text-gold-dark">$2,500</span>
                   <span className="text-charcoal-50 text-sm">MXN</span>
                 </div>
-                <p className="text-sm text-charcoal-50 mt-1">Precio fijo · 20 personas</p>
+                <p className="text-sm text-charcoal-50 mt-1">Hasta 20 personas</p>
               </div>
 
-              <ul className="space-y-3 mb-8">
-                {[
-                  'Espacio privado para 20 personas',
-                  'Sistema de audio profesional',
-                  'Servicio de café de especialidad',
-                  'Selección de galletas artesanales',
-                  'WiFi de alta velocidad',
-                  'Montaje y desmontaje incluido',
-                ].map((item) => (
+              <ul className="space-y-2.5 mb-8 flex-1">
+                {baseIncludes.map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-gold-dark flex-shrink-0 mt-0.5" />
-                    <span className="text-charcoal-50">{item}</span>
+                    <Check className="w-4 h-4 text-gold-dark flex-shrink-0 mt-1" />
+                    <span className="text-charcoal-50 text-sm">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -200,15 +196,15 @@ export default function RuedaPrensa() {
               </motion.a>
             </motion.div>
 
-            {/* Paquete Premium */}
+            {/* Paquete Café + Sándwiches */}
             <motion.div
-              className="relative rounded-2xl border-2 border-gold bg-gradient-to-b from-cream to-white p-8 md:p-10 shadow-lg hover:shadow-2xl transition-all duration-500"
+              className="relative rounded-2xl border-2 border-gold bg-gradient-to-b from-cream to-white p-8 shadow-lg hover:shadow-2xl transition-all duration-500 flex flex-col"
               whileHover={{ y: -4 }}
             >
               {/* Badge */}
               <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                <span className="bg-gold text-white text-xs uppercase tracking-[0.15em] font-medium px-5 py-1.5 rounded-full shadow-md">
-                  Recomendado
+                <span className="bg-gold text-white text-xs uppercase tracking-[0.15em] font-medium px-5 py-1.5 rounded-full shadow-md whitespace-nowrap">
+                  Más Popular
                 </span>
               </div>
 
@@ -217,31 +213,32 @@ export default function RuedaPrensa() {
                   <UtensilsCrossed className="w-6 h-6 text-gold-dark" />
                 </div>
                 <div>
-                  <h4 className="font-serif text-2xl text-charcoal">Premium</h4>
-                  <p className="text-sm text-charcoal-50">Conferencia + Catering Completo</p>
+                  <h4 className="font-serif text-xl text-charcoal">Café + Sándwiches</h4>
+                  <p className="text-sm text-charcoal-50">Conferencia + Catering Salado</p>
                 </div>
               </div>
 
-              <div className="mb-8">
+              <div className="mb-6">
                 <div className="flex items-baseline gap-1">
-                  <span className="font-serif text-4xl text-gold-dark">$3,000</span>
+                  <span className="font-serif text-3xl md:text-4xl text-gold-dark">$3,000</span>
                   <span className="text-charcoal-50 text-sm">MXN</span>
                 </div>
-                <p className="text-sm text-charcoal-50 mt-1">Precio fijo · 20 personas</p>
+                <p className="text-sm text-charcoal-50 mt-1">Hasta 20 personas</p>
               </div>
 
-              <ul className="space-y-3 mb-8">
+              <div className="mb-4">
+                <p className="text-sm text-gold-dark font-medium mb-2">Todo lo del Paquete Base +</p>
+              </div>
+
+              <ul className="space-y-2.5 mb-8 flex-1">
                 {[
-                  'Todo lo incluido en el paquete Esencial',
-                  'Sistema de audio profesional',
-                  'Servicio de café de especialidad',
-                  'Sándwiches gourmet artesanales',
-                  'WiFi de alta velocidad',
-                  'Montaje y desmontaje incluido',
+                  'Sándwiches salados individuales',
+                  'Presentación tipo catering',
+                  'Menaje y servilletas',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-gold-dark flex-shrink-0 mt-0.5" />
-                    <span className="text-charcoal-50">{item}</span>
+                    <Check className="w-4 h-4 text-gold-dark flex-shrink-0 mt-1" />
+                    <span className="text-charcoal-50 text-sm">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -255,27 +252,96 @@ export default function RuedaPrensa() {
                 Reservar
               </motion.a>
             </motion.div>
+
+            {/* Paquete Café + Pan Dulce */}
+            <motion.div
+              className="relative rounded-2xl border-2 border-gold/20 bg-cream/30 p-8 hover:border-gold/40 hover:shadow-xl transition-all duration-500 flex flex-col"
+              whileHover={{ y: -4 }}
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 bg-gold/10 rounded-full flex items-center justify-center">
+                  <Croissant className="w-6 h-6 text-gold-dark" />
+                </div>
+                <div>
+                  <h4 className="font-serif text-xl text-charcoal">Café + Pan Dulce</h4>
+                  <p className="text-sm text-charcoal-50">Conferencia + Coffee Break Dulce</p>
+                </div>
+              </div>
+
+              <div className="mb-6">
+                <div className="flex items-baseline gap-1">
+                  <span className="font-serif text-3xl md:text-4xl text-gold-dark">$3,000</span>
+                  <span className="text-charcoal-50 text-sm">MXN</span>
+                </div>
+                <p className="text-sm text-charcoal-50 mt-1">Hasta 20 personas</p>
+              </div>
+
+              <div className="mb-4">
+                <p className="text-sm text-gold-dark font-medium mb-2">Todo lo del Paquete Base +</p>
+              </div>
+
+              <ul className="space-y-2.5 mb-8 flex-1">
+                {[
+                  'Selección de pan dulce fresco',
+                  'Servicio tipo coffee break',
+                  'Menaje completo',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <Check className="w-4 h-4 text-gold-dark flex-shrink-0 mt-1" />
+                    <span className="text-charcoal-50 text-sm">{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <motion.a
+                href="#contacto"
+                className="btn-elegant w-full text-center"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Reservar
+              </motion.a>
+            </motion.div>
           </div>
         </motion.div>
 
-        {/* Features Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <motion.div
-              key={feature.title}
-              className="group p-8 rounded-2xl border border-gold/10 bg-cream/50 hover:bg-cream hover:border-gold/30 hover:shadow-lg transition-all duration-500"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-            >
-              <div className="w-14 h-14 bg-gold/10 rounded-full flex items-center justify-center mb-5 group-hover:bg-gold/20 transition-colors duration-300">
-                <feature.icon className="w-6 h-6 text-gold-dark" />
-              </div>
-              <h4 className="font-serif text-xl text-charcoal mb-3">{feature.title}</h4>
-              <p className="text-charcoal-50 leading-relaxed">{feature.description}</p>
-            </motion.div>
-          ))}
-        </div>
+        {/* Servicios Adicionales */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        >
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 mb-4">
+              <Plus className="w-5 h-5 text-gold-dark" />
+              <h3 className="font-serif text-2xl text-gold-dark">Servicios Adicionales</h3>
+            </div>
+            <p className="text-charcoal-50 max-w-xl mx-auto">
+              Personalice su evento con los complementos que necesite.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            {extras.map((extra, index) => (
+              <motion.div
+                key={extra.title}
+                className="group p-6 rounded-2xl border border-gold/10 bg-cream/30 hover:bg-cream hover:border-gold/30 hover:shadow-lg transition-all duration-500 text-center"
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+              >
+                <div className="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-gold/20 transition-colors duration-300">
+                  <extra.icon className="w-5 h-5 text-gold-dark" />
+                </div>
+                <h4 className="font-serif text-lg text-charcoal mb-2">{extra.title}</h4>
+                {extra.note && (
+                  <p className="text-xs text-charcoal-50 mb-2 italic">{extra.note}</p>
+                )}
+                <p className="text-gold-dark font-semibold">{extra.price}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   )
