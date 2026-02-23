@@ -32,7 +32,7 @@ export default function Atelier() {
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
 
   return (
-    <section id="atelier" ref={sectionRef} className="section bg-charcoal text-cream relative overflow-hidden">
+    <section id="atelier" ref={sectionRef} className="section bg-[#3F1F26] text-cream relative overflow-hidden">
       {/* Background texture */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{

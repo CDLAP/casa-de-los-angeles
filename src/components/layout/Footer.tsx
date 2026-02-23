@@ -9,7 +9,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-charcoal text-cream">
+    <footer className="bg-[#3F1F26] text-cream">
       {/* Main Footer */}
       <div className="container-custom py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -45,7 +45,6 @@ export default function Footer() {
                 { label: 'Museo', href: '/#nosotros' },
                 { label: 'Boutique', href: '/#boutique' },
                 { label: 'Atelier', href: '/#atelier' },
-                { label: 'Sombrería', href: '/#sombrereria' },
                 { label: 'Ruedas de Prensa', href: '/#rueda-de-prensa' },
                 { label: 'Contacto', href: '/#contacto' },
               ].map((item) => (
