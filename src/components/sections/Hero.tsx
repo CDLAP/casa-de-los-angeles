@@ -47,7 +47,7 @@ export default function Hero() {
     <section 
       id="inicio" 
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative flex flex-col overflow-hidden"
       onMouseEnter={() => setIsAutoPlaying(false)}
       onMouseLeave={() => setIsAutoPlaying(true)}
     >
@@ -55,14 +55,14 @@ export default function Hero() {
         {currentSlide === 0 && (
           <motion.div
             key="slide-main"
-            className="absolute inset-0"
+            className="flex flex-col"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {/* Foto de la fachada — llena toda la pantalla */}
-            <div className="absolute inset-0">
+            {/* Foto de la fachada */}
+            <div className="relative h-[55vh] md:h-[75vh]">
               <Image
                 src="/images/casa.png"
                 alt="Casa de los Ángeles - Fachada"
@@ -71,34 +71,30 @@ export default function Hero() {
                 priority
                 sizes="100vw"
               />
-              {/* Gradiente solo abajo para integrar la pleca */}
-              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/40 to-transparent" />
             </div>
 
-            {/* Pleca elegante en la parte inferior */}
-            <div className="absolute bottom-0 left-0 right-0 z-10">
-              <motion.div
-                className={`backdrop-blur-md border-t border-gold/30 py-6 md:py-8 px-5 ${isWine ? 'bg-bistro-dark/85' : 'bg-emerald-forest/85'}`}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-              >
-                <div className="max-w-4xl mx-auto text-center">
-                  <p className="text-gold-light uppercase tracking-[0.4em] text-sm md:text-base font-light mb-3">
-                    Café &bull; Arte &bull; Boutique
-                  </p>
-                  <div className="flex items-center justify-center gap-3 mb-3">
-                    <div className="w-10 h-px bg-gold/40" />
-                    <div className="w-1.5 h-1.5 rotate-45 bg-gold/40" />
-                    <div className="w-10 h-px bg-gold/40" />
-                  </div>
-                  <p className="text-cream/80 text-sm md:text-base max-w-xl mx-auto leading-relaxed font-light">
-                    Un espacio único en el corazón histórico de Puebla donde el café artesanal, 
-                    la cultura y el arte se encuentran
-                  </p>
+            {/* Pleca sólida justo debajo de la foto */}
+            <motion.div
+              className={`border-t border-gold/30 py-10 md:py-12 px-5 ${isWine ? 'bg-[#3F1F26]' : 'bg-[#1A3A2E]'}`}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+            >
+              <div className="max-w-4xl mx-auto text-center">
+                <p className="text-gold-light uppercase tracking-[0.4em] text-sm md:text-base font-light mb-3">
+                  Café &bull; Arte &bull; Boutique
+                </p>
+                <div className="flex items-center justify-center gap-3 mb-3">
+                  <div className="w-10 h-px bg-gold/40" />
+                  <div className="w-1.5 h-1.5 rotate-45 bg-gold/40" />
+                  <div className="w-10 h-px bg-gold/40" />
                 </div>
-              </motion.div>
-            </div>
+                <p className="text-cream/80 text-sm md:text-base max-w-xl mx-auto leading-relaxed font-light">
+                  Un espacio único en el corazón histórico de Puebla donde el café artesanal, 
+                  la cultura y el arte se encuentran
+                </p>
+              </div>
+            </motion.div>
           </motion.div>
         )}
 
