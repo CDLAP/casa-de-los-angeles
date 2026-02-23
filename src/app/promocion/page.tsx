@@ -169,10 +169,6 @@ export default function PromocionPage() {
 
               {/* Card principal */}
               <div className="relative bg-gradient-to-br from-bistro-dark/80 to-bistro-dark/40 border-2 border-gold/30 rounded-3xl p-8 sm:p-12 overflow-hidden">
-                {/* Decoración */}
-                <div className="absolute top-0 right-0 w-40 h-40 bg-gold/5 rounded-full -translate-y-1/2 translate-x-1/2" />
-                <div className="absolute bottom-0 left-0 w-32 h-32 bg-gold/5 rounded-full translate-y-1/2 -translate-x-1/2" />
-
                 <div className="relative z-10">
                   {/* Badge */}
                   <div className="flex justify-center mb-8">
