@@ -1,8 +1,8 @@
 'use client'
 
 import { useRef, useState, useEffect, useCallback } from 'react'
-import { motion, useInView, AnimatePresence } from 'framer-motion'
-import { Coffee, UtensilsCrossed, Croissant, Check, Clock, Monitor, ClipboardList, Camera, Plus } from 'lucide-react'
+import { motion, useInView } from 'framer-motion'
+import { Coffee, UtensilsCrossed, Check, Clock, Monitor, ClipboardList, Camera, Plus } from 'lucide-react'
 
 const pressImages = [
   { src: '/images/prensa/prensa1.jpg', alt: 'Rueda de prensa en Casa de los Ángeles - Vista de panelistas' },
@@ -59,18 +59,16 @@ function PressCarousel() {
 
   return (
     <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl">
-      <AnimatePresence mode="wait">
+      {pressImages.map((img, index) => (
         <motion.img
-          key={current}
-          src={pressImages[current].src}
-          alt={pressImages[current].alt}
+          key={img.src}
+          src={img.src}
+          alt={img.alt}
           className="absolute inset-0 w-full h-full object-cover"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8 }}
+          animate={{ opacity: index === current ? 1 : 0 }}
+          transition={{ duration: 1.2, ease: 'easeInOut' }}
         />
-      </AnimatePresence>
+      ))}
       <div className="absolute inset-0 bg-gradient-to-t from-charcoal/30 via-transparent to-transparent" />
     </div>
   )
@@ -168,7 +166,7 @@ export default function RuedaPrensa() {
             Hasta 20 personas · Todo incluido para una conferencia de prensa profesional.
           </p>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             
             {/* Paquete Base Café */}
             <motion.div
@@ -212,7 +210,7 @@ export default function RuedaPrensa() {
               </motion.a>
             </motion.div>
 
-            {/* Paquete Café + Sándwiches */}
+            {/* Paquete Café + Sándwiches ó Pan Dulce */}
             <motion.div
               className="relative rounded-2xl border-2 border-gold bg-gradient-to-b from-cream to-white p-8 shadow-lg hover:shadow-2xl transition-all duration-500 flex flex-col"
               whileHover={{ y: -4 }}
@@ -229,8 +227,8 @@ export default function RuedaPrensa() {
                   <UtensilsCrossed className="w-6 h-6 text-gold-dark" />
                 </div>
                 <div>
-                  <h4 className="font-serif text-xl text-charcoal">Café + Sándwiches</h4>
-                  <p className="text-sm text-charcoal-50">Conferencia + Catering Salado</p>
+                  <h4 className="font-serif text-xl text-charcoal">Café + Sándwiches ó Pan Dulce</h4>
+                  <p className="text-sm text-charcoal-50">Conferencia + Catering a elegir</p>
                 </div>
               </div>
 
@@ -248,9 +246,9 @@ export default function RuedaPrensa() {
 
               <ul className="space-y-2.5 mb-8 flex-1">
                 {[
-                  'Sándwiches salados individuales',
+                  'Sándwiches salados individuales ó selección de pan dulce fresco',
                   'Presentación tipo catering',
-                  'Menaje y servilletas',
+                  'Menaje completo y servilletas',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <Check className="w-4 h-4 text-gold-dark flex-shrink-0 mt-1" />
@@ -262,56 +260,6 @@ export default function RuedaPrensa() {
               <motion.a
                 href="#contacto"
                 className="btn-filled w-full text-center"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Reservar
-              </motion.a>
-            </motion.div>
-
-            {/* Paquete Café + Pan Dulce */}
-            <motion.div
-              className="relative rounded-2xl border-2 border-gold/20 bg-cream/30 p-8 hover:border-gold/40 hover:shadow-xl transition-all duration-500 flex flex-col"
-              whileHover={{ y: -4 }}
-            >
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 bg-gold/10 rounded-full flex items-center justify-center">
-                  <Croissant className="w-6 h-6 text-gold-dark" />
-                </div>
-                <div>
-                  <h4 className="font-serif text-xl text-charcoal">Café + Pan Dulce</h4>
-                  <p className="text-sm text-charcoal-50">Conferencia + Coffee Break Dulce</p>
-                </div>
-              </div>
-
-              <div className="mb-6">
-                <div className="flex items-baseline gap-1">
-                  <span className="font-serif text-3xl md:text-4xl text-gold-dark">$3,000</span>
-                  <span className="text-charcoal-50 text-sm">MXN</span>
-                </div>
-                <p className="text-sm text-charcoal-50 mt-1">Hasta 20 personas</p>
-              </div>
-
-              <div className="mb-4">
-                <p className="text-sm text-gold-dark font-medium mb-2">Todo lo del Paquete Base +</p>
-              </div>
-
-              <ul className="space-y-2.5 mb-8 flex-1">
-                {[
-                  'Selección de pan dulce fresco',
-                  'Servicio tipo coffee break',
-                  'Menaje completo',
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <Check className="w-4 h-4 text-gold-dark flex-shrink-0 mt-1" />
-                    <span className="text-charcoal-50 text-sm">{item}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <motion.a
-                href="#contacto"
-                className="btn-elegant w-full text-center"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
