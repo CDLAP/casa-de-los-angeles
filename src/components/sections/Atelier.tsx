@@ -77,7 +77,7 @@ export default function Atelier() {
                 Paralelamente, Bruno ha desarrollado una sólida labor en el ámbito de la restauración, participando en proyectos de preservación patrimonial de gran relevancia, entre ellos la restauración integral del Zócalo de Puebla y la conservación de piezas históricas como la pintura <span className="text-gold italic">"La Batalla del Cinco de Mayo"</span> del Palacio Municipal.
               </p>
               <p>
-                Esta doble dimensión —creador y conservador— otorga a su obra una profundidad singular, donde el rigor técnico se une a una sensibilidad estética contemporánea.
+                Esta doble dimensión, creador y conservador, otorga a su obra una profundidad singular, donde el rigor técnico se une a una sensibilidad estética contemporánea.
               </p>
               <p className="text-gold font-medium italic text-xl">
                 Arte, patrimonio y creación viva: una experiencia íntima con el proceso artístico.
