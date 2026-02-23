@@ -99,19 +99,7 @@ export default function CafeSection() {
               <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black/20 to-transparent" />
             </div>
 
-            {/* Dots */}
-            <div className="flex justify-center gap-2 mt-4">
-              {cafeImages.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrent(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    current === index ? 'bg-gold w-6' : 'bg-gold/30'
-                  }`}
-                  aria-label={`Ver foto ${index + 1}`}
-                />
-              ))}
-            </div>
+
           </motion.div>
         </div>
       </div>
