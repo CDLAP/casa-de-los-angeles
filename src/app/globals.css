@@ -187,7 +187,7 @@
 
   /* Divider */
   .divider {
-    @apply w-24 h-px bg-gradient-gold mx-auto my-8;
+    @apply w-24 h-px bg-gradient-gold mx-auto my-4 md:my-8;
   }
 
   /* Image container with overlay */
