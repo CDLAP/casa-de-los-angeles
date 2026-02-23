@@ -50,7 +50,7 @@ export default function Header() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled 
           ? 'bg-cream/95 backdrop-blur-md shadow-lg py-8' 
-          : 'bg-gold py-8'
+          : 'bg-[#3F1F26] py-8'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -64,7 +64,7 @@ export default function Header() {
             className={`text-[11px] sm:text-sm xl:text-base uppercase tracking-[0.08em] sm:tracking-[0.15em] xl:tracking-[0.2em] font-sans transition-all duration-300 whitespace-nowrap py-2 ${
               activeSection === link.href
                 ? 'text-gold'
-                : isScrolled ? 'text-charcoal hover:text-gold' : 'text-[#3F1F26] hover:text-[#3F1F26]/70'
+                : isScrolled ? 'text-charcoal hover:text-gold' : 'text-cream/90 hover:text-gold'
             }`}
           >
             {link.label}
