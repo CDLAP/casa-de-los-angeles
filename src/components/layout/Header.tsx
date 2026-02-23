@@ -55,7 +55,6 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Lock body scroll when menu is open
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = 'hidden'
@@ -65,81 +64,82 @@ export default function Header() {
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 
-  // Close menu on route change
   useEffect(() => {
     setMenuOpen(false)
   }, [pathname])
 
   return (
     <>
+      {/* Desktop header bar */}
       <motion.header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 hidden md:block ${
           isScrolled
-            ? 'bg-cream/95 backdrop-blur-md shadow-lg py-4 md:py-8'
-            : 'bg-[#3F1F26] py-4 md:py-8 shadow-[0_4px_0_0_#3F1F26]'
+            ? 'bg-cream/95 backdrop-blur-md shadow-lg py-8'
+            : 'bg-[#3F1F26] py-8 shadow-[0_4px_0_0_#3F1F26]'
         }`}
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 2.5, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
-        <div className="flex items-center justify-between md:justify-center px-5 md:px-3">
-          {/* Logo / Home link - mobile only */}
-          <Link
-            href="/"
-            className={`md:hidden font-serif text-lg tracking-wider transition-colors ${
-              isScrolled ? 'text-gold-dark' : 'text-gold'
-            }`}
-          >
-            CDLA
-          </Link>
-
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center justify-center gap-4 lg:gap-6 xl:gap-10">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`text-sm xl:text-base uppercase tracking-[0.12em] xl:tracking-[0.2em] font-sans transition-all duration-300 whitespace-nowrap py-2 ${
-                  activeSection === link.href
-                    ? 'text-gold'
-                    : isScrolled ? 'text-charcoal hover:text-gold' : 'text-cream/90 hover:text-gold'
-                }`}
-              >
-                {link.label === 'Relaciones Públicas' ? 'RP' : link.label === 'Promoción' ? 'Promo' : link.label}
-              </Link>
-            ))}
-          </nav>
-
-          {/* Hamburger button - mobile only */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden relative w-8 h-8 flex flex-col items-center justify-center gap-[5px] z-[60]"
-            aria-label="Menú"
-          >
-            <motion.span
-              className={`block w-6 h-[2px] rounded-full transition-colors ${isScrolled ? 'bg-charcoal' : 'bg-cream'}`}
-              animate={menuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
-              transition={{ duration: 0.3 }}
-            />
-            <motion.span
-              className={`block w-6 h-[2px] rounded-full transition-colors ${isScrolled ? 'bg-charcoal' : 'bg-cream'}`}
-              animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
-              transition={{ duration: 0.2 }}
-            />
-            <motion.span
-              className={`block w-6 h-[2px] rounded-full transition-colors ${isScrolled ? 'bg-charcoal' : 'bg-cream'}`}
-              animate={menuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
-              transition={{ duration: 0.3 }}
-            />
-          </button>
-        </div>
+        <nav className="flex items-center justify-center gap-4 lg:gap-6 xl:gap-10 px-3">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`text-sm xl:text-base uppercase tracking-[0.12em] xl:tracking-[0.2em] font-sans transition-all duration-300 whitespace-nowrap py-2 ${
+                activeSection === link.href
+                  ? 'text-gold'
+                  : isScrolled ? 'text-charcoal hover:text-gold' : 'text-cream/90 hover:text-gold'
+              }`}
+            >
+              {link.label === 'Relaciones Públicas' ? 'RP' : link.label === 'Promoción' ? 'Promo' : link.label}
+            </Link>
+          ))}
+        </nav>
       </motion.header>
+
+      {/* Mobile hamburger button - floating */}
+      <motion.button
+        onClick={() => setMenuOpen(!menuOpen)}
+        className={`fixed top-5 right-5 z-[60] md:hidden w-11 h-11 rounded-full flex flex-col items-center justify-center gap-[5px] transition-all duration-300 ${
+          menuOpen
+            ? 'bg-transparent'
+            : isScrolled
+              ? 'bg-cream/90 backdrop-blur-md shadow-lg'
+              : 'bg-[#3F1F26]/80 backdrop-blur-md'
+        }`}
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, delay: 2.5 }}
+        aria-label="Menú"
+      >
+        <motion.span
+          className={`block w-5 h-[2px] rounded-full transition-colors ${
+            menuOpen ? 'bg-cream' : isScrolled ? 'bg-charcoal' : 'bg-cream'
+          }`}
+          animate={menuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
+          transition={{ duration: 0.3 }}
+        />
+        <motion.span
+          className={`block w-5 h-[2px] rounded-full transition-colors ${
+            menuOpen ? 'bg-cream' : isScrolled ? 'bg-charcoal' : 'bg-cream'
+          }`}
+          animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
+          transition={{ duration: 0.2 }}
+        />
+        <motion.span
+          className={`block w-5 h-[2px] rounded-full transition-colors ${
+            menuOpen ? 'bg-cream' : isScrolled ? 'bg-charcoal' : 'bg-cream'
+          }`}
+          animate={menuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
+          transition={{ duration: 0.3 }}
+        />
+      </motion.button>
 
       {/* Mobile menu overlay */}
       <AnimatePresence>
         {menuOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               className="fixed inset-0 bg-black/50 z-40 md:hidden"
               initial={{ opacity: 0 }}
@@ -149,7 +149,6 @@ export default function Header() {
               onClick={() => setMenuOpen(false)}
             />
 
-            {/* Menu panel */}
             <motion.nav
               className="fixed top-0 right-0 bottom-0 w-[280px] bg-[#3F1F26] z-50 md:hidden flex flex-col pt-24 px-8 overflow-y-auto"
               initial={{ x: '100%' }}
@@ -157,7 +156,6 @@ export default function Header() {
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 30, stiffness: 300 }}
             >
-              {/* Ornamento */}
               <div className="flex items-center gap-3 mb-8">
                 <div className="flex-1 h-px bg-gold/20" />
                 <div className="w-1.5 h-1.5 bg-gold/40 rotate-45" />
@@ -185,7 +183,6 @@ export default function Header() {
                 </motion.div>
               ))}
 
-              {/* Info adicional */}
               <div className="mt-auto pb-8 pt-8">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="flex-1 h-px bg-gold/20" />
