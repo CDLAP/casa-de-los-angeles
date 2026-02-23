@@ -10,10 +10,10 @@ import { Menu, X } from 'lucide-react'
 const navLinks = [
   { href: '/#nosotros', label: 'Museo' },
   { href: '/#experiencia', label: 'Café' },
-  { href: '/#sombrereria', label: 'Sombrería' },
   { href: '/#boutique', label: 'Mercado' },
   { href: '/#atelier', label: 'Atelier' },
-  { href: '/#rueda-de-prensa', label: 'Rueda de Prensa' },
+  { href: '/#sombrereria', label: 'Sombrería' },
+  { href: '/#rueda-de-prensa', label: 'Ruedas de Prensa' },
   { href: '/#contacto', label: 'Contacto' },
 ]
 
