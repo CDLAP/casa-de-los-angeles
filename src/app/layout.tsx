@@ -1,10 +1,7 @@
 import type { Metadata } from 'next'
 import { Playfair_Display, Lato } from 'next/font/google'
 import './globals.css'
-import Header from '@/components/layout/Header'
-import Footer from '@/components/layout/Footer'
-// import SmoothScroll from '@/components/animations/SmoothScroll' // Desactivado para mejor performance
-import Loader from '@/components/animations/Loader'
+import LayoutShell from '@/components/layout/LayoutShell'
 import { HeroThemeProvider } from '@/context/HeroThemeContext'
 
 const playfair = Playfair_Display({
@@ -291,11 +288,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased overflow-x-hidden">
         <HeroThemeProvider>
-          <Loader />
-          {/* SmoothScroll desactivado para mejor performance */}
-          <Header />
-          <main className="overflow-x-hidden">{children}</main>
-          <Footer />
+          <LayoutShell>{children}</LayoutShell>
         </HeroThemeProvider>
       </body>
     </html>
