@@ -5,10 +5,10 @@ import { motion, useInView } from 'framer-motion'
 import Image from 'next/image'
 
 const cafeImages = [
-  '/images/cafe/1.jpg',
-  '/images/cafe/2.jpg',
-  '/images/cafe/3.jpg',
-  '/images/cafe/4.jpg',
+  '/images/cafe/1.jpeg',
+  '/images/cafe/2.jpeg',
+  '/images/cafe/3.jpeg',
+  '/images/cafe/4.jpeg',
 ]
 
 export default function CafeSection() {
