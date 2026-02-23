@@ -30,12 +30,6 @@ const experiences = [
     image: '/images/experiences/bar-autor.png',
   },
   {
-    icon: Sparkles,
-    title: 'Experiencias Privadas',
-    description: 'Cenas maridaje, catas de vino, talleres culinarios y eventos corporativos. Diseñamos experiencias a la medida para momentos verdaderamente especiales en un ambiente íntimo y exclusivo.',
-    image: '/images/experiences/experiencias-privadas.png',
-  },
-  {
     icon: Music,
     title: 'Noches de Gala',
     description: 'Eventos especiales, conciertos íntimos y veladas temáticas que transforman la casa en un escenario mágico. Jazz en vivo, música clásica y propuestas artísticas que elevan cada noche a una celebración memorable.',

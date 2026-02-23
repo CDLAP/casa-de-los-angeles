@@ -12,7 +12,6 @@ import MenuSection from '@/components/sections/MenuSection'
 // import Events from '@/components/sections/Events'
 import Boutique from '@/components/sections/Boutique'
 import RuedaPrensa from '@/components/sections/RuedaPrensa'
-import Team from '@/components/sections/Team'
 import Contact from '@/components/sections/Contact'
 
 // Register GSAP plugins
@@ -31,7 +30,6 @@ export default function Home() {
       {/* <Events /> */}
       <Boutique />
       <RuedaPrensa />
-      <Team />
       <Contact />
     </>
   )

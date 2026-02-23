@@ -8,15 +8,12 @@ import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 
 const navLinks = [
-  { href: '/#inicio', label: 'Inicio' },
-  { href: '/#nosotros', label: 'Nosotros' },
-  { href: '/#experiencia', label: 'Experiencia' },
-  { href: '/cultura', label: 'Cultura' },
-  { href: '/bistro', label: 'Bistró' },
-  // { href: '/#galeria', label: 'Galería' },
-  // { href: '/#eventos', label: 'Eventos' },
-  { href: '/#boutique', label: 'Boutique' },
-  { href: '/#rueda-de-prensa', label: 'Prensa' },
+  { href: '/#nosotros', label: 'Museo' },
+  { href: '/#experiencia', label: 'Café' },
+  { href: '/#sombrereria', label: 'Sombrería' },
+  { href: '/#boutique', label: 'Mercado' },
+  { href: '/#atelier', label: 'Atelier' },
+  { href: '/#rueda-de-prensa', label: 'Rueda de Prensa' },
   { href: '/#contacto', label: 'Contacto' },
 ]
 
