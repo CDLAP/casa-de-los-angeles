@@ -65,23 +65,27 @@ export default function Hero() {
             transition={{ duration: 0.8 }}
           >
             <div className="absolute inset-0">
-              <div className={`absolute inset-0 bg-gradient-to-br ${
-                isWine 
-                  ? 'from-bistro-800 via-bistro to-bistro-dark' 
-                  : 'from-emerald-forest via-emerald-dark to-emerald-800'
-              }`} />
-              <div className="absolute inset-0 bg-gradient-radial from-gold/10 via-transparent to-transparent" />
+              {/* Foto de la fachada como fondo */}
               <div 
-                className="absolute inset-0 opacity-5"
-                style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0L50 100M0 50L100 50' stroke='%23C9A961' stroke-width='0.5' fill='none'/%3E%3Ccircle cx='50' cy='50' r='30' stroke='%23C9A961' stroke-width='0.5' fill='none'/%3E%3C/svg%3E")`,
-                  backgroundSize: '100px 100px'
-                }}
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                style={{ backgroundImage: `url('/images/casa.jpeg')` }}
               />
+              {/* Color overlay con blend */}
+              <div className={`absolute inset-0 ${
+                isWine 
+                  ? 'bg-bistro/85' 
+                  : 'bg-emerald-forest/85'
+              }`} style={{ mixBlendMode: 'multiply' }} />
+              <div className={`absolute inset-0 ${
+                isWine 
+                  ? 'bg-bistro-dark/60' 
+                  : 'bg-emerald-dark/60'
+              }`} />
+              <div className="absolute inset-0 bg-gradient-radial from-gold/8 via-transparent to-transparent" />
               <div className={`absolute inset-0 bg-gradient-to-t via-transparent ${
                 isWine
-                  ? 'from-bistro-900 to-bistro-800/50'
-                  : 'from-emerald-900 to-emerald-forest/50'
+                  ? 'from-bistro-900/80 to-bistro-800/40'
+                  : 'from-emerald-900/80 to-emerald-forest/40'
               }`} />
             </div>
 
