@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
+import { useHeroTheme } from '@/context/HeroThemeContext'
 
 const navLinks = [
   { href: '/#menu', label: 'Café' },
@@ -21,6 +22,8 @@ export default function Header() {
   const pathname = usePathname()
   const isBistro = pathname === '/bistro'
   const isCultura = pathname === '/cultura'
+  const heroTheme = useHeroTheme()
+  const isWine = heroTheme === 'wine'
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('')
@@ -140,6 +143,10 @@ export default function Header() {
                     ? (isScrolled
                         ? 'border-gold bg-gold text-white hover:bg-gold-light hover:border-gold-light'
                         : 'border-gold bg-gold/90 text-white hover:bg-gold hover:border-gold-light')
+                    : isWine
+                    ? (isScrolled 
+                        ? 'border-bistro bg-bistro text-white hover:bg-bistro-light hover:border-bistro-light' 
+                        : 'border-bistro bg-bistro/90 text-white hover:bg-bistro hover:border-bistro-light')
                     : (isScrolled 
                         ? 'border-emerald bg-emerald text-white hover:bg-emerald-light hover:border-emerald-light' 
                         : 'border-emerald bg-emerald/90 text-white hover:bg-emerald hover:border-emerald-light')
@@ -247,7 +254,7 @@ export default function Header() {
                 >
                   <Link
                     href={isBistro ? '/bistro#reservar' : isCultura ? '/cultura#contacto-cultura' : '/#reservar'}
-                    className={`block w-full py-4 text-white text-center uppercase tracking-[0.15em] text-sm font-medium ${isBistro || isCultura ? 'bg-gold' : 'bg-emerald'}`}
+                    className={`block w-full py-4 text-white text-center uppercase tracking-[0.15em] text-sm font-medium ${isBistro || isCultura ? 'bg-gold' : isWine ? 'bg-bistro' : 'bg-emerald'}`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Reservar Mesa

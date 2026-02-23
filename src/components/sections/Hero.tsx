@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react'
 import Image from 'next/image'
 import EventModal from '../modals/EventModal'
+import { useHeroTheme } from '@/context/HeroThemeContext'
 
 // =====================================================
 // CONTROL: Cambiar a true para mostrar slide del evento
@@ -16,6 +17,8 @@ export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
   const [isEventModalOpen, setIsEventModalOpen] = useState(false)
+  const heroTheme = useHeroTheme()
+  const isWine = heroTheme === 'wine'
   
   const slides = SHOW_EVENT_SLIDE 
     ? [{ id: 'main', type: 'main' }, { id: 'event', type: 'event' }]
@@ -62,7 +65,11 @@ export default function Hero() {
             transition={{ duration: 0.8 }}
           >
             <div className="absolute inset-0">
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-forest via-emerald-dark to-emerald-800" />
+              <div className={`absolute inset-0 bg-gradient-to-br ${
+                isWine 
+                  ? 'from-bistro-800 via-bistro to-bistro-dark' 
+                  : 'from-emerald-forest via-emerald-dark to-emerald-800'
+              }`} />
               <div className="absolute inset-0 bg-gradient-radial from-gold/10 via-transparent to-transparent" />
               <div 
                 className="absolute inset-0 opacity-5"
@@ -71,7 +78,11 @@ export default function Hero() {
                   backgroundSize: '100px 100px'
                 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-emerald-900 via-transparent to-emerald-forest/50" />
+              <div className={`absolute inset-0 bg-gradient-to-t via-transparent ${
+                isWine
+                  ? 'from-bistro-900 to-bistro-800/50'
+                  : 'from-emerald-900 to-emerald-forest/50'
+              }`} />
             </div>
 
             <div className="absolute inset-0 opacity-10 pointer-events-none overflow-hidden">
@@ -84,7 +95,7 @@ export default function Hero() {
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
               />
               <motion.div 
-                className="absolute bottom-20 right-20 w-96 h-96 border border-emerald-light rounded-full"
+                className={`absolute bottom-20 right-20 w-96 h-96 border rounded-full ${isWine ? 'border-bistro-200' : 'border-emerald-light'}`}
                 animate={{ 
                   scale: [1, 1.15, 1],
                   opacity: [0.2, 0.4, 0.2]
@@ -129,9 +140,9 @@ export default function Hero() {
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.8, delay: 1 }}
               >
-                <div className="w-16 h-px bg-gradient-to-r from-transparent to-emerald-sage" />
-                <div className="w-2 h-2 bg-emerald-sage rotate-45" />
-                <div className="w-16 h-px bg-gradient-to-l from-transparent to-emerald-sage" />
+                <div className={`w-16 h-px bg-gradient-to-r from-transparent ${isWine ? 'to-bistro-200' : 'to-emerald-sage'}`} />
+                <div className={`w-2 h-2 rotate-45 ${isWine ? 'bg-bistro-200' : 'bg-emerald-sage'}`} />
+                <div className={`w-16 h-px bg-gradient-to-l from-transparent ${isWine ? 'to-bistro-200' : 'to-emerald-sage'}`} />
               </motion.div>
 
               <motion.p

@@ -5,6 +5,7 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 // import SmoothScroll from '@/components/animations/SmoothScroll' // Desactivado para mejor performance
 import Loader from '@/components/animations/Loader'
+import { HeroThemeProvider } from '@/context/HeroThemeContext'
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -289,11 +290,13 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
       </head>
       <body className="font-sans antialiased overflow-x-hidden">
-        <Loader />
-        {/* SmoothScroll desactivado para mejor performance */}
-        <Header />
-        <main className="overflow-x-hidden">{children}</main>
-        <Footer />
+        <HeroThemeProvider>
+          <Loader />
+          {/* SmoothScroll desactivado para mejor performance */}
+          <Header />
+          <main className="overflow-x-hidden">{children}</main>
+          <Footer />
+        </HeroThemeProvider>
       </body>
     </html>
   )
