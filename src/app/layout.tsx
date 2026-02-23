@@ -25,38 +25,37 @@ const siteUrl = 'https://www.casadelosangelespuebla.com'
 export const metadata: Metadata = {
   // Metadatos básicos mejorados
   title: {
-    default: 'Casa de los Ángeles | Bistró Francés & Centro Cultural | Puebla Centro Histórico',
+    default: 'Casa de los Ángeles | Café, Arte & Boutique | Puebla Centro Histórico',
     template: '%s | Casa de los Ángeles Puebla'
   },
-  description: 'Bistró francés y cafetería artesanal en el Centro Histórico de Puebla. Croissants, baguettes, café de especialidad, eventos culturales y un espacio único con más de 100 años de historia. Reservaciones: +52 220 622 4222',
+  description: 'Café, arte y boutique en el Centro Histórico de Puebla. Charcutería artesanal, vinos, eventos culturales, atelier de arte y un espacio único con más de 100 años de historia. Reservaciones: +52 220 622 4222',
   keywords: [
     // Principales
     'casa de los ángeles puebla',
-    'bistró francés puebla',
-    'cafetería centro histórico puebla',
-    'café artesanal puebla',
+    'café centro histórico puebla',
+    'boutique puebla centro',
+    'arte puebla centro histórico',
     // Productos
-    'croissants puebla',
-    'baguettes artesanales puebla', 
+    'charcutería puebla',
+    'vinos centro puebla',
     'café de especialidad puebla',
-    'desayunos centro histórico puebla',
-    'brunch puebla',
+    'tablas para compartir puebla',
     // Ubicación
-    'restaurante palafox puebla',
+    'palafox puebla',
     'café calle palafox',
-    'restaurante centro puebla',
+    'boutique centro puebla',
     // Experiencia
     'centro cultural puebla',
     'eventos culturales puebla',
     'galería arte puebla',
+    'atelier puebla',
     'lugar para eventos puebla',
-    'restaurante romántico puebla',
     'café instagrameable puebla',
     // Long tail
     'donde desayunar en puebla centro',
     'mejores cafeterías puebla',
-    'bistró con historia puebla',
-    'café francés puebla'
+    'boutique artesanal puebla',
+    'mercado boutique puebla'
   ],
   authors: [{ name: 'Casa de los Ángeles Puebla' }],
   creator: 'Casa de los Ángeles',
@@ -86,14 +85,14 @@ export const metadata: Metadata = {
     locale: 'es_MX',
     url: siteUrl,
     siteName: 'Casa de los Ángeles Puebla',
-    title: 'Casa de los Ángeles | Bistró Francés & Centro Cultural en Puebla',
-    description: 'Bistró francés y cafetería artesanal en el Centro Histórico de Puebla. Croissants, baguettes, café de especialidad y eventos culturales en un espacio con más de 100 años de historia.',
+    title: 'Casa de los Ángeles | Café, Arte & Boutique en Puebla',
+    description: 'Café, arte y boutique en el Centro Histórico de Puebla. Charcutería artesanal, vinos, eventos culturales y un espacio único con más de 100 años de historia.',
     images: [
       {
         url: `${siteUrl}/images/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: 'Casa de los Ángeles - Bistró Francés y Centro Cultural en Puebla',
+        alt: 'Casa de los Ángeles - Café, Arte & Boutique en Puebla',
         type: 'image/jpeg',
       },
     ],
@@ -102,8 +101,8 @@ export const metadata: Metadata = {
   // Twitter Cards mejorado
   twitter: {
     card: 'summary_large_image',
-    title: 'Casa de los Ángeles | Bistró Francés & Centro Cultural',
-    description: 'Bistró francés y cafetería artesanal en el Centro Histórico de Puebla. Croissants, café de especialidad y eventos culturales.',
+    title: 'Casa de los Ángeles | Café, Arte & Boutique',
+    description: 'Café, arte y boutique en el Centro Histórico de Puebla. Charcutería, vinos, eventos culturales y un espacio único.',
     images: [`${siteUrl}/images/og-image.jpg`],
     creator: '@casa_de_los_angeles_puebla',
   },
@@ -162,7 +161,7 @@ const jsonLd = {
       '@id': `${siteUrl}/#organization`,
       name: 'Casa de los Ángeles',
       alternateName: 'Casa de los Ángeles Puebla',
-      description: 'Bistró francés y cafetería artesanal en el Centro Histórico de Puebla. Un espacio único con más de 100 años de historia donde el café artesanal, la cultura y el arte se encuentran.',
+      description: 'Café, arte y boutique en el Centro Histórico de Puebla. Un espacio único con más de 100 años de historia donde el café, la cultura, el arte y el diseño se encuentran.',
       url: siteUrl,
       logo: {
         '@type': 'ImageObject',
@@ -202,11 +201,11 @@ const jsonLd = {
             'Saturday',
             'Sunday'
           ],
-          opens: '08:00',
-          closes: '20:00',
+          opens: '09:00',
+          closes: '22:00',
         },
       ],
-      servesCuisine: ['French', 'Café', 'Bakery', 'Brunch'],
+      servesCuisine: ['Café', 'Charcuterie', 'Wine Bar', 'Brunch'],
       priceRange: '$$',
       currenciesAccepted: 'MXN',
       paymentAccepted: 'Cash, Credit Card, Debit Card',
@@ -220,7 +219,7 @@ const jsonLd = {
         name: 'Puebla',
         '@id': 'https://www.wikidata.org/wiki/Q46475',
       },
-      keywords: 'bistró francés, cafetería artesanal, centro histórico puebla, croissants, baguettes, café especialidad, eventos culturales',
+      keywords: 'café, arte, boutique, centro histórico puebla, charcutería, vinos, café especialidad, eventos culturales, atelier',
     },
     // Sitio Web
     {
@@ -228,7 +227,7 @@ const jsonLd = {
       '@id': `${siteUrl}/#website`,
       url: siteUrl,
       name: 'Casa de los Ángeles Puebla',
-      description: 'Bistró francés y centro cultural en el Centro Histórico de Puebla',
+      description: 'Café, arte y boutique en el Centro Histórico de Puebla',
       publisher: {
         '@id': `${siteUrl}/#organization`,
       },
@@ -239,14 +238,14 @@ const jsonLd = {
       '@type': 'WebPage',
       '@id': `${siteUrl}/#webpage`,
       url: siteUrl,
-      name: 'Casa de los Ángeles | Bistró Francés & Centro Cultural | Puebla',
+      name: 'Casa de los Ángeles | Café, Arte & Boutique | Puebla',
       isPartOf: {
         '@id': `${siteUrl}/#website`,
       },
       about: {
         '@id': `${siteUrl}/#organization`,
       },
-      description: 'Bistró francés y cafetería artesanal en el Centro Histórico de Puebla. Croissants, baguettes, café de especialidad y eventos culturales.',
+      description: 'Café, arte y boutique en el Centro Histórico de Puebla. Charcutería, vinos, eventos culturales y un espacio único.',
       inLanguage: 'es-MX',
     },
     // BreadcrumbList para navegación
@@ -278,6 +277,10 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        {/* Favicon explícito para Safari */}
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/logo-short.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/logo-short.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-short-1000x1000.png" />
         {/* Preconnect para performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
