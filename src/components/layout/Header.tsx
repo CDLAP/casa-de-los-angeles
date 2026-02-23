@@ -179,20 +179,21 @@ export default function Header() {
 
       {/* Angelito bajo nav - desktop */}
       <motion.div
-        className="fixed z-40 hidden md:flex items-center justify-center left-1/2 -translate-x-1/2 pointer-events-none"
-        style={{ top: isScrolled ? '60px' : '60px' }}
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
+        className={`fixed z-40 hidden md:flex items-center justify-center left-1/2 -translate-x-1/2 pointer-events-none transition-all duration-500 ${
+          isScrolled ? 'top-[52px]' : 'top-[56px]'
+        }`}
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 3, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
-        <div className={`relative w-12 h-12 transition-all duration-500 ${
-          isScrolled ? 'opacity-80' : 'opacity-60'
+        <div className={`relative transition-all duration-500 ${
+          isScrolled ? 'w-9 h-9 opacity-70' : 'w-12 h-12 opacity-50'
         }`}>
           <Image
             src="/images/logo-short.png"
             alt="Casa de los Ángeles"
             fill
-            className="object-contain drop-shadow-lg"
+            className="object-contain drop-shadow-md"
           />
         </div>
       </motion.div>
