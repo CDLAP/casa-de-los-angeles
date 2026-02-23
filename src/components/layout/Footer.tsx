@@ -40,13 +40,21 @@ export default function Footer() {
           <div>
             <h4 className="font-serif text-lg text-gold mb-6">Navegación</h4>
             <ul className="space-y-3">
-              {['Inicio', 'Nosotros', 'Menú', 'Galería', 'Eventos', 'Contacto'].map((item) => (
-                <li key={item}>
+              {[
+                { label: 'Café', href: '/#menu' },
+                { label: 'Museo', href: '/#nosotros' },
+                { label: 'Boutique', href: '/#boutique' },
+                { label: 'Atelier', href: '/#atelier' },
+                { label: 'Sombrería', href: '/#sombrereria' },
+                { label: 'Ruedas de Prensa', href: '/#rueda-de-prensa' },
+                { label: 'Contacto', href: '/#contacto' },
+              ].map((item) => (
+                <li key={item.label}>
                   <Link 
-                    href={`#${item.toLowerCase()}`}
+                    href={item.href}
                     className="text-cream/70 hover:text-gold transition-colors text-sm"
                   >
-                    {item}
+                    {item.label}
                   </Link>
                 </li>
               ))}
@@ -86,7 +94,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-cream/70 mb-8">
               <li className="flex justify-between">
                 <span>Lunes a Domingo</span>
-                <span>8:00 AM a 10:00 PM</span>
+                <span>9:00 AM a 10:00 PM</span>
               </li>
             </ul>
 
