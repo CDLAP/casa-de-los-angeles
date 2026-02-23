@@ -25,22 +25,22 @@ export default function Hero() {
         <div className="absolute top-0 left-0 right-0 h-px bg-gold/60" />
 
         {/* Ángel como sello sobre la línea */}
-        <motion.div
-          className="absolute left-1/2 -translate-x-1/2 -top-20 md:-top-24 z-10"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
-        >
-          <div className="relative w-40 h-40 md:w-48 md:h-48">
+        <div className="absolute top-0 left-0 right-0 -translate-y-1/2 z-10 flex justify-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+          >
             <Image
               src="/images/logo-short-1000x1000.png"
               alt="Casa de los Ángeles"
-              fill
-              className="object-contain drop-shadow-2xl"
+              width={160}
+              height={160}
+              className="object-contain drop-shadow-2xl w-36 h-36 md:w-44 md:h-44"
               priority
             />
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
 
         <div className="max-w-4xl mx-auto text-center px-5">
           {/* Casa de los Ángeles */}
