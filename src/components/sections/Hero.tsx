@@ -27,7 +27,7 @@ export default function Hero() {
               <div className="absolute inset-0 blur-3xl bg-gold/15 scale-150" />
               <div className="relative w-36 h-36 md:w-48 md:h-48">
                 <Image
-                  src="/images/logo-CDLA.png"
+                  src="/images/logo-short-1000x1000.png"
                   alt="Casa de los Ángeles"
                   fill
                   className="object-contain drop-shadow-2xl"
