@@ -5,7 +5,6 @@ import { motion, useInView } from 'framer-motion'
 import Image from 'next/image'
 
 const cafeImages = [
-  '/images/cafe/1.jpeg',
   '/images/cafe/2.jpeg',
   '/images/cafe/3.jpeg',
   '/images/cafe/4.jpeg',
