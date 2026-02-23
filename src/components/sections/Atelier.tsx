@@ -7,23 +7,23 @@ import { Palette, Brush, Landmark, Sparkles } from 'lucide-react'
 const highlights = [
   {
     icon: Brush,
-    title: 'Pintura & Escultura',
-    description: 'Obra original que captura la esencia del centro histórico de Puebla con técnica depurada y sensibilidad artística.',
+    title: 'Pintura & Muralismo',
+    description: 'Óleo, acrílico y muralismo. Realismo fusionado con elementos oníricos y delicadas veladuras.',
   },
   {
     icon: Landmark,
     title: 'Restauración Patrimonial',
-    description: 'Técnico especializado en restauración de inmuebles y piezas históricas del centro de Puebla.',
+    description: 'Restauración integral del Zócalo de Puebla y conservación de "La Batalla del Cinco de Mayo" del Palacio Municipal.',
   },
   {
     icon: Palette,
-    title: 'Arte en Vivo',
-    description: 'El atelier es un espacio activo donde el proceso creativo ocurre frente al visitante.',
+    title: 'Creación en Vivo',
+    description: 'Un espacio activo donde el visitante presencia el proceso creativo del artista.',
   },
   {
     icon: Sparkles,
-    title: 'Piezas Únicas',
-    description: 'Cada obra es irrepetible. Pintura, escultura y piezas restauradas disponibles para coleccionistas.',
+    title: 'Obra Única',
+    description: 'Piezas originales disponibles para coleccionistas. Pintura, escultura y obra restaurada.',
   },
 ]
 
@@ -50,7 +50,7 @@ export default function Atelier() {
         >
           <h2 className="section-title text-gold">Atelier</h2>
           <p className="section-subtitle text-cream/70">
-            Arte, restauración y oficio vivo en el corazón de Puebla.
+            by Bruno Adorate Lua
           </p>
           <div className="divider" />
         </motion.div>
@@ -65,13 +65,22 @@ export default function Atelier() {
           >
             <div className="space-y-8 text-cream/70 leading-relaxed text-lg">
               <p>
-                Dentro de <span className="text-gold font-medium">Casa de los Ángeles</span> existe un espacio dedicado a la creación y la restauración: el Atelier. Aquí trabaja un artista poblano cuya vida entera ha girado en torno a la belleza del centro histórico de Puebla — su arquitectura, sus texturas, su luz.
+                El <span className="text-gold font-medium">Atelier by Bruno Adorate Lua</span> es un espacio de creación artística y restauración donde la tradición pictórica dialoga con la exploración contemporánea. Dirigido por el artista plástico Bruno Adorate Lua, el atelier reúne obra original, procesos creativos y proyectos especializados vinculados al arte y al patrimonio cultural.
               </p>
               <p>
-                Pintor, escultor y técnico en restauración, su obra es un puente entre el pasado patrimonial de la ciudad y la mirada contemporánea. El Atelier no es solo un taller: es un espacio donde el visitante puede presenciar el proceso creativo, conocer piezas originales y adquirir obra única.
+                La producción de Bruno se centra principalmente en la pintura al óleo, aunque también explora el acrílico, el muralismo y la escultura. Su trabajo fusiona el realismo con elementos sutilmente oníricos, creando composiciones donde la luz, la atmósfera y la materia pictórica adquieren un papel protagónico mediante el uso de delicadas veladuras.
+              </p>
+              <p>
+                Tras iniciar su trayectoria artística a temprana edad, el artista se apartó durante más de una década de los circuitos expositivos para profundizar en su técnica y visión personal. Retomó su presencia pública en 2023 con exposiciones en espacios de alto nivel, incluyendo el lobby del Senado de la República Mexicana.
+              </p>
+              <p>
+                Paralelamente, Bruno ha desarrollado una sólida labor en el ámbito de la restauración, participando en proyectos de preservación patrimonial de gran relevancia, entre ellos la restauración integral del Zócalo de Puebla y la conservación de piezas históricas como la pintura <span className="text-gold italic">"La Batalla del Cinco de Mayo"</span> del Palacio Municipal.
+              </p>
+              <p>
+                Esta doble dimensión —creador y conservador— otorga a su obra una profundidad singular, donde el rigor técnico se une a una sensibilidad estética contemporánea.
               </p>
               <p className="text-gold font-medium italic text-xl">
-                Un rincón donde el arte no se exhibe: se vive.
+                Arte, patrimonio y creación viva: una experiencia íntima con el proceso artístico.
               </p>
             </div>
           </motion.div>
