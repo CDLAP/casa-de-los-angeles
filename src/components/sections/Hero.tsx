@@ -1,9 +1,51 @@
 'use client'
 
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 
 export default function Hero() {
+  const angelRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLElement>(null)
+  const [isStuck, setIsStuck] = useState(false)
+  const [angelInitialTop, setAngelInitialTop] = useState(0)
+
+  useEffect(() => {
+    const angel = angelRef.current
+    if (!angel) return
+
+    // Guardamos la posición original del ángel
+    const updateInitialTop = () => {
+      const rect = angel.getBoundingClientRect()
+      const scrollY = window.scrollY
+      setAngelInitialTop(rect.top + scrollY)
+    }
+
+    updateInitialTop()
+    // Recalcular si cambia el tamaño
+    window.addEventListener('resize', updateInitialTop)
+
+    const handleScroll = () => {
+      if (!angel) return
+      // El nav mide ~64px en desktop, ~56px en mobile
+      const navHeight = window.innerWidth >= 768 ? 72 : 0
+      const rect = angel.getBoundingClientRect()
+
+      // Cuando el ángel llega al borde inferior del nav, se fija
+      if (rect.top <= navHeight && !isStuck) {
+        setIsStuck(true)
+      } else if (window.scrollY < angelInitialTop - navHeight && isStuck) {
+        setIsStuck(false)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', updateInitialTop)
+    }
+  }, [isStuck, angelInitialTop])
+
   return (
     <>
       {/* BLOQUE 1: Foto de la casa */}
@@ -19,13 +61,17 @@ export default function Hero() {
         />
       </section>
 
-      {/* BLOQUE 2: Pleca guinda con ángel como sello */}
-      <section className="relative w-full bg-[#3F1F26] pb-16 md:pb-20 pt-24 md:pt-32">
-        {/* Línea dorada separadora */}
+      {/* BLOQUE 2: Pleca guinda */}
+      <section ref={sectionRef} className="relative w-full bg-[#3F1F26] pb-16 md:pb-20 pt-24 md:pt-32">
+        {/* Línea dorada */}
         <div className="absolute top-0 left-0 right-0 h-px bg-gold/60" />
 
-        {/* Ángel como sello sobre la línea */}
-        <div className="absolute top-0 left-0 right-0 -translate-y-1/2 z-10 flex justify-center">
+        {/* Ángel — posición original (placeholder para el espacio) */}
+        <div
+          ref={angelRef}
+          className={`absolute top-0 left-0 right-0 -translate-y-1/2 flex justify-center ${isStuck ? 'opacity-0' : 'opacity-100'}`}
+          style={{ zIndex: 20 }}
+        >
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -42,8 +88,27 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        <div className="max-w-4xl mx-auto text-center px-5">
-          {/* Casa de los Ángeles */}
+        {/* Ángel FIJO — aparece cuando el original llega al nav */}
+        {isStuck && (
+          <motion.div
+            className="fixed top-[64px] left-0 right-0 flex justify-center pointer-events-none"
+            style={{ zIndex: 45 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3 }}
+          >
+            <Image
+              src="/images/logo-short-1000x1000.png"
+              alt="Casa de los Ángeles"
+              width={160}
+              height={160}
+              className="object-contain drop-shadow-2xl w-44 h-44 md:w-56 md:h-56"
+              priority
+            />
+          </motion.div>
+        )}
+
+        <div className="relative z-10 max-w-4xl mx-auto text-center px-5">
           <motion.h1
             className="font-serif text-4xl md:text-6xl text-gold tracking-wide mb-4"
             initial={{ opacity: 0, y: 15 }}
@@ -53,7 +118,6 @@ export default function Hero() {
             Casa de los Ángeles
           </motion.h1>
 
-          {/* CAFÉ • ARTE • BOUTIQUE */}
           <motion.p
             className="text-gold-light uppercase tracking-[0.4em] text-sm md:text-base font-light mb-4"
             initial={{ opacity: 0 }}
