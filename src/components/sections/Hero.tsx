@@ -10,22 +10,22 @@ export default function Hero() {
 
   return (
     <>
-      {/* BLOQUE 1: Ángel + texto sobre fondo verde/vino */}
+      {/* BLOQUE 1: Ángel + título + texto sobre fondo verde/vino */}
       <section 
         id="inicio" 
-        className={`w-full pt-24 md:pt-20 pb-12 md:pb-16 ${isWine ? 'bg-[#3F1F26]' : 'bg-[#1A3A2E]'}`}
+        className={`w-full pt-16 sm:pt-14 pb-12 md:pb-16 ${isWine ? 'bg-[#3F1F26]' : 'bg-[#1A3A2E]'}`}
       >
         <div className="max-w-4xl mx-auto text-center px-5">
-          {/* Ángel / Logo */}
+          {/* Ángel */}
           <motion.div
-            className="mb-8 flex justify-center"
+            className="mb-6 flex justify-center"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
           >
             <div className="relative">
               <div className="absolute inset-0 blur-3xl bg-gold/15 scale-150" />
-              <div className="relative w-40 h-40 md:w-52 md:h-52">
+              <div className="relative w-36 h-36 md:w-48 md:h-48">
                 <Image
                   src="/images/logo-CDLA.png"
                   alt="Casa de los Ángeles"
@@ -37,7 +37,7 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Café • Arte • Boutique */}
+          {/* CAFÉ • ARTE • BOUTIQUE */}
           <motion.p
             className="text-gold-light uppercase tracking-[0.4em] text-sm md:text-base font-light mb-4"
             initial={{ opacity: 0 }}
