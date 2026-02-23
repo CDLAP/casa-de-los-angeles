@@ -75,21 +75,21 @@ export default function Hero() {
             {/* Pleca con textos en la parte inferior */}
             <div className="absolute bottom-0 left-0 right-0 z-10">
               <motion.div
-                className="bg-black/70 backdrop-blur-sm py-8 px-5"
+                className="bg-gold/90 backdrop-blur-sm py-8 px-5"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
                 <div className="max-w-4xl mx-auto text-center">
-                  <p className="text-gold uppercase tracking-[0.4em] text-sm md:text-lg font-light mb-3">
+                  <p className="text-emerald-forest uppercase tracking-[0.4em] text-sm md:text-lg font-medium mb-3">
                     Café & Bistró de los Ángeles
                   </p>
                   <div className="flex items-center justify-center gap-4 mb-3">
-                    <div className="w-12 h-px bg-gold/40" />
-                    <div className="w-1.5 h-1.5 rotate-45 bg-gold/40" />
-                    <div className="w-12 h-px bg-gold/40" />
+                    <div className="w-12 h-px bg-emerald-forest/30" />
+                    <div className="w-1.5 h-1.5 rotate-45 bg-emerald-forest/30" />
+                    <div className="w-12 h-px bg-emerald-forest/30" />
                   </div>
-                  <p className="text-white/80 text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-light">
+                  <p className="text-emerald-forest/80 text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-light">
                     Un espacio único en el corazón histórico de Puebla donde el café artesanal, 
                     la cultura y el arte se encuentran en una experiencia sublime
                   </p>

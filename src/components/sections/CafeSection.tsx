@@ -34,7 +34,7 @@ export default function CafeSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="section-title">Café</h2>
+          <h2 className="section-title">Café & Bistró de los Ángeles</h2>
           <p className="section-subtitle">
             De la montaña de Zacatlán a tu taza
           </p>
