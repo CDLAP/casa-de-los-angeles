@@ -18,11 +18,11 @@ export default function Hero() {
           sizes="100vw"
         />
         {/* Degradado sutil que funde la foto con el guinda */}
-        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#3F1F26] via-[#3F1F26]/60 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#3F1F26] to-transparent" />
       </section>
 
       {/* BLOQUE 2: Pleca guinda con ángel + nombre + tagline */}
-      <section className="w-full bg-[#3F1F26] pb-16 md:pb-20 pt-10 md:pt-14">
+      <section className="w-full bg-[#3F1F26] pb-20 md:pb-24 pt-14 md:pt-18">
         <div className="max-w-4xl mx-auto text-center px-5">
           {/* Ángel */}
           <motion.div
