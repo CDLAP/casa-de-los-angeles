@@ -7,7 +7,8 @@ import Image from 'next/image'
 // Configuración del punto de anclaje
 // El ángel se fija cuando la línea inferior del nav queda a la altura de su "frente"
 // La frente está aprox al 35% desde arriba de la imagen
-const FOREHEAD_RATIO = 0.35
+// Solo cabeza y alas asoman por encima del nav (~20% desde arriba)
+const FOREHEAD_RATIO = 0.20
 
 export default function Hero() {
   const angelRef = useRef<HTMLDivElement>(null)
@@ -17,8 +18,8 @@ export default function Hero() {
   const isMd = useCallback(() => window.innerWidth >= 768, [])
 
   const getNavHeight = useCallback(() => {
-    // Nav: py-10 = 2.5rem*2 + text ~20px
-    return isMd() ? 80 : 0
+    // Nav: py-12 = 3rem*2 + text ~16px ≈ 112px
+    return isMd() ? 112 : 0
   }, [isMd])
 
   useEffect(() => {
@@ -81,7 +82,7 @@ export default function Hero() {
   return (
     <>
       {/* BLOQUE 1: Foto de la casa */}
-      <section id="inicio" className="relative w-full pt-[88px] md:pt-[104px] bg-[#3F1F26]">
+      <section id="inicio" className="relative w-full pt-[88px] md:pt-[112px] bg-[#3F1F26]">
         <Image
           src="/images/casa.jpeg"
           alt="Casa de los Ángeles - Fachada"
