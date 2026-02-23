@@ -67,7 +67,7 @@ export default function Hero() {
             <div className="absolute inset-0">
               {/* Foto de la fachada como fondo */}
               <div 
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                className="absolute inset-0 bg-[length:100%_auto] md:bg-cover bg-top md:bg-center bg-no-repeat"
                 style={{ backgroundImage: `url('/images/casa.jpeg')` }}
               />
             </div>
