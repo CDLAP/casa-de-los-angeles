@@ -18,8 +18,8 @@ export default function Hero() {
   const isMd = useCallback(() => window.innerWidth >= 768, [])
 
   const getNavHeight = useCallback(() => {
-    // Nav: py-16 = 4rem*2 + text ~16px ≈ 144px
-    return isMd() ? 144 : 0
+    // Nav: pt-6(24px) + pb-24(96px) + text ~20px ≈ 140px
+    return isMd() ? 140 : 0
   }, [isMd])
 
   useEffect(() => {
@@ -82,7 +82,7 @@ export default function Hero() {
   return (
     <>
       {/* BLOQUE 1: Foto de la casa */}
-      <section id="inicio" className="relative w-full pt-[88px] md:pt-[144px] bg-[#3F1F26]">
+      <section id="inicio" className="relative w-full pt-[88px] md:pt-[140px] bg-[#3F1F26]">
         <Image
           src="/images/casa.jpeg"
           alt="Casa de los Ángeles - Fachada"
