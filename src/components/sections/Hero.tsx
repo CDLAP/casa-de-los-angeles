@@ -67,6 +67,16 @@ export default function Hero() {
             Un espacio único en el corazón histórico de Puebla donde el café artesanal, 
             la cultura y el arte se encuentran
           </motion.p>
+
+          <motion.a
+            href="/#contacto"
+            className={`inline-block mt-6 px-8 py-3 text-sm uppercase tracking-[0.2em] font-light border transition-all duration-300 ${isWine ? 'border-gold/50 text-gold hover:bg-gold hover:text-[#3F1F26]' : 'border-gold/50 text-gold hover:bg-gold hover:text-[#1A3A2E]'}`}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.4 }}
+          >
+            Reservar
+          </motion.a>
         </div>
       </section>
 
