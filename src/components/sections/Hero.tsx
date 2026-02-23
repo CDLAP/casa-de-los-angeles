@@ -67,7 +67,7 @@ export default function Hero() {
                 src="/images/casa.jpeg"
                 alt="Casa de los Ángeles - Fachada"
                 fill
-                className="object-cover object-[center_30%] md:object-center"
+                className="object-cover object-center"
                 priority
                 sizes="100vw"
               />
