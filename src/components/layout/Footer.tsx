@@ -46,6 +46,7 @@ export default function Footer() {
                 { label: 'Boutique', href: '/#boutique' },
                 { label: 'Atelier', href: '/#atelier' },
                 { label: 'Ruedas de Prensa', href: '/#rueda-de-prensa' },
+                { label: 'Mercado', href: '/#mercado' },
                 { label: 'Contacto', href: '/#contacto' },
               ].map((item) => (
                 <li key={item.label}>

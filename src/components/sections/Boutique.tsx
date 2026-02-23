@@ -1,196 +1,111 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { ShoppingBag, Gem, Palette, Gift, Clock, MapPin, Calendar, Sparkles, FileText } from 'lucide-react'
-import LineamientosModal from '@/components/modals/LineamientosModal'
+import { Crown, Gem, Shirt, Sparkles } from 'lucide-react'
 
-const boutiqueCategories = [
+const boutiqueItems = [
   {
-    icon: Palette,
-    title: 'Diseño & Moda',
-    description: 'Piezas únicas de diseñadores independientes con estilo y personalidad.',
+    icon: Crown,
+    title: 'Sombrería',
+    description: 'Sombreros artesanales y de diseñador, piezas únicas que combinan tradición y estilo contemporáneo.',
   },
   {
     icon: Gem,
-    title: 'Arte & Decoración',
-    description: 'Obras y objetos decorativos que transformarán tus espacios.',
+    title: 'Joyería Artesanal',
+    description: 'Colección curada de joyería hecha a mano por artesanos locales con materiales selectos.',
   },
   {
-    icon: Gift,
-    title: 'Regalos Especiales',
-    description: 'Encuentra el detalle perfecto entre nuestra selección curada.',
+    icon: Shirt,
+    title: 'Moda & Accesorios',
+    description: 'Prendas y accesorios de diseñadores independientes con identidad y personalidad.',
   },
   {
     icon: Sparkles,
-    title: 'Productos Gourmet',
-    description: 'Delicias artesanales y productos selectos para paladares exigentes.',
+    title: 'Objetos de Arte',
+    description: 'Piezas decorativas, cerámica y arte popular seleccionado con cuidado y buen gusto.',
   },
 ]
 
 export default function Boutique() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
-  const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
-    <>
-      <section id="boutique" ref={sectionRef} className="section bg-cream relative overflow-hidden">
-        <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8 }}
-            >
-              <h2 className="font-serif text-display-md text-gold-dark mb-6">
-                Boutique
-              </h2>
-              <p className="text-charcoal-50 text-lg leading-relaxed mb-4">
-                Un mercado boutique donde las marcas brillan y la experiencia para el visitante 
-                es siempre agradable. Creado con cariño, intención y visión en el corazón del 
-                Centro Histórico de Puebla.
+    <section id="boutique" ref={sectionRef} className="section bg-cream relative overflow-hidden">
+      <div className="container-custom">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="section-title">Boutique</h2>
+          <p className="section-subtitle">
+            Sombrería, artesanías y productos selectos en un espacio con alma.
+          </p>
+          <div className="divider" />
+        </motion.div>
+
+        {/* Content */}
+        <div className="max-w-4xl mx-auto mb-16">
+          <motion.div
+            className="text-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <div className="space-y-6 text-charcoal-50 leading-relaxed text-lg">
+              <p>
+                Nuestra <span className="text-gold-dark font-medium">Boutique</span> es un espacio permanente dentro de Casa de los Ángeles donde encontrarás una selección curada de sombrería artesanal, joyería, moda de autor y objetos de arte.
               </p>
-              <p className="text-charcoal-50 text-lg leading-relaxed mb-8">
-                Disfruta de un espacio al aire libre con encanto arquitectónico, a media cuadra 
-                del Zócalo, donde encontrarás una selección cuidada de marcas locales e independientes.
+              <p>
+                Cada pieza ha sido elegida por su calidad, originalidad y conexión con la tradición artesanal mexicana. Un lugar para descubrir regalos únicos y llevarte un pedazo del alma de Puebla.
               </p>
-
-              <div className="grid sm:grid-cols-2 gap-6 mb-10">
-                {boutiqueCategories.map((category, index) => (
-                  <motion.div
-                    key={category.title}
-                    className="flex gap-4"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                  >
-                    <div className="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <category.icon className="w-5 h-5 text-gold-dark" />
-                    </div>
-                    <div>
-                      <h3 className="font-serif text-lg text-charcoal mb-1">{category.title}</h3>
-                      <p className="text-sm text-charcoal-50">{category.description}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Info del evento */}
-              <motion.div
-                className="bg-emerald/5 border border-emerald/20 rounded-xl p-6 mb-8"
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.5 }}
-              >
-                <div className="flex flex-col sm:flex-row gap-6">
-                  <div className="flex items-center gap-3">
-                    <Calendar className="w-5 h-5 text-emerald" />
-                    <div>
-                      <p className="text-xs text-charcoal-50 uppercase tracking-wider">Fecha</p>
-                      <p className="text-charcoal font-medium">30, 31 Ene y 1 Feb 2026</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Clock className="w-5 h-5 text-emerald" />
-                    <div>
-                      <p className="text-xs text-charcoal-50 uppercase tracking-wider">Horario</p>
-                      <p className="text-charcoal font-medium">9:00 AM - 9:00 PM</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <MapPin className="w-5 h-5 text-emerald" />
-                    <div>
-                      <p className="text-xs text-charcoal-50 uppercase tracking-wider">Lugar</p>
-                      <a 
-                        href="https://www.google.com/maps/search/?api=1&query=Casa+de+los+Angeles+Palafox+222+Puebla" 
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-charcoal font-medium hover:text-gold transition-colors underline decoration-gold/30 hover:decoration-gold"
-                      >
-                        Casa de los Ángeles
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* CTA */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.6 }}
-              >
-                <p className="text-charcoal-50 mb-6">
-                  ¿Te gustaría participar como expositor? Contáctanos para conocer los espacios disponibles.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <motion.a
-                    href="https://wa.me/522206224222?text=Hola,%20me%20interesa%20participar%20como%20expositor%20en%20la%20Boutique%20de%20Casa%20de%20los%20%C3%81ngeles"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-elegant text-center"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    Quiero ser Expositor
-                  </motion.a>
-                  <motion.button
-                    onClick={() => setIsModalOpen(true)}
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-gold text-gold-dark rounded-lg font-medium hover:bg-gold/10 transition-colors"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <FileText className="w-4 h-4" />
-                    Ver Lineamientos
-                  </motion.button>
-                </div>
-              </motion.div>
-            </motion.div>
-
-            {/* Image Composition */}
-            <motion.div
-              className="relative"
-              initial={{ opacity: 0, x: 30 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <div className="relative pb-4 pr-4 md:pb-8 md:pr-8">
-                {/* Main image */}
-                <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl">
-                  <div 
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{
-                      backgroundImage: `url('/images/bazar.png')`,
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 to-transparent" />
-                </div>
-
-                {/* Decorative frame - hidden on mobile */}
-                <div className="absolute -top-4 -left-4 w-full h-full border-2 border-gold/30 rounded-2xl -z-10 hidden md:block" />
-
-                {/* Floating badge */}
-                <motion.div
-                  className="absolute -bottom-3 -right-3 md:-bottom-6 md:-right-6 bg-gold text-charcoal p-4 md:p-6 rounded-xl shadow-xl"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ duration: 0.6, delay: 0.8 }}
-                >
-                  <div className="text-center">
-                    <span className="block text-2xl font-serif mb-1">Entrada</span>
-                    <span className="text-sm uppercase tracking-wider">Libre</span>
-                  </div>
-                </motion.div>
-              </div>
-            </motion.div>
-          </div>
+              <p className="text-gold-dark font-medium italic text-xl">
+                Donde la tradición artesanal se viste de elegancia.
+              </p>
+            </div>
+          </motion.div>
         </div>
-      </section>
 
-      {/* Modal de Lineamientos */}
-      <LineamientosModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-    </>
+        {/* Items Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          {boutiqueItems.map((item, index) => (
+            <motion.div
+              key={item.title}
+              className="text-center p-6 rounded-2xl border border-gold/10 bg-white hover:bg-gold/5 hover:border-gold/25 transition-all duration-500"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+            >
+              <div className="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <item.icon className="w-5 h-5 text-gold-dark" />
+              </div>
+              <h4 className="font-serif text-lg text-charcoal mb-2">{item.title}</h4>
+              <p className="text-charcoal-50 text-sm leading-relaxed">{item.description}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <motion.div
+          className="text-center mt-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
+          <motion.a
+            href="#contacto"
+            className="btn-elegant"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            Visitar la Boutique
+          </motion.a>
+        </motion.div>
+      </div>
+    </section>
   )
 }

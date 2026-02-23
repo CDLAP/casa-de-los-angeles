@@ -6,13 +6,11 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Hero from '@/components/sections/Hero'
 import About from '@/components/sections/About'
-// import MenuSection from '@/components/sections/MenuSection'
 import CafeSection from '@/components/sections/CafeSection'
-// import Gallery from '@/components/sections/Gallery'
-// import Events from '@/components/sections/Events'
 import Boutique from '@/components/sections/Boutique'
 import Atelier from '@/components/sections/Atelier'
 import RuedaPrensa from '@/components/sections/RuedaPrensa'
+import MercadoSection from '@/components/sections/MercadoSection'
 import Contact from '@/components/sections/Contact'
 
 // Register GSAP plugins
@@ -25,13 +23,11 @@ export default function Home() {
     <>
       <Hero />
       <About />
-      {/* <MenuSection /> */}
       <CafeSection />
-      {/* <Gallery /> */}
-      {/* <Events /> */}
       <Boutique />
       <Atelier />
       <RuedaPrensa />
+      <MercadoSection />
       <Contact />
     </>
   )

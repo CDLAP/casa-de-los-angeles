@@ -11,6 +11,7 @@ const navLinks = [
   { href: '/#boutique', label: 'Boutique' },
   { href: '/#atelier', label: 'Atelier' },
   { href: '/#rueda-de-prensa', label: 'Prensa' },
+  { href: '/#mercado', label: 'Mercado' },
   { href: '/#contacto', label: 'Contacto' },
 ]
 

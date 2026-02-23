@@ -80,7 +80,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.4 }}
           >
-            Un espacio único en el corazón histórico de Puebla donde el café artesanal, 
+            Un espacio único en el corazón histórico de Puebla donde el café artesanal,<br className="md:hidden" />{' '}
             la cultura y el arte se encuentran
           </motion.p>
 
