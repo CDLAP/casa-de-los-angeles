@@ -75,7 +75,7 @@ export default function Hero() {
 
             {/* Pleca sólida justo debajo de la foto */}
             <motion.div
-              className={`border-t border-gold/30 py-10 md:py-12 px-5 ${isWine ? 'bg-[#3F1F26]' : 'bg-[#1A3A2E]'}`}
+              className={`border-t border-gold/30 py-10 md:py-12 px-5 ${isWine ? 'bg-bistro-dark' : 'bg-emerald-forest'}`}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
