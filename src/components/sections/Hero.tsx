@@ -20,7 +20,7 @@ export default function Hero() {
       </section>
 
       {/* BLOQUE 2: Pleca guinda con ángel como sello */}
-      <section className="relative w-full bg-[#3F1F26] pb-20 md:pb-24 pt-32 md:pt-40">
+      <section className="relative w-full bg-[#3F1F26] pb-16 md:pb-20 pt-24 md:pt-32">
         {/* Línea dorada separadora */}
         <div className="absolute top-0 left-0 right-0 h-px bg-gold/60" />
 
