@@ -45,7 +45,7 @@ export default function Boutique() {
               transition={{ duration: 0.8 }}
             >
               <h2 className="font-serif text-display-md text-gold-dark mb-6">
-                Boutique y Mercado de las Maravillas
+                Boutique
               </h2>
               <p className="text-charcoal-50 text-lg leading-relaxed mb-4">
                 Un mercado boutique donde las marcas brillan y la experiencia para el visitante 
@@ -127,7 +127,7 @@ export default function Boutique() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <motion.a
-                    href="https://wa.me/522206224222?text=Hola,%20me%20interesa%20participar%20como%20expositor%20en%20la%20Boutique%20y%20Mercado%20de%20las%20Maravillas"
+                    href="https://wa.me/522206224222?text=Hola,%20me%20interesa%20participar%20como%20expositor%20en%20la%20Boutique%20de%20Casa%20de%20los%20%C3%81ngeles"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-elegant text-center"

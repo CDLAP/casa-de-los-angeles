@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     'donde desayunar en puebla centro',
     'mejores cafeterías puebla',
     'boutique artesanal puebla',
-    'mercado boutique puebla'
+    'boutique artesanal puebla centro'
   ],
   authors: [{ name: 'Casa de los Ángeles Puebla' }],
   creator: 'Casa de los Ángeles',
