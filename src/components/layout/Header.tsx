@@ -9,7 +9,7 @@ import { Menu, X } from 'lucide-react'
 
 const navLinks = [
   { href: '/#nosotros', label: 'Museo' },
-  { href: '/#experiencia', label: 'Café' },
+  { href: '/#menu', label: 'Café' },
   { href: '/#boutique', label: 'Mercado' },
   { href: '/#atelier', label: 'Atelier' },
   { href: '/#sombrereria', label: 'Sombrería' },
