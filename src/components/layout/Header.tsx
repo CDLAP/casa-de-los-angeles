@@ -4,7 +4,8 @@ import { useState, useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
-import { ChevronDown } from 'lucide-react'
+import Image from 'next/image'
+import { ChevronDown, Newspaper, Users, Tag } from 'lucide-react'
 
 const mainLinks = [
   { href: '/#menu', label: 'Café' },
@@ -16,12 +17,18 @@ const mainLinks = [
 ]
 
 const moreLinks = [
+  { href: '/#rueda-de-prensa', label: 'Prensa', description: 'Ruedas de prensa y conferencias mediáticas', icon: Newspaper },
+  { href: '/relaciones-publicas', label: 'Relaciones Públicas', description: 'Alianzas, colaboraciones y patrocinios', icon: Users },
+  { href: '/promocion', label: 'Promoción del Día', description: 'Ofertas especiales que cambian cada día', icon: Tag },
+]
+
+const allLinks = [
+  ...mainLinks,
   { href: '/#rueda-de-prensa', label: 'Prensa' },
   { href: '/relaciones-publicas', label: 'Relaciones Públicas' },
   { href: '/promocion', label: 'Promoción' },
+  { href: '/#contacto', label: 'Contacto' },
 ]
-
-const allLinks = [...mainLinks, ...moreLinks, { href: '/#contacto', label: 'Contacto' }]
 
 export default function Header() {
   const pathname = usePathname()
@@ -35,6 +42,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [moreOpen, setMoreOpen] = useState(false)
   const moreRef = useRef<HTMLDivElement>(null)
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
     if (isBistro) { setActiveSection('/bistro'); return }
@@ -73,18 +81,17 @@ export default function Header() {
 
   useEffect(() => {
     setMenuOpen(false)
+    setMoreOpen(false)
   }, [pathname])
 
-  // Close "Más" dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (moreRef.current && !moreRef.current.contains(e.target as Node)) {
-        setMoreOpen(false)
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [])
+  const handleMoreEnter = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    setMoreOpen(true)
+  }
+
+  const handleMoreLeave = () => {
+    timeoutRef.current = setTimeout(() => setMoreOpen(false), 200)
+  }
 
   const isMoreActive = moreLinks.some(l => activeSection === l.href)
 
@@ -115,12 +122,12 @@ export default function Header() {
             </Link>
           ))}
 
-          {/* Más dropdown */}
+          {/* Más dropdown trigger */}
           <div
             ref={moreRef}
             className="relative"
-            onMouseEnter={() => setMoreOpen(true)}
-            onMouseLeave={() => setMoreOpen(false)}
+            onMouseEnter={handleMoreEnter}
+            onMouseLeave={handleMoreLeave}
           >
             <button
               className={`flex items-center gap-1 text-sm xl:text-base uppercase tracking-[0.12em] xl:tracking-[0.2em] font-sans transition-colors duration-300 whitespace-nowrap py-2 ${
@@ -137,51 +144,97 @@ export default function Header() {
                 <ChevronDown className="w-3.5 h-3.5" />
               </motion.div>
             </button>
-
-            <AnimatePresence>
-              {moreOpen && (
-                <motion.div
-                  className={`absolute top-full left-1/2 -translate-x-1/2 mt-4 min-w-[220px] rounded-xl border shadow-2xl overflow-hidden ${
-                    isScrolled
-                      ? 'bg-cream/98 backdrop-blur-md border-gold/15'
-                      : 'bg-[#3F1F26] border-gold/20'
-                  }`}
-                  initial={{ opacity: 0, y: -8, scale: 0.95 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -8, scale: 0.95 }}
-                  transition={{ duration: 0.2, ease: 'easeOut' }}
-                >
-                  {moreLinks.map((link, index) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={() => setMoreOpen(false)}
-                      className={`block px-6 py-3.5 text-sm uppercase tracking-[0.12em] font-sans transition-all duration-300 ${
-                        index < moreLinks.length - 1
-                          ? isScrolled ? 'border-b border-gold/10' : 'border-b border-gold/10'
-                          : ''
-                      } ${
-                        activeSection === link.href
-                          ? 'text-gold'
-                          : isScrolled
-                            ? 'text-charcoal hover:text-gold hover:bg-gold/5'
-                            : 'text-cream/80 hover:text-gold hover:bg-gold/5'
-                      }`}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
           </div>
 
-          {/* Contacto suelto */}
+          {/* Contacto */}
           <Link href="/#contacto" className={linkClass('/#contacto')}>
             Contacto
           </Link>
         </nav>
       </motion.header>
+
+      {/* Mega menu - full width dropdown */}
+      <AnimatePresence>
+        {moreOpen && (
+          <motion.div
+            className="fixed left-0 right-0 z-40 hidden md:block"
+            style={{ top: isScrolled ? '72px' : '72px' }}
+            onMouseEnter={handleMoreEnter}
+            onMouseLeave={handleMoreLeave}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+          >
+            <div className={`border-t overflow-hidden ${
+              isScrolled
+                ? 'bg-cream/98 backdrop-blur-md border-gold/10'
+                : 'bg-[#3F1F26] border-gold/15'
+            }`}>
+              <div className="max-w-5xl mx-auto px-8 py-10">
+                <div className="grid grid-cols-3 gap-8">
+                  {moreLinks.map((link, index) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setMoreOpen(false)}
+                      className={`group flex items-start gap-4 p-5 rounded-xl border transition-all duration-300 ${
+                        isScrolled
+                          ? 'border-gold/10 hover:border-gold/30 hover:bg-gold/5'
+                          : 'border-gold/10 hover:border-gold/30 hover:bg-gold/5'
+                      }`}
+                    >
+                      <div className={`w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-300 ${
+                        isScrolled
+                          ? 'bg-gold/10 group-hover:bg-gold/20'
+                          : 'bg-gold/10 group-hover:bg-gold/20'
+                      }`}>
+                        <link.icon className="w-5 h-5 text-gold" />
+                      </div>
+                      <div>
+                        <h3 className={`font-serif text-lg mb-1 transition-colors duration-300 ${
+                          activeSection === link.href
+                            ? 'text-gold'
+                            : isScrolled
+                              ? 'text-charcoal group-hover:text-gold'
+                              : 'text-cream group-hover:text-gold'
+                        }`}>
+                          {link.label}
+                        </h3>
+                        <p className={`text-sm leading-relaxed ${
+                          isScrolled ? 'text-charcoal-50' : 'text-cream/50'
+                        }`}>
+                          {link.description}
+                        </p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Desktop cherub logo - anchored below nav */}
+      <motion.div
+        className="fixed z-40 hidden md:flex items-center justify-center left-1/2 -translate-x-1/2 pointer-events-none"
+        style={{ top: isScrolled ? '60px' : '60px' }}
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 3, ease: [0.25, 0.46, 0.45, 0.94] }}
+      >
+        <div className={`relative w-12 h-12 transition-all duration-500 ${
+          isScrolled ? 'opacity-80' : 'opacity-60'
+        }`}>
+          <Image
+            src="/images/logo-short.png"
+            alt="Casa de los Ángeles"
+            fill
+            className="object-contain drop-shadow-lg"
+          />
+        </div>
+      </motion.div>
 
       {/* Mobile hamburger button */}
       <motion.button
