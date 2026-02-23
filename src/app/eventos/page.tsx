@@ -2,7 +2,6 @@
 
 import { useRef, useState, useEffect } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
-import Image from 'next/image'
 import { Calendar, Clock, MapPin, Star, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react'
 
 // ============================================
@@ -190,12 +189,7 @@ export default function EventosPage() {
           <div className="absolute inset-0 bg-gradient-radial from-gold/5 via-transparent to-transparent" />
         </div>
         <div className="relative z-10 text-center px-5 max-w-4xl mx-auto pt-24">
-          <motion.div className="mb-6 flex justify-center" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.3 }}>
-            <div className="relative w-32 h-32 md:w-40 md:h-40">
-              <Image src="/images/logo-CDLA.png" alt="Casa de los Ángeles" fill className="object-contain drop-shadow-2xl" priority />
-            </div>
-          </motion.div>
-          <motion.h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-gold mb-4 tracking-tight" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }}>
+          <motion.h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-gold mb-4 tracking-tight" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }}>
             Eventos & Programa
           </motion.h1>
           <motion.p className="text-gold-light/70 uppercase tracking-[0.3em] text-sm mb-6" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.7 }}>
