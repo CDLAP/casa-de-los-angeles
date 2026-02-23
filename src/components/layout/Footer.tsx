@@ -139,7 +139,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="text-cream/40 hover:text-gold transition-colors"
           >
-            MATA AI Studio
+by MATA AI Generative Studio
           </a>
         </div>
       </div>
