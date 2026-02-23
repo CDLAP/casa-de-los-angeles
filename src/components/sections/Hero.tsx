@@ -71,8 +71,8 @@ export default function Hero() {
                 style={{ backgroundImage: `url('/images/casa.jpeg')` }}
               />
               {/* Oscurecimiento sutil para legibilidad del texto */}
-              <div className="absolute inset-0 bg-black/40" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
+              <div className="absolute inset-0 bg-black/20" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20" />
             </div>
 
             <div className="relative z-10 text-center text-white px-5 max-w-5xl mx-auto h-screen flex flex-col items-center justify-center pt-12 md:pt-16">
