@@ -23,8 +23,6 @@ export default function Footer() {
       {/* Main Footer */}
       <div className="container-custom py-16 md:py-20">
         
-        {/* Mobile: Centrado y elegante */}
-        {/* Desktop: Grid de 4 columnas */}
         <div className="flex flex-col items-center text-center lg:text-left lg:items-start lg:grid lg:grid-cols-4 lg:gap-12">
 
           {/* Brand */}
@@ -40,15 +38,15 @@ export default function Footer() {
               </div>
             </div>
             <h4 className="font-serif text-xl text-gold mb-3">Casa de los Ángeles</h4>
-            <p className="text-cream/60 text-sm leading-relaxed max-w-xs">
+            <p className="text-cream/60 text-sm leading-relaxed max-w-xs mx-auto lg:mx-0">
               Café, arte y boutique en el corazón histórico de Puebla.
             </p>
           </div>
 
-          {/* Navigation - Horizontal en mobile, vertical en desktop */}
+          {/* Navigation */}
           <div className="mb-12 lg:mb-0">
             <h4 className="font-serif text-lg text-gold mb-6">Navegación</h4>
-            <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 lg:flex-col lg:gap-y-3 lg:gap-x-0">
+            <div className="flex flex-wrap justify-center gap-x-5 gap-y-3 lg:flex-col lg:gap-y-3 lg:gap-x-0">
               {navLinks.map((item) => (
                 <Link
                   key={item.label}
@@ -69,9 +67,9 @@ export default function Footer() {
                 href="https://www.google.com/maps/search/?api=1&query=Casa+de+los+Angeles+Palafox+222+Puebla"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-3 justify-center lg:justify-start text-cream/70 hover:text-gold transition-colors group"
+                className="block text-cream/70 hover:text-gold transition-colors"
               >
-                <MapPin size={16} className="text-gold/60 mt-0.5 flex-shrink-0 group-hover:text-gold" />
+                <MapPin size={16} className="text-gold/60 mx-auto lg:mx-0 mb-1" />
                 <span className="text-sm leading-relaxed">
                   Palafox y Mendoza 222<br />
                   Centro Histórico, Puebla
@@ -79,16 +77,16 @@ export default function Footer() {
               </a>
               <a
                 href="tel:+522206224222"
-                className="flex items-center gap-3 justify-center lg:justify-start text-cream/70 hover:text-gold transition-colors group"
+                className="block text-cream/70 hover:text-gold transition-colors"
               >
-                <Phone size={16} className="text-gold/60 flex-shrink-0 group-hover:text-gold" />
+                <Phone size={16} className="text-gold/60 mx-auto lg:mx-0 mb-1" />
                 <span className="text-sm">220 622 4222</span>
               </a>
               <a
                 href="mailto:contacto@casadelosangelespuebla.com"
-                className="flex items-center gap-3 justify-center lg:justify-start text-cream/70 hover:text-gold transition-colors group"
+                className="block text-cream/70 hover:text-gold transition-colors"
               >
-                <Mail size={16} className="text-gold/60 flex-shrink-0 group-hover:text-gold" />
+                <Mail size={16} className="text-gold/60 mx-auto lg:mx-0 mb-1" />
                 <span className="text-sm">contacto@casadelosangelespuebla.com</span>
               </a>
             </div>
