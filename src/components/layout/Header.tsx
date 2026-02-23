@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ChevronDown, Newspaper, Users, Tag } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 
 const mainLinks = [
   { href: '/#menu', label: 'Café' },
@@ -17,16 +17,14 @@ const mainLinks = [
 ]
 
 const moreLinks = [
-  { href: '/#rueda-de-prensa', label: 'Prensa', description: 'Ruedas de prensa y conferencias mediáticas', icon: Newspaper },
-  { href: '/relaciones-publicas', label: 'Relaciones Públicas', description: 'Alianzas, colaboraciones y patrocinios', icon: Users },
-  { href: '/promocion', label: 'Promoción del Día', description: 'Ofertas especiales que cambian cada día', icon: Tag },
+  { href: '/#rueda-de-prensa', label: 'Prensa' },
+  { href: '/relaciones-publicas', label: 'Relaciones Públicas' },
+  { href: '/promocion', label: 'Promoción del Día' },
 ]
 
 const allLinks = [
   ...mainLinks,
-  { href: '/#rueda-de-prensa', label: 'Prensa' },
-  { href: '/relaciones-publicas', label: 'Relaciones Públicas' },
-  { href: '/promocion', label: 'Promoción' },
+  ...moreLinks,
   { href: '/#contacto', label: 'Contacto' },
 ]
 
@@ -41,7 +39,6 @@ export default function Header() {
   const [activeSection, setActiveSection] = useState('')
   const [menuOpen, setMenuOpen] = useState(false)
   const [moreOpen, setMoreOpen] = useState(false)
-  const moreRef = useRef<HTMLDivElement>(null)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
@@ -71,11 +68,8 @@ export default function Header() {
   }, [])
 
   useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
+    if (menuOpen) { document.body.style.overflow = 'hidden' }
+    else { document.body.style.overflow = '' }
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 
@@ -88,16 +82,15 @@ export default function Header() {
     if (timeoutRef.current) clearTimeout(timeoutRef.current)
     setMoreOpen(true)
   }
-
   const handleMoreLeave = () => {
     timeoutRef.current = setTimeout(() => setMoreOpen(false), 200)
   }
 
   const isMoreActive = moreLinks.some(l => activeSection === l.href)
 
-  const linkClass = (href: string) =>
-    `text-sm xl:text-base uppercase tracking-[0.12em] xl:tracking-[0.2em] font-sans transition-colors duration-300 whitespace-nowrap py-2 inline-block ${
-      activeSection === href
+  const navTextClass = (active: boolean) =>
+    `text-sm xl:text-base uppercase tracking-[0.12em] xl:tracking-[0.2em] font-sans transition-colors duration-300 whitespace-nowrap py-2 ${
+      active
         ? 'text-gold'
         : isScrolled ? 'text-charcoal hover:text-gold' : 'text-cream/90 hover:text-gold'
     }`
@@ -117,106 +110,74 @@ export default function Header() {
       >
         <nav className="flex items-center justify-center gap-4 lg:gap-6 xl:gap-10 px-3">
           {mainLinks.map((link) => (
-            <Link key={link.href} href={link.href} className={linkClass(link.href)}>
+            <Link key={link.href} href={link.href} className={navTextClass(activeSection === link.href)}>
               {link.label}
             </Link>
           ))}
 
-          {/* Más dropdown trigger */}
+          {/* Más */}
           <div
-            ref={moreRef}
             className="relative"
             onMouseEnter={handleMoreEnter}
             onMouseLeave={handleMoreLeave}
           >
-            <button
-              className={`flex items-center gap-1 text-sm xl:text-base uppercase tracking-[0.12em] xl:tracking-[0.2em] font-sans transition-colors duration-300 whitespace-nowrap py-2 ${
-                isMoreActive || moreOpen
-                  ? 'text-gold'
-                  : isScrolled ? 'text-charcoal hover:text-gold' : 'text-cream/90 hover:text-gold'
-              }`}
-            >
+            <button className={`flex items-center gap-1.5 ${navTextClass(isMoreActive || moreOpen)}`}>
               Más
               <motion.div
                 animate={{ rotate: moreOpen ? 180 : 0 }}
-                transition={{ duration: 0.25 }}
+                transition={{ duration: 0.2 }}
               >
                 <ChevronDown className="w-3.5 h-3.5" />
               </motion.div>
             </button>
+
+            <AnimatePresence>
+              {moreOpen && (
+                <motion.div
+                  className={`absolute top-full left-1/2 -translate-x-1/2 mt-6 py-3 min-w-[220px] ${
+                    isScrolled
+                      ? 'bg-cream/98 backdrop-blur-md shadow-xl'
+                      : 'bg-[#3F1F26] shadow-2xl'
+                  }`}
+                  initial={{ opacity: 0, y: -4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -4 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {/* Flechita arriba */}
+                  <div className={`absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 ${
+                    isScrolled ? 'bg-cream/98' : 'bg-[#3F1F26]'
+                  }`} />
+
+                  {moreLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setMoreOpen(false)}
+                      className={`block px-6 py-3 text-sm uppercase tracking-[0.12em] font-sans transition-colors duration-300 ${
+                        activeSection === link.href
+                          ? 'text-gold'
+                          : isScrolled
+                            ? 'text-charcoal hover:text-gold'
+                            : 'text-cream/80 hover:text-gold'
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
           {/* Contacto */}
-          <Link href="/#contacto" className={linkClass('/#contacto')}>
+          <Link href="/#contacto" className={navTextClass(activeSection === '/#contacto')}>
             Contacto
           </Link>
         </nav>
       </motion.header>
 
-      {/* Mega menu - full width dropdown */}
-      <AnimatePresence>
-        {moreOpen && (
-          <motion.div
-            className="fixed left-0 right-0 z-40 hidden md:block"
-            style={{ top: isScrolled ? '72px' : '72px' }}
-            onMouseEnter={handleMoreEnter}
-            onMouseLeave={handleMoreLeave}
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-          >
-            <div className={`border-t overflow-hidden ${
-              isScrolled
-                ? 'bg-cream/98 backdrop-blur-md border-gold/10'
-                : 'bg-[#3F1F26] border-gold/15'
-            }`}>
-              <div className="max-w-5xl mx-auto px-8 py-10">
-                <div className="grid grid-cols-3 gap-8">
-                  {moreLinks.map((link, index) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={() => setMoreOpen(false)}
-                      className={`group flex items-start gap-4 p-5 rounded-xl border transition-all duration-300 ${
-                        isScrolled
-                          ? 'border-gold/10 hover:border-gold/30 hover:bg-gold/5'
-                          : 'border-gold/10 hover:border-gold/30 hover:bg-gold/5'
-                      }`}
-                    >
-                      <div className={`w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-300 ${
-                        isScrolled
-                          ? 'bg-gold/10 group-hover:bg-gold/20'
-                          : 'bg-gold/10 group-hover:bg-gold/20'
-                      }`}>
-                        <link.icon className="w-5 h-5 text-gold" />
-                      </div>
-                      <div>
-                        <h3 className={`font-serif text-lg mb-1 transition-colors duration-300 ${
-                          activeSection === link.href
-                            ? 'text-gold'
-                            : isScrolled
-                              ? 'text-charcoal group-hover:text-gold'
-                              : 'text-cream group-hover:text-gold'
-                        }`}>
-                          {link.label}
-                        </h3>
-                        <p className={`text-sm leading-relaxed ${
-                          isScrolled ? 'text-charcoal-50' : 'text-cream/50'
-                        }`}>
-                          {link.description}
-                        </p>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Desktop cherub logo - anchored below nav */}
+      {/* Angelito bajo nav - desktop */}
       <motion.div
         className="fixed z-40 hidden md:flex items-center justify-center left-1/2 -translate-x-1/2 pointer-events-none"
         style={{ top: isScrolled ? '60px' : '60px' }}
@@ -236,7 +197,7 @@ export default function Header() {
         </div>
       </motion.div>
 
-      {/* Mobile hamburger button */}
+      {/* Mobile hamburger */}
       <motion.button
         onClick={() => setMenuOpen(!menuOpen)}
         className={`fixed top-5 right-5 z-[60] md:hidden w-11 h-11 rounded-full flex flex-col items-center justify-center gap-[5px] transition-all duration-300 ${
@@ -252,29 +213,23 @@ export default function Header() {
         aria-label="Menú"
       >
         <motion.span
-          className={`block w-5 h-[2px] rounded-full transition-colors ${
-            menuOpen ? 'bg-cream' : isScrolled ? 'bg-charcoal' : 'bg-cream'
-          }`}
+          className={`block w-5 h-[2px] rounded-full transition-colors ${menuOpen ? 'bg-cream' : isScrolled ? 'bg-charcoal' : 'bg-cream'}`}
           animate={menuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
           transition={{ duration: 0.3 }}
         />
         <motion.span
-          className={`block w-5 h-[2px] rounded-full transition-colors ${
-            menuOpen ? 'bg-cream' : isScrolled ? 'bg-charcoal' : 'bg-cream'
-          }`}
+          className={`block w-5 h-[2px] rounded-full transition-colors ${menuOpen ? 'bg-cream' : isScrolled ? 'bg-charcoal' : 'bg-cream'}`}
           animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
           transition={{ duration: 0.2 }}
         />
         <motion.span
-          className={`block w-5 h-[2px] rounded-full transition-colors ${
-            menuOpen ? 'bg-cream' : isScrolled ? 'bg-charcoal' : 'bg-cream'
-          }`}
+          className={`block w-5 h-[2px] rounded-full transition-colors ${menuOpen ? 'bg-cream' : isScrolled ? 'bg-charcoal' : 'bg-cream'}`}
           animate={menuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
           transition={{ duration: 0.3 }}
         />
       </motion.button>
 
-      {/* Mobile menu overlay */}
+      {/* Mobile menu */}
       <AnimatePresence>
         {menuOpen && (
           <>
@@ -286,7 +241,6 @@ export default function Header() {
               transition={{ duration: 0.3 }}
               onClick={() => setMenuOpen(false)}
             />
-
             <motion.nav
               className="fixed top-0 right-0 bottom-0 w-[280px] bg-[#3F1F26] z-50 md:hidden flex flex-col pt-24 px-8 overflow-y-auto"
               initial={{ x: '100%' }}
@@ -299,7 +253,6 @@ export default function Header() {
                 <div className="w-1.5 h-1.5 bg-gold/40 rotate-45" />
                 <div className="flex-1 h-px bg-gold/20" />
               </div>
-
               {allLinks.map((link, index) => (
                 <motion.div
                   key={link.href}
@@ -311,28 +264,21 @@ export default function Header() {
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
                     className={`block py-3 font-sans text-base uppercase tracking-[0.15em] transition-colors border-b border-gold/10 ${
-                      activeSection === link.href
-                        ? 'text-gold'
-                        : 'text-cream/70 hover:text-gold'
+                      activeSection === link.href ? 'text-gold' : 'text-cream/70 hover:text-gold'
                     }`}
                   >
                     {link.label}
                   </Link>
                 </motion.div>
               ))}
-
               <div className="mt-auto pb-8 pt-8">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="flex-1 h-px bg-gold/20" />
                   <div className="w-1.5 h-1.5 bg-gold/40 rotate-45" />
                   <div className="flex-1 h-px bg-gold/20" />
                 </div>
-                <p className="text-cream/30 text-xs text-center uppercase tracking-widest">
-                  Casa de los Ángeles
-                </p>
-                <p className="text-cream/20 text-xs text-center mt-1">
-                  Palafox 222, Centro Histórico
-                </p>
+                <p className="text-cream/30 text-xs text-center uppercase tracking-widest">Casa de los Ángeles</p>
+                <p className="text-cream/20 text-xs text-center mt-1">Palafox 222, Centro Histórico</p>
               </div>
             </motion.nav>
           </>
