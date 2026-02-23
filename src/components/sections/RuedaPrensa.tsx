@@ -1,8 +1,14 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
-import { Coffee, UtensilsCrossed, Croissant, Check, Clock, Monitor, ClipboardList, Camera, Plus } from 'lucide-react'
+import { useRef, useState, useEffect, useCallback } from 'react'
+import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { Coffee, UtensilsCrossed, Croissant, Check, Clock, Monitor, ClipboardList, Camera, Plus, ChevronLeft, ChevronRight } from 'lucide-react'
+
+const pressImages = [
+  { src: '/images/prensa/prensa1.jpg', alt: 'Rueda de prensa en Casa de los Ángeles - Vista de panelistas' },
+  { src: '/images/prensa/prensa2.jpg', alt: 'Conferencia de prensa en Casa de los Ángeles - Vista panorámica' },
+  { src: '/images/prensa/prensa3.jpg', alt: 'Evento de prensa en Casa de los Ángeles - Detalle del presidium' },
+]
 
 const baseIncludes = [
   'Uso del espacio por 2 horas',
@@ -39,6 +45,86 @@ const extras = [
   },
 ]
 
+function PressCarousel() {
+  const [current, setCurrent] = useState(0)
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+
+  const next = useCallback(() => {
+    setCurrent((prev) => (prev + 1) % pressImages.length)
+  }, [])
+
+  const prev = useCallback(() => {
+    setCurrent((prev) => (prev - 1 + pressImages.length) % pressImages.length)
+  }, [])
+
+  // Auto-play
+  useEffect(() => {
+    if (!isAutoPlaying) return
+    const timer = setInterval(next, 4500)
+    return () => clearInterval(timer)
+  }, [isAutoPlaying, next])
+
+  return (
+    <div 
+      className="relative pb-4 pr-4 md:pb-8 md:pr-8"
+      onMouseEnter={() => setIsAutoPlaying(false)}
+      onMouseLeave={() => setIsAutoPlaying(true)}
+    >
+      <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-2xl">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={current}
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url('${pressImages[current].src}')` }}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.98 }}
+            transition={{ duration: 0.6 }}
+          />
+        </AnimatePresence>
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/50 via-transparent to-transparent" />
+
+        {/* Navigation Arrows */}
+        <button
+          onClick={prev}
+          className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-charcoal hover:bg-white transition-all duration-300 shadow-md opacity-0 group-hover:opacity-100 hover:opacity-100 focus:opacity-100"
+          style={{ opacity: 0.7 }}
+          aria-label="Foto anterior"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+        <button
+          onClick={next}
+          className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-charcoal hover:bg-white transition-all duration-300 shadow-md opacity-0 group-hover:opacity-100 hover:opacity-100 focus:opacity-100"
+          style={{ opacity: 0.7 }}
+          aria-label="Siguiente foto"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
+
+        {/* Dots */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+          {pressImages.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrent(index)}
+              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                index === current
+                  ? 'bg-gold w-7'
+                  : 'bg-white/60 hover:bg-white/90'
+              }`}
+              aria-label={`Ver foto ${index + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Decorative frame */}
+      <div className="absolute -top-4 -left-4 w-full h-full border-2 border-gold/20 rounded-2xl -z-10 hidden md:block" />
+    </div>
+  )
+}
+
 export default function RuedaPrensa() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
@@ -66,35 +152,14 @@ export default function RuedaPrensa() {
 
         {/* Main Content: Image + Description */}
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
-          {/* Image */}
+          {/* Image Carousel */}
           <motion.div
             className="relative"
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="relative pb-4 pr-4 md:pb-8 md:pr-8">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-2xl">
-                <div 
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105"
-                  style={{
-                    backgroundImage: `url('/images/eventos-especiales.png')`,
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/50 via-charcoal/20 to-transparent" />
-                
-                {/* Badge overlay */}
-                <div className="absolute bottom-6 left-6 right-6">
-                  <div className="bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-lg">
-                    <p className="text-sm text-charcoal-50 uppercase tracking-wider mb-1">Centro Histórico de Puebla</p>
-                    <p className="font-serif text-lg text-gold-dark">Av. Don Juan de Palafox y Mendoza 222</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Decorative frame */}
-              <div className="absolute -top-4 -left-4 w-full h-full border-2 border-gold/20 rounded-2xl -z-10 hidden md:block" />
-            </div>
+            <PressCarousel />
           </motion.div>
 
           {/* Description */}
