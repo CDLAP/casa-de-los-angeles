@@ -64,7 +64,7 @@ export default function Header() {
             className={`text-[11px] sm:text-sm xl:text-base uppercase tracking-[0.08em] sm:tracking-[0.15em] xl:tracking-[0.2em] font-sans transition-all duration-300 whitespace-nowrap py-2 ${
               activeSection === link.href
                 ? 'text-gold'
-                : isScrolled ? 'text-charcoal hover:text-gold' : 'text-cream/90 hover:text-gold'
+                : isScrolled ? 'text-charcoal hover:text-gold' : 'text-gold/90 hover:text-gold'
             }`}
           >
             {link.label}
