@@ -86,7 +86,7 @@ export default function Header() {
         ))}
 
         {/* Ángel aparece al hacer scroll */}
-        <div className="relative w-12 mx-2">
+        <div className="relative w-28 mx-6">
           <AnimatePresence>
             {showAngel && (
               <motion.div
@@ -99,8 +99,8 @@ export default function Header() {
                   <Image
                     src="/images/logo-short-1000x1000.png"
                     alt="Casa de los Ángeles"
-                    width={48}
-                    height={48}
+                    width={112}
+                    height={112}
                     className="object-contain drop-shadow-lg"
                   />
                 </Link>
@@ -140,8 +140,8 @@ export default function Header() {
                 <Image
                   src="/images/logo-short-1000x1000.png"
                   alt="Casa de los Ángeles"
-                  width={36}
-                  height={36}
+                  width={72}
+                  height={72}
                   className="object-contain drop-shadow-lg"
                 />
               </Link>
