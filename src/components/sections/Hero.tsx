@@ -13,7 +13,7 @@ export default function Hero() {
       {/* BLOQUE 1: Ángel + título + texto sobre fondo verde/vino */}
       <section 
         id="inicio" 
-        className={`w-full pt-16 sm:pt-14 pb-12 md:pb-16 ${isWine ? 'bg-[#3F1F26]' : 'bg-[#1A3A2E]'}`}
+        className={`w-full pt-20 sm:pt-20 pb-12 md:pb-16 ${isWine ? 'bg-[#3F1F26]' : 'bg-[#1A3A2E]'}`}
       >
         <div className="max-w-4xl mx-auto text-center px-5">
           {/* Ángel */}
@@ -24,7 +24,6 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.5 }}
           >
             <div className="relative">
-              <div className="absolute inset-0 blur-3xl bg-gold/15 scale-150" />
               <div className="relative w-36 h-36 md:w-48 md:h-48">
                 <Image
                   src="/images/logo-short-1000x1000.png"
