@@ -1,50 +1,82 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 
+// Configuración del punto de anclaje
+// El ángel se fija cuando la línea inferior del nav queda a la altura de su "frente"
+// La frente está aprox al 35% desde arriba de la imagen
+const FOREHEAD_RATIO = 0.35
+
 export default function Hero() {
   const angelRef = useRef<HTMLDivElement>(null)
-  const sectionRef = useRef<HTMLElement>(null)
-  const [isStuck, setIsStuck] = useState(false)
-  const [angelInitialTop, setAngelInitialTop] = useState(0)
+  const [angelStyle, setAngelStyle] = useState<'flow' | 'fixed'>('flow')
+  const [fixedTop, setFixedTop] = useState(0)
+
+  const isMd = useCallback(() => window.innerWidth >= 768, [])
+
+  const getNavHeight = useCallback(() => {
+    // Nav: py-10 = 2.5rem*2 + text ~20px
+    return isMd() ? 80 : 0
+  }, [isMd])
 
   useEffect(() => {
     const angel = angelRef.current
     if (!angel) return
 
-    // Guardamos la posición original del ángel
-    const updateInitialTop = () => {
-      const rect = angel.getBoundingClientRect()
-      const scrollY = window.scrollY
-      setAngelInitialTop(rect.top + scrollY)
-    }
-
-    updateInitialTop()
-    // Recalcular si cambia el tamaño
-    window.addEventListener('resize', updateInitialTop)
+    // Tamaño del ángel según breakpoint
+    const getAngelHeight = () => window.innerWidth >= 768 ? 224 : 176 // md:w-56=224px, w-44=176px
 
     const handleScroll = () => {
       if (!angel) return
-      // El nav mide ~64px en desktop, ~56px en mobile
-      const navHeight = window.innerWidth >= 768 ? 72 : 0
+
+      const navH = getNavHeight()
+      const angelH = getAngelHeight()
+      const foreheadOffset = angelH * FOREHEAD_RATIO
+
+      // Posición donde quiero que se fije:
+      // La base del nav (navH) coincide con la frente del ángel
+      // Entonces el top del ángel fijo = navH - foreheadOffset
+      const targetFixedTop = navH - foreheadOffset
+
+      // Posición actual del ángel en el viewport (su centro original está en top:0 del section con -translate-y-1/2)
+      // Calculamos dónde está el top del ángel
       const rect = angel.getBoundingClientRect()
 
-      // Cuando el ángel llega al borde inferior del nav, se fija
-      if (rect.top <= navHeight && !isStuck) {
-        setIsStuck(true)
-      } else if (window.scrollY < angelInitialTop - navHeight && isStuck) {
-        setIsStuck(false)
+      if (angelStyle === 'flow') {
+        // Solo fijar en desktop (md+)
+        if (isMd() && rect.top <= targetFixedTop) {
+          setFixedTop(targetFixedTop)
+          setAngelStyle('fixed')
+        }
+      } else {
+        // Para volver a flow: necesitamos saber la posición absoluta original
+        // El ángel está en top:0 del section con -translate-y-1/2
+        // Su posición original en el documento = sectionTop - angelH/2
+        const section = angel.parentElement
+        if (section) {
+          const sectionRect = section.getBoundingClientRect()
+          const originalAngelTop = sectionRect.top - angelH / 2
+          // Si la posición original vuelve a estar por debajo del punto de anclaje, soltar
+          if (originalAngelTop > targetFixedTop) {
+            setAngelStyle('flow')
+          }
+        }
       }
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('resize', () => {
+      setAngelStyle('flow')
+      handleScroll()
+    })
+
     return () => {
       window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('resize', updateInitialTop)
+      window.removeEventListener('resize', handleScroll)
     }
-  }, [isStuck, angelInitialTop])
+  }, [angelStyle, getNavHeight, isMd])
 
   return (
     <>
@@ -62,15 +94,32 @@ export default function Hero() {
       </section>
 
       {/* BLOQUE 2: Pleca guinda */}
-      <section ref={sectionRef} className="relative w-full bg-[#3F1F26] pb-16 md:pb-20 pt-16 md:pt-32">
+      <section className="relative w-full bg-[#3F1F26] pb-16 md:pb-20 pt-20 md:pt-32">
         {/* Línea dorada */}
         <div className="absolute top-0 left-0 right-0 h-px bg-gold/60" />
 
-        {/* Ángel — posición original (se oculta cuando se fija) */}
+        {/* Ángel — un solo elemento, cambia de absolute a fixed */}
         <div
           ref={angelRef}
-          className="absolute top-0 left-0 right-0 -translate-y-1/2 flex justify-center"
-          style={{ zIndex: 20, visibility: isStuck ? 'hidden' : 'visible' }}
+          className="flex justify-center pointer-events-none"
+          style={
+            angelStyle === 'fixed'
+              ? {
+                  position: 'fixed',
+                  top: `${fixedTop}px`,
+                  left: 0,
+                  right: 0,
+                  zIndex: 55,
+                }
+              : {
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  transform: 'translateY(-50%)',
+                  zIndex: 20,
+                }
+          }
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -86,20 +135,6 @@ export default function Hero() {
               priority
             />
           </motion.div>
-        </div>
-
-        {/* Ángel FIJO — swap instantáneo, sin animación */}
-        <div
-          className="fixed md:top-[28px] left-0 right-0 hidden md:flex justify-center pointer-events-none"
-          style={{ zIndex: 55, visibility: isStuck ? 'visible' : 'hidden' }}
-        >
-          <Image
-            src="/images/logo-short-1000x1000.png"
-            alt="Casa de los Ángeles"
-            width={160}
-            height={160}
-            className="object-contain drop-shadow-2xl w-44 h-44 md:w-56 md:h-56"
-          />
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto text-center px-5">
