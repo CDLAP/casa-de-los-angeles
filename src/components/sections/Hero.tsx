@@ -70,65 +70,12 @@ export default function Hero() {
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: `url('/images/casa.jpeg')` }}
               />
-              {/* Color overlay con blend */}
-              <div className={`absolute inset-0 ${
-                isWine 
-                  ? 'bg-bistro/85' 
-                  : 'bg-emerald-forest/85'
-              }`} style={{ mixBlendMode: 'multiply' }} />
-              <div className={`absolute inset-0 ${
-                isWine 
-                  ? 'bg-bistro-dark/60' 
-                  : 'bg-emerald-dark/60'
-              }`} />
-              <div className="absolute inset-0 bg-gradient-radial from-gold/8 via-transparent to-transparent" />
-              <div className={`absolute inset-0 bg-gradient-to-t via-transparent ${
-                isWine
-                  ? 'from-bistro-900/80 to-bistro-800/40'
-                  : 'from-emerald-900/80 to-emerald-forest/40'
-              }`} />
-            </div>
-
-            <div className="absolute inset-0 opacity-10 pointer-events-none overflow-hidden">
-              <motion.div 
-                className="absolute top-20 left-10 w-64 h-64 border border-gold rounded-full"
-                animate={{ 
-                  scale: [1, 1.1, 1],
-                  opacity: [0.3, 0.5, 0.3]
-                }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-              />
-              <motion.div 
-                className={`absolute bottom-20 right-20 w-96 h-96 border rounded-full ${isWine ? 'border-bistro-200' : 'border-emerald-light'}`}
-                animate={{ 
-                  scale: [1, 1.15, 1],
-                  opacity: [0.2, 0.4, 0.2]
-                }}
-                transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              />
+              {/* Oscurecimiento sutil para legibilidad del texto */}
+              <div className="absolute inset-0 bg-black/40" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
             </div>
 
             <div className="relative z-10 text-center text-white px-5 max-w-5xl mx-auto h-screen flex flex-col items-center justify-center pt-12 md:pt-16">
-              <motion.div
-                className="mb-6 flex justify-center"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1.2, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-              >
-                <div className="relative">
-                  <div className="absolute inset-0 blur-3xl bg-gold/20 scale-150" />
-                  <div className="relative w-56 h-56 md:w-[294px] md:h-[294px] lg:w-[368px] lg:h-[368px]">
-                    <Image
-                      src="/images/logo-CDLA.png"
-                      alt="Casa de los Ángeles Logo"
-                      fill
-                      className="object-contain drop-shadow-2xl"
-                      priority
-                    />
-                  </div>
-                </div>
-              </motion.div>
-
               <motion.p
                 className="text-gold-light uppercase tracking-[0.4em] text-sm md:text-base mb-8 font-light"
                 initial={{ opacity: 0 }}
@@ -144,9 +91,9 @@ export default function Hero() {
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.8, delay: 1 }}
               >
-                <div className={`w-16 h-px bg-gradient-to-r from-transparent ${isWine ? 'to-bistro-200' : 'to-emerald-sage'}`} />
-                <div className={`w-2 h-2 rotate-45 ${isWine ? 'bg-bistro-200' : 'bg-emerald-sage'}`} />
-                <div className={`w-16 h-px bg-gradient-to-l from-transparent ${isWine ? 'to-bistro-200' : 'to-emerald-sage'}`} />
+                <div className="w-16 h-px bg-gradient-to-r from-transparent to-gold/50" />
+                <div className="w-2 h-2 rotate-45 bg-gold/50" />
+                <div className="w-16 h-px bg-gradient-to-l from-transparent to-gold/50" />
               </motion.div>
 
               <motion.p
