@@ -82,7 +82,7 @@ export default function Hero() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
-                Café • Arte • Boutique
+                Café & Bistró de los Ángeles
               </motion.p>
 
               <motion.div
