@@ -48,7 +48,7 @@ export default function CafeSection() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="space-y-6 text-charcoal-50 leading-relaxed text-lg">
+            <div className="space-y-6 text-charcoal-50 leading-relaxed text-lg text-center lg:text-left">
               <p>
                 En <span className="text-gold-dark font-medium">Casa de los Ángeles</span>, cada taza cuenta una historia de montaña y tradición. Servimos café de especialidad proveniente de Zacatlán, preparado con precisión y acompañado de una exquisita selección de dulces poblanos y bebidas artesanales a base de café que transforman lo cotidiano en una experiencia memorable.
               </p>
@@ -60,14 +60,16 @@ export default function CafeSection() {
               </p>
             </div>
 
+            <div className="text-center lg:text-left mt-8">
             <motion.a
               href="#reservar"
-              className="inline-block mt-8 btn-elegant"
+              className="inline-block btn-elegant"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
               Reservar Mesa
             </motion.a>
+            </div>
           </motion.div>
 
           {/* Photo Carousel - Crossfade */}

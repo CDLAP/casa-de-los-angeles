@@ -81,8 +81,8 @@ export default function Contact() {
           >
             {/* Contact Cards */}
             <div className="grid sm:grid-cols-2 gap-3 sm:gap-4 mb-8">
-              <div className="p-4 sm:p-6 bg-cream rounded-xl">
-                <MapPin className="w-6 h-6 text-gold mb-4" />
+              <div className="p-4 sm:p-6 bg-cream rounded-xl text-center lg:text-left">
+                <MapPin className="w-6 h-6 text-gold mb-4 mx-auto lg:mx-0" />
                 <h3 className="font-serif text-base sm:text-lg text-charcoal mb-2">Dirección</h3>
                 <p className="text-charcoal-50 text-sm leading-relaxed">
                   Av. Don Juan de Palafox y Mendoza 222<br />
@@ -91,8 +91,8 @@ export default function Contact() {
                 </p>
               </div>
 
-              <div className="p-4 sm:p-6 bg-cream rounded-xl">
-                <Clock className="w-6 h-6 text-gold mb-4" />
+              <div className="p-4 sm:p-6 bg-cream rounded-xl text-center lg:text-left">
+                <Clock className="w-6 h-6 text-gold mb-4 mx-auto lg:mx-0" />
                 <h3 className="font-serif text-base sm:text-lg text-charcoal mb-2">Horarios</h3>
                 <p className="text-charcoal-50 text-sm leading-relaxed">
                   Lunes a Domingo<br />
@@ -100,8 +100,8 @@ export default function Contact() {
                 </p>
               </div>
 
-              <div className="p-4 sm:p-6 bg-cream rounded-xl">
-                <Phone className="w-6 h-6 text-gold mb-4" />
+              <div className="p-4 sm:p-6 bg-cream rounded-xl text-center lg:text-left">
+                <Phone className="w-6 h-6 text-gold mb-4 mx-auto lg:mx-0" />
                 <h3 className="font-serif text-base sm:text-lg text-charcoal mb-2">Teléfono</h3>
                 <a
                   href="tel:+522206224222"
@@ -111,8 +111,8 @@ export default function Contact() {
                 </a>
               </div>
 
-              <div className="p-4 sm:p-6 bg-cream rounded-xl">
-                <Mail className="w-6 h-6 text-gold mb-4" />
+              <div className="p-4 sm:p-6 bg-cream rounded-xl text-center lg:text-left">
+                <Mail className="w-6 h-6 text-gold mb-4 mx-auto lg:mx-0" />
                 <h3 className="font-serif text-base sm:text-lg text-charcoal mb-2">Email</h3>
                 <a
                   href="mailto:contacto@casadelosangelespuebla.com"

@@ -40,6 +40,7 @@ export default function MercadoSection() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Content */}
             <motion.div
+              className="text-center lg:text-left"
               initial={{ opacity: 0, x: -30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8 }}
@@ -61,7 +62,7 @@ export default function MercadoSection() {
                 {mercadoCategories.map((category, index) => (
                   <motion.div
                     key={category.title}
-                    className="flex gap-4"
+                    className="flex flex-col items-center lg:flex-row lg:items-start gap-4"
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
@@ -84,22 +85,22 @@ export default function MercadoSection() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.5 }}
               >
-                <div className="flex flex-col sm:flex-row gap-6">
-                  <div className="flex items-center gap-3">
+                <div className="flex flex-col gap-4 sm:flex-row sm:gap-6 sm:justify-center lg:justify-start">
+                  <div className="flex flex-col items-center lg:flex-row lg:items-center gap-2 lg:gap-3">
                     <Calendar className="w-5 h-5 text-emerald" />
                     <div>
                       <p className="text-xs text-charcoal-50 uppercase tracking-wider">Fecha</p>
                       <p className="text-charcoal font-medium">30, 31 Ene y 1 Feb 2026</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3">
+                  <div className="flex flex-col items-center lg:flex-row lg:items-center gap-2 lg:gap-3">
                     <Clock className="w-5 h-5 text-emerald" />
                     <div>
                       <p className="text-xs text-charcoal-50 uppercase tracking-wider">Horario</p>
                       <p className="text-charcoal font-medium">9:00 AM - 9:00 PM</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3">
+                  <div className="flex flex-col items-center lg:flex-row lg:items-center gap-2 lg:gap-3">
                     <MapPin className="w-5 h-5 text-emerald" />
                     <div>
                       <p className="text-xs text-charcoal-50 uppercase tracking-wider">Lugar</p>
@@ -125,7 +126,7 @@ export default function MercadoSection() {
                 <p className="text-charcoal-50 mb-6">
                   ¿Te gustaría participar como expositor? Contáctanos para conocer los espacios disponibles.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                   <motion.a
                     href="https://wa.me/522206224222?text=Hola,%20me%20interesa%20participar%20como%20expositor%20en%20el%20Mercado%20de%20Casa%20de%20los%20%C3%81ngeles"
                     target="_blank"

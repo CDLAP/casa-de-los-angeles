@@ -117,22 +117,22 @@ export default function RuedaPrensa() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <h3 className="font-serif text-display-sm text-gold-dark mb-6">
+            <h3 className="font-serif text-display-sm text-gold-dark mb-6 text-center lg:text-left">
               El escenario perfecto para su mensaje
             </h3>
-            <p className="text-charcoal-50 text-lg leading-relaxed mb-6">
+            <p className="text-charcoal-50 text-lg leading-relaxed mb-6 text-center lg:text-left">
               Casa de los Ángeles ofrece un entorno único para la realización de ruedas de prensa 
               y conferencias mediáticas. Nuestra casona del siglo XVIII, en el corazón del centro 
               histórico de Puebla, brinda un marco de distinción que eleva cualquier evento de comunicación.
             </p>
-            <p className="text-charcoal-50 text-lg leading-relaxed mb-8">
+            <p className="text-charcoal-50 text-lg leading-relaxed mb-8 text-center lg:text-left">
               Ideal para comunicados oficiales, lanzamientos de productos, anuncios corporativos 
               y presentaciones institucionales ante medios. Usted trae su mensaje, nosotros ponemos 
               la atmósfera y el servicio.
             </p>
 
             {/* Key highlights */}
-            <div className="flex flex-wrap gap-3 mb-8">
+            <div className="flex flex-wrap gap-3 mb-8 justify-center lg:justify-start">
               {['Casona Histórica', 'Ubicación Céntrica', 'Servicio Completo', 'Audio Incluido'].map((tag) => (
                 <span 
                   key={tag}
@@ -143,14 +143,16 @@ export default function RuedaPrensa() {
               ))}
             </div>
 
-            <motion.a
-              href="#contacto"
-              className="btn-elegant"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Reservar Ahora
-            </motion.a>
+            <div className="text-center lg:text-left">
+              <motion.a
+                href="#contacto"
+                className="btn-elegant"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Reservar Ahora
+              </motion.a>
+            </div>
           </motion.div>
         </div>
 
@@ -173,18 +175,18 @@ export default function RuedaPrensa() {
               className="relative rounded-2xl border-2 border-gold/20 bg-cream/30 p-8 hover:border-gold/40 hover:shadow-xl transition-all duration-500 flex flex-col"
               whileHover={{ y: -4 }}
             >
-              <div className="flex items-center gap-4 mb-6">
+              <div className="flex flex-col items-center md:flex-row md:items-center gap-4 mb-6">
                 <div className="w-14 h-14 bg-gold/10 rounded-full flex items-center justify-center">
                   <Coffee className="w-6 h-6 text-gold-dark" />
                 </div>
-                <div>
+                <div className="text-center md:text-left">
                   <h4 className="font-serif text-xl text-charcoal">Paquete Base</h4>
                   <p className="text-sm text-charcoal-50">Conferencia + Café</p>
                 </div>
               </div>
 
-              <div className="mb-6">
-                <div className="flex items-baseline gap-1">
+              <div className="mb-6 text-center md:text-left">
+                <div className="flex items-baseline gap-1 justify-center md:justify-start">
                   <span className="font-serif text-3xl md:text-4xl text-gold-dark">$2,500</span>
                   <span className="text-charcoal-50 text-sm">MXN</span>
                 </div>
@@ -222,18 +224,18 @@ export default function RuedaPrensa() {
                 </span>
               </div>
 
-              <div className="flex items-center gap-4 mb-6">
+              <div className="flex flex-col items-center md:flex-row md:items-center gap-4 mb-6">
                 <div className="w-14 h-14 bg-gold/20 rounded-full flex items-center justify-center">
                   <UtensilsCrossed className="w-6 h-6 text-gold-dark" />
                 </div>
-                <div>
+                <div className="text-center md:text-left">
                   <h4 className="font-serif text-xl text-charcoal">Café + Sándwiches ó Pan Dulce</h4>
                   <p className="text-sm text-charcoal-50">Conferencia + Catering a elegir</p>
                 </div>
               </div>
 
-              <div className="mb-6">
-                <div className="flex items-baseline gap-1">
+              <div className="mb-6 text-center md:text-left">
+                <div className="flex items-baseline gap-1 justify-center md:justify-start">
                   <span className="font-serif text-3xl md:text-4xl text-gold-dark">$3,000</span>
                   <span className="text-charcoal-50 text-sm">MXN</span>
                 </div>
