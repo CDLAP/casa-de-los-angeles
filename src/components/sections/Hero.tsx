@@ -70,43 +70,31 @@ export default function Hero() {
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: `url('/images/casa.jpeg')` }}
               />
-              {/* Oscurecimiento sutil para legibilidad del texto */}
-              <div className="absolute inset-0 bg-black/20" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20" />
             </div>
 
-            <div className="relative z-10 text-center text-white px-5 max-w-5xl mx-auto h-screen flex flex-col items-center justify-center pt-12 md:pt-16">
-              <motion.p
-                className="text-gold-light uppercase tracking-[0.4em] text-sm md:text-base mb-8 font-light"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+            {/* Pleca con textos en la parte inferior */}
+            <div className="absolute bottom-0 left-0 right-0 z-10">
+              <motion.div
+                className="bg-black/70 backdrop-blur-sm py-8 px-5"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
-                Café & Bistró de los Ángeles
-              </motion.p>
-
-              <motion.div
-                className="flex items-center justify-center gap-4 mb-10"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.8, delay: 1 }}
-              >
-                <div className="w-16 h-px bg-gradient-to-r from-transparent to-gold/50" />
-                <div className="w-2 h-2 rotate-45 bg-gold/50" />
-                <div className="w-16 h-px bg-gradient-to-l from-transparent to-gold/50" />
+                <div className="max-w-4xl mx-auto text-center">
+                  <p className="text-gold uppercase tracking-[0.4em] text-sm md:text-lg font-light mb-3">
+                    Café & Bistró de los Ángeles
+                  </p>
+                  <div className="flex items-center justify-center gap-4 mb-3">
+                    <div className="w-12 h-px bg-gold/40" />
+                    <div className="w-1.5 h-1.5 rotate-45 bg-gold/40" />
+                    <div className="w-12 h-px bg-gold/40" />
+                  </div>
+                  <p className="text-white/80 text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-light">
+                    Un espacio único en el corazón histórico de Puebla donde el café artesanal, 
+                    la cultura y el arte se encuentran en una experiencia sublime
+                  </p>
+                </div>
               </motion.div>
-
-              <motion.p
-                className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed font-light"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1.2 }}
-              >
-                Un espacio único en el corazón histórico de Puebla donde el café artesanal, 
-                la cultura y el arte se encuentran en una experiencia sublime
-              </motion.p>
-
-
             </div>
           </motion.div>
         )}
@@ -209,19 +197,7 @@ export default function Hero() {
         </>
       )}
 
-      <motion.div
-        className="absolute bottom-8 left-0 right-0 flex justify-center text-gold/50 z-20"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 2 }}
-      >
-        <motion.div
-          animate={{ y: [0, 12, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          <ChevronDown size={32} strokeWidth={1.5} />
-        </motion.div>
-      </motion.div>
+
 
       <EventModal isOpen={isEventModalOpen} onClose={() => setIsEventModalOpen(false)} />
     </section>
