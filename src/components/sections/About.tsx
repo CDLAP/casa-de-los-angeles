@@ -17,7 +17,7 @@ export default function About() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="section-title">Casa de los Ángeles se presenta</h2>
+          <h2 className="section-title">Casa de los Ángeles</h2>
           <p className="section-subtitle">
             En el corazón de Puebla, detrás de una fachada histórica, existe un lugar donde el tiempo no se detuvo: se transformó.
           </p>
