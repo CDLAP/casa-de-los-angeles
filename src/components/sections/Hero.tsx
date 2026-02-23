@@ -84,7 +84,7 @@ export default function Hero() {
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
                 <div className="max-w-4xl mx-auto text-center">
-                  <p className="text-gold font-serif text-lg md:text-2xl font-medium mb-3 tracking-[0.15em]">
+                  <p className="text-gold-light uppercase tracking-[0.4em] text-sm md:text-base font-light mb-3">
                     Café &bull; Arte &bull; Boutique
                   </p>
                   <div className="flex items-center justify-center gap-3 mb-3">
