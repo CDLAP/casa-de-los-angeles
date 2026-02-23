@@ -17,9 +17,9 @@ export default function About() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="section-title">Nuestra Historia</h2>
+          <h2 className="section-title">Casa de los Ángeles se presenta</h2>
           <p className="section-subtitle">
-            Donde el encanto francés se encuentra con el corazón de Puebla.
+            En el corazón de Puebla, detrás de una fachada histórica, existe un lugar donde el tiempo no se detuvo: se transformó.
           </p>
           <div className="divider" />
         </motion.div>
@@ -31,46 +31,23 @@ export default function About() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h3 className="font-serif text-display-sm text-gold-dark mb-8 text-center">
-              Donde el pasado y el presente se encuentran
-            </h3>
-            
             <div className="space-y-8 text-charcoal-50 leading-relaxed text-lg">
-              {/* Párrafo 1: El Origen */}
               <p>
-                La idea de este lugar nació hace veintidós años. Dos décadas llenas de sueños, pausas necesarias y obstáculos que la vida puso en el camino… pero también de perseverancia, visión y un profundo amor por esta casa. Hoy, finalmente, ese sueño comienza a hacerse realidad. <span className="text-gold-dark font-medium">Casa de los Ángeles</span> fue concebida como un espacio donde el tiempo puede detenerse. Un lugar para reencontrarse, para dejarse encantar, para sentir historia. Un rincón que te invita a mirar al pasado con nostalgia y, al mismo tiempo, a soñar con el futuro.
+                <span className="text-gold-dark font-medium">Casa de los Ángeles</span> es una casona patrimonial convertida en un espacio vivo que combina museo, café, diseño, arte y experiencias exclusivas. Aquí, cada visita es distinta: una mañana tranquila en el patio, un recorrido cultural, una compra única en el mercado o un evento privado en un entorno irrepetible.
               </p>
               
-              {/* Párrafo 2: La Dualidad y el Legado */}
               <p>
-                Aquí conviven dos mundos: la calidez de Puebla y la elegancia íntima de un pequeño bistró parisino. Puedes desayunar, comer o cenar sintiendo la delicadeza europea, pero sin perder la sensación de estar en casa. Esa dualidad es el corazón de nuestro concepto. Durante más de cien años, esta casa ha sido resguardada por mujeres, quienes la han mantenido viva, cuidada y llena de carácter. Hubo un breve periodo en el que perdió su esencia, pero el destino la ha devuelto a manos que creen en su valor y que buscan restaurar el brillo que merece.
+                La casa no fue concebida como un museo tradicional ni como un simple centro comercial, sino como un refugio urbano donde lo histórico y lo contemporáneo conviven con naturalidad.
               </p>
               
-              {/* Párrafo 3: Historia Cinematográfica */}
               <p>
-                Este lugar ha sido escenario de telenovelas, películas y momentos memorables, incluyendo producciones protagonizadas por figuras como <span className="text-gold-dark font-medium">Salma Hayek</span> en <span className="italic">Frida</span>. Hoy queremos compartir esa belleza con quienes nos visitan: turistas, poblanos, soñadores, amantes del café y de los espacios con alma.
+                Quienes cruzan sus puertas no solo visitan un edificio: entran a una atmósfera. Un lugar para descubrir, celebrar, crear y permanecer.
               </p>
               
-              {/* Párrafo 4: El Cierre Poderoso */}
               <p className="text-gold-dark font-medium italic text-xl text-center">
-                Casa de los Ángeles renace para ser lo que siempre debió ser: un refugio lleno de historia, encanto y magia… donde cada visita se siente como volver a casa y, a la vez, viajar a un rincón de París.
+                Casa de los Ángeles no es solo un destino en Puebla.<br />
+                Es una experiencia que se recuerda.
               </p>
-            </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 mt-12 pt-10 border-t border-gold/20 max-w-2xl mx-auto">
-              <div className="text-center">
-                <span className="block font-serif text-3xl text-gold-dark">22</span>
-                <span className="text-sm text-charcoal-50 uppercase tracking-wider">Años de Sueño</span>
-              </div>
-              <div className="text-center">
-                <span className="block font-serif text-3xl text-gold-dark">100+</span>
-                <span className="text-sm text-charcoal-50 uppercase tracking-wider">Años de Historia</span>
-              </div>
-              <div className="text-center">
-                <span className="block font-serif text-3xl text-gold-dark">∞</span>
-                <span className="text-sm text-charcoal-50 uppercase tracking-wider">Encanto</span>
-              </div>
             </div>
           </motion.div>
         </div>
