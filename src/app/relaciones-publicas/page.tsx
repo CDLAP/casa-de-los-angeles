@@ -32,12 +32,12 @@ export default function RelacionesPublicasPage() {
   const isInView = useInView(contentRef, { once: true, margin: '-100px' })
 
   return (
-    <div className="min-h-screen bg-emerald-forest">
+    <div className="min-h-screen bg-bistro">
       {/* ═══ HERO ═══ */}
       <section className="relative min-h-[55vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald-forest via-emerald-dark to-emerald-forest" />
-          <div className="absolute inset-0 bg-gradient-radial from-gold/5 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-br from-bistro-dark via-bistro to-bistro-600" />
+          <div className="absolute inset-0 bg-gradient-radial from-gold/8 via-transparent to-transparent" />
         </div>
         <div className="relative z-10 text-center px-5 max-w-4xl mx-auto pt-24">
           <motion.h1

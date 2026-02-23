@@ -40,12 +40,12 @@ interface EventItem {
 }
 
 const categoryColors: Record<string, string> = {
-  'Mercado': 'bg-emerald/20 text-emerald-light border-emerald/30',
-  'Gastronomía': 'bg-bistro/20 text-bistro-light border-bistro/30',
-  'Música': 'bg-gold/20 text-gold-dark border-gold/30',
-  'Taller': 'bg-emerald-sage/20 text-emerald-sage border-emerald-sage/30',
-  'Arte': 'bg-gold-300/20 text-gold-300 border-gold-300/30',
-  'default': 'bg-gold/20 text-gold-dark border-gold/30',
+  'Mercado': 'bg-gold/20 text-gold-light border-gold/30',
+  'Gastronomía': 'bg-bistro-light/20 text-bistro-100 border-bistro-light/30',
+  'Música': 'bg-gold-300/20 text-gold-300 border-gold-300/30',
+  'Taller': 'bg-cream/10 text-cream/70 border-cream/20',
+  'Arte': 'bg-gold-400/20 text-gold-400 border-gold-400/30',
+  'default': 'bg-gold/20 text-gold border-gold/30',
 }
 
 const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
@@ -181,12 +181,12 @@ export default function EventosPage() {
   }
 
   return (
-    <div className="min-h-screen bg-emerald-forest">
+    <div className="min-h-screen bg-bistro">
       {/* ═══ HERO ═══ */}
       <section className="relative min-h-[55vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald-forest via-emerald-dark to-emerald-forest" />
-          <div className="absolute inset-0 bg-gradient-radial from-gold/5 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-br from-bistro-dark via-bistro to-bistro-600" />
+          <div className="absolute inset-0 bg-gradient-radial from-gold/8 via-transparent to-transparent" />
         </div>
         <div className="relative z-10 text-center px-5 max-w-4xl mx-auto pt-24">
           <motion.h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-gold mb-4 tracking-tight" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }}>
