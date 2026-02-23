@@ -13,7 +13,7 @@ export default function Hero() {
       {/* BLOQUE 1: Ángel + título + texto sobre fondo verde/vino */}
       <section 
         id="inicio" 
-        className={`w-full pt-28 sm:pt-28 pb-12 md:pb-16 ${isWine ? 'bg-[#3F1F26]' : 'bg-[#1A3A2E]'}`}
+        className={`w-full min-h-screen flex items-center justify-center ${isWine ? 'bg-[#3F1F26]' : 'bg-[#1A3A2E]'}`}
       >
         <div className="max-w-4xl mx-auto text-center px-5">
           {/* Ángel */}
