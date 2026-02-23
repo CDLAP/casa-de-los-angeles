@@ -18,7 +18,7 @@ export default function Footer() {
           <div className="lg:col-span-1">
             {/* Logo - Tamaño visible y bien presente */}
             <div className="mb-3 flex justify-center lg:justify-start">
-              <div className="relative w-32 h-16">
+              <div className="relative w-44 h-24">
                 <Image
                   src="/images/logo-short-1000x1000.png"
                   alt="Casa de los Ángeles"
