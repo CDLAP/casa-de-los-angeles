@@ -52,8 +52,8 @@ export default function Header() {
           ? 'bg-cream/95 backdrop-blur-md shadow-lg py-8' 
           : 'bg-[#3F1F26] py-8'
       }`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, delay: 2.5, ease: [0.25, 0.46, 0.45, 0.94] }}
     >
       <nav className="flex items-center justify-center gap-4 sm:gap-6 md:gap-10 xl:gap-14 px-3">
