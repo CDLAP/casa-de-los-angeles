@@ -88,20 +88,20 @@ export default function LineamientosModal({ isOpen, onClose }: LineamientosModal
                       <h4 className="font-serif text-emerald mb-2">Montaje</h4>
                       <p className="text-sm text-charcoal-50">
                         Ingreso desde las <strong>8:00 am</strong><br />
-                        Listo a más tardar <strong>9:00 am</strong>
+                        Listo a más tardar <strong>10:00 am</strong>
                       </p>
                     </div>
                     <div className="bg-emerald/5 p-4 rounded-lg">
                       <h4 className="font-serif text-emerald mb-2">Venta</h4>
                       <p className="text-sm text-charcoal-50">
-                        <strong>9:00 am - 9:00 pm</strong><br />
+                        <strong>11:00 am - 8:00 pm</strong><br />
                         Viernes, Sábados y Domingos
                       </p>
                     </div>
                     <div className="bg-emerald/5 p-4 rounded-lg">
                       <h4 className="font-serif text-emerald mb-2">Desmontaje</h4>
                       <p className="text-sm text-charcoal-50">
-                        Último día a partir de las <strong>9:00 pm</strong>
+                        Último día a partir de las <strong>8:00 pm</strong>
                       </p>
                     </div>
                   </div>

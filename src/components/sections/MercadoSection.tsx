@@ -97,7 +97,7 @@ export default function MercadoSection() {
                     <Clock className="w-5 h-5 text-emerald" />
                     <div>
                       <p className="text-xs text-charcoal-50 uppercase tracking-wider">Horario</p>
-                      <p className="text-charcoal font-medium">9:00 AM - 9:00 PM</p>
+                      <p className="text-charcoal font-medium">11:00 AM - 8:00 PM</p>
                     </div>
                   </div>
                   <div className="flex flex-col items-center lg:flex-row lg:items-center gap-2 lg:gap-3">
