@@ -6,7 +6,7 @@ import Image from 'next/image'
 export default function Hero() {
   return (
     <>
-      {/* BLOQUE 1: Foto de la casa con degradado inferior */}
+      {/* BLOQUE 1: Foto de la casa */}
       <section id="inicio" className="relative w-full pt-[88px] md:pt-[96px] bg-[#3F1F26]">
         <Image
           src="/images/casa.jpeg"
@@ -17,32 +17,33 @@ export default function Hero() {
           priority
           sizes="100vw"
         />
-        {/* Degradado sutil que funde la foto con el guinda */}
-        <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#3F1F26] to-transparent" />
       </section>
 
-      {/* BLOQUE 2: Pleca guinda con ángel + nombre + tagline */}
-      <section className="w-full bg-[#3F1F26] pb-20 md:pb-24 pt-14 md:pt-18">
-        <div className="max-w-4xl mx-auto text-center px-5">
-          {/* Ángel */}
-          <motion.div
-            className="mb-6 flex justify-center"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-          >
-            <div className="relative w-36 h-36 md:w-48 md:h-48">
-              <Image
-                src="/images/logo-short-1000x1000.png"
-                alt="Casa de los Ángeles"
-                fill
-                className="object-contain drop-shadow-2xl"
-                priority
-              />
-            </div>
-          </motion.div>
+      {/* BLOQUE 2: Pleca guinda con ángel como sello */}
+      <section className="relative w-full bg-[#3F1F26] pb-20 md:pb-24 pt-24 md:pt-32">
+        {/* Línea dorada separadora */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gold/60" />
 
-          {/* Casa de los Ángeles — serif dorado */}
+        {/* Ángel como sello sobre la línea */}
+        <motion.div
+          className="absolute left-1/2 -translate-x-1/2 -top-16 md:-top-20 z-10"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
+        >
+          <div className="relative w-32 h-32 md:w-40 md:h-40">
+            <Image
+              src="/images/logo-short-1000x1000.png"
+              alt="Casa de los Ángeles"
+              fill
+              className="object-contain drop-shadow-2xl"
+              priority
+            />
+          </div>
+        </motion.div>
+
+        <div className="max-w-4xl mx-auto text-center px-5">
+          {/* Casa de los Ángeles */}
           <motion.h1
             className="font-serif text-2xl md:text-4xl text-gold tracking-wide mb-4"
             initial={{ opacity: 0, y: 15 }}
