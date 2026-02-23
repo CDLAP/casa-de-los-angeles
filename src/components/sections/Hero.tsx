@@ -9,7 +9,7 @@ export default function Hero() {
       {/* BLOQUE 1: Foto de la casa con degradado inferior */}
       <section id="inicio" className="relative w-full pt-[88px] md:pt-[96px] bg-[#3F1F26]">
         <Image
-          src="/images/casa.png"
+          src="/images/casa.jpeg"
           alt="Casa de los Ángeles - Fachada"
           width={2400}
           height={1600}
