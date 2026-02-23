@@ -47,7 +47,7 @@ export default function Footer() {
 
           {/* Navigation - Horizontal en mobile, vertical en desktop */}
           <div className="mb-12 lg:mb-0">
-            <h4 className="font-serif text-sm uppercase tracking-[0.2em] text-gold/60 mb-5">Navegación</h4>
+            <h4 className="font-serif text-lg text-gold mb-6">Navegación</h4>
             <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 lg:flex-col lg:gap-y-3 lg:gap-x-0">
               {navLinks.map((item) => (
                 <Link
@@ -63,7 +63,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div className="mb-12 lg:mb-0">
-            <h4 className="font-serif text-sm uppercase tracking-[0.2em] text-gold/60 mb-5">Contacto</h4>
+            <h4 className="font-serif text-lg text-gold mb-6">Contacto</h4>
             <div className="space-y-4">
               <a
                 href="https://www.google.com/maps/search/?api=1&query=Casa+de+los+Angeles+Palafox+222+Puebla"
@@ -96,7 +96,7 @@ export default function Footer() {
 
           {/* Hours & Social */}
           <div>
-            <h4 className="font-serif text-sm uppercase tracking-[0.2em] text-gold/60 mb-5">Horario</h4>
+            <h4 className="font-serif text-lg text-gold mb-6">Horario</h4>
             <p className="text-cream/70 text-sm mb-2">Lunes a Domingo</p>
             <p className="text-gold font-serif text-lg mb-8">9:00 AM — 10:00 PM</p>
 
