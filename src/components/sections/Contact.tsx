@@ -96,7 +96,7 @@ export default function Contact() {
                 <h3 className="font-serif text-base sm:text-lg text-charcoal mb-2">Horarios</h3>
                 <p className="text-charcoal-50 text-sm leading-relaxed">
                   Lunes a Domingo<br />
-                  8:00 AM a 10:00 PM
+                  9:00 AM a 10:00 PM
                 </p>
               </div>
 
@@ -222,7 +222,6 @@ export default function Contact() {
                       className="w-full pl-4 pr-12 py-3 bg-white border border-gold/20 rounded-lg focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all"
                     >
                       <option value="">Elegir</option>
-                      <option value="8:00 AM">8:00 AM</option>
                       <option value="9:00 AM">9:00 AM</option>
                       <option value="10:00 AM">10:00 AM</option>
                       <option value="11:00 AM">11:00 AM</option>

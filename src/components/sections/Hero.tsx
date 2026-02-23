@@ -120,7 +120,7 @@ export default function Hero() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
-                Café • Cultura & Bistró
+                Café • Arte • Boutique
               </motion.p>
 
               <motion.div

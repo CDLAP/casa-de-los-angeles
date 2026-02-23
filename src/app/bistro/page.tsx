@@ -466,7 +466,7 @@ export default function BistroPage() {
                   <h3 className="font-serif text-base sm:text-lg text-gold mb-2">Horarios</h3>
                   <p className="text-cream/60 text-sm leading-relaxed">
                     Lunes a Domingo<br />
-                    8:00 AM a 10:00 PM
+                    9:00 AM a 10:00 PM
                   </p>
                 </div>
                 <div className="p-4 sm:p-6 bg-bistro-dark/50 rounded-xl border border-gold/10">
@@ -543,7 +543,6 @@ export default function BistroPage() {
                         <label className="block text-xs uppercase tracking-wider text-cream/50 mb-2">Hora *</label>
                         <select name="hora" required className="w-full pl-4 pr-12 py-3 bg-bistro-dark/80 border border-gold/20 rounded-lg text-cream focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all">
                           <option value="">Elegir</option>
-                          <option value="8:00 AM">8:00 AM</option>
                           <option value="9:00 AM">9:00 AM</option>
                           <option value="10:00 AM">10:00 AM</option>
                           <option value="11:00 AM">11:00 AM</option>

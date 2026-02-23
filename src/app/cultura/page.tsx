@@ -390,7 +390,7 @@ export default function CulturaPage() {
                   <h3 className="font-serif text-base sm:text-lg text-gold mb-2">Horarios</h3>
                   <p className="text-white/50 text-sm leading-relaxed">
                     Lunes a Domingo<br />
-                    8:00 AM a 10:00 PM
+                    9:00 AM a 10:00 PM
                   </p>
                 </div>
                 <div className="p-4 sm:p-6 bg-emerald-800/30 rounded-xl border border-gold/10">
