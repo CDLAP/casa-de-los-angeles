@@ -52,8 +52,8 @@ export default function Header() {
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled 
-          ? 'bg-cream/95 backdrop-blur-md shadow-lg py-4' 
-          : isWine ? 'bg-[#3F1F26] py-4' : 'bg-[#1A3A2E] py-4'
+          ? 'bg-cream/95 backdrop-blur-md shadow-lg py-8' 
+          : isWine ? 'bg-[#3F1F26] py-8' : 'bg-[#1A3A2E] py-8'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
