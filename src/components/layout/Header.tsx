@@ -110,15 +110,9 @@ export default function Header() {
       >
         <nav className="flex items-center justify-center gap-4 lg:gap-6 xl:gap-10 px-3">
           {mainLinks.map((link) => (
-            <motion.div
-              key={link.href}
-              whileHover={{ scale: 1.15 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-            >
-              <Link href={link.href} className={linkClass(link.href)}>
-                {link.label}
-              </Link>
-            </motion.div>
+            <Link key={link.href} href={link.href} className={linkClass(link.href)}>
+              {link.label}
+            </Link>
           ))}
 
           {/* Más dropdown */}
@@ -128,14 +122,12 @@ export default function Header() {
             onMouseEnter={() => setMoreOpen(true)}
             onMouseLeave={() => setMoreOpen(false)}
           >
-            <motion.button
+            <button
               className={`flex items-center gap-1 text-sm xl:text-base uppercase tracking-[0.12em] xl:tracking-[0.2em] font-sans transition-colors duration-300 whitespace-nowrap py-2 ${
                 isMoreActive || moreOpen
                   ? 'text-gold'
                   : isScrolled ? 'text-charcoal hover:text-gold' : 'text-cream/90 hover:text-gold'
               }`}
-              whileHover={{ scale: 1.15 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 25 }}
             >
               Más
               <motion.div
@@ -144,7 +136,7 @@ export default function Header() {
               >
                 <ChevronDown className="w-3.5 h-3.5" />
               </motion.div>
-            </motion.button>
+            </button>
 
             <AnimatePresence>
               {moreOpen && (
@@ -185,14 +177,9 @@ export default function Header() {
           </div>
 
           {/* Contacto suelto */}
-          <motion.div
-            whileHover={{ scale: 1.15 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-          >
-            <Link href="/#contacto" className={linkClass('/#contacto')}>
-              Contacto
-            </Link>
-          </motion.div>
+          <Link href="/#contacto" className={linkClass('/#contacto')}>
+            Contacto
+          </Link>
         </nav>
       </motion.header>
 
