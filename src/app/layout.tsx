@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     default: 'Casa de los Ángeles | Café, Arte & Boutique | Puebla Centro Histórico',
     template: '%s | Casa de los Ángeles Puebla'
   },
-  description: 'Café, arte y boutique en el Centro Histórico de Puebla. Charcutería artesanal, vinos, eventos culturales, atelier de arte y un espacio único con más de 100 años de historia. Reservaciones: +52 220 622 4222',
+  description: 'Café de especialidad, arte, boutique artesanal y eventos culturales en el Centro Histórico de Puebla. Un espacio único con más de 100 años de historia. Reservaciones: +52 220 622 4222',
   keywords: [
     // Principales
     'casa de los ángeles puebla',
@@ -34,10 +34,10 @@ export const metadata: Metadata = {
     'boutique puebla centro',
     'arte puebla centro histórico',
     // Productos
-    'charcutería puebla',
-    'vinos centro puebla',
     'café de especialidad puebla',
-    'tablas para compartir puebla',
+    'café artesanal puebla',
+    'sombrería puebla',
+    'joyería artesanal puebla',
     // Ubicación
     'palafox puebla',
     'café calle palafox',
@@ -84,7 +84,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: 'Casa de los Ángeles Puebla',
     title: 'Casa de los Ángeles | Café, Arte & Boutique en Puebla',
-    description: 'Café, arte y boutique en el Centro Histórico de Puebla. Charcutería artesanal, vinos, eventos culturales y un espacio único con más de 100 años de historia.',
+    description: 'Café de especialidad, arte, boutique artesanal y eventos culturales en el Centro Histórico de Puebla. Un espacio único con más de 100 años de historia.',
     images: [
       {
         url: `${siteUrl}/images/og-image.jpg`,
@@ -100,7 +100,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Casa de los Ángeles | Café, Arte & Boutique',
-    description: 'Café, arte y boutique en el Centro Histórico de Puebla. Charcutería, vinos, eventos culturales y un espacio único.',
+    description: 'Café de especialidad, arte, boutique artesanal y eventos culturales en el Centro Histórico de Puebla.',
     images: [`${siteUrl}/images/og-image.jpg`],
     creator: '@casa_de_los_angeles_puebla',
   },
@@ -159,7 +159,7 @@ const jsonLd = {
       '@id': `${siteUrl}/#organization`,
       name: 'Casa de los Ángeles',
       alternateName: 'Casa de los Ángeles Puebla',
-      description: 'Café, arte y boutique en el Centro Histórico de Puebla. Un espacio único con más de 100 años de historia donde el café, la cultura, el arte y el diseño se encuentran.',
+      description: 'Café de especialidad, arte, boutique artesanal y eventos culturales en el Centro Histórico de Puebla. Un espacio único con más de 100 años de historia.',
       url: siteUrl,
       logo: {
         '@type': 'ImageObject',
@@ -203,7 +203,7 @@ const jsonLd = {
           closes: '22:00',
         },
       ],
-      servesCuisine: ['Café', 'Charcuterie', 'Wine Bar', 'Brunch'],
+      servesCuisine: ['Café', 'Café de Especialidad', 'Bebidas Artesanales'],
       priceRange: '$$',
       currenciesAccepted: 'MXN',
       paymentAccepted: 'Cash, Credit Card, Debit Card',
@@ -217,7 +217,7 @@ const jsonLd = {
         name: 'Puebla',
         '@id': 'https://www.wikidata.org/wiki/Q46475',
       },
-      keywords: 'café, arte, boutique, centro histórico puebla, charcutería, vinos, café especialidad, eventos culturales, atelier',
+      keywords: 'café, arte, boutique, centro histórico puebla, café especialidad, eventos culturales, atelier, sombrería, joyería artesanal',
     },
     // Sitio Web
     {
@@ -243,7 +243,7 @@ const jsonLd = {
       about: {
         '@id': `${siteUrl}/#organization`,
       },
-      description: 'Café, arte y boutique en el Centro Histórico de Puebla. Charcutería, vinos, eventos culturales y un espacio único.',
+      description: 'Café de especialidad, arte, boutique artesanal y eventos culturales en el Centro Histórico de Puebla.',
       inLanguage: 'es-MX',
     },
     // BreadcrumbList para navegación
