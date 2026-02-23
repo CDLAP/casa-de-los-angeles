@@ -73,18 +73,7 @@ export default function Header() {
             {link.label}
           </Link>
         ))}
-        <Link
-          href={isBistro ? '/bistro#reservar' : isCultura ? '/cultura#contacto-cultura' : '/#reservar'}
-          className={`px-3 sm:px-4 xl:px-5 py-1 sm:py-1.5 xl:py-2 text-[10px] sm:text-xs xl:text-sm uppercase tracking-[0.1em] xl:tracking-[0.15em] border transition-all duration-300 whitespace-nowrap ${
-            isScrolled
-              ? isWine
-                ? 'border-bistro bg-bistro text-white hover:bg-bistro-light'
-                : 'border-emerald bg-emerald text-white hover:bg-emerald-light'
-              : 'border-gold/50 bg-gold/20 text-gold hover:bg-gold/30'
-          }`}
-        >
-          Reservar
-        </Link>
+
       </nav>
     </motion.header>
   )
