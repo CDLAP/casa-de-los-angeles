@@ -64,7 +64,7 @@ export default function Hero() {
             {/* Foto de la fachada — llena toda la pantalla */}
             <div className="absolute inset-0">
               <Image
-                src="/images/casa.jpeg"
+                src="/images/casa.png"
                 alt="Casa de los Ángeles - Fachada"
                 fill
                 className="object-cover object-center"
