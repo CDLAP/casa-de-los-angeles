@@ -32,7 +32,7 @@ export default function About() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="space-y-8 text-charcoal-50 leading-relaxed text-lg">
+            <div className="space-y-8 text-charcoal-50 leading-relaxed text-lg text-center">
               <p>
                 <span className="text-gold-dark font-medium">Casa de los Ángeles</span> es una casona patrimonial convertida en un espacio vivo que combina museo, café, diseño, arte y experiencias exclusivas. Aquí, cada visita es distinta: una mañana tranquila en el patio, un recorrido cultural, una compra única en el mercado o un evento privado en un entorno irrepetible.
               </p>
