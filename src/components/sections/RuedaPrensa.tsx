@@ -7,8 +7,8 @@ import { Mic, Camera, Wifi, Users, MonitorPlay, ShieldCheck, Coffee, UtensilsCro
 const features = [
   {
     icon: Mic,
-    title: 'Escenario Profesional',
-    description: 'Espacios versátiles con fondos elegantes ideales para conferencias ante medios de comunicación.',
+    title: 'Mobiliario Completo',
+    description: 'Mesas, sillas, atril y todo el mobiliario necesario para la realización de su conferencia de prensa.',
   },
   {
     icon: Camera,
@@ -117,7 +117,7 @@ export default function RuedaPrensa() {
 
             {/* Key highlights */}
             <div className="flex flex-wrap gap-3 mb-8">
-              {['Catering Gourmet', 'Estacionamiento', 'Ubicación Céntrica', 'Servicio Personalizado'].map((tag) => (
+              {['Catering Gourmet', 'Ubicación Céntrica', 'Servicio Personalizado'].map((tag) => (
                 <span 
                   key={tag}
                   className="px-4 py-2 bg-gold/10 text-gold-dark text-sm font-medium rounded-full"
