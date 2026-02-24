@@ -38,9 +38,10 @@
     }
   }
 
-  /* Offset para anclas — alinea borde de sección con borde inferior del nav */
+  /* Offset para anclas — querubín centrado entre secciones */
+  /* Mobile: querubín 160px, top -4px → centro en 76px */
   section[id] {
-    scroll-margin-top: 210px;
+    scroll-margin-top: 76px;
   }
 
   @media (min-width: 768px) {
@@ -377,9 +378,14 @@
 }
 
 /* === RESPONSIVE === */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .container-custom {
     @apply px-5;
+  }
+
+  /* Extra top padding en mobile para dejar espacio al querubín (160px) */
+  .section {
+    padding-top: 96px;
   }
 }
 

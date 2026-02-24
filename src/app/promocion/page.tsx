@@ -118,7 +118,7 @@ export default function PromocionPage() {
   return (
     <div className="min-h-screen bg-bistro">
       {/* ═══ HERO ═══ */}
-      <section className="relative min-h-[55vh] flex items-center justify-center overflow-hidden">
+      <section className="relative flex items-start justify-center overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-bistro-dark via-bistro to-bistro-600" />
           <div className="absolute inset-0 bg-gradient-radial from-gold/8 via-transparent to-transparent" />
@@ -128,7 +128,7 @@ export default function PromocionPage() {
           }} />
         </div>
 
-        <div className="relative z-10 text-center px-5 max-w-4xl mx-auto pt-24">
+        <div className="relative z-10 text-center px-5 max-w-4xl mx-auto pt-[150px] md:pt-[210px] pb-16">
           <motion.h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-gold mb-6" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }}>
             Promoción del Día
           </motion.h1>

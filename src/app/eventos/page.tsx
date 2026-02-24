@@ -2,15 +2,12 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Clock, MapPin, ChevronLeft, ChevronRight, Calendar } from 'lucide-react'
+import { Clock, MapPin, ChevronLeft, ChevronRight, Calendar, X } from 'lucide-react'
+import Image from 'next/image'
 
 // ============================================
 // CONFIGURACIÓN - GOOGLE SHEETS
 // ============================================
-// 1. Columnas: fecha | hora | titulo | descripcion | categoria | destacado
-//    (fecha: YYYY-MM-DD, destacado: SI o NO)
-// 2. Archivo → Compartir → Publicar en la web → CSV
-// 3. Pegar URL aquí:
 const GOOGLE_SHEET_CSV_URL = ''
 
 const sampleEvents: EventItem[] = [
@@ -18,7 +15,13 @@ const sampleEvents: EventItem[] = [
   { fecha: '2026-02-27', hora: '11:00 AM – 8:00 PM', titulo: 'Mercado de las Maravillas', descripcion: 'Boutique y mercado artesanal con las mejores marcas locales e independientes.', categoria: 'Mercado', destacado: true },
   { fecha: '2026-02-28', hora: '11:00 AM – 8:00 PM', titulo: 'Mercado de las Maravillas', descripcion: 'Boutique y mercado artesanal con las mejores marcas locales e independientes.', categoria: 'Mercado', destacado: false },
   { fecha: '2026-03-01', hora: '11:00 AM – 8:00 PM', titulo: 'Mercado de las Maravillas', descripcion: 'Boutique y mercado artesanal con las mejores marcas locales e independientes.', categoria: 'Mercado', destacado: false },
-  // Marzo — todos los fines de semana (vie-dom)
+  // Marzo — Martes de Artes
+  { fecha: '2026-03-03', hora: '11:00 AM – 8:00 PM', titulo: 'Martes de Artes', descripcion: 'Una jornada dedicada al arte, la creatividad y la expresión cultural en Casa de los Ángeles.', categoria: 'Arte', destacado: true, imagen: '/images/mdm.jpg' },
+  { fecha: '2026-03-10', hora: '11:00 AM – 8:00 PM', titulo: 'Martes de Artes', descripcion: 'Una jornada dedicada al arte, la creatividad y la expresión cultural en Casa de los Ángeles.', categoria: 'Arte', destacado: true, imagen: '/images/mdm.jpg' },
+  { fecha: '2026-03-17', hora: '11:00 AM – 8:00 PM', titulo: 'Martes de Artes', descripcion: 'Una jornada dedicada al arte, la creatividad y la expresión cultural en Casa de los Ángeles.', categoria: 'Arte', destacado: true, imagen: '/images/mdm.jpg' },
+  { fecha: '2026-03-24', hora: '11:00 AM – 8:00 PM', titulo: 'Martes de Artes', descripcion: 'Una jornada dedicada al arte, la creatividad y la expresión cultural en Casa de los Ángeles.', categoria: 'Arte', destacado: true, imagen: '/images/mdm.jpg' },
+  { fecha: '2026-03-31', hora: '11:00 AM – 8:00 PM', titulo: 'Martes de Artes', descripcion: 'Una jornada dedicada al arte, la creatividad y la expresión cultural en Casa de los Ángeles.', categoria: 'Arte', destacado: true, imagen: '/images/mdm.jpg' },
+  // Marzo — Mercado fines de semana
   { fecha: '2026-03-06', hora: '11:00 AM – 8:00 PM', titulo: 'Mercado de las Maravillas', descripcion: 'Boutique y mercado artesanal con las mejores marcas locales e independientes.', categoria: 'Mercado', destacado: true },
   { fecha: '2026-03-07', hora: '11:00 AM – 8:00 PM', titulo: 'Mercado de las Maravillas', descripcion: 'Boutique y mercado artesanal con las mejores marcas locales e independientes.', categoria: 'Mercado', destacado: false },
   { fecha: '2026-03-08', hora: '11:00 AM – 8:00 PM', titulo: 'Mercado de las Maravillas', descripcion: 'Boutique y mercado artesanal con las mejores marcas locales e independientes.', categoria: 'Mercado', destacado: false },
@@ -40,6 +43,7 @@ interface EventItem {
   descripcion: string
   categoria: string
   destacado: boolean
+  imagen?: string
 }
 
 const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
@@ -59,15 +63,14 @@ function parseCSV(csv: string): EventItem[] {
       descripcion: obj.descripcion || '',
       categoria: obj.categoria || '',
       destacado: (obj.destacado || '').toUpperCase() === 'SI',
+      imagen: obj.imagen || undefined,
     }
   }).filter(e => e.fecha && e.titulo)
 }
 
-// Helpers de semana
 function getWeekStart(date: Date): Date {
   const d = new Date(date)
   const day = d.getDay()
-  // Lunes como inicio de semana
   const diff = day === 0 ? -6 : 1 - day
   d.setDate(d.getDate() + diff)
   d.setHours(0, 0, 0, 0)
@@ -98,6 +101,8 @@ export default function EventosPage() {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth())
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear())
   const [weekStart, setWeekStart] = useState(() => getWeekStart(new Date()))
+  const [bannerEvent, setBannerEvent] = useState<EventItem | null>(null)
+  const [bannerZoomed, setBannerZoomed] = useState(false)
 
   useEffect(() => {
     if (!GOOGLE_SHEET_CSV_URL) return
@@ -112,13 +117,20 @@ export default function EventosPage() {
       .finally(() => setLoading(false))
   }, [])
 
-  // Filtrar por mes
+  // Bloquear scroll cuando modal abierto (solo si no zoomed, para permitir scroll en zoom)
+  useEffect(() => {
+    if (bannerEvent && !bannerZoomed) { document.body.style.overflow = 'hidden' }
+    else if (!bannerEvent) { document.body.style.overflow = '' }
+    return () => { document.body.style.overflow = '' }
+  }, [bannerEvent, bannerZoomed])
+
+  const closeBanner = () => { setBannerEvent(null); setBannerZoomed(false) }
+
   const monthEvents = events.filter(e => {
     const d = new Date(e.fecha + 'T00:00:00')
     return d.getMonth() === currentMonth && d.getFullYear() === currentYear
   }).sort((a, b) => a.fecha.localeCompare(b.fecha))
 
-  // Filtrar por semana
   const weekEnd = getWeekEnd(weekStart)
   const weekEvents = events.filter(e => {
     const d = new Date(e.fecha + 'T00:00:00')
@@ -156,7 +168,7 @@ export default function EventosPage() {
   return (
     <div className="min-h-screen bg-bistro">
       {/* ═══ HERO ═══ */}
-      <section className="relative min-h-[55vh] flex items-center justify-center overflow-hidden">
+      <section className="relative flex items-start justify-center overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-bistro-dark via-bistro to-bistro-600" />
           <div className="absolute inset-0 bg-gradient-radial from-gold/8 via-transparent to-transparent" />
@@ -166,7 +178,7 @@ export default function EventosPage() {
           }} />
         </div>
 
-        <div className="relative z-10 text-center px-5 max-w-4xl mx-auto pt-24">
+        <div className="relative z-10 text-center px-5 max-w-4xl mx-auto pt-[150px] md:pt-[210px] pb-16">
           <motion.h1
             className="font-serif text-4xl sm:text-5xl md:text-6xl text-gold mb-6"
             initial={{ opacity: 0, y: 20 }}
@@ -238,13 +250,13 @@ export default function EventosPage() {
           >
             <button
               onClick={view === 'semana' ? prevWeek : prevMonth}
-              className="p-3 text-gold/50 hover:text-gold transition-colors"
+              className="p-4 min-w-[48px] min-h-[48px] flex items-center justify-center text-gold/50 hover:text-gold active:text-gold transition-colors"
               aria-label="Anterior"
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="w-6 h-6" />
             </button>
             
-            <h2 className="font-serif text-2xl sm:text-3xl text-gold min-w-[280px] text-center tracking-tight">
+            <h2 className="font-serif text-2xl sm:text-3xl text-gold min-w-[200px] sm:min-w-[280px] text-center tracking-tight">
               {view === 'semana'
                 ? formatWeekRange(weekStart, weekEnd)
                 : `${meses[currentMonth]} ${currentYear}`
@@ -253,10 +265,10 @@ export default function EventosPage() {
             
             <button
               onClick={view === 'semana' ? nextWeek : nextMonth}
-              className="p-3 text-gold/50 hover:text-gold transition-colors"
+              className="p-4 min-w-[48px] min-h-[48px] flex items-center justify-center text-gold/50 hover:text-gold active:text-gold transition-colors"
               aria-label="Siguiente"
             >
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-6 h-6" />
             </button>
           </motion.div>
 
@@ -288,16 +300,18 @@ export default function EventosPage() {
                 {filteredEvents.map((event, index) => {
                   const { dia, diaSemana } = formatDate(event.fecha)
                   const isLast = index === filteredEvents.length - 1
+                  const hasImage = !!event.imagen
 
                   return (
                     <motion.div
                       key={`${event.fecha}-${event.titulo}-${index}`}
                       className={`group grid grid-cols-[70px_1fr] sm:grid-cols-[100px_1fr] gap-6 sm:gap-10 py-8 sm:py-10 ${
                         !isLast ? 'border-b border-gold/10' : ''
-                      }`}
+                      } ${hasImage ? 'cursor-pointer' : ''}`}
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: index * 0.06 }}
+                      onClick={hasImage ? () => setBannerEvent(event) : undefined}
                     >
                       {/* Fecha */}
                       <div className="text-center sm:text-right pt-1">
@@ -310,28 +324,44 @@ export default function EventosPage() {
                       </div>
 
                       {/* Contenido */}
-                      <div>
-                        <p className="text-gold/40 text-xs uppercase tracking-[0.2em] mb-2">
-                          {event.categoria}
-                        </p>
-                        
-                        <h3 className="font-serif text-xl sm:text-2xl text-cream group-hover:text-gold transition-colors duration-300 mb-3">
-                          {event.titulo}
-                        </h3>
+                      <div className={hasImage ? 'flex gap-4 sm:gap-6' : ''}>
+                        {/* Thumbnail */}
+                        {hasImage && event.imagen && (
+                          <div className="relative flex-shrink-0 w-20 h-20 sm:w-28 sm:h-28 rounded-lg overflow-hidden border border-gold/20 group-hover:border-gold/50 transition-all duration-300 shadow-lg group-hover:shadow-gold/10">
+                            <Image
+                              src={event.imagen}
+                              alt={event.titulo}
+                              fill
+                              className="object-cover group-hover:scale-105 transition-transform duration-500"
+                              sizes="112px"
+                            />
+                            <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-300" />
+                          </div>
+                        )}
 
-                        <p className="text-cream/45 text-sm leading-relaxed mb-4 max-w-xl">
-                          {event.descripcion}
-                        </p>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-gold/40 text-xs uppercase tracking-[0.2em] mb-2">
+                            {event.categoria}
+                          </p>
+                          
+                          <h3 className={`font-serif text-xl sm:text-2xl text-cream transition-colors duration-300 mb-3 ${hasImage ? 'group-hover:text-gold' : ''}`}>
+                            {event.titulo}
+                          </h3>
 
-                        <div className="flex items-center gap-5 text-xs text-cream/30 uppercase tracking-wider">
-                          <span className="inline-flex items-center gap-1.5">
-                            <Clock className="w-3.5 h-3.5 text-gold/30" />
-                            {event.hora}
-                          </span>
-                          <span className="inline-flex items-center gap-1.5">
-                            <MapPin className="w-3.5 h-3.5 text-gold/30" />
-                            Don Juan de Palafox y Mendoza 222, Centro
-                          </span>
+                          <p className="text-cream/45 text-sm leading-relaxed mb-4 max-w-xl">
+                            {event.descripcion}
+                          </p>
+
+                          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-cream/30 uppercase tracking-wider">
+                            <span className="inline-flex items-center gap-1.5">
+                              <Clock className="w-3.5 h-3.5 text-gold/30" />
+                              {event.hora}
+                            </span>
+                            <span className="inline-flex items-center gap-1.5">
+                              <MapPin className="w-3.5 h-3.5 text-gold/30" />
+                              Palafox y Mendoza 222
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </motion.div>
@@ -375,6 +405,61 @@ export default function EventosPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* ═══ MODAL BANNER ═══ */}
+      <AnimatePresence>
+        {bannerEvent && bannerEvent.imagen && (
+          <motion.div
+            className={`fixed inset-0 z-[100] ${
+              bannerZoomed ? 'overflow-auto' : 'flex items-center justify-center p-6'
+            }`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            onClick={closeBanner}
+          >
+            {/* Backdrop */}
+            <div className="fixed inset-0 bg-black/85 backdrop-blur-sm" />
+
+            {/* Botón cerrar — siempre visible y fijo */}
+            <button
+              onClick={closeBanner}
+              className="fixed top-6 right-6 z-[110] w-12 h-12 rounded-full bg-black/70 border border-cream/20 flex items-center justify-center text-cream/80 hover:text-cream hover:bg-black/90 hover:border-cream/40 transition-all duration-300 shadow-xl backdrop-blur-sm"
+              aria-label="Cerrar"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            <motion.div
+              className={`relative ${
+                bannerZoomed ? 'p-4' : ''
+              }`}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src={bannerEvent.imagen}
+                alt={bannerEvent.titulo}
+                width={1600}
+                height={2000}
+                className={`rounded-lg shadow-2xl transition-all duration-300 ${
+                  bannerZoomed
+                    ? 'w-[110vw] max-w-none h-auto cursor-zoom-out'
+                    : 'max-h-[calc(100vh-48px)] w-auto h-auto object-contain cursor-zoom-in'
+                }`}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setBannerZoomed(!bannerZoomed)
+                }}
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }

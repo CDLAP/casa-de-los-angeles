@@ -8,12 +8,12 @@ export default function StickyAngel() {
   const pathname = usePathname()
   const isHome = pathname === '/'
   const [isStuck, setIsStuck] = useState(false)
-  const [menuForced, setMenuForced] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   // Listen for mobile menu toggle
   useEffect(() => {
     const handler = (e: Event) => {
-      setMenuForced((e as CustomEvent).detail.open)
+      setMenuOpen((e as CustomEvent).detail.open)
     }
     window.addEventListener('mobileMenuToggle', handler)
     return () => window.removeEventListener('mobileMenuToggle', handler)
@@ -35,11 +35,12 @@ export default function StickyAngel() {
     return () => window.removeEventListener('angelStuck', handler)
   }, [isHome, pathname])
 
-  const visible = isStuck || menuForced
+  // Hide when menu is open (menu has its own cherub)
+  const visible = isStuck && !menuOpen
 
   return (
     <div
-      className="fixed left-0 right-0 flex justify-center pointer-events-none transition-opacity duration-0 top-[-10px] md:top-[28px]"
+      className="fixed left-0 right-0 flex justify-center pointer-events-none transition-opacity duration-0 top-[-4px] md:top-[28px]"
       style={{ zIndex: 58, opacity: visible ? 1 : 0 }}
     >
       <Image
@@ -47,7 +48,7 @@ export default function StickyAngel() {
         alt="Casa de los Ángeles"
         width={160}
         height={160}
-        className="object-contain drop-shadow-2xl w-44 h-44 md:w-56 md:h-56"
+        className="object-contain drop-shadow-2xl w-40 h-40 md:w-56 md:h-56"
         priority
       />
     </div>

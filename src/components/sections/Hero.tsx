@@ -4,9 +4,17 @@ import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 
-const NAV_HEIGHT = 84
-const ANGEL_HEIGHT = 224
-const STUCK_TOP = NAV_HEIGHT - Math.round(ANGEL_HEIGHT / 4)
+// Desktop: nav 84px, angel 224px. Mobile: no nav, angel 112px
+const getStuckTop = () => {
+  if (typeof window !== 'undefined' && window.innerWidth < 768) {
+    return -4 // mobile sticky top position
+  }
+  return 84 - Math.round(224 / 4) // desktop: 28px
+}
+const getAngelHeight = () => {
+  if (typeof window !== 'undefined' && window.innerWidth < 768) return 160
+  return 224
+}
 
 const heroImages = [
   '/images/casaa.jpg',
@@ -35,8 +43,10 @@ export default function Hero() {
       const pleca = plecaRef.current
       if (!pleca) return
       const rect = pleca.getBoundingClientRect()
-      const staticTop = rect.top - ANGEL_HEIGHT / 2
-      const stuck = staticTop <= STUCK_TOP
+      const angelH = getAngelHeight()
+      const stuckTop = getStuckTop()
+      const staticTop = rect.top - angelH / 2
+      const stuck = staticTop <= stuckTop
       setHideStatic(stuck)
       // Sync with StickyAngel in the same frame
       window.dispatchEvent(new CustomEvent('angelStuck', { detail: { stuck } }))
@@ -106,7 +116,7 @@ export default function Hero() {
             alt="Casa de los Ángeles"
             width={160}
             height={160}
-            className="object-contain drop-shadow-2xl w-44 h-44 md:w-56 md:h-56"
+            className="object-contain drop-shadow-2xl w-40 h-40 md:w-56 md:h-56"
             priority
           />
         </div>

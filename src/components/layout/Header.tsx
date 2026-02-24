@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ChevronDown } from 'lucide-react'
 
 const mainLinks = [
@@ -20,13 +21,13 @@ const moreLinks = [
   { href: '/eventos', label: 'Eventos' },
   { href: '/promocion', label: 'Promoción del Día' },
   { href: '/relaciones-publicas', label: 'Relaciones Públicas' },
+  { href: '/#contacto', label: 'Contacto' },
 ]
 
 const allLinks = [
   { href: '/', label: 'Inicio' },
   ...mainLinks.filter(l => l.href !== '/'),
   ...moreLinks,
-  { href: '/#contacto', label: 'Contacto' },
 ]
 
 export default function Header() {
@@ -170,10 +171,7 @@ export default function Header() {
             </AnimatePresence>
           </div>
 
-          {/* Contacto */}
-          <Link href="/#contacto" className={navTextClass(isActive('/#contacto'))}>
-            Contacto
-          </Link>
+
         </nav>
       </motion.header>
 
@@ -189,7 +187,7 @@ export default function Header() {
         }`}
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, delay: 2.5 }}
+        transition={{ duration: 0.3 }}
         aria-label="Menú"
       >
         <motion.span
@@ -228,9 +226,19 @@ export default function Header() {
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 30, stiffness: 300 }}
             >
-              {/* Espacio para querubín */}
-              <div className="pt-48 px-10">
-                <div className="flex items-center gap-3 mb-6">
+              {/* Querubín integrado en el menú */}
+              <div className="flex justify-center pt-6 pb-4">
+                <Image
+                  src="/images/logo-short-1000x1000.png"
+                  alt="Casa de los Ángeles"
+                  width={120}
+                  height={120}
+                  className="object-contain drop-shadow-2xl w-36 h-36"
+                />
+              </div>
+
+              <div className="px-10">
+                <div className="flex items-center gap-3 mb-4">
                   <div className="flex-1 h-px bg-gold/20" />
                   <div className="w-1.5 h-1.5 bg-gold/40 rotate-45" />
                   <div className="flex-1 h-px bg-gold/20" />
@@ -255,7 +263,7 @@ export default function Header() {
                 ))}
               </div>
               <div className="mt-auto pb-8 pt-8 px-10">
-                <div className="flex items-center gap-3 mb-6">
+                <div className="flex items-center gap-3 mb-4">
                   <div className="flex-1 h-px bg-gold/20" />
                   <div className="w-1.5 h-1.5 bg-gold/40 rotate-45" />
                   <div className="flex-1 h-px bg-gold/20" />
