@@ -4,10 +4,6 @@ import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 
-// Posición fija del querubín (px desde el top del viewport)
-// Nav desktop ≈ 172px, así que 250px lo deja bien debajo del menú
-const STUCK_TOP_DESKTOP = 500
-
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null)
   const [isStuck, setIsStuck] = useState(false)
@@ -15,14 +11,13 @@ export default function Hero() {
   useEffect(() => {
     const onScroll = () => {
       const section = sectionRef.current
-      // Solo sticky en desktop (md+)
       if (!section || window.innerWidth < 768) {
         setIsStuck(false)
         return
       }
-      // El querubín empieza en section.top - mitad de su altura (224/2 = 112)
+      // El querubín se fija justo debajo del nav (172px)
       const angelNaturalTop = section.getBoundingClientRect().top - 112
-      setIsStuck(angelNaturalTop <= STUCK_TOP_DESKTOP)
+      setIsStuck(angelNaturalTop <= 172)
     }
 
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -52,12 +47,12 @@ export default function Hero() {
       <section ref={sectionRef} className="relative w-full bg-[#3F1F26] pb-16 md:pb-20 pt-20 md:pt-32">
         <div className="absolute top-0 left-0 right-0 h-px bg-gold/60" />
 
-        {/* Querubín */}
+        {/* Querubín — z-40 para que pase DETRÁS del nav (z-50) */}
         <div
-          className="flex justify-center pointer-events-none z-[55]"
+          className="flex justify-center pointer-events-none z-40"
           style={
             isStuck
-              ? { position: 'fixed', top: STUCK_TOP_DESKTOP, left: 0, right: 0 }
+              ? { position: 'fixed', top: 172, left: 0, right: 0 }
               : { position: 'absolute', top: 0, left: 0, right: 0, transform: 'translateY(-50%)' }
           }
         >
