@@ -12,14 +12,14 @@ export default function LayoutShell({ children }: { children: React.ReactNode })
   const isStandalone = standalonePages.includes(pathname)
 
   if (isStandalone) {
-    return <main className="overflow-x-hidden">{children}</main>
+    return <main>{children}</main>
   }
 
   return (
     <>
       <Loader />
       <Header />
-      <main className="overflow-x-hidden">{children}</main>
+      <main>{children}</main>
       <Footer />
     </>
   )
