@@ -10,19 +10,30 @@ const STUCK_TOP = NAV_HEIGHT - Math.round(ANGEL_HEIGHT / 4)
 
 const heroImages = [
   '/images/casa.jpeg',
-  '/images/casa.png',
-  '/images/casad.png',
+  '/images/casaa.jpg',
+  '/images/casad.jpg',
 ]
 
 export default function Hero() {
   const plecaRef = useRef<HTMLElement>(null)
   const [hideStatic, setHideStatic] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
   const [currentImage, setCurrentImage] = useState(0)
+
+  // Listen for mobile menu toggle
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const detail = (e as CustomEvent).detail
+      setMenuOpen(detail.open)
+    }
+    window.addEventListener('mobileMenuToggle', handler)
+    return () => window.removeEventListener('mobileMenuToggle', handler)
+  }, [])
 
   useEffect(() => {
     const onScroll = () => {
       const pleca = plecaRef.current
-      if (!pleca || window.innerWidth < 768) return
+      if (!pleca) return
       const rect = pleca.getBoundingClientRect()
       const staticTop = rect.top - ANGEL_HEIGHT / 2
       setHideStatic(staticTop <= STUCK_TOP)
@@ -74,7 +85,7 @@ export default function Hero() {
         {/* Querubín estático — desaparece cuando el sticky lo reemplaza */}
         <div
           className="absolute top-0 left-0 right-0 flex justify-center pointer-events-none transition-opacity duration-0"
-          style={{ transform: 'translateY(-50%)', zIndex: 55, opacity: hideStatic ? 0 : 1 }}
+          style={{ transform: 'translateY(-50%)', zIndex: 55, opacity: (hideStatic || menuOpen) ? 0 : 1 }}
         >
           <Image
             src="/images/logo-short-1000x1000.png"
@@ -97,7 +108,7 @@ export default function Hero() {
 
         <div className="relative z-10 max-w-4xl mx-auto text-center px-5">
           <motion.h1
-            className="font-serif text-4xl md:text-6xl text-gold tracking-wide mb-4"
+            className="font-serif text-[3rem] md:text-6xl text-gold tracking-wide mb-4"
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}

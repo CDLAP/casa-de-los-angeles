@@ -71,6 +71,8 @@ export default function Header() {
   useEffect(() => {
     if (menuOpen) { document.body.style.overflow = 'hidden' }
     else { document.body.style.overflow = '' }
+    // Notify sticky angel & hero about menu state
+    window.dispatchEvent(new CustomEvent('mobileMenuToggle', { detail: { open: menuOpen } }))
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 

@@ -12,7 +12,18 @@ export default function StickyAngel() {
   const pathname = usePathname()
   const isHome = pathname === '/'
   const [isStuck, setIsStuck] = useState(false)
+  const [menuForced, setMenuForced] = useState(false)
   const plecaRef = useRef<HTMLElement | null>(null)
+
+  // Listen for mobile menu toggle
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const detail = (e as CustomEvent).detail
+      setMenuForced(detail.open)
+    }
+    window.addEventListener('mobileMenuToggle', handler)
+    return () => window.removeEventListener('mobileMenuToggle', handler)
+  }, [])
 
   useEffect(() => {
     if (!isHome) {
@@ -43,12 +54,15 @@ export default function StickyAngel() {
     }
   }, [isHome, pathname])
 
-  if (!isStuck) return null
+  // Show if stuck by scroll OR forced by menu
+  const visible = isStuck || menuForced
+
+  if (!visible) return null
 
   return (
     <div
       className="fixed left-0 right-0 flex justify-center pointer-events-none"
-      style={{ top: STUCK_TOP, zIndex: 55 }}
+      style={{ top: STUCK_TOP, zIndex: 58 }}
     >
       <Image
         src="/images/logo-short-1000x1000.png"

@@ -40,7 +40,13 @@
 
   /* Offset para anclas — alinea borde de sección con borde inferior del nav */
   section[id] {
-    scroll-margin-top: 116px;
+    scroll-margin-top: 210px;
+  }
+
+  @media (min-width: 768px) {
+    section[id] {
+      scroll-margin-top: 116px;
+    }
   }
 
   /* Lenis smooth scroll */
