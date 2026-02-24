@@ -1,30 +1,25 @@
 'use client'
 
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
-
-const NAV_HEIGHT = 84
-const ANGEL_HEIGHT = 224
-const STUCK_TOP = NAV_HEIGHT - Math.round(ANGEL_HEIGHT / 4)
 
 export default function StickyAngel() {
   const pathname = usePathname()
   const isHome = pathname === '/'
   const [isStuck, setIsStuck] = useState(false)
   const [menuForced, setMenuForced] = useState(false)
-  const plecaRef = useRef<HTMLElement | null>(null)
 
   // Listen for mobile menu toggle
   useEffect(() => {
     const handler = (e: Event) => {
-      const detail = (e as CustomEvent).detail
-      setMenuForced(detail.open)
+      setMenuForced((e as CustomEvent).detail.open)
     }
     window.addEventListener('mobileMenuToggle', handler)
     return () => window.removeEventListener('mobileMenuToggle', handler)
   }, [])
 
+  // Listen for Hero's scroll calculation — single source of truth
   useEffect(() => {
     if (!isHome) {
       setIsStuck(true)
@@ -32,37 +27,20 @@ export default function StickyAngel() {
     }
 
     setIsStuck(false)
-    plecaRef.current = null
 
-    const onScroll = () => {
-      if (!plecaRef.current) {
-        const sections = document.querySelectorAll('main section')
-        if (sections.length >= 2) plecaRef.current = sections[1] as HTMLElement
-      }
-
-      if (plecaRef.current) {
-        const rect = plecaRef.current.getBoundingClientRect()
-        const staticTop = rect.top - ANGEL_HEIGHT / 2
-        setIsStuck(staticTop <= STUCK_TOP)
-      }
+    const handler = (e: Event) => {
+      setIsStuck((e as CustomEvent).detail.stuck)
     }
-
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      plecaRef.current = null
-    }
+    window.addEventListener('angelStuck', handler)
+    return () => window.removeEventListener('angelStuck', handler)
   }, [isHome, pathname])
 
-  // Show if stuck by scroll OR forced by menu
   const visible = isStuck || menuForced
-
-  if (!visible) return null
 
   return (
     <div
-      className="fixed left-0 right-0 flex justify-center pointer-events-none"
-      style={{ top: STUCK_TOP, zIndex: 58 }}
+      className="fixed left-0 right-0 flex justify-center pointer-events-none transition-opacity duration-0 top-[-10px] md:top-[28px]"
+      style={{ zIndex: 58, opacity: visible ? 1 : 0 }}
     >
       <Image
         src="/images/logo-short-1000x1000.png"

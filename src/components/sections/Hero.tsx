@@ -9,9 +9,9 @@ const ANGEL_HEIGHT = 224
 const STUCK_TOP = NAV_HEIGHT - Math.round(ANGEL_HEIGHT / 4)
 
 const heroImages = [
-  '/images/casa.jpeg',
   '/images/casaa.jpg',
   '/images/casad.jpg',
+  '/images/casa.jpeg',
 ]
 
 export default function Hero() {
@@ -36,7 +36,10 @@ export default function Hero() {
       if (!pleca) return
       const rect = pleca.getBoundingClientRect()
       const staticTop = rect.top - ANGEL_HEIGHT / 2
-      setHideStatic(staticTop <= STUCK_TOP)
+      const stuck = staticTop <= STUCK_TOP
+      setHideStatic(stuck)
+      // Sync with StickyAngel in the same frame
+      window.dispatchEvent(new CustomEvent('angelStuck', { detail: { stuck } }))
     }
 
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -55,23 +58,34 @@ export default function Hero() {
   return (
     <>
       {/* Foto de la casa — crossfade carousel */}
-      <section id="inicio" className="w-full pt-[84px] bg-cream">
+      <section id="inicio" className="w-full pt-0 md:pt-[84px] bg-cream">
         <div className="relative w-full overflow-hidden">
           <motion.div
             initial={{ opacity: 0, scale: 1.05 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 2, delay: 2.5, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <div className="relative w-full" style={{ aspectRatio: '2400/1600' }}>
-              {heroImages.map((src, index) => (
+            <div className="relative w-full">
+              {/* Primera imagen define la altura natural */}
+              <Image
+                src={heroImages[0]}
+                alt="Casa de los Ángeles - Fachada"
+                width={2400}
+                height={1600}
+                className="w-full h-auto block transition-opacity duration-[2000ms] ease-in-out"
+                style={{ opacity: currentImage === 0 ? 1 : 0 }}
+                priority
+                sizes="100vw"
+              />
+              {/* Resto se superponen */}
+              {heroImages.slice(1).map((src, i) => (
                 <Image
                   key={src}
                   src={src}
-                  alt={`Casa de los Ángeles - Fachada ${index + 1}`}
+                  alt={`Casa de los Ángeles - Fachada ${i + 2}`}
                   fill
                   className="object-cover transition-opacity duration-[2000ms] ease-in-out"
-                  style={{ opacity: currentImage === index ? 1 : 0 }}
-                  priority={index === 0}
+                  style={{ opacity: currentImage === i + 1 ? 1 : 0 }}
                   sizes="100vw"
                 />
               ))}
