@@ -93,7 +93,11 @@ export default function RuedaPrensa() {
           <p className="section-subtitle">
             Atmósfera de casona histórica con todo lo necesario para su conferencia de prensa.
           </p>
-          <div className="divider" />
+          <div className="divider">
+            <div className="w-16 h-px bg-gold/40" />
+            <div className="w-2 h-2 rotate-45 bg-gold/50" />
+            <div className="w-16 h-px bg-gold/40" />
+          </div>
         </motion.div>
 
         {/* Main Content: Image + Description */}

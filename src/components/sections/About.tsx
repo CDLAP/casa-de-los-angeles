@@ -22,7 +22,11 @@ export default function About() {
             En el corazón de Puebla, detrás de una fachada histórica,<br />
             existe un lugar donde el tiempo no se detuvo: se transformó.
           </p>
-          <div className="divider" />
+          <div className="divider">
+            <div className="w-16 h-px bg-gold/40" />
+            <div className="w-2 h-2 rotate-45 bg-gold/50" />
+            <div className="w-16 h-px bg-gold/40" />
+          </div>
         </motion.div>
 
         {/* Content - Solo texto centrado */}

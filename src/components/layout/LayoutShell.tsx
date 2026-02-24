@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import Loader from '@/components/animations/Loader'
+import StickyAngel from '@/components/layout/StickyAngel'
 
 const standalonePages = ['/lineamientos']
 
@@ -19,6 +20,7 @@ export default function LayoutShell({ children }: { children: React.ReactNode })
     <>
       <Loader />
       <Header />
+      <StickyAngel />
       <main>{children}</main>
       <Footer />
     </>

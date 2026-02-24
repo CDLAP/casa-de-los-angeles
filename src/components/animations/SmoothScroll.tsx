@@ -13,13 +13,13 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
   useEffect(() => {
     // Initialize Lenis with optimized settings for better performance
     lenisRef.current = new Lenis({
-      duration: 0.8, // Reducido de 1.2 para respuesta más rápida
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      duration: 0.5,
+      easing: (t) => 1 - Math.pow(1 - t, 3),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 0.8, // Reducido para scroll más suave
-      touchMultiplier: 1.5, // Reducido de 2 para mejor control
+      wheelMultiplier: 1.2,
+      touchMultiplier: 2,
       infinite: false,
     })
 

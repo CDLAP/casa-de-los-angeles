@@ -14,15 +14,23 @@ import { Clock, MapPin, ChevronLeft, ChevronRight, Calendar } from 'lucide-react
 const GOOGLE_SHEET_CSV_URL = ''
 
 const sampleEvents: EventItem[] = [
-  { fecha: '2026-03-01', hora: '11:00 AM – 8:00 PM', titulo: 'Mercado de las Maravillas', descripcion: 'Boutique y mercado artesanal con las mejores marcas locales e independientes.', categoria: 'Mercado', destacado: true },
-  { fecha: '2026-03-02', hora: '11:00 AM – 8:00 PM', titulo: 'Mercado de las Maravillas', descripcion: 'Último día del fin de semana para disfrutar nuestro mercado boutique.', categoria: 'Mercado', destacado: false },
-  { fecha: '2026-03-07', hora: '6:00 PM – 9:00 PM', titulo: 'Noche de Vinos & Quesos', descripcion: 'Una velada especial con selección de vinos y tabla de quesos artesanales.', categoria: 'Gastronomía', destacado: true },
-  { fecha: '2026-03-08', hora: '11:00 AM – 8:00 PM', titulo: 'Mercado Edición Especial — Día de la Mujer', descripcion: 'Celebramos a las mujeres emprendedoras con una edición especial de nuestro mercado.', categoria: 'Mercado', destacado: true },
-  { fecha: '2026-03-14', hora: '5:00 PM – 8:00 PM', titulo: 'Tarde de Jazz en el Jardín', descripcion: 'Música en vivo acompañada de café de especialidad y ambiente inigualable.', categoria: 'Música', destacado: false },
-  { fecha: '2026-03-15', hora: '10:00 AM – 1:00 PM', titulo: 'Taller de Sombreros Artesanales', descripcion: 'Aprende el arte de la sombrerería de la mano de nuestros maestros artesanos.', categoria: 'Taller', destacado: false },
-  { fecha: '2026-03-21', hora: '7:00 PM – 10:00 PM', titulo: 'Cena Privada — Menú Degustación', descripcion: 'Experiencia gastronómica exclusiva con menú de 5 tiempos. Cupo limitado.', categoria: 'Gastronomía', destacado: true },
-  { fecha: '2026-03-22', hora: '11:00 AM – 8:00 PM', titulo: 'Mercado de las Maravillas', descripcion: 'Fin de semana de mercado con nuevos expositores y sorpresas.', categoria: 'Mercado', destacado: false },
-  { fecha: '2026-03-28', hora: '4:00 PM – 7:00 PM', titulo: 'Exposición de Arte — Artistas Locales', descripcion: 'Inauguración de exposición colectiva de artistas emergentes de Puebla.', categoria: 'Arte', destacado: true },
+  // Febrero — fines de semana
+  { fecha: '2026-02-27', hora: '11:00 AM – 8:00 PM', titulo: 'Mercado de las Maravillas', descripcion: 'Boutique y mercado artesanal con las mejores marcas locales e independientes.', categoria: 'Mercado', destacado: true },
+  { fecha: '2026-02-28', hora: '11:00 AM – 8:00 PM', titulo: 'Mercado de las Maravillas', descripcion: 'Boutique y mercado artesanal con las mejores marcas locales e independientes.', categoria: 'Mercado', destacado: false },
+  { fecha: '2026-03-01', hora: '11:00 AM – 8:00 PM', titulo: 'Mercado de las Maravillas', descripcion: 'Boutique y mercado artesanal con las mejores marcas locales e independientes.', categoria: 'Mercado', destacado: false },
+  // Marzo — todos los fines de semana (vie-dom)
+  { fecha: '2026-03-06', hora: '11:00 AM – 8:00 PM', titulo: 'Mercado de las Maravillas', descripcion: 'Boutique y mercado artesanal con las mejores marcas locales e independientes.', categoria: 'Mercado', destacado: true },
+  { fecha: '2026-03-07', hora: '11:00 AM – 8:00 PM', titulo: 'Mercado de las Maravillas', descripcion: 'Boutique y mercado artesanal con las mejores marcas locales e independientes.', categoria: 'Mercado', destacado: false },
+  { fecha: '2026-03-08', hora: '11:00 AM – 8:00 PM', titulo: 'Mercado de las Maravillas', descripcion: 'Boutique y mercado artesanal con las mejores marcas locales e independientes.', categoria: 'Mercado', destacado: false },
+  { fecha: '2026-03-13', hora: '11:00 AM – 8:00 PM', titulo: 'Mercado de las Maravillas', descripcion: 'Boutique y mercado artesanal con las mejores marcas locales e independientes.', categoria: 'Mercado', destacado: true },
+  { fecha: '2026-03-14', hora: '11:00 AM – 8:00 PM', titulo: 'Mercado de las Maravillas', descripcion: 'Boutique y mercado artesanal con las mejores marcas locales e independientes.', categoria: 'Mercado', destacado: false },
+  { fecha: '2026-03-15', hora: '11:00 AM – 8:00 PM', titulo: 'Mercado de las Maravillas', descripcion: 'Boutique y mercado artesanal con las mejores marcas locales e independientes.', categoria: 'Mercado', destacado: false },
+  { fecha: '2026-03-20', hora: '11:00 AM – 8:00 PM', titulo: 'Mercado de las Maravillas', descripcion: 'Boutique y mercado artesanal con las mejores marcas locales e independientes.', categoria: 'Mercado', destacado: true },
+  { fecha: '2026-03-21', hora: '11:00 AM – 8:00 PM', titulo: 'Mercado de las Maravillas', descripcion: 'Boutique y mercado artesanal con las mejores marcas locales e independientes.', categoria: 'Mercado', destacado: false },
+  { fecha: '2026-03-22', hora: '11:00 AM – 8:00 PM', titulo: 'Mercado de las Maravillas', descripcion: 'Boutique y mercado artesanal con las mejores marcas locales e independientes.', categoria: 'Mercado', destacado: false },
+  { fecha: '2026-03-27', hora: '11:00 AM – 8:00 PM', titulo: 'Mercado de las Maravillas', descripcion: 'Boutique y mercado artesanal con las mejores marcas locales e independientes.', categoria: 'Mercado', destacado: true },
+  { fecha: '2026-03-28', hora: '11:00 AM – 8:00 PM', titulo: 'Mercado de las Maravillas', descripcion: 'Boutique y mercado artesanal con las mejores marcas locales e independientes.', categoria: 'Mercado', destacado: false },
+  { fecha: '2026-03-29', hora: '11:00 AM – 8:00 PM', titulo: 'Mercado de las Maravillas', descripcion: 'Boutique y mercado artesanal con las mejores marcas locales e independientes.', categoria: 'Mercado', destacado: false },
 ]
 
 interface EventItem {
@@ -55,11 +63,41 @@ function parseCSV(csv: string): EventItem[] {
   }).filter(e => e.fecha && e.titulo)
 }
 
+// Helpers de semana
+function getWeekStart(date: Date): Date {
+  const d = new Date(date)
+  const day = d.getDay()
+  // Lunes como inicio de semana
+  const diff = day === 0 ? -6 : 1 - day
+  d.setDate(d.getDate() + diff)
+  d.setHours(0, 0, 0, 0)
+  return d
+}
+
+function getWeekEnd(weekStart: Date): Date {
+  const d = new Date(weekStart)
+  d.setDate(d.getDate() + 6)
+  return d
+}
+
+function formatWeekRange(start: Date, end: Date): string {
+  const startDay = start.getDate()
+  const endDay = end.getDate()
+  const startMonth = meses[start.getMonth()]
+  const endMonth = meses[end.getMonth()]
+  if (start.getMonth() === end.getMonth()) {
+    return `${startDay} – ${endDay} de ${startMonth}`
+  }
+  return `${startDay} ${startMonth} – ${endDay} ${endMonth}`
+}
+
 export default function EventosPage() {
   const [events, setEvents] = useState<EventItem[]>(sampleEvents)
   const [loading, setLoading] = useState(false)
+  const [view, setView] = useState<'semana' | 'mes'>('semana')
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth())
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear())
+  const [weekStart, setWeekStart] = useState(() => getWeekStart(new Date()))
 
   useEffect(() => {
     if (!GOOGLE_SHEET_CSV_URL) return
@@ -74,16 +112,37 @@ export default function EventosPage() {
       .finally(() => setLoading(false))
   }, [])
 
+  // Filtrar por mes
   const monthEvents = events.filter(e => {
     const d = new Date(e.fecha + 'T00:00:00')
     return d.getMonth() === currentMonth && d.getFullYear() === currentYear
   }).sort((a, b) => a.fecha.localeCompare(b.fecha))
+
+  // Filtrar por semana
+  const weekEnd = getWeekEnd(weekStart)
+  const weekEvents = events.filter(e => {
+    const d = new Date(e.fecha + 'T00:00:00')
+    return d >= weekStart && d <= weekEnd
+  }).sort((a, b) => a.fecha.localeCompare(b.fecha))
+
+  const filteredEvents = view === 'semana' ? weekEvents : monthEvents
 
   const prevMonth = () => {
     if (currentMonth === 0) { setCurrentMonth(11); setCurrentYear(y => y - 1) } else setCurrentMonth(m => m - 1)
   }
   const nextMonth = () => {
     if (currentMonth === 11) { setCurrentMonth(0); setCurrentYear(y => y + 1) } else setCurrentMonth(m => m + 1)
+  }
+
+  const prevWeek = () => {
+    const d = new Date(weekStart)
+    d.setDate(d.getDate() - 7)
+    setWeekStart(d)
+  }
+  const nextWeek = () => {
+    const d = new Date(weekStart)
+    d.setDate(d.getDate() + 7)
+    setWeekStart(d)
   }
 
   const formatDate = (fecha: string) => {
@@ -97,7 +156,7 @@ export default function EventosPage() {
   return (
     <div className="min-h-screen bg-bistro">
       {/* ═══ HERO ═══ */}
-      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[55vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-bistro-dark via-bistro to-bistro-600" />
           <div className="absolute inset-0 bg-gradient-radial from-gold/8 via-transparent to-transparent" />
@@ -109,7 +168,7 @@ export default function EventosPage() {
 
         <div className="relative z-10 text-center px-5 max-w-4xl mx-auto pt-24">
           <motion.h1
-            className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-gold mb-6 tracking-tight"
+            className="font-serif text-4xl sm:text-5xl md:text-6xl text-gold mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -117,25 +176,25 @@ export default function EventosPage() {
             Programa de Eventos
           </motion.h1>
 
+          <motion.p
+            className="text-cream/50 text-lg max-w-xl mx-auto font-light mb-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            Lo que está pasando en Casa de los Ángeles
+          </motion.p>
+
           <motion.div
-            className="flex items-center justify-center gap-4 mb-8"
+            className="flex items-center justify-center gap-4"
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
           >
             <div className="w-16 h-px bg-gradient-to-r from-transparent to-gold/60" />
             <div className="w-2 h-2 bg-gold/60 rotate-45" />
             <div className="w-16 h-px bg-gradient-to-l from-transparent to-gold/60" />
           </motion.div>
-
-          <motion.p
-            className="text-cream/50 text-lg max-w-xl mx-auto font-light"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-          >
-            Lo que está pasando en Casa de los Ángeles
-          </motion.p>
         </div>
       </section>
 
@@ -143,7 +202,34 @@ export default function EventosPage() {
       <section className="py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-5">
           
-          {/* Mes */}
+          {/* Toggle Semana / Mes */}
+          <motion.div
+            className="flex justify-center mb-10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="inline-flex border border-gold/20 rounded-full overflow-hidden">
+              <button
+                onClick={() => setView('semana')}
+                className={`px-6 py-2.5 text-xs uppercase tracking-[0.15em] font-sans transition-all duration-300 ${
+                  view === 'semana' ? 'bg-gold text-charcoal' : 'text-gold/60 hover:text-gold'
+                }`}
+              >
+                Semana
+              </button>
+              <button
+                onClick={() => setView('mes')}
+                className={`px-6 py-2.5 text-xs uppercase tracking-[0.15em] font-sans transition-all duration-300 ${
+                  view === 'mes' ? 'bg-gold text-charcoal' : 'text-gold/60 hover:text-gold'
+                }`}
+              >
+                Mes
+              </button>
+            </div>
+          </motion.div>
+
+          {/* Navegación */}
           <motion.div
             className="flex items-center justify-center gap-8 mb-16"
             initial={{ opacity: 0, y: 20 }}
@@ -151,21 +237,24 @@ export default function EventosPage() {
             transition={{ duration: 0.6 }}
           >
             <button
-              onClick={prevMonth}
+              onClick={view === 'semana' ? prevWeek : prevMonth}
               className="p-3 text-gold/50 hover:text-gold transition-colors"
-              aria-label="Mes anterior"
+              aria-label="Anterior"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             
-            <h2 className="font-serif text-3xl sm:text-4xl text-gold min-w-[260px] text-center tracking-tight">
-              {meses[currentMonth]} {currentYear}
+            <h2 className="font-serif text-2xl sm:text-3xl text-gold min-w-[280px] text-center tracking-tight">
+              {view === 'semana'
+                ? formatWeekRange(weekStart, weekEnd)
+                : `${meses[currentMonth]} ${currentYear}`
+              }
             </h2>
             
             <button
-              onClick={nextMonth}
+              onClick={view === 'semana' ? nextWeek : nextMonth}
               className="p-3 text-gold/50 hover:text-gold transition-colors"
-              aria-label="Mes siguiente"
+              aria-label="Siguiente"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -177,28 +266,28 @@ export default function EventosPage() {
               <div className="animate-spin w-6 h-6 border-2 border-gold border-t-transparent rounded-full mx-auto mb-4" />
               <p className="text-cream/40 text-sm">Cargando eventos...</p>
             </div>
-          ) : monthEvents.length === 0 ? (
+          ) : filteredEvents.length === 0 ? (
             <motion.div
               className="text-center py-24"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
             >
               <Calendar className="w-12 h-12 text-gold/20 mx-auto mb-6" />
-              <p className="font-serif text-xl text-gold/40 mb-2">Sin eventos este mes</p>
+              <p className="font-serif text-xl text-gold/40 mb-2">{view === 'semana' ? 'Sin eventos esta semana' : 'Sin eventos este mes'}</p>
               <p className="text-cream/30 text-sm">Pronto publicaremos nuevos eventos.</p>
             </motion.div>
           ) : (
             <AnimatePresence mode="wait">
               <motion.div
-                key={`${currentMonth}-${currentYear}`}
+                key={view === 'semana' ? `week-${weekStart.toISOString()}` : `${currentMonth}-${currentYear}`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.4 }}
               >
-                {monthEvents.map((event, index) => {
+                {filteredEvents.map((event, index) => {
                   const { dia, diaSemana } = formatDate(event.fecha)
-                  const isLast = index === monthEvents.length - 1
+                  const isLast = index === filteredEvents.length - 1
 
                   return (
                     <motion.div
@@ -241,7 +330,7 @@ export default function EventosPage() {
                           </span>
                           <span className="inline-flex items-center gap-1.5">
                             <MapPin className="w-3.5 h-3.5 text-gold/30" />
-                            Palafox 222
+                            Don Juan de Palafox y Mendoza 222, Centro
                           </span>
                         </div>
                       </div>

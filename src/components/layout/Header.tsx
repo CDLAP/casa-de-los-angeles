@@ -7,22 +7,24 @@ import Link from 'next/link'
 import { ChevronDown } from 'lucide-react'
 
 const mainLinks = [
+  { href: '/', label: 'Inicio' },
   { href: '/#menu', label: 'Café' },
   { href: '/#nosotros', label: 'Museo' },
   { href: '/#boutique', label: 'Boutique' },
   { href: '/#atelier', label: 'Atelier' },
   { href: '/#mercado', label: 'Mercado' },
-  { href: '/eventos', label: 'Eventos' },
+  { href: '/#rueda-de-prensa', label: 'Prensa' },
 ]
 
 const moreLinks = [
-  { href: '/#rueda-de-prensa', label: 'Prensa' },
-  { href: '/relaciones-publicas', label: 'Relaciones Públicas' },
+  { href: '/eventos', label: 'Eventos' },
   { href: '/promocion', label: 'Promoción del Día' },
+  { href: '/relaciones-publicas', label: 'Relaciones Públicas' },
 ]
 
 const allLinks = [
-  ...mainLinks,
+  { href: '/', label: 'Inicio' },
+  ...mainLinks.filter(l => l.href !== '/'),
   ...moreLinks,
   { href: '/#contacto', label: 'Contacto' },
 ]
@@ -87,11 +89,16 @@ export default function Header() {
 
   const isMoreActive = moreLinks.some(l => activeSection === l.href)
 
+  const isActive = (href: string) => {
+    if (href === '/') return pathname === '/' && (activeSection === '' || activeSection === '/#inicio')
+    return activeSection === href
+  }
+
   const navTextClass = (active: boolean) =>
-    `text-sm xl:text-base uppercase tracking-[0.12em] xl:tracking-[0.2em] font-sans transition-colors duration-300 whitespace-nowrap py-2 ${
+    `text-sm xl:text-base uppercase tracking-[0.12em] xl:tracking-[0.2em] font-sans transition-colors duration-300 whitespace-nowrap px-3 lg:px-4 xl:px-5 py-4 ${
       active
         ? 'text-gold'
-        : isScrolled ? 'text-charcoal hover:text-gold' : 'text-cream/90 hover:text-gold'
+        : 'text-charcoal hover:text-gold'
     }`
 
   return (
@@ -100,16 +107,16 @@ export default function Header() {
       <motion.header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 hidden md:block ${
           isScrolled
-            ? 'bg-cream shadow-lg pt-6 pb-32'
-            : 'bg-[#3F1F26] pt-6 pb-32 shadow-[0_4px_0_0_#3F1F26]'
+            ? 'bg-cream shadow-lg pt-6 pb-10'
+            : 'bg-cream pt-6 pb-10'
         }`}
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 2.5, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
-        <nav className="flex items-center justify-center gap-4 lg:gap-6 xl:gap-10 px-3">
+        <nav className="flex items-center justify-center px-3">
           {mainLinks.map((link) => (
-            <Link key={link.href} href={link.href} className={navTextClass(activeSection === link.href)}>
+            <Link key={link.href} href={link.href} className={navTextClass(isActive(link.href))}>
               {link.label}
             </Link>
           ))}
@@ -133,20 +140,14 @@ export default function Header() {
             <AnimatePresence>
               {moreOpen && (
                 <motion.div
-                  className={`absolute top-full left-1/2 -translate-x-1/2 mt-6 py-3 min-w-[220px] ${
-                    isScrolled
-                      ? 'bg-cream/98 backdrop-blur-md shadow-xl'
-                      : 'bg-[#3F1F26] shadow-2xl'
-                  }`}
+                  className="absolute top-full left-1/2 -translate-x-1/2 mt-6 py-3 min-w-[220px] bg-cream shadow-xl"
                   initial={{ opacity: 0, y: -4 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -4 }}
                   transition={{ duration: 0.2 }}
                 >
                   {/* Flechita arriba */}
-                  <div className={`absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 ${
-                    isScrolled ? 'bg-cream/98' : 'bg-[#3F1F26]'
-                  }`} />
+                  <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 bg-cream" />
 
                   {moreLinks.map((link) => (
                     <Link
@@ -154,11 +155,9 @@ export default function Header() {
                       href={link.href}
                       onClick={() => setMoreOpen(false)}
                       className={`block px-6 py-3 text-sm uppercase tracking-[0.12em] font-sans transition-colors duration-300 ${
-                        activeSection === link.href
+                        isActive(link.href)
                           ? 'text-gold'
-                          : isScrolled
-                            ? 'text-charcoal hover:text-gold'
-                            : 'text-cream/80 hover:text-gold'
+                          : 'text-charcoal hover:text-gold'
                       }`}
                     >
                       {link.label}
@@ -170,7 +169,7 @@ export default function Header() {
           </div>
 
           {/* Contacto */}
-          <Link href="/#contacto" className={navTextClass(activeSection === '/#contacto')}>
+          <Link href="/#contacto" className={navTextClass(isActive('/#contacto'))}>
             Contacto
           </Link>
         </nav>
@@ -184,9 +183,7 @@ export default function Header() {
         className={`fixed top-5 right-5 z-[60] md:hidden w-11 h-11 rounded-full flex flex-col items-center justify-center gap-[5px] transition-all duration-300 ${
           menuOpen
             ? 'bg-transparent'
-            : isScrolled
-              ? 'bg-cream/90 backdrop-blur-md shadow-lg'
-              : 'bg-[#3F1F26]/80 backdrop-blur-md'
+            : 'bg-cream/90 backdrop-blur-md shadow-lg'
         }`}
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -194,17 +191,17 @@ export default function Header() {
         aria-label="Menú"
       >
         <motion.span
-          className={`block w-5 h-[2px] rounded-full transition-colors ${menuOpen ? 'bg-cream' : isScrolled ? 'bg-charcoal' : 'bg-cream'}`}
+          className={`block w-5 h-[2px] rounded-full transition-colors ${menuOpen ? 'bg-cream' : 'bg-charcoal'}`}
           animate={menuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
           transition={{ duration: 0.3 }}
         />
         <motion.span
-          className={`block w-5 h-[2px] rounded-full transition-colors ${menuOpen ? 'bg-cream' : isScrolled ? 'bg-charcoal' : 'bg-cream'}`}
+          className={`block w-5 h-[2px] rounded-full transition-colors ${menuOpen ? 'bg-cream' : 'bg-charcoal'}`}
           animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
           transition={{ duration: 0.2 }}
         />
         <motion.span
-          className={`block w-5 h-[2px] rounded-full transition-colors ${menuOpen ? 'bg-cream' : isScrolled ? 'bg-charcoal' : 'bg-cream'}`}
+          className={`block w-5 h-[2px] rounded-full transition-colors ${menuOpen ? 'bg-cream' : 'bg-charcoal'}`}
           animate={menuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
           transition={{ duration: 0.3 }}
         />
@@ -223,43 +220,46 @@ export default function Header() {
               onClick={() => setMenuOpen(false)}
             />
             <motion.nav
-              className="fixed top-0 right-0 bottom-0 w-[280px] bg-[#3F1F26] z-50 md:hidden flex flex-col pt-24 px-8 overflow-y-auto"
+              className="fixed top-0 right-0 bottom-0 w-full bg-[#3F1F26] z-50 md:hidden flex flex-col overflow-y-auto"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 30, stiffness: 300 }}
             >
-              <div className="flex items-center gap-3 mb-8">
-                <div className="flex-1 h-px bg-gold/20" />
-                <div className="w-1.5 h-1.5 bg-gold/40 rotate-45" />
-                <div className="flex-1 h-px bg-gold/20" />
-              </div>
-              {allLinks.map((link, index) => (
-                <motion.div
-                  key={link.href}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: 0.05 + index * 0.04 }}
-                >
-                  <Link
-                    href={link.href}
-                    onClick={() => setMenuOpen(false)}
-                    className={`block py-3 font-sans text-base uppercase tracking-[0.15em] transition-colors border-b border-gold/10 ${
-                      activeSection === link.href ? 'text-gold' : 'text-cream/70 hover:text-gold'
-                    }`}
+              {/* Espacio para querubín */}
+              <div className="pt-48 px-10">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="flex-1 h-px bg-gold/20" />
+                  <div className="w-1.5 h-1.5 bg-gold/40 rotate-45" />
+                  <div className="flex-1 h-px bg-gold/20" />
+                </div>
+                {allLinks.map((link, index) => (
+                  <motion.div
+                    key={link.href}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: 0.05 + index * 0.04 }}
                   >
-                    {link.label}
-                  </Link>
-                </motion.div>
-              ))}
-              <div className="mt-auto pb-8 pt-8">
+                    <Link
+                      href={link.href}
+                      onClick={() => setMenuOpen(false)}
+                      className={`block py-3 font-sans text-base uppercase tracking-[0.15em] transition-colors border-b border-gold/10 text-center ${
+                      isActive(link.href) ? 'text-gold' : 'text-cream/70 hover:text-gold'
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+              <div className="mt-auto pb-8 pt-8 px-10">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="flex-1 h-px bg-gold/20" />
                   <div className="w-1.5 h-1.5 bg-gold/40 rotate-45" />
                   <div className="flex-1 h-px bg-gold/20" />
                 </div>
                 <p className="text-cream/30 text-xs text-center uppercase tracking-widest">Casa de los Ángeles</p>
-                <p className="text-cream/20 text-xs text-center mt-1">Palafox 222, Centro Histórico</p>
+                <p className="text-cream/20 text-xs text-center mt-1">Don Juan de Palafox y Mendoza 222, Centro</p>
               </div>
             </motion.nav>
           </>

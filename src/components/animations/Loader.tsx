@@ -80,7 +80,7 @@ export default function Loader() {
 
           {/* Nombre - OPCIONAL: Puedes quitarlo si el logo ya tiene el texto */}
           <motion.h1
-            className="mt-8 font-serif text-2xl text-gold-dark tracking-wide"
+            className="mt-8 font-serif text-4xl sm:text-5xl text-gold-dark"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}

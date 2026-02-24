@@ -68,7 +68,11 @@ export default function Contact() {
           <p className="section-subtitle">
             Estamos esperándote en el corazón de Puebla
           </p>
-          <div className="divider" />
+          <div className="divider">
+            <div className="w-16 h-px bg-gold/40" />
+            <div className="w-2 h-2 rotate-45 bg-gold/50" />
+            <div className="w-16 h-px bg-gold/40" />
+          </div>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-stretch">

@@ -19,9 +19,7 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* Optimización para scroll nativo suave */
-    scroll-padding-top: 80px; /* Espacio para header fijo */
-    overflow-x: hidden; /* Prevenir scroll horizontal */
+    overflow-x: hidden;
   }
 
   body {
@@ -38,6 +36,37 @@
     html {
       scroll-behavior: smooth;
     }
+  }
+
+  /* Offset para anclas — alinea borde de sección con borde inferior del nav */
+  section[id] {
+    scroll-margin-top: 116px;
+  }
+
+  /* Lenis smooth scroll */
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  /* Títulos serif en itálica con tracking ajustado */
+  .font-serif {
+    font-style: italic;
+  }
+
+  h1.font-serif, h2.font-serif, h3.font-serif {
+    letter-spacing: -0.035em;
   }
 
   /* Selection */
@@ -185,9 +214,9 @@
     @apply shadow-2xl -translate-y-2;
   }
 
-  /* Divider */
+  /* Divider — rombo con líneas */
   .divider {
-    @apply w-24 h-px bg-gradient-gold mx-auto my-4 md:my-8;
+    @apply flex items-center justify-center gap-3 my-4 md:my-8;
   }
 
   /* Image container with overlay */

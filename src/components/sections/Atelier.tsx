@@ -45,7 +45,11 @@ export default function Atelier() {
           <p className="section-subtitle text-cream/70">
             by Bruno Adorate Lua
           </p>
-          <div className="divider" />
+          <div className="divider">
+            <div className="w-16 h-px bg-gold/40" />
+            <div className="w-2 h-2 rotate-45 bg-gold/50" />
+            <div className="w-16 h-px bg-gold/40" />
+          </div>
         </motion.div>
 
         {/* Content */}

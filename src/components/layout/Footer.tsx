@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Instagram, Mail, Phone, MapPin } from 'lucide-react'
+import { Instagram, Mail, Phone, MapPin, ChevronUp } from 'lucide-react'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -19,7 +19,19 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="bg-[#3F1F26] text-cream">
+    <footer className="bg-[#3F1F26] text-cream relative">
+      {/* Botón regresar al inicio */}
+      <div className="absolute -top-6 left-1/2 -translate-x-1/2 z-10">
+        <motion.button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="w-12 h-12 rounded-full bg-gold text-[#3F1F26] flex items-center justify-center shadow-lg hover:bg-gold-light transition-colors"
+          whileHover={{ scale: 1.1, y: -2 }}
+          whileTap={{ scale: 0.95 }}
+          aria-label="Regresar al inicio"
+        >
+          <ChevronUp className="w-5 h-5" />
+        </motion.button>
+      </div>
       {/* Main Footer */}
       <div className="container-custom py-16 md:py-20">
         

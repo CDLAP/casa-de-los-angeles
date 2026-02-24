@@ -22,12 +22,12 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <About />
       <CafeSection />
+      <About />
       <Boutique />
       <Atelier />
-      <RuedaPrensa />
       <MercadoSection />
+      <RuedaPrensa />
       <Contact />
     </>
   )

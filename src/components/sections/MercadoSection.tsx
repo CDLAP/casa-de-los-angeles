@@ -46,7 +46,7 @@ export default function MercadoSection() {
               transition={{ duration: 0.8 }}
             >
               <h2 className="font-serif text-display-md text-gold-dark mb-6">
-                Mercado
+                Mercado de las Maravillas
               </h2>
               <p className="text-charcoal-50 text-lg leading-relaxed mb-4">
                 Un mercado boutique donde las marcas brillan y la experiencia para el visitante 
