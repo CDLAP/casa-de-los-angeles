@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 // Posición fija del querubín (px desde el top del viewport)
 // Nav desktop ≈ 172px, así que 250px lo deja bien debajo del menú
-const STUCK_TOP_DESKTOP = 250
+const STUCK_TOP_DESKTOP = 350
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null)
