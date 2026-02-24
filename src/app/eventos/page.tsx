@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Clock, MapPin, ChevronLeft, ChevronRight, Calendar, X } from 'lucide-react'
+import { Clock, MapPin, ChevronLeft, ChevronRight, Calendar } from 'lucide-react'
 import Image from 'next/image'
+import NativeLightbox from '@/components/ui/NativeLightbox'
 
 // ============================================
 // CONFIGURACIÓN - GOOGLE SHEETS
@@ -102,7 +103,6 @@ export default function EventosPage() {
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear())
   const [weekStart, setWeekStart] = useState(() => getWeekStart(new Date()))
   const [bannerEvent, setBannerEvent] = useState<EventItem | null>(null)
-  const [bannerZoomed, setBannerZoomed] = useState(false)
 
   useEffect(() => {
     if (!GOOGLE_SHEET_CSV_URL) return
@@ -117,14 +117,11 @@ export default function EventosPage() {
       .finally(() => setLoading(false))
   }, [])
 
-  // Bloquear scroll cuando modal abierto (solo si no zoomed, para permitir scroll en zoom)
   useEffect(() => {
-    if (bannerEvent && !bannerZoomed) { document.body.style.overflow = 'hidden' }
-    else if (!bannerEvent) { document.body.style.overflow = '' }
+    if (bannerEvent) { document.body.style.overflow = 'hidden' }
+    else { document.body.style.overflow = '' }
     return () => { document.body.style.overflow = '' }
-  }, [bannerEvent, bannerZoomed])
-
-  const closeBanner = () => { setBannerEvent(null); setBannerZoomed(false) }
+  }, [bannerEvent])
 
   const monthEvents = events.filter(e => {
     const d = new Date(e.fecha + 'T00:00:00')
@@ -250,13 +247,13 @@ export default function EventosPage() {
           >
             <button
               onClick={view === 'semana' ? prevWeek : prevMonth}
-              className="p-4 min-w-[48px] min-h-[48px] flex items-center justify-center text-gold/50 hover:text-gold active:text-gold transition-colors"
+              className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full border border-gold/20 text-gold/50 hover:text-gold hover:border-gold/50 hover:bg-gold/5 active:bg-gold/10 active:text-gold transition-all duration-300"
               aria-label="Anterior"
             >
-              <ChevronLeft className="w-6 h-6" />
+              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
             
-            <h2 className="font-serif text-2xl sm:text-3xl text-gold min-w-[200px] sm:min-w-[280px] text-center tracking-tight">
+            <h2 className="font-serif text-2xl sm:text-3xl text-gold min-w-[180px] sm:min-w-[280px] text-center tracking-tight">
               {view === 'semana'
                 ? formatWeekRange(weekStart, weekEnd)
                 : `${meses[currentMonth]} ${currentYear}`
@@ -265,10 +262,10 @@ export default function EventosPage() {
             
             <button
               onClick={view === 'semana' ? nextWeek : nextMonth}
-              className="p-4 min-w-[48px] min-h-[48px] flex items-center justify-center text-gold/50 hover:text-gold active:text-gold transition-colors"
+              className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full border border-gold/20 text-gold/50 hover:text-gold hover:border-gold/50 hover:bg-gold/5 active:bg-gold/10 active:text-gold transition-all duration-300"
               aria-label="Siguiente"
             >
-              <ChevronRight className="w-6 h-6" />
+              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
           </motion.div>
 
@@ -327,13 +324,13 @@ export default function EventosPage() {
                       <div className={hasImage ? 'flex gap-4 sm:gap-6' : ''}>
                         {/* Thumbnail */}
                         {hasImage && event.imagen && (
-                          <div className="relative flex-shrink-0 w-20 h-20 sm:w-28 sm:h-28 rounded-lg overflow-hidden border border-gold/20 group-hover:border-gold/50 transition-all duration-300 shadow-lg group-hover:shadow-gold/10">
+                          <div className="relative flex-shrink-0 w-16 sm:w-20 rounded-lg overflow-hidden border border-gold/20 group-hover:border-gold/50 transition-all duration-300 shadow-lg group-hover:shadow-gold/10" style={{ aspectRatio: '9/16' }}>
                             <Image
                               src={event.imagen}
                               alt={event.titulo}
                               fill
                               className="object-cover group-hover:scale-105 transition-transform duration-500"
-                              sizes="112px"
+                              sizes="80px"
                             />
                             <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-300" />
                           </div>
@@ -406,60 +403,13 @@ export default function EventosPage() {
         </div>
       </section>
 
-      {/* ═══ MODAL BANNER ═══ */}
-      <AnimatePresence>
-        {bannerEvent && bannerEvent.imagen && (
-          <motion.div
-            className={`fixed inset-0 z-[100] ${
-              bannerZoomed ? 'overflow-auto' : 'flex items-center justify-center p-6'
-            }`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            onClick={closeBanner}
-          >
-            {/* Backdrop */}
-            <div className="fixed inset-0 bg-black/85 backdrop-blur-sm" />
-
-            {/* Botón cerrar — siempre visible y fijo */}
-            <button
-              onClick={closeBanner}
-              className="fixed top-6 right-6 z-[110] w-12 h-12 rounded-full bg-black/70 border border-cream/20 flex items-center justify-center text-cream/80 hover:text-cream hover:bg-black/90 hover:border-cream/40 transition-all duration-300 shadow-xl backdrop-blur-sm"
-              aria-label="Cerrar"
-            >
-              <X className="w-6 h-6" />
-            </button>
-
-            <motion.div
-              className={`relative ${
-                bannerZoomed ? 'p-4' : ''
-              }`}
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Image
-                src={bannerEvent.imagen}
-                alt={bannerEvent.titulo}
-                width={1600}
-                height={2000}
-                className={`rounded-lg shadow-2xl transition-all duration-300 ${
-                  bannerZoomed
-                    ? 'w-[110vw] max-w-none h-auto cursor-zoom-out'
-                    : 'max-h-[calc(100vh-48px)] w-auto h-auto object-contain cursor-zoom-in'
-                }`}
-                onClick={(e) => {
-                  e.stopPropagation()
-                  setBannerZoomed(!bannerZoomed)
-                }}
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* ═══ LIGHTBOX NATIVO ═══ */}
+      <NativeLightbox
+        src={bannerEvent?.imagen || ''}
+        alt={bannerEvent?.titulo || ''}
+        open={!!bannerEvent && !!bannerEvent.imagen}
+        onClose={() => setBannerEvent(null)}
+      />
     </div>
   )
 }
