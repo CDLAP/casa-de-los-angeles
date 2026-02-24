@@ -47,13 +47,13 @@ export default function Hero() {
       <section ref={sectionRef} className="relative w-full bg-[#3F1F26] pb-16 md:pb-20 pt-20 md:pt-32">
         <div className="absolute top-0 left-0 right-0 h-px bg-gold/60" />
 
-        {/* Querubín — z-40 para que pase DETRÁS del nav (z-50) */}
+        {/* Querubín — z-index 40 para que pase DETRÁS del nav (z-50) */}
         <div
-          className="flex justify-center pointer-events-none z-40"
+          className="flex justify-center pointer-events-none"
           style={
             isStuck
-              ? { position: 'fixed', top: 172, left: 0, right: 0 }
-              : { position: 'absolute', top: 0, left: 0, right: 0, transform: 'translateY(-50%)' }
+              ? { position: 'fixed', top: 172, left: 0, right: 0, zIndex: 40 }
+              : { position: 'absolute', top: 0, left: 0, right: 0, transform: 'translateY(-50%)', zIndex: 40 }
           }
         >
           <motion.div

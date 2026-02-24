@@ -100,7 +100,7 @@ export default function Header() {
       <motion.header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 hidden md:block ${
           isScrolled
-            ? 'bg-cream/95 backdrop-blur-md shadow-lg pt-6 pb-32'
+            ? 'bg-cream shadow-lg pt-6 pb-32'
             : 'bg-[#3F1F26] pt-6 pb-32 shadow-[0_4px_0_0_#3F1F26]'
         }`}
         initial={{ y: -100, opacity: 0 }}
