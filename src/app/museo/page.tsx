@@ -24,65 +24,65 @@ interface TourSpace {
 
 const TOUR_SPACES: TourSpace[] = [
   {
-    id: 'entrada',
-    name: 'Entrada Principal',
-    description: 'Bienvenido a Casa de los Ángeles. Cruza el umbral de una casona del siglo XVIII en el corazón del Centro Histórico de Puebla.',
+    id: 'la-casa-despierta',
+    name: 'La Casa Despierta',
+    description: 'Hace más de dos siglos, cuando Puebla aún se iluminaba con velas, una familia construyó esta casa. Pero no era una casa cualquiera. Los artesanos colocaron ángeles escondidos porque se creía que protegían los hogares.',
     image: '/images/museo/entrada-360.jpg',
     initialYaw: 0,
     initialPitch: 0,
   },
   {
-    id: 'patio',
-    name: 'Patio Central',
-    description: 'El patio central, alma de la casa, donde la arquitectura colonial se encuentra con la luz natural que baña la cantera.',
+    id: 'patio-de-los-angeles',
+    name: 'Patio de los Ángeles',
+    description: 'El alma de la casa. Aquí la luz entra como lo hacía hace dos siglos, bañando la cantera donde los primeros ángeles de piedra fueron tallados para custodiar este lugar.',
     image: '/images/museo/patio-360.jpg',
     initialYaw: 0,
     initialPitch: -5,
   },
   {
-    id: 'salon-cafe',
-    name: 'Salón del Café',
-    description: 'Un espacio íntimo donde el aroma del café recién preparado se mezcla con la historia de cada muro.',
-    image: '/images/museo/cafe-360.jpg',
+    id: 'angeles-ocultos',
+    name: 'Los Ángeles Ocultos',
+    description: 'Un recorrido de descubrimiento: ángeles tallados en molduras, incrustados en vitrales y escondidos en los detalles arquitectónicos. Algunos llevan siglos esperando ser encontrados.',
+    image: '/images/museo/angeles-ocultos-360.jpg',
     initialYaw: 90,
     initialPitch: 0,
   },
   {
-    id: 'museo-sala',
-    name: 'Sala del Museo',
-    description: 'Galería permanente que exhibe la historia de la casona y obras de artistas locales.',
-    image: '/images/museo/museo-sala-360.jpg',
+    id: 'sala-de-musica',
+    name: 'La Sala de Música',
+    description: 'Una ambientación que evoca las reuniones sociales del siglo XIX. La casa recuerda las voces, los acordes y las veladas que llenaron estas paredes de vida.',
+    image: '/images/museo/musica-360.jpg',
     initialYaw: 0,
     initialPitch: 0,
   },
   {
-    id: 'boutique',
-    name: 'Boutique',
-    description: 'Espacio curado con piezas de diseñadores y artesanos independientes.',
-    image: '/images/museo/boutique-360.jpg',
+    id: 'gabinete-de-los-angeles',
+    name: 'El Gabinete de los Ángeles',
+    description: 'Una colección artística de representaciones de ángeles de distintas épocas y estilos. Del barroco al contemporáneo, cada pieza cuenta una historia de protección e inspiración.',
+    image: '/images/museo/gabinete-360.jpg',
     initialYaw: -45,
     initialPitch: 0,
   },
   {
-    id: 'atelier',
-    name: 'Atelier',
-    description: 'El taller creativo donde se gestan las ideas y se celebran los talleres artísticos.',
-    image: '/images/museo/atelier-360.jpg',
+    id: 'camara-de-luz',
+    name: 'La Cámara de Luz',
+    description: 'Una instalación inmersiva donde los vitrales y la iluminación transforman el espacio. Aquí los ángeles no se ven: se sienten a través de la luz y el color.',
+    image: '/images/museo/camara-luz-360.jpg',
     initialYaw: 0,
     initialPitch: 0,
   },
   {
-    id: 'salon-eventos',
-    name: 'Salón de Eventos',
-    description: 'Espacio versátil para conferencias de prensa, presentaciones y eventos exclusivos.',
-    image: '/images/museo/eventos-360.jpg',
+    id: 'el-cafe',
+    name: 'El Café',
+    description: 'Donde la historia se vive en presente. Un espacio para detenerse, contemplar y dejar que la casa te cuente su historia con el aroma del café recién preparado.',
+    image: '/images/museo/cafe-360.jpg',
     initialYaw: 45,
     initialPitch: 0,
   },
   {
-    id: 'terraza',
-    name: 'Terraza',
-    description: 'Vista privilegiada del Centro Histórico con los volcanes como telón de fondo.',
+    id: 'la-terraza',
+    name: 'La Terraza',
+    description: 'Los ángeles trazaron esta ciudad. Desde aquí puedes ver su obra: el Centro Histórico de Puebla con los volcanes como telón de fondo, tal como lo vieron quienes construyeron esta casa.',
     image: '/images/museo/terraza-360.jpg',
     initialYaw: 0,
     initialPitch: 10,
@@ -242,9 +242,12 @@ export default function MuseoPage() {
           >
             <p className="text-gold/70 text-sm uppercase tracking-[0.3em] mb-4 font-sans">Visita Virtual</p>
             <h1 className="font-serif text-5xl md:text-7xl text-cream mb-6">Museo</h1>
-            <p className="text-cream/70 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-sans">
-              Recorre cada rincón de Casa de los Ángeles en una experiencia inmersiva de 360°.
-              Descubre la historia que vive en cada sala de esta casona del siglo XVIII.
+            <p className="text-cream/60 font-serif italic text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed mb-4">
+              &ldquo;En Puebla los ángeles construyeron la ciudad. En esta casa decidieron quedarse.&rdquo;
+            </p>
+            <p className="text-cream/50 text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-sans">
+              Un museo donde la historia, la luz y los ángeles habitan.
+              Recorre cada rincón en una experiencia inmersiva de 360°.
             </p>
             <div className="flex items-center justify-center gap-4 mt-8">
               <div className="w-16 h-px bg-gold/40" />
@@ -287,7 +290,7 @@ export default function MuseoPage() {
                     <p className="text-cream/50 text-sm md:text-base max-w-md font-sans">
                       {imageError
                         ? 'La imagen 360° de este espacio aún no está disponible.'
-                        : 'Próximamente podrás explorar cada rincón de Casa de los Ángeles en una experiencia inmersiva de 360°.'
+                        : 'Próximamente podrás descubrir dónde se esconden los ángeles que han habitado esta casa durante más de dos siglos.'
                       }
                     </p>
                     <p className="text-gold/40 text-xs uppercase tracking-[0.2em] mt-6 font-sans">
@@ -450,9 +453,13 @@ export default function MuseoPage() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="font-serif text-3xl md:text-5xl text-charcoal mb-6">Visítanos en Persona</h2>
+            <p className="text-charcoal/50 font-serif italic text-lg md:text-xl max-w-xl mx-auto leading-relaxed mb-6">
+              La casa cambió de dueños, de usos y de épocas, pero los ángeles nunca se fueron.
+            </p>
             <p className="text-charcoal/60 text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-sans mb-8">
-              La experiencia virtual es solo el comienzo. Te invitamos a descubrir la magia de Casa de los Ángeles 
-              recorriendo sus salas, disfrutando de nuestro café y conectando con la historia viva del Centro Histórico de Puebla.
+              La experiencia virtual es solo el comienzo. Te invitamos a recorrer la casa, descubrir dónde se esconden 
+              los ángeles que han vigilado este lugar durante más de dos siglos, y sentir algo que no se puede transmitir 
+              a través de una pantalla: la emoción de un lugar donde la historia, la luz y la belleza conviven.
             </p>
             <div className="flex items-center justify-center gap-4 mb-10">
               <div className="w-16 h-px bg-gold/40" />
