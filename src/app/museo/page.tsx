@@ -26,7 +26,7 @@ const TOUR_SPACES: TourSpace[] = [
   {
     id: 'la-casa-despierta',
     name: 'La Casa Despierta',
-    description: 'Hace más de dos siglos, cuando Puebla aún se iluminaba con velas, una familia construyó esta casa. Pero no era una casa cualquiera. Los artesanos colocaron ángeles escondidos porque se creía que protegían los hogares.',
+    description: 'Hace más de dos siglos, una familia construyó esta casa en el corazón de la ciudad que los ángeles trazaron. En sus ventanas y cristales dejaron guardianes de luz para proteger a quienes la habitaran.',
     image: '/images/museo/entrada-360.jpg',
     initialYaw: 0,
     initialPitch: 0,
@@ -34,7 +34,7 @@ const TOUR_SPACES: TourSpace[] = [
   {
     id: 'patio-de-los-angeles',
     name: 'Patio de los Ángeles',
-    description: 'El alma de la casa. Aquí la luz entra como lo hacía hace dos siglos, bañando la cantera donde los primeros ángeles de piedra fueron tallados para custodiar este lugar.',
+    description: 'El alma de la casa. La luz del sol entra como lo hacía hace dos siglos y al atravesar los cristales revela a los guardianes: ángeles que aparecen y desaparecen con el paso de las horas.',
     image: '/images/museo/patio-360.jpg',
     initialYaw: 0,
     initialPitch: -5,
@@ -42,7 +42,7 @@ const TOUR_SPACES: TourSpace[] = [
   {
     id: 'angeles-ocultos',
     name: 'Los Ángeles Ocultos',
-    description: 'Un recorrido de descubrimiento: ángeles tallados en molduras, incrustados en vitrales y escondidos en los detalles arquitectónicos. Algunos llevan siglos esperando ser encontrados.',
+    description: 'Los artesanos los escondieron en ventanas, vitrales y cristales decorados. La luz los hace visibles: cuando un rayo de sol atraviesa el vidrio, los guardianes despiertan. Algunos llevan siglos esperando ser descubiertos.',
     image: '/images/museo/angeles-ocultos-360.jpg',
     initialYaw: 90,
     initialPitch: 0,
@@ -50,7 +50,7 @@ const TOUR_SPACES: TourSpace[] = [
   {
     id: 'sala-de-musica',
     name: 'La Sala de Música',
-    description: 'Una ambientación que evoca las reuniones sociales del siglo XIX. La casa recuerda las voces, los acordes y las veladas que llenaron estas paredes de vida.',
+    description: 'Un espacio que evoca las veladas del siglo XIX. Los ángeles en las ventanas observaron reuniones, música y conversaciones. Hoy la sala conserva esa energía: quien entra, siente que la casa lo recibe.',
     image: '/images/museo/musica-360.jpg',
     initialYaw: 0,
     initialPitch: 0,
@@ -58,7 +58,7 @@ const TOUR_SPACES: TourSpace[] = [
   {
     id: 'gabinete-de-los-angeles',
     name: 'El Gabinete de los Ángeles',
-    description: 'Una colección artística de representaciones de ángeles de distintas épocas y estilos. Del barroco al contemporáneo, cada pieza cuenta una historia de protección e inspiración.',
+    description: 'Una sala dedicada a la idea del ángel como símbolo universal: protección, esperanza, belleza e inspiración. Representaciones artísticas de distintas épocas que dialogan con los guardianes originales de la casa.',
     image: '/images/museo/gabinete-360.jpg',
     initialYaw: -45,
     initialPitch: 0,
@@ -66,7 +66,7 @@ const TOUR_SPACES: TourSpace[] = [
   {
     id: 'camara-de-luz',
     name: 'La Cámara de Luz',
-    description: 'Una instalación inmersiva donde los vitrales y la iluminación transforman el espacio. Aquí los ángeles no se ven: se sienten a través de la luz y el color.',
+    description: 'Aquí los ángeles no se buscan: se sienten. La luz que atraviesa los cristales crea una atmósfera envolvente donde protección e inspiración dejan de ser ideas y se convierten en una experiencia.',
     image: '/images/museo/camara-luz-360.jpg',
     initialYaw: 0,
     initialPitch: 0,
@@ -74,7 +74,7 @@ const TOUR_SPACES: TourSpace[] = [
   {
     id: 'el-cafe',
     name: 'El Café',
-    description: 'Donde la historia se vive en presente. Un espacio para detenerse, contemplar y dejar que la casa te cuente su historia con el aroma del café recién preparado.',
+    description: 'Donde la historia se vive en presente. Un lugar para detenerse bajo la mirada silenciosa de los guardianes y dejar que la casa te ofrezca lo que siempre ha ofrecido: refugio, calma e inspiración.',
     image: '/images/museo/cafe-360.jpg',
     initialYaw: 45,
     initialPitch: 0,
@@ -82,7 +82,7 @@ const TOUR_SPACES: TourSpace[] = [
   {
     id: 'la-terraza',
     name: 'La Terraza',
-    description: 'Los ángeles trazaron esta ciudad. Desde aquí puedes ver su obra: el Centro Histórico de Puebla con los volcanes como telón de fondo, tal como lo vieron quienes construyeron esta casa.',
+    description: 'Los ángeles trazaron Puebla y desde aquí puedes contemplar su obra. El Centro Histórico se extiende con los volcanes de fondo, y la luz de esta terraza te recuerda por qué los guardianes eligieron quedarse.',
     image: '/images/museo/terraza-360.jpg',
     initialYaw: 0,
     initialPitch: 10,
@@ -247,7 +247,7 @@ export default function MuseoPage() {
             </p>
             <p className="text-cream/50 text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-sans">
               Un museo donde la historia, la luz y los ángeles habitan.
-              Recorre cada rincón en una experiencia inmersiva de 360°.
+              Descubre a los guardianes que protegen esta casa desde sus ventanas y cristales.
             </p>
             <div className="flex items-center justify-center gap-4 mt-8">
               <div className="w-16 h-px bg-gold/40" />
@@ -290,7 +290,7 @@ export default function MuseoPage() {
                     <p className="text-cream/50 text-sm md:text-base max-w-md font-sans">
                       {imageError
                         ? 'La imagen 360° de este espacio aún no está disponible.'
-                        : 'Próximamente podrás descubrir dónde se esconden los ángeles que han habitado esta casa durante más de dos siglos.'
+                        : 'Próximamente podrás recorrer esta casa y descubrir a los guardianes de luz que habitan en sus ventanas y cristales desde hace más de dos siglos.'
                       }
                     </p>
                     <p className="text-gold/40 text-xs uppercase tracking-[0.2em] mt-6 font-sans">
@@ -454,12 +454,12 @@ export default function MuseoPage() {
           >
             <h2 className="font-serif text-3xl md:text-5xl text-charcoal mb-6">Visítanos en Persona</h2>
             <p className="text-charcoal/50 font-serif italic text-lg md:text-xl max-w-xl mx-auto leading-relaxed mb-6">
-              La casa cambió de dueños, de usos y de épocas, pero los ángeles nunca se fueron.
+              La casa cambió de dueños, de usos y de épocas, pero los guardianes en sus ventanas nunca se fueron.
             </p>
             <p className="text-charcoal/60 text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-sans mb-8">
-              La experiencia virtual es solo el comienzo. Te invitamos a recorrer la casa, descubrir dónde se esconden 
-              los ángeles que han vigilado este lugar durante más de dos siglos, y sentir algo que no se puede transmitir 
-              a través de una pantalla: la emoción de un lugar donde la historia, la luz y la belleza conviven.
+              La experiencia virtual es solo el comienzo. Te invitamos a recorrer la casa y sentir lo que sus guardianes 
+              han ofrecido durante siglos: protección, inspiración y la luz que solo este lugar puede darte. 
+              Hay cosas que no se transmiten a través de una pantalla.
             </p>
             <div className="flex items-center justify-center gap-4 mb-10">
               <div className="w-16 h-px bg-gold/40" />
