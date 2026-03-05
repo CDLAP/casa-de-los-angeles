@@ -26,7 +26,7 @@ const TOUR_SPACES: TourSpace[] = [
   {
     id: 'entrada',
     name: 'Entrada Principal',
-    description: 'Bienvenido a Casa de los Ángeles. Cruza el umbral de una casona del siglo XVII en el corazón del Centro Histórico de Puebla.',
+    description: 'Bienvenido a Casa de los Ángeles. Cruza el umbral de una casona del siglo XVIII en el corazón del Centro Histórico de Puebla.',
     image: '/images/museo/entrada-360.jpg',
     initialYaw: 0,
     initialPitch: 0,
@@ -244,7 +244,7 @@ export default function MuseoPage() {
             <h1 className="font-serif text-5xl md:text-7xl text-cream mb-6">Museo</h1>
             <p className="text-cream/70 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-sans">
               Recorre cada rincón de Casa de los Ángeles en una experiencia inmersiva de 360°.
-              Descubre la historia que vive en cada sala de esta casona del siglo XVII.
+              Descubre la historia que vive en cada sala de esta casona del siglo XVIII.
             </p>
             <div className="flex items-center justify-center gap-4 mt-8">
               <div className="w-16 h-px bg-gold/40" />
