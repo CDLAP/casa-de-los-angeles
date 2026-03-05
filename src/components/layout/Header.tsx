@@ -10,7 +10,7 @@ import { ChevronDown } from 'lucide-react'
 const mainLinks = [
   { href: '/', label: 'Inicio' },
   { href: '/#menu', label: 'Café' },
-  { href: '/#nosotros', label: 'Museo' },
+  { href: '/museo', label: 'Museo' },
   { href: '/#boutique', label: 'Boutique' },
   { href: '/#atelier', label: 'Atelier' },
   { href: '/#mercado', label: 'Mercado' },
@@ -37,6 +37,7 @@ export default function Header() {
   const isEventos = pathname === '/eventos'
   const isPromocion = pathname === '/promocion'
   const isRP = pathname === '/relaciones-publicas'
+  const isMuseo = pathname === '/museo'
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('')
   const [menuOpen, setMenuOpen] = useState(false)
@@ -49,6 +50,7 @@ export default function Header() {
     if (isEventos) { setActiveSection('/eventos'); return }
     if (isPromocion) { setActiveSection('/promocion'); return }
     if (isRP) { setActiveSection('/relaciones-publicas'); return }
+    if (isMuseo) { setActiveSection('/museo'); return }
     const sections = document.querySelectorAll('section[id]')
     if (!sections.length) return
     const observer = new IntersectionObserver(
@@ -61,7 +63,7 @@ export default function Header() {
     )
     sections.forEach((s) => observer.observe(s))
     return () => observer.disconnect()
-  }, [isBistro, isCultura, isEventos, isPromocion, isRP, pathname])
+  }, [isBistro, isCultura, isEventos, isPromocion, isRP, isMuseo, pathname])
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50)
