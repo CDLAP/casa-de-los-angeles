@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Maximize2, Minimize2, RotateCcw, Eye } from 'lucide-react'
 import Image from 'next/image'
@@ -92,10 +92,18 @@ const TOUR_SPACES: TourSpace[] = [
 // ============================================
 // PLACEHOLDER — se muestra mientras no hay fotos 360°
 // ============================================
-const SHOW_PLACEHOLDER = false // Pannellum activo — las salas sin imagen mostrarán error gracefully
+// Salas que ya tienen imagen 360° disponible
+const AVAILABLE_IMAGES = new Set(['sala360.png'])
+const hasImage = (space: TourSpace) => {
+  const filename = space.image.split('/').pop() || ''
+  return AVAILABLE_IMAGES.has(filename)
+}
+
+// Arrancar en la primera sala con imagen disponible
+const INITIAL_INDEX = TOUR_SPACES.findIndex(s => hasImage(s))
 
 export default function MuseoPage() {
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState(INITIAL_INDEX >= 0 ? INITIAL_INDEX : 0)
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [pannellumLoaded, setPannellumLoaded] = useState(false)
   const [imageError, setImageError] = useState(false)
@@ -104,11 +112,10 @@ export default function MuseoPage() {
   const containerRef = useRef<HTMLDivElement>(null)
 
   const currentSpace = TOUR_SPACES[currentIndex]
+  const currentHasImage = hasImage(currentSpace)
 
   // Cargar Pannellum desde CDN
   useEffect(() => {
-    if (SHOW_PLACEHOLDER) return
-
     // CSS
     if (!document.querySelector('link[href*="pannellum"]')) {
       const link = document.createElement('link')
@@ -129,67 +136,62 @@ export default function MuseoPage() {
   }, [])
 
   // Inicializar/actualizar el visor 360°
-  const initViewer = useCallback(() => {
-    if (SHOW_PLACEHOLDER || !pannellumLoaded || !viewerRef.current) return
+  useEffect(() => {
+    if (!currentHasImage || !pannellumLoaded) return
     if (!(window as any).pannellum) return
 
-    // Destruir visor anterior
-    if (pannellumViewer.current) {
-      try { pannellumViewer.current.destroy() } catch {}
-      pannellumViewer.current = null
-    }
+    // Esperar a que el ref esté listo
+    const timer = setTimeout(() => {
+      if (!viewerRef.current) return
 
-    try {
-      pannellumViewer.current = (window as any).pannellum.viewer(viewerRef.current, {
-        type: 'equirectangular',
-        panorama: currentSpace.image,
-        autoLoad: true,
-        autoRotate: -1.5,
-        autoRotateInactivityDelay: 3000,
-        compass: false,
-        showControls: false,
-        showFullscreenCtrl: false,
-        showZoomCtrl: false,
-        mouseZoom: true,
-        draggable: true,
-        yaw: currentSpace.initialYaw || 0,
-        pitch: currentSpace.initialPitch || 0,
-        hfov: 100,
-        minHfov: 50,
-        maxHfov: 120,
-        friction: 0.15,
-        hotSpots: currentSpace.hotspots?.map(h => ({
-          pitch: h.pitch,
-          yaw: h.yaw,
-          type: 'scene',
-          text: h.label,
-          cssClass: 'custom-hotspot',
-          clickHandlerFunc: () => {
-            const idx = TOUR_SPACES.findIndex(s => s.id === h.targetId)
-            if (idx !== -1) setCurrentIndex(idx)
-          },
-        })) || [],
-      })
+      // Destruir visor anterior
+      if (pannellumViewer.current) {
+        try { pannellumViewer.current.destroy() } catch {}
+        pannellumViewer.current = null
+      }
 
-      setImageError(false)
+      // Limpiar el contenedor
+      if (viewerRef.current) viewerRef.current.innerHTML = ''
 
-      pannellumViewer.current.on('error', () => {
+      try {
+        pannellumViewer.current = (window as any).pannellum.viewer(viewerRef.current, {
+          type: 'equirectangular',
+          panorama: currentSpace.image,
+          autoLoad: true,
+          autoRotate: -1.5,
+          autoRotateInactivityDelay: 3000,
+          compass: false,
+          showControls: false,
+          showFullscreenCtrl: false,
+          showZoomCtrl: false,
+          mouseZoom: true,
+          draggable: true,
+          yaw: currentSpace.initialYaw || 0,
+          pitch: currentSpace.initialPitch || 0,
+          hfov: 100,
+          minHfov: 50,
+          maxHfov: 120,
+          friction: 0.15,
+        })
+
+        setImageError(false)
+
+        pannellumViewer.current.on('error', () => {
+          setImageError(true)
+        })
+      } catch {
         setImageError(true)
-      })
-    } catch {
-      setImageError(true)
-    }
-  }, [pannellumLoaded, currentSpace])
+      }
+    }, 100)
 
-  useEffect(() => {
-    initViewer()
     return () => {
+      clearTimeout(timer)
       if (pannellumViewer.current) {
         try { pannellumViewer.current.destroy() } catch {}
         pannellumViewer.current = null
       }
     }
-  }, [initViewer])
+  }, [pannellumLoaded, currentIndex, currentHasImage])
 
   const goToSpace = (index: number) => {
     if (index < 0 || index >= TOUR_SPACES.length) return
@@ -275,7 +277,10 @@ export default function MuseoPage() {
             {/* Visor principal */}
             <div className={`relative ${isFullscreen ? 'h-screen' : 'aspect-[16/9] md:aspect-[21/9]'}`}>
               
-              {SHOW_PLACEHOLDER || imageError ? (
+              {/* Pannellum viewer container — siempre en el DOM */}
+              <div ref={viewerRef} className={`absolute inset-0 ${currentHasImage && !imageError ? '' : 'invisible'}`} />
+
+              {(!currentHasImage || imageError) && (
                 /* Placeholder elegante */
                 <div className="absolute inset-0 bg-gradient-to-br from-[#1A3A2E] via-[#2A4A3E] to-[#1A3A2E] flex flex-col items-center justify-center text-center px-8">
                   <motion.div
@@ -306,9 +311,6 @@ export default function MuseoPage() {
                     </svg>
                   </div>
                 </div>
-              ) : (
-                /* Pannellum viewer container */
-                <div ref={viewerRef} className="absolute inset-0" />
               )}
 
               {/* Controles de navegación */}
@@ -366,7 +368,7 @@ export default function MuseoPage() {
               </div>
 
               {/* Instrucción de interacción */}
-              {!SHOW_PLACEHOLDER && !imageError && (
+              {currentHasImage && !imageError && (
                 <motion.div
                   className="absolute top-6 left-1/2 -translate-x-1/2 z-20 bg-black/40 backdrop-blur-sm rounded-full px-4 py-2 flex items-center gap-2"
                   initial={{ opacity: 1 }}
