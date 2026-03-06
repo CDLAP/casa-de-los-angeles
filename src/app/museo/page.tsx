@@ -51,7 +51,7 @@ const TOUR_SPACES: TourSpace[] = [
     id: 'sala-de-musica',
     name: 'La Sala de Música',
     description: 'Un espacio que evoca las veladas del siglo XIX. Los ángeles en las ventanas observaron reuniones, música y conversaciones. Hoy la sala conserva esa energía: quien entra, siente que la casa lo recibe.',
-    image: '/images/museo/sala360.png',
+    image: '/images/museo/sala360.jpg',
     initialYaw: 0,
     initialPitch: 0,
   },
@@ -93,7 +93,7 @@ const TOUR_SPACES: TourSpace[] = [
 // PLACEHOLDER — se muestra mientras no hay fotos 360°
 // ============================================
 // Salas que ya tienen imagen 360° disponible
-const AVAILABLE_IMAGES = new Set(['sala360.png'])
+const AVAILABLE_IMAGES = new Set(['sala360.jpg'])
 const hasImage = (space: TourSpace) => {
   const filename = space.image.split('/').pop() || ''
   return AVAILABLE_IMAGES.has(filename)
