@@ -51,7 +51,7 @@ const TOUR_SPACES: TourSpace[] = [
     id: 'sala-de-musica',
     name: 'La Sala de Música',
     description: 'Un espacio que evoca las veladas del siglo XIX. Los ángeles en las ventanas observaron reuniones, música y conversaciones. Hoy la sala conserva esa energía: quien entra, siente que la casa lo recibe.',
-    image: '/images/museo/musica-360.jpg',
+    image: '/images/museo/sala360.png',
     initialYaw: 0,
     initialPitch: 0,
   },
@@ -92,7 +92,7 @@ const TOUR_SPACES: TourSpace[] = [
 // ============================================
 // PLACEHOLDER — se muestra mientras no hay fotos 360°
 // ============================================
-const SHOW_PLACEHOLDER = true // Cambia a false cuando ya tengas las fotos 360°
+const SHOW_PLACEHOLDER = false // Pannellum activo — las salas sin imagen mostrarán error gracefully
 
 export default function MuseoPage() {
   const [currentIndex, setCurrentIndex] = useState(0)
