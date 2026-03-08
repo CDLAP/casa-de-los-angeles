@@ -170,15 +170,21 @@ export default function Hero() {
             la cultura y el arte se encuentran
           </motion.p>
 
-          <motion.a
-            href="/#contacto"
-            className="inline-block px-8 py-3 text-sm uppercase tracking-[0.2em] font-light border border-gold/50 text-gold transition-all duration-300 hover:bg-gold hover:text-[#3F1F26]"
+          <motion.div
+            className="flex flex-wrap items-center justify-center gap-3 mt-2"
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.6 }}
           >
-            Reservar
-          </motion.a>
+            <a href="/#menu" className="inline-block px-5 py-2.5 text-xs uppercase tracking-[0.2em] font-light border border-gold/50 text-gold transition-all duration-300 hover:bg-gold hover:text-[#3F1F26]">Café</a>
+            <a href="/museo" className="inline-block px-5 py-2.5 text-xs uppercase tracking-[0.2em] font-light border border-gold/50 text-gold transition-all duration-300 hover:bg-gold hover:text-[#3F1F26]">Museo</a>
+            <a href="/#boutique" className="inline-block px-5 py-2.5 text-xs uppercase tracking-[0.2em] font-light border border-gold/50 text-gold transition-all duration-300 hover:bg-gold hover:text-[#3F1F26]">Boutique</a>
+            <a href="/#atelier" className="inline-block px-5 py-2.5 text-xs uppercase tracking-[0.2em] font-light border border-gold/50 text-gold transition-all duration-300 hover:bg-gold hover:text-[#3F1F26]">Atelier</a>
+            <a href="/#mercado" className="inline-block px-5 py-2.5 text-xs uppercase tracking-[0.2em] font-light border border-gold/50 text-gold transition-all duration-300 hover:bg-gold hover:text-[#3F1F26]">Mercado</a>
+            <a href="/#rueda-de-prensa" className="inline-block px-5 py-2.5 text-xs uppercase tracking-[0.2em] font-light border border-gold/50 text-gold transition-all duration-300 hover:bg-gold hover:text-[#3F1F26]">Prensa</a>
+            <a href="/eventos" className="inline-block px-5 py-2.5 text-xs uppercase tracking-[0.2em] font-light border border-gold/50 text-gold transition-all duration-300 hover:bg-gold hover:text-[#3F1F26]">Eventos</a>
+            <a href="/#contacto" className="inline-block px-5 py-2.5 text-xs uppercase tracking-[0.2em] font-light border border-gold/50 text-gold transition-all duration-300 hover:bg-gold hover:text-[#3F1F26]">Contacto</a>
+          </motion.div>
         </div>
         </div>
       </section>
