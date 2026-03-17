@@ -1,12 +1,12 @@
 {
-  "name": "Casa de los Ángeles - Bistró Francés & Centro Cultural",
+  "name": "Casa de los Ángeles — Café, Arte & Boutique | Centro Histórico de Puebla",
   "short_name": "Casa de los Ángeles",
-  "description": "Bistró francés y cafetería artesanal en el Centro Histórico de Puebla. Croissants, baguettes, café de especialidad y eventos culturales.",
+  "description": "Espacio multicultural de café de especialidad, arte, boutique artesanal, museo, bistró y eventos culturales en el Centro Histórico de Puebla. Inmueble con más de 100 años de historia a media cuadra del Zócalo. Reservaciones: +52 220 622 4222.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "background_color": "#FAF8F3",
-  "theme_color": "#1A3A2E",
+  "theme_color": "#005A49",
   "orientation": "portrait-primary",
   "icons": [
     {
@@ -64,21 +64,38 @@
   "prefer_related_applications": false,
   "shortcuts": [
     {
-      "name": "Ver Menú",
+      "name": "Ver Menú del Café",
       "short_name": "Menú",
+      "description": "Café de especialidad, croissants, sodas artesanales y antojitos",
       "url": "/#menu",
+      "icons": [{"src": "/images/logo-short-1000x1000.png", "sizes": "96x96"}]
+    },
+    {
+      "name": "Bistró — Tablas y Vino",
+      "short_name": "Bistró",
+      "description": "Tablas de quesos, charcutería y vinos selectos",
+      "url": "/bistro",
+      "icons": [{"src": "/images/logo-short-1000x1000.png", "sizes": "96x96"}]
+    },
+    {
+      "name": "Museo Virtual 360°",
+      "short_name": "Museo",
+      "description": "Tour virtual por los espacios narrativos del museo",
+      "url": "/museo",
+      "icons": [{"src": "/images/logo-short-1000x1000.png", "sizes": "96x96"}]
+    },
+    {
+      "name": "Eventos Culturales",
+      "short_name": "Eventos",
+      "description": "Martes de Artes, Mercado de las Maravillas y más",
+      "url": "/eventos",
       "icons": [{"src": "/images/logo-short-1000x1000.png", "sizes": "96x96"}]
     },
     {
       "name": "Reservar Mesa",
       "short_name": "Reservar",
+      "description": "Reservaciones al +52 220 622 4222",
       "url": "/#reservar",
-      "icons": [{"src": "/images/logo-short-1000x1000.png", "sizes": "96x96"}]
-    },
-    {
-      "name": "Contacto",
-      "short_name": "Contacto",
-      "url": "/#contacto",
       "icons": [{"src": "/images/logo-short-1000x1000.png", "sizes": "96x96"}]
     }
   ]

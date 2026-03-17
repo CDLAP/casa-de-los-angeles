@@ -1,17 +1,87 @@
 # Robots.txt para Casa de los Ángeles Puebla
 # https://www.casadelosangelespuebla.com
+# Última actualización: 2026-03-17
 
-User-agent: *
+# ═══════════════════════════════════════════════════════════════
+# AI Search Crawlers — Permitidos explícitamente
+# ═══════════════════════════════════════════════════════════════
+
+User-agent: GPTBot
 Allow: /
+Allow: /llms.txt
 
-# Sitemap
-Sitemap: https://www.casadelosangelespuebla.com/sitemap.xml
+User-agent: ChatGPT-User
+Allow: /
+Allow: /llms.txt
 
-# Bloquear archivos de desarrollo
-Disallow: /_next/static/development/
-Disallow: /api/
+User-agent: OAI-SearchBot
+Allow: /
+Allow: /llms.txt
 
-# Permitir crawlers de redes sociales
+User-agent: ClaudeBot
+Allow: /
+Allow: /llms.txt
+
+User-agent: anthropic-ai
+Allow: /
+Allow: /llms.txt
+
+User-agent: Google-Extended
+Allow: /
+Allow: /llms.txt
+
+User-agent: GoogleOther
+Allow: /
+Allow: /llms.txt
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /llms.txt
+
+User-agent: Bingbot
+Allow: /
+Allow: /llms.txt
+
+User-agent: CopilotBot
+Allow: /
+Allow: /llms.txt
+
+User-agent: FacebookBot
+Allow: /
+Allow: /llms.txt
+
+User-agent: meta-externalagent
+Allow: /
+Allow: /llms.txt
+
+User-agent: Applebot
+Allow: /
+Allow: /llms.txt
+
+User-agent: cohere-ai
+Allow: /
+Allow: /llms.txt
+
+User-agent: YouBot
+Allow: /
+Allow: /llms.txt
+
+User-agent: Grok
+Allow: /
+Allow: /llms.txt
+
+User-agent: Deepseek
+Allow: /
+Allow: /llms.txt
+
+User-agent: BraveBot
+Allow: /
+Allow: /llms.txt
+
+# ═══════════════════════════════════════════════════════════════
+# Redes Sociales
+# ═══════════════════════════════════════════════════════════════
+
 User-agent: facebookexternalhit
 Allow: /
 
@@ -23,3 +93,31 @@ Allow: /
 
 User-agent: WhatsApp
 Allow: /
+
+# ═══════════════════════════════════════════════════════════════
+# Buscadores Tradicionales
+# ═══════════════════════════════════════════════════════════════
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: *
+Allow: /
+
+# ═══════════════════════════════════════════════════════════════
+# Bloquear archivos de desarrollo
+# ═══════════════════════════════════════════════════════════════
+
+Disallow: /_next/static/development/
+Disallow: /api/
+
+# ═══════════════════════════════════════════════════════════════
+# Sitemap & LLMs
+# ═══════════════════════════════════════════════════════════════
+
+Sitemap: https://www.casadelosangelespuebla.com/sitemap.xml
+
+# Contenido optimizado para IA:
+# https://www.casadelosangelespuebla.com/llms.txt
+
+Crawl-delay: 1

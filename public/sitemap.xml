@@ -8,50 +8,70 @@
   <!-- Página Principal -->
   <url>
     <loc>https://www.casadelosangelespuebla.com/</loc>
-    <lastmod>2024-12-11</lastmod>
+    <lastmod>2026-03-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://www.casadelosangelespuebla.com/images/og-image.jpg</image:loc>
-      <image:title>Casa de los Ángeles - Cafetería y Centro de Cultura en Puebla</image:title>
-      <image:caption>Bistró francés y centro cultural en el Centro Histórico de Puebla</image:caption>
+      <image:title>Casa de los Ángeles — Café, Arte y Boutique en Puebla</image:title>
+      <image:caption>Espacio multicultural de café, arte y boutique en el Centro Histórico de Puebla</image:caption>
     </image:image>
   </url>
   
-  <!-- Secciones principales (anclas) para mejor indexación -->
+  <!-- Bistró — Tablas y Vino -->
   <url>
-    <loc>https://www.casadelosangelespuebla.com/#nosotros</loc>
-    <lastmod>2024-12-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.casadelosangelespuebla.com/#menu</loc>
-    <lastmod>2024-12-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.casadelosangelespuebla.com/#eventos</loc>
-    <lastmod>2024-12-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.casadelosangelespuebla.com/#contacto</loc>
-    <lastmod>2024-12-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.casadelosangelespuebla.com/#reservar</loc>
-    <lastmod>2024-12-11</lastmod>
+    <loc>https://www.casadelosangelespuebla.com/bistro</loc>
+    <lastmod>2026-03-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+
+  <!-- Museo — Tour Virtual 360° -->
+  <url>
+    <loc>https://www.casadelosangelespuebla.com/museo</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Eventos y Mercado -->
+  <url>
+    <loc>https://www.casadelosangelespuebla.com/eventos</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Cultura -->
+  <url>
+    <loc>https://www.casadelosangelespuebla.com/cultura</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Relaciones Públicas -->
+  <url>
+    <loc>https://www.casadelosangelespuebla.com/relaciones-publicas</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Promoción -->
+  <url>
+    <loc>https://www.casadelosangelespuebla.com/promocion</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- LLMs.txt — Contenido optimizado para IA -->
+  <url>
+    <loc>https://www.casadelosangelespuebla.com/llms.txt</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 
 </urlset>

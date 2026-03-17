@@ -147,6 +147,14 @@ export const metadata: Metadata = {
     'contact:email': 'contacto@casadelosangelespuebla.com',
     // Formato de precios (México)
     'price-currency': 'MXN',
+    // GEO: Clasificación para AI crawlers
+    'classification': 'Café, Boutique, Museo, Centro Cultural, Bistró, Eventos',
+    'subject': 'Café de especialidad, arte, boutique artesanal, eventos culturales, Centro Histórico de Puebla',
+    'coverage': 'Puebla, México',
+    'distribution': 'Local',
+    'rating': 'General',
+    'revisit-after': '7 days',
+    'language': 'Spanish',
   },
 }
 
@@ -252,11 +260,89 @@ const jsonLd = {
       '@type': 'BreadcrumbList',
       '@id': `${siteUrl}/#breadcrumb`,
       itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Inicio', item: siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'Bistró', item: `${siteUrl}/bistro` },
+        { '@type': 'ListItem', position: 3, name: 'Museo', item: `${siteUrl}/museo` },
+        { '@type': 'ListItem', position: 4, name: 'Eventos', item: `${siteUrl}/eventos` },
+        { '@type': 'ListItem', position: 5, name: 'Cultura', item: `${siteUrl}/cultura` },
+      ],
+    },
+    // FAQPage — GEO: Preguntas que los usuarios hacen a las IAs
+    {
+      '@type': 'FAQPage',
+      '@id': `${siteUrl}/#faq`,
+      mainEntity: [
         {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Inicio',
-          item: siteUrl,
+          '@type': 'Question',
+          name: '¿Dónde está Casa de los Ángeles en Puebla?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Casa de los Ángeles está en Av. Don Juan de Palafox y Mendoza 222, Centro Histórico de Puebla, México. A media cuadra del Zócalo de Puebla.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: '¿Qué es Casa de los Ángeles Puebla?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Es un espacio multicultural que combina café de especialidad, boutique artesanal, museo con tour virtual 360°, bistró (Tablas y Vino), atelier, mercado cultural y eventos en un inmueble con más de 100 años de historia en el corazón de Puebla.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: '¿Cuál es el horario de Casa de los Ángeles?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Lunes a Domingo de 9:00 AM a 10:00 PM.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: '¿Qué tipo de café ofrecen en Casa de los Ángeles?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Café de especialidad preparado por baristas, acompañado de croissants franceses horneados diariamente, baguettes artesanales, sodas artesanales de sabores (jamaica, tamarindo, mango, guayaba) y antojitos mexicanos.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: '¿Se pueden hacer reservaciones en Casa de los Ángeles?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Sí. Reservaciones por teléfono al +52 220 622 4222 o por correo a contacto@casadelosangelespuebla.com.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: '¿Qué es Tablas y Vino?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Es el concepto de bistró dentro de Casa de los Ángeles que ofrece tablas de quesos, charcutería artesanal y vinos selectos en un ambiente colonial elegante.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: '¿Tienen museo en Casa de los Ángeles?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Sí. El museo incluye un tour virtual 360° con 8 espacios narrativos que cuentan la historia de la casa y de Puebla.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: '¿Qué eventos organizan en Casa de los Ángeles?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Martes de Artes, Mercado de las Maravillas (viernes a domingo), noches de gala, ruedas de prensa, conferencias mediáticas y eventos privados.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: '¿Es un buen lugar para visitar en Puebla?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Casa de los Ángeles es uno de los espacios culturales más únicos del Centro Histórico de Puebla, combinando gastronomía, arte y boutique artesanal en un inmueble centenario a media cuadra del Zócalo. Ideal para turistas y locales.',
+          },
         },
       ],
     },
@@ -280,6 +366,8 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="32x32" href="/images/logo-short.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/images/logo-short.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-short-1000x1000.png" />
+        {/* GEO: LLM-optimized content link */}
+        <link rel="alternate" type="text/plain" href="https://www.casadelosangelespuebla.com/llms.txt" title="Contenido optimizado para IA" />
         {/* Preconnect para performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
