@@ -13,7 +13,7 @@ const mainLinks = [
   { href: '/museo', label: 'Museo' },
   { href: '/#boutique', label: 'Boutique' },
   { href: '/#atelier', label: 'Atelier' },
-  { href: '/#mercado', label: 'Mercado' },
+  { href: '/mercado-de-los-angeles', label: 'Mercado' },
   { href: '/#rueda-de-prensa', label: 'Prensa' },
 ]
 
@@ -38,6 +38,7 @@ export default function Header() {
   const isPromocion = pathname === '/promocion'
   const isRP = pathname === '/relaciones-publicas'
   const isMuseo = pathname === '/museo'
+  const isMercado = pathname === '/mercado-de-los-angeles'
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('')
   const [menuOpen, setMenuOpen] = useState(false)
@@ -51,6 +52,7 @@ export default function Header() {
     if (isPromocion) { setActiveSection('/promocion'); return }
     if (isRP) { setActiveSection('/relaciones-publicas'); return }
     if (isMuseo) { setActiveSection('/museo'); return }
+    if (isMercado) { setActiveSection('/mercado-de-los-angeles'); return }
     const sections = document.querySelectorAll('section[id]')
     if (!sections.length) return
     const observer = new IntersectionObserver(
@@ -63,7 +65,7 @@ export default function Header() {
     )
     sections.forEach((s) => observer.observe(s))
     return () => observer.disconnect()
-  }, [isBistro, isCultura, isEventos, isPromocion, isRP, isMuseo, pathname])
+  }, [isBistro, isCultura, isEventos, isPromocion, isRP, isMuseo, isMercado, pathname])
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50)
@@ -74,7 +76,6 @@ export default function Header() {
   useEffect(() => {
     if (menuOpen) { document.body.style.overflow = 'hidden' }
     else { document.body.style.overflow = '' }
-    // Notify sticky angel & hero about menu state
     window.dispatchEvent(new CustomEvent('mobileMenuToggle', { detail: { open: menuOpen } }))
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
