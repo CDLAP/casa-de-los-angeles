@@ -106,7 +106,7 @@ export default function SeasonHero({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="relative mb-12 md:mb-16 max-w-md md:max-w-lg mx-auto"
+          className="relative mb-12 md:mb-16 max-w-5xl mx-auto"
         >
           {/* Gold corner ornaments */}
           <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-gold z-10" />
@@ -114,7 +114,7 @@ export default function SeasonHero({
           <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-2 border-l-2 border-gold z-10" />
           <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-gold z-10" />
 
-          <div className="relative aspect-[2/3] overflow-hidden border border-gold/40 shadow-2xl shadow-charcoal/60">
+          <div className="relative aspect-[16/9] overflow-hidden border border-gold/40 shadow-2xl shadow-charcoal/60">
             <div
               className="absolute inset-0 bg-cover bg-center"
               style={{ backgroundImage: `url('${heroImage}')` }}
