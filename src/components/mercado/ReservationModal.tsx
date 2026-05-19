@@ -53,7 +53,6 @@ export default function ReservationModal({
     w.days.map(d => ({ ...d, weekendLabel: `${w.label} de ${w.month}` }))
   )
 
-  // Mount flag for createPortal (avoid SSR issues)
   useEffect(() => {
     setMounted(true)
   }, [])
@@ -162,7 +161,7 @@ export default function ReservationModal({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.98 }}
             transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="relative w-full max-w-md sm:max-w-lg my-4 sm:my-0 bg-[#0A1428] border border-gold/40 shadow-2xl"
+            className="relative w-full max-w-md sm:max-w-lg md:max-w-3xl lg:max-w-4xl my-4 sm:my-0 bg-[#0A1428] border border-gold/40 shadow-2xl"
           >
             <div className="h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent" />
 
@@ -176,9 +175,10 @@ export default function ReservationModal({
             </button>
 
             <div className="p-5 sm:p-7 md:p-9">
+              {/* Header */}
               <div className="mb-5 pr-8">
                 <p className="text-[10px] uppercase tracking-[0.3em] text-gold mb-2">Reservar mi espacio</p>
-                <h2 className="font-serif italic text-xl sm:text-2xl text-cream leading-tight mb-1">
+                <h2 className="font-serif italic text-xl sm:text-2xl md:text-3xl text-cream leading-tight mb-1">
                   {eventName}
                 </h2>
                 <p className="font-sans uppercase tracking-[0.2em] text-gold/80 text-xs">
@@ -186,128 +186,139 @@ export default function ReservationModal({
                 </p>
               </div>
 
-              <div className="flex items-center gap-3 mb-5">
+              <div className="flex items-center gap-3 mb-6">
                 <div className="flex-1 h-px bg-gold/20" />
                 <div className="w-1.5 h-1.5 bg-gold/40 rotate-45" />
                 <div className="flex-1 h-px bg-gold/20" />
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <div className="flex items-baseline justify-between mb-3">
-                    <p className="text-[10px] uppercase tracking-[0.25em] text-cream/70">
-                      Selecciona {requiredFechas} {requiredFechas === 1 ? 'fecha' : 'fechas'}
-                    </p>
-                    <p className={`text-[10px] uppercase tracking-[0.25em] ${datesValid ? 'text-gold' : 'text-cream/50'}`}>
-                      {selectedDays.length} / {requiredFechas}
-                    </p>
-                  </div>
+              <form onSubmit={handleSubmit}>
+                {/* Two-column layout on desktop */}
+                <div className="grid md:grid-cols-2 gap-6 md:gap-10">
+                  {/* LEFT — Date selection */}
+                  <div>
+                    <div className="flex items-baseline justify-between mb-3">
+                      <p className="text-[10px] uppercase tracking-[0.25em] text-cream/70">
+                        Selecciona {requiredFechas} {requiredFechas === 1 ? 'fecha' : 'fechas'}
+                      </p>
+                      <p className={`text-[10px] uppercase tracking-[0.25em] ${datesValid ? 'text-gold' : 'text-cream/50'}`}>
+                        {selectedDays.length} / {requiredFechas}
+                      </p>
+                    </div>
 
-                  <div className="space-y-3">
-                    {weekends.map((weekend) => (
-                      <div key={weekend.id}>
-                        <p className="font-sans uppercase tracking-[0.2em] text-cream/55 text-[10px] mb-1.5">
-                          {weekend.label} de {weekend.month}
-                        </p>
-                        <div className="grid grid-cols-2 gap-1.5">
-                          {weekend.days.map((day) => {
-                            const checked = selectedDays.includes(day.id)
-                            const disabled = !checked && selectedDays.length >= requiredFechas
-                            const dayName = day.label.split(' ')[0]
-                            const dayNum = day.label.split(' ')[1]
-                            return (
-                              <button
-                                key={day.id}
-                                type="button"
-                                onClick={() => toggleDay(day.id)}
-                                disabled={disabled}
-                                className={`flex items-center gap-2 px-3 py-2 border transition-all duration-300 text-left ${
-                                  checked
-                                    ? 'border-gold bg-gold/10'
-                                    : disabled
-                                      ? 'border-gold/10 opacity-40 cursor-not-allowed'
-                                      : 'border-gold/20 hover:border-gold/50'
-                                }`}
-                              >
-                                <span
-                                  className={`w-3.5 h-3.5 border flex items-center justify-center transition-colors flex-shrink-0 ${
-                                    checked ? 'border-gold bg-gold' : 'border-gold/40'
+                    <div className="space-y-3">
+                      {weekends.map((weekend) => (
+                        <div key={weekend.id}>
+                          <p className="font-sans uppercase tracking-[0.2em] text-cream/55 text-[10px] mb-1.5">
+                            {weekend.label} de {weekend.month}
+                          </p>
+                          <div className="grid grid-cols-2 gap-1.5">
+                            {weekend.days.map((day) => {
+                              const checked = selectedDays.includes(day.id)
+                              const disabled = !checked && selectedDays.length >= requiredFechas
+                              const dayName = day.label.split(' ')[0]
+                              const dayNum = day.label.split(' ')[1]
+                              return (
+                                <button
+                                  key={day.id}
+                                  type="button"
+                                  onClick={() => toggleDay(day.id)}
+                                  disabled={disabled}
+                                  className={`flex items-center gap-2 px-3 py-2 border transition-all duration-300 text-left ${
+                                    checked
+                                      ? 'border-gold bg-gold/10'
+                                      : disabled
+                                        ? 'border-gold/10 opacity-40 cursor-not-allowed'
+                                        : 'border-gold/20 hover:border-gold/50'
                                   }`}
                                 >
-                                  {checked && (
-                                    <svg className="w-2.5 h-2.5 text-charcoal" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                                      <polyline points="20 6 9 17 4 12" />
-                                    </svg>
-                                  )}
-                                </span>
-                                <span className="font-sans text-[12px] text-cream leading-tight">
-                                  <span className="font-medium">{dayName}</span>
-                                  <span className="text-cream/55 ml-1">{dayNum}</span>
-                                </span>
-                              </button>
-                            )
-                          })}
+                                  <span
+                                    className={`w-3.5 h-3.5 border flex items-center justify-center transition-colors flex-shrink-0 ${
+                                      checked ? 'border-gold bg-gold' : 'border-gold/40'
+                                    }`}
+                                  >
+                                    {checked && (
+                                      <svg className="w-2.5 h-2.5 text-charcoal" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                                        <polyline points="20 6 9 17 4 12" />
+                                      </svg>
+                                    )}
+                                  </span>
+                                  <span className="font-sans text-[12px] text-cream leading-tight">
+                                    <span className="font-medium">{dayName}</span>
+                                    <span className="text-cream/55 ml-1">{dayNum}</span>
+                                  </span>
+                                </button>
+                              )
+                            })}
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
+
+                    {remainingFechas > 0 && (
+                      <p className="text-[10px] text-cream/40 mt-3 font-sans">
+                        Te falta{remainingFechas > 1 ? 'n' : ''} {remainingFechas} {remainingFechas === 1 ? 'fecha' : 'fechas'} por seleccionar
+                      </p>
+                    )}
                   </div>
 
-                  {remainingFechas > 0 && (
-                    <p className="text-[10px] text-cream/40 mt-3 font-sans">
-                      Te falta{remainingFechas > 1 ? 'n' : ''} {remainingFechas} {remainingFechas === 1 ? 'fecha' : 'fechas'} por seleccionar
-                    </p>
-                  )}
+                  {/* RIGHT — Form fields */}
+                  <div className="space-y-4 md:space-y-5">
+                    {/* Marca */}
+                    <div>
+                      <label htmlFor="marca" className="block text-[10px] uppercase tracking-[0.25em] text-cream/70 mb-1.5">
+                        Marca
+                      </label>
+                      <input
+                        id="marca"
+                        type="text"
+                        value={marca}
+                        onChange={(e) => setMarca(e.target.value)}
+                        placeholder="Nombre de tu marca"
+                        className="w-full bg-transparent border-b border-gold/30 focus:border-gold py-2 text-cream placeholder:text-cream/30 font-sans outline-none transition-colors"
+                        required
+                      />
+                    </div>
+
+                    {/* Instagram */}
+                    <div>
+                      <label htmlFor="instagram" className="block text-[10px] uppercase tracking-[0.25em] text-cream/70 mb-1.5">
+                        Instagram
+                      </label>
+                      <input
+                        id="instagram"
+                        type="text"
+                        value={instagram}
+                        onChange={(e) => setInstagram(e.target.value)}
+                        placeholder="@tumarca"
+                        className="w-full bg-transparent border-b border-gold/30 focus:border-gold py-2 text-cream placeholder:text-cream/30 font-sans outline-none transition-colors"
+                        required
+                      />
+                    </div>
+
+                    {/* Productos */}
+                    <div>
+                      <label htmlFor="productos" className="block text-[10px] uppercase tracking-[0.25em] text-cream/70 mb-1.5">
+                        Productos que vendo
+                      </label>
+                      <textarea
+                        id="productos"
+                        value={productos}
+                        onChange={(e) => setProductos(e.target.value)}
+                        placeholder="Joyería de autor, cerámica, café especial…"
+                        rows={4}
+                        className="w-full bg-transparent border border-gold/30 focus:border-gold p-2.5 text-cream placeholder:text-cream/30 font-sans outline-none transition-colors resize-none text-sm"
+                        required
+                      />
+                    </div>
+                  </div>
                 </div>
 
-                <div>
-                  <label htmlFor="marca" className="block text-[10px] uppercase tracking-[0.25em] text-cream/70 mb-1.5">
-                    Marca
-                  </label>
-                  <input
-                    id="marca"
-                    type="text"
-                    value={marca}
-                    onChange={(e) => setMarca(e.target.value)}
-                    placeholder="Nombre de tu marca"
-                    className="w-full bg-transparent border-b border-gold/30 focus:border-gold py-2 text-cream placeholder:text-cream/30 font-sans outline-none transition-colors"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="instagram" className="block text-[10px] uppercase tracking-[0.25em] text-cream/70 mb-1.5">
-                    Instagram
-                  </label>
-                  <input
-                    id="instagram"
-                    type="text"
-                    value={instagram}
-                    onChange={(e) => setInstagram(e.target.value)}
-                    placeholder="@tumarca"
-                    className="w-full bg-transparent border-b border-gold/30 focus:border-gold py-2 text-cream placeholder:text-cream/30 font-sans outline-none transition-colors"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="productos" className="block text-[10px] uppercase tracking-[0.25em] text-cream/70 mb-1.5">
-                    Productos que vendo
-                  </label>
-                  <textarea
-                    id="productos"
-                    value={productos}
-                    onChange={(e) => setProductos(e.target.value)}
-                    placeholder="Joyería de autor, cerámica, café especial…"
-                    rows={2}
-                    className="w-full bg-transparent border border-gold/30 focus:border-gold p-2.5 text-cream placeholder:text-cream/30 font-sans outline-none transition-colors resize-none text-sm"
-                    required
-                  />
-                </div>
-
+                {/* Submit + disclaimer span full width */}
                 <button
                   type="submit"
                   disabled={!isValid || submitting}
-                  className={`w-full mt-1 py-3.5 text-sm uppercase tracking-[0.25em] font-sans font-medium transition-all duration-500 ${
+                  className={`w-full mt-6 md:mt-8 py-3.5 md:py-4 text-sm uppercase tracking-[0.25em] font-sans font-medium transition-all duration-500 ${
                     isValid && !submitting
                       ? 'bg-gold text-charcoal hover:bg-gold-light cursor-pointer'
                       : 'bg-gold/20 text-cream/40 cursor-not-allowed'
@@ -316,7 +327,7 @@ export default function ReservationModal({
                   {submitting ? 'Abriendo WhatsApp…' : 'Enviar reservación'}
                 </button>
 
-                <p className="text-[10px] sm:text-[11px] text-cream/40 text-center font-sans leading-relaxed">
+                <p className="text-[10px] sm:text-[11px] text-cream/40 text-center font-sans leading-relaxed mt-3">
                   Al enviar se abrirá WhatsApp con tu reservación lista. Te enviaremos los datos de pago manualmente.
                 </p>
               </form>

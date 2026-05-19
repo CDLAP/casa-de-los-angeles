@@ -102,21 +102,33 @@ export default function SeasonInfo({
           ))}
         </div>
 
-        {/* Link to full expositores info */}
+        {/* Links to expositor resources */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mt-10 md:mt-12"
+          className="text-center mt-12 md:mt-14"
         >
-          <Link
-            href="/mercado-de-los-angeles/informacion"
-            className="group inline-flex items-center gap-2 text-gold hover:text-gold-light text-xs md:text-sm uppercase tracking-[0.25em] font-sans font-medium transition-colors duration-300 border-b border-gold/30 hover:border-gold pb-1.5"
-          >
-            Ver información completa para expositores
-            <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-          </Link>
+          <p className="font-sans uppercase tracking-[0.3em] text-gold/70 text-[10px] md:text-xs mb-5">
+            Recursos para expositores
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center items-stretch sm:items-center max-w-2xl mx-auto">
+            <Link
+              href="/mercado-de-los-angeles/informacion"
+              className="group inline-flex items-center justify-center gap-2 text-gold hover:text-gold-light text-xs md:text-sm uppercase tracking-[0.25em] font-sans font-medium transition-colors duration-300 border-b border-gold/30 hover:border-gold pb-1.5"
+            >
+              Información completa
+              <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+            <Link
+              href="/mercado-de-los-angeles/tips"
+              className="group inline-flex items-center justify-center gap-2 text-gold hover:text-gold-light text-xs md:text-sm uppercase tracking-[0.25em] font-sans font-medium transition-colors duration-300 border-b border-gold/30 hover:border-gold pb-1.5"
+            >
+              10 tips para vender mejor
+              <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+          </div>
         </motion.div>
       </section>
 
