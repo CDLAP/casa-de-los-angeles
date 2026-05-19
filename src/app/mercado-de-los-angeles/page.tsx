@@ -3,6 +3,7 @@ import SeasonHero from '@/components/mercado/SeasonHero'
 import SeasonFechas from '@/components/mercado/SeasonFechas'
 import SeasonPaquetes from '@/components/mercado/SeasonPaquetes'
 import SeasonInfo from '@/components/mercado/SeasonInfo'
+import StarsBackground from '@/components/mercado/StarsBackground'
 import mercadoData from '@/data/mercado-de-los-angeles.json'
 
 export const metadata: Metadata = {
@@ -21,9 +22,18 @@ export default function MercadoDeLosAngelesPage() {
   const { settings, season } = mercadoData
 
   return (
-    <main className="relative min-h-screen bg-[#0A0E0C] text-cream overflow-hidden">
-      {/* Background layers */}
+    <main className="relative min-h-screen bg-[#070C18] text-cream overflow-hidden">
+      {/* Layered background: deep blue base + radial glow + stars */}
       <div className="absolute inset-0 pointer-events-none">
+        {/* Base gradient with blue undertone */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(180deg, #060A14 0%, #0A1428 35%, #08101F 70%, #050912 100%)',
+          }}
+        />
+        {/* Gold radial accents */}
         <div
           className="absolute inset-0"
           style={{
@@ -32,6 +42,9 @@ export default function MercadoDeLosAngelesPage() {
           }}
         />
       </div>
+
+      {/* Stars layer */}
+      <StarsBackground />
 
       <div className="relative z-10">
         <SeasonHero
@@ -46,7 +59,7 @@ export default function MercadoDeLosAngelesPage() {
 
         <SeasonFechas
           eventName={season.name}
-          dates={season.dates}
+          weekends={season.weekends}
           note={season.datesNote}
           tagline={season.datesTagline}
         />
@@ -54,7 +67,7 @@ export default function MercadoDeLosAngelesPage() {
         <SeasonPaquetes
           eventName={season.name}
           packages={season.packages}
-          dates={season.dates}
+          weekends={season.weekends}
           whatsapp={settings.whatsapp}
         />
 

@@ -47,7 +47,6 @@ export default function SeasonHero({
           className="flex justify-center mb-10 md:mb-14"
         >
           <div className="relative max-w-[280px] md:max-w-sm">
-            {/* Ornamental corners */}
             <div className="absolute -top-1 -left-1 w-3 h-3 border-t border-l border-gold" />
             <div className="absolute -top-1 -right-1 w-3 h-3 border-t border-r border-gold" />
             <div className="absolute -bottom-1 -left-1 w-3 h-3 border-b border-l border-gold" />
@@ -77,7 +76,6 @@ export default function SeasonHero({
             {name}
           </motion.h1>
 
-          {/* Decorative divider with location */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -103,25 +101,37 @@ export default function SeasonHero({
           </motion.p>
         </div>
 
-        {/* Hero image */}
+        {/* Hero image — applied night filter */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
           className="relative mb-12 md:mb-16"
         >
-          {/* Ornamental corner markers */}
           <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-gold z-10" />
           <div className="absolute -top-2 -right-2 w-6 h-6 border-t-2 border-r-2 border-gold z-10" />
           <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-2 border-l-2 border-gold z-10" />
           <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-gold z-10" />
 
           <div className="relative aspect-[16/9] md:aspect-[21/9] overflow-hidden border border-gold/40">
+            {/* Image with night filter */}
             <div
               className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: `url('${heroImage}')` }}
+              style={{
+                backgroundImage: `url('${heroImage}')`,
+                filter: 'brightness(0.42) saturate(0.7) contrast(1.15) hue-rotate(200deg)',
+              }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-charcoal/20 to-transparent" />
+            {/* Blue night overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#0A1828]/40 via-[#0A1428]/25 to-[#050A14]/70" />
+            {/* Subtle gold light from inside (warm windows) */}
+            <div
+              className="absolute inset-0 opacity-30 mix-blend-screen"
+              style={{
+                background:
+                  'radial-gradient(ellipse at 50% 70%, rgba(201, 169, 97, 0.35) 0%, transparent 45%)',
+              }}
+            />
           </div>
         </motion.div>
 
@@ -132,7 +142,6 @@ export default function SeasonHero({
           transition={{ duration: 0.8, delay: 0.8 }}
           className="grid md:grid-cols-[1fr_auto] gap-8 md:gap-12 items-stretch max-w-5xl mx-auto"
         >
-          {/* Description */}
           <div className="flex flex-col justify-center space-y-4 md:space-y-5">
             {description.map((para, i) => (
               <p
@@ -146,9 +155,7 @@ export default function SeasonHero({
             ))}
           </div>
 
-          {/* Horario box */}
           <div className="relative">
-            {/* Corner markers */}
             <div className="absolute -top-1.5 -left-1.5 w-4 h-4 border-t-2 border-l-2 border-gold" />
             <div className="absolute -top-1.5 -right-1.5 w-4 h-4 border-t-2 border-r-2 border-gold" />
             <div className="absolute -bottom-1.5 -left-1.5 w-4 h-4 border-b-2 border-l-2 border-gold" />

@@ -17,20 +17,21 @@ interface Pkg {
   benefits: string[] | null
 }
 
-interface SeasonDate {
+interface SeasonWeekend {
   id: string
   label: string
   month: string
+  days: { id: string; label: string }[]
 }
 
 interface SeasonPaquetesProps {
   eventName: string
   packages: Pkg[]
-  dates: SeasonDate[]
+  weekends: SeasonWeekend[]
   whatsapp: string
 }
 
-export default function SeasonPaquetes({ eventName, packages, dates, whatsapp }: SeasonPaquetesProps) {
+export default function SeasonPaquetes({ eventName, packages, weekends, whatsapp }: SeasonPaquetesProps) {
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedPackage, setSelectedPackage] = useState<Pkg | null>(null)
 
@@ -41,7 +42,6 @@ export default function SeasonPaquetes({ eventName, packages, dates, whatsapp }:
 
   return (
     <section className="container-custom py-16 md:py-24">
-      {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -54,7 +54,8 @@ export default function SeasonPaquetes({ eventName, packages, dates, whatsapp }:
           <div className="w-1.5 h-1.5 bg-gold rotate-45" />
           <div className="w-12 md:w-20 h-px bg-gold/50" />
         </div>
-        <h2 className="font-serif not-italic uppercase text-gold leading-tight"
+        <h2
+          className="font-serif not-italic uppercase text-gold leading-tight"
           style={{
             fontSize: 'clamp(1.5rem, 4vw, 2.75rem)',
             fontWeight: 700,
@@ -65,7 +66,6 @@ export default function SeasonPaquetes({ eventName, packages, dates, whatsapp }:
         </h2>
       </motion.div>
 
-      {/* Packages grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
         {packages.map((pkg, i) => (
           <motion.div
@@ -76,27 +76,25 @@ export default function SeasonPaquetes({ eventName, packages, dates, whatsapp }:
             transition={{ duration: 0.7, delay: 0.1 + i * 0.12, ease: [0.25, 0.46, 0.45, 0.94] }}
             className={`relative flex flex-col ${
               pkg.highlighted
-                ? 'bg-gradient-to-br from-[#3F1F26] to-[#2A1418] border-2 border-gold shadow-2xl shadow-gold/10'
-                : 'bg-[#22433A]/40 border border-gold/30'
+                ? 'bg-gradient-to-br from-[#3F1F26] to-[#1A1428] border-2 border-gold shadow-2xl shadow-gold/10'
+                : 'bg-[#0F1A2E]/50 border border-gold/30'
             } transition-all duration-500 hover:border-gold`}
           >
-            {/* Ornamental top corners */}
             <div className="absolute -top-1 -left-1 w-3 h-3 border-t border-l border-gold" />
             <div className="absolute -top-1 -right-1 w-3 h-3 border-t border-r border-gold" />
             <div className="absolute -bottom-1 -left-1 w-3 h-3 border-b border-l border-gold" />
             <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b border-r border-gold" />
 
             <div className="p-7 md:p-8 flex flex-col flex-1">
-              {/* Highlighted ribbon */}
               {pkg.highlighted && (
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gold text-charcoal px-4 py-1 text-[10px] uppercase tracking-[0.25em] font-sans font-medium whitespace-nowrap">
                   Recomendado
                 </div>
               )}
 
-              {/* Name */}
               <div className="text-center mb-5">
-                <h3 className="font-serif not-italic uppercase text-gold font-bold leading-tight"
+                <h3
+                  className="font-serif not-italic uppercase text-gold font-bold leading-tight"
                   style={{ fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)', letterSpacing: '0.05em' }}
                 >
                   {pkg.name}
@@ -108,16 +106,15 @@ export default function SeasonPaquetes({ eventName, packages, dates, whatsapp }:
                 )}
               </div>
 
-              {/* Divider */}
               <div className="flex items-center gap-2 mb-5">
                 <div className="flex-1 h-px bg-gold/25" />
                 <div className="w-1 h-1 bg-gold/60 rotate-45" />
                 <div className="flex-1 h-px bg-gold/25" />
               </div>
 
-              {/* Price */}
               <div className="text-center mb-5">
-                <p className="font-serif not-italic text-gold font-bold leading-none mb-2"
+                <p
+                  className="font-serif not-italic text-gold font-bold leading-none mb-2"
                   style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)' }}
                 >
                   ${pkg.price.toLocaleString('es-MX')}
@@ -132,7 +129,6 @@ export default function SeasonPaquetes({ eventName, packages, dates, whatsapp }:
                 )}
               </div>
 
-              {/* Benefits (for residente) */}
               {pkg.benefits && pkg.benefits.length > 0 && (
                 <div className="mb-6 pt-5 border-t border-gold/25">
                   <ul className="space-y-2.5">
@@ -146,10 +142,8 @@ export default function SeasonPaquetes({ eventName, packages, dates, whatsapp }:
                 </div>
               )}
 
-              {/* Spacer */}
               <div className="flex-1" />
 
-              {/* CTA */}
               <button
                 onClick={() => handleReserve(pkg)}
                 className={`w-full py-3.5 text-sm uppercase tracking-[0.25em] font-sans font-medium transition-all duration-500 mt-2 ${
@@ -165,14 +159,13 @@ export default function SeasonPaquetes({ eventName, packages, dates, whatsapp }:
         ))}
       </div>
 
-      {/* Modal */}
       {selectedPackage && (
         <ReservationModal
           isOpen={modalOpen}
           onClose={() => setModalOpen(false)}
           eventName={eventName}
           pkg={selectedPackage}
-          dates={dates}
+          weekends={weekends}
           whatsapp={whatsapp}
         />
       )}

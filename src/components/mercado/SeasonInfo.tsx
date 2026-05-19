@@ -18,8 +18,8 @@ export default function SeasonInfo({
   whatsapp,
   whatsappDisplay,
 }: SeasonInfoProps) {
-  const infoMessage = encodeURIComponent(
-    `Hola, me interesa información sobre ${eventName} en Casa de los Ángeles.`
+  const reservaMessage = encodeURIComponent(
+    `Hola, quiero reservar mi espacio para ${eventName} en Casa de los Ángeles.`
   )
 
   return (
@@ -33,14 +33,14 @@ export default function SeasonInfo({
           transition={{ duration: 0.7 }}
           className="relative max-w-5xl mx-auto"
         >
-          {/* Ornamental corners */}
           <div className="absolute -top-1.5 -left-1.5 w-4 h-4 border-t-2 border-l-2 border-gold" />
           <div className="absolute -top-1.5 -right-1.5 w-4 h-4 border-t-2 border-r-2 border-gold" />
           <div className="absolute -bottom-1.5 -left-1.5 w-4 h-4 border-b-2 border-l-2 border-gold" />
           <div className="absolute -bottom-1.5 -right-1.5 w-4 h-4 border-b-2 border-r-2 border-gold" />
 
           <div className="border border-gold/40 py-8 md:py-10 px-6 md:px-12 text-center">
-            <h3 className="font-serif not-italic uppercase text-gold mb-7"
+            <h3
+              className="font-serif not-italic uppercase text-gold mb-7"
               style={{
                 fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
                 fontWeight: 700,
@@ -77,7 +77,7 @@ export default function SeasonInfo({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-30px' }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="flex items-start gap-3 px-5 py-4 border border-gold/20 bg-[#22433A]/20"
+              className="flex items-start gap-3 px-5 py-4 border border-gold/20 bg-[#0F1A2E]/30"
             >
               <AlertCircle className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
               <p className="font-sans text-cream/85 text-sm leading-relaxed">
@@ -104,13 +104,12 @@ export default function SeasonInfo({
 
           <div className="border border-gold/50 py-10 md:py-14 px-6 md:px-12">
             <div className="grid md:grid-cols-2 gap-10 md:gap-12 items-center">
-              {/* WhatsApp */}
               <div className="text-center md:text-left">
                 <p className="font-sans uppercase tracking-[0.3em] text-gold text-[10px] md:text-xs mb-3">
-                  Informes y apartados al WhatsApp
+                  Reservaciones al WhatsApp
                 </p>
                 <a
-                  href={`https://wa.me/${whatsapp}?text=${infoMessage}`}
+                  href={`https://wa.me/${whatsapp}?text=${reservaMessage}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block font-serif not-italic text-gold font-bold leading-none hover:text-gold-light transition-colors"
@@ -121,9 +120,11 @@ export default function SeasonInfo({
                 >
                   {whatsappDisplay}
                 </a>
+                <p className="font-sans text-cream/55 text-xs italic mt-3 max-w-xs">
+                  Da clic para abrir WhatsApp y reservar tu espacio en {eventName}.
+                </p>
               </div>
 
-              {/* Address */}
               <div className="text-center md:text-right border-t md:border-t-0 md:border-l border-gold/25 pt-8 md:pt-0 md:pl-12">
                 <h4 className="font-serif italic text-cream text-2xl md:text-3xl leading-tight mb-3">
                   Casa de los Ángeles
