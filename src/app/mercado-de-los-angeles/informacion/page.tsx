@@ -5,109 +5,127 @@ import StarsBackground from '@/components/mercado/StarsBackground'
 import mercadoData from '@/data/mercado-de-los-angeles.json'
 
 export const metadata: Metadata = {
-  title: 'Información para Expositores | Mercado de la Luna · Casa de los Ángeles',
+  title: 'Lineamientos Generales para Expositores | Mercado de la Luna · Casa de los Ángeles',
   description:
-    'Información importante para expositores del Mercado de la Luna en Casa de los Ángeles. Horarios, lineamientos, servicios y todo lo que necesitas saber antes de tu participación.',
+    'Reglamento oficial para expositores del Mercado de la Luna en Casa de los Ángeles. Horarios, presentación, pagos, ambiente y lineamientos generales del evento.',
   robots: {
     index: false,
     follow: true,
   },
 }
 
-interface InfoItem {
+interface Section {
   title: string
-  content: string[]
+  items: string[]
 }
 
-const ITEMS: InfoItem[] = [
+const SECTIONS: Section[] = [
   {
-    title: 'Horarios y puntualidad',
-    content: [
-      'El montaje es de 4:00 PM a 5:00 PM.',
-      'La venta comienza a las 5:00 PM, por lo que todos los expositores deberán estar listos o al menos presentes a esa hora.',
+    title: 'Horarios y montaje',
+    items: [
+      'El montaje se realiza de 4:00 PM a 5:00 PM.',
+      'La venta comienza oficialmente a las 5:00 PM.',
+      'Todos los expositores deberán estar listos o presentes a esa hora.',
       'Después de las 5:00 PM se aplica una cuota de puntualidad de $100 MXN.',
     ],
   },
   {
-    title: 'Presentación del espacio',
-    content: [
-      'Les pedimos montar un espacio bonito y cuidado.',
-      'Expositores de ropa y joyería: recomendamos ampliamente traer espejos para mejorar la experiencia de compra.',
+    title: 'Montaje y presentación',
+    items: [
+      'Pedimos un montaje limpio, bonito y visualmente cuidado.',
+      'Expositores de ropa y joyería: recomendamos ampliamente traer espejos.',
+      'Procuramos mantener una estética elegante y organizada dentro del mercado.',
+      'Recomendamos evitar cajas visibles, exceso de plástico, lonas improvisadas o montaje visualmente saturado.',
     ],
   },
   {
-    title: 'Conexión eléctrica',
-    content: [
+    title: 'Iluminación y electricidad',
+    items: [
       'La conexión eléctrica tiene un costo adicional de $50 MXN por día.',
-      'Recomendamos traer lámparas recargables USB para mantener la estética cálida del mercado.',
+      'Recomendamos ampliamente traer lámparas recargables USB para mantener la atmósfera cálida y estética del mercado.',
     ],
   },
   {
     title: 'Servicios incluidos',
-    content: [
-      'Incluimos acceso a baño limpio durante todo el evento, agua potable ilimitada y precios preferenciales dentro de nuestra cafetería.',
-      'Les recomendamos traer su propia botella para rellenarla.',
+    items: [
+      'Acceso a baño limpio durante todo el evento.',
+      'Limpieza constante del área común.',
+      'Agua potable ilimitada para expositores (recomendamos traer su propia botella).',
+      'Precios preferenciales dentro de nuestra cafetería.',
     ],
   },
   {
-    title: 'Ambiente familiar',
-    content: [
-      'Nos encanta mantener un ambiente familiar y agradable para todos.',
-      'Por respeto a los demás expositores, evitamos alimentos con olores muy fuertes o grasosos dentro del espacio.',
+    title: 'Alimentos y seguridad',
+    items: [
+      'Pedimos evitar alimentos con olores fuertes o comida grasosa dentro del espacio.',
+      'No aceptamos giros que utilicen gas, fuego, humo o materiales flamables por lineamientos de Protección Civil.',
+      'No está permitido prender ningún elemento que genere humo o fuego dentro del recinto.',
     ],
   },
   {
-    title: 'Restricciones de Protección Civil',
-    content: [
-      'No aceptamos giros que utilicen gas, fuego, humo o materiales flamables, por lineamientos de Protección Civil.',
-    ],
-  },
-  {
-    title: 'Asignación de espacios',
-    content: [
+    title: 'Espacios y ubicaciones',
+    items: [
       'La colocación de espacios se realiza conforme al orden de pago y prioridad de expositores residentes.',
+      'Nosotros nos encargamos completamente de la organización y distribución general del espacio.',
+      'No se permiten cambios de mesa, movimientos o intercambios de lugar sin autorización previa del equipo organizador.',
+      'Los espacios son personales e intransferibles sin autorización previa.',
     ],
   },
   {
-    title: 'Comunicación y comunidad',
-    content: [
-      'Valoramos muchísimo la buena comunicación y el trato humano entre todos.',
-      'Queremos construir una comunidad bonita, respetuosa y colaborativa.',
+    title: 'Pagos y reservaciones',
+    items: [
+      'Las fechas deberán quedar liquidadas en su totalidad antes del evento.',
+      'No manejamos apartados debido al cupo limitado del mercado.',
+      'Los pagos normalmente se realizan vía transferencia bancaria.',
+      'Ofrecemos 5% de descuento realizando pago presencial anticipado directamente en Casa de los Ángeles.',
+      'En caso de requerir factura, deberá agregarse el 16% correspondiente al IVA.',
     ],
   },
   {
-    title: 'Difusión compartida',
-    content: [
-      'Pedimos el apoyo de todos los expositores para subir mínimo 5 historias al día del mercado.',
-      'La difusión compartida ayuda muchísimo a que todos vendan más y el evento siga creciendo.',
+    title: 'Cancelaciones y cambios',
+    items: [
+      'No realizamos devoluciones ni reembolsos una vez confirmada la participación.',
+      'Cualquier cambio deberá ser autorizado previamente por el equipo organizador.',
     ],
   },
   {
-    title: 'Cuidado del mobiliario',
-    content: [
-      'El mobiliario deberá entregarse en las mismas condiciones en las que se recibe.',
+    title: 'Mobiliario y espacio',
+    items: [
+      'El mobiliario deberá entregarse en las mismas condiciones en las que fue recibido.',
       'En caso de daños, se aplicará una cuota de recuperación de $500 MXN.',
-    ],
-  },
-  {
-    title: 'Mercancía durante la noche',
-    content: [
-      'Permitimos dejar mercancía durante la noche.',
-      'El desmontaje se realiza el sábado al finalizar el mercado.',
-    ],
-  },
-  {
-    title: 'Acompañantes',
-    content: [
       'Incluimos únicamente 1 silla por expositor.',
-      'Si asistirán más personas, deberá notificarse previamente para autorización.',
+      'En caso de asistir más personas, deberá notificarse previamente para autorización.',
     ],
   },
   {
-    title: 'Pago anticipado',
-    content: [
-      'Las mesas deberán quedar liquidadas antes de la fecha del evento.',
-      'Pagando presencialmente en Casa de los Ángeles ofrecemos 5% de descuento sobre el monto total.',
+    title: 'Mercancía y responsabilidad',
+    items: [
+      'Permitimos dejar mercancía durante la noche bajo responsabilidad del expositor.',
+      'Cada expositor es responsable de su mercancía, inventario, ventas y objetos personales durante el evento.',
+    ],
+  },
+  {
+    title: 'Ambiente y convivencia',
+    items: [
+      'La comunicación, respeto y buena convivencia son fundamentales para nosotros.',
+      'Cuidamos muchísimo el ambiente familiar, humano y colaborativo entre todos los participantes.',
+      'Nos reservamos el derecho de admisión y permanencia de marcas o expositores que no respeten el ambiente, lineamientos o imagen del mercado.',
+    ],
+  },
+  {
+    title: 'Promoción y redes sociales',
+    items: [
+      'Pedimos el apoyo de todos los expositores para subir mínimo 5 historias al día del mercado.',
+      'La promoción colectiva ayuda enormemente a incrementar las ventas y alcance de todos.',
+      'Recomendamos traer tarjetas, bolsas bonitas, códigos QR, terminal bancaria y métodos de pago digitales para mejorar la experiencia de compra.',
+    ],
+  },
+  {
+    title: 'Recomendaciones de venta',
+    items: [
+      'Mantener una actitud activa y amable aumenta muchísimo las ventas.',
+      'Los mercados tienen días de flujo alto y flujo bajo; la constancia y presencia hacen una enorme diferencia.',
+      'Muchos clientes recorren primero y compran después, por lo que es importante mantener siempre el stand listo y bien presentado.',
     ],
   },
 ]
@@ -121,7 +139,7 @@ function WhatsAppIcon({ className }: { className?: string }) {
   )
 }
 
-export default function InformacionExpositoresPage() {
+export default function LineamientosPage() {
   const { settings, season } = mercadoData
 
   const reservaMessage = encodeURIComponent(
@@ -130,7 +148,6 @@ export default function InformacionExpositoresPage() {
 
   return (
     <main className="relative min-h-screen bg-[#070C18] text-cream overflow-hidden">
-      {/* Background layers */}
       <div className="absolute inset-0 pointer-events-none">
         <div
           className="absolute inset-0"
@@ -151,10 +168,9 @@ export default function InformacionExpositoresPage() {
       <StarsBackground />
 
       <div className="relative z-10">
-        {/* Hero — compact */}
+        {/* Hero */}
         <section className="container-custom pt-[150px] md:pt-[210px] pb-12 md:pb-16">
           <div className="max-w-3xl mx-auto text-center">
-            {/* Back link */}
             <Link
               href="/mercado-de-los-angeles"
               className="inline-flex items-center gap-2 text-[10px] md:text-xs uppercase tracking-[0.3em] text-cream/55 hover:text-gold transition-colors duration-300 mb-10"
@@ -163,12 +179,10 @@ export default function InformacionExpositoresPage() {
               Volver al Mercado de la Luna
             </Link>
 
-            {/* Sparkle eyebrow */}
             <p className="font-serif italic text-gold text-2xl mb-4" aria-hidden="true">
               ✨
             </p>
 
-            {/* Title */}
             <h1
               className="font-serif not-italic text-gold uppercase leading-[1.05] mb-5"
               style={{
@@ -178,73 +192,79 @@ export default function InformacionExpositoresPage() {
                 textShadow: '0 0 30px rgba(201, 169, 97, 0.15)',
               }}
             >
-              Información Importante<br />para Expositores
+              Lineamientos<br />Generales para<br />Expositores
             </h1>
 
-            {/* Subtitle */}
             <div className="flex items-center justify-center gap-3 md:gap-4 mb-8">
               <div className="w-10 md:w-16 h-px bg-gold/40" />
               <div className="w-1.5 h-1.5 bg-gold rotate-45" />
               <p className="font-sans uppercase tracking-[0.3em] text-gold text-[11px] md:text-xs whitespace-nowrap">
-                {season.name} · Casa de los Ángeles
+                {season.name} <span aria-hidden="true">🌙</span> Casa de los Ángeles
               </p>
               <div className="w-1.5 h-1.5 bg-gold rotate-45" />
               <div className="w-10 md:w-16 h-px bg-gold/40" />
             </div>
 
-            {/* Intro paragraph */}
-            <p className="font-serif italic text-cream/85 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
-              Nos emociona muchísimo recibirlos dentro de esta experiencia nocturna tan especial en el Centro Histórico de Puebla. Para mantener un ambiente hermoso, organizado y familiar para todos, les compartimos algunos puntos importantes.
-            </p>
+            <div className="space-y-4 max-w-2xl mx-auto">
+              <p className="font-serif italic text-cream/85 text-base md:text-lg leading-relaxed">
+                Gracias por formar parte de esta experiencia nocturna dentro de Casa de los Ángeles.
+              </p>
+              <p className="font-serif italic text-cream/85 text-base md:text-lg leading-relaxed">
+                Nuestro objetivo es crear un mercado hermoso, organizado, rentable y con una experiencia premium tanto para expositores como para visitantes.
+              </p>
+              <p className="font-sans text-cream/70 text-sm md:text-base leading-relaxed">
+                Para mantener la calidad y armonía del evento, les compartimos nuestros lineamientos generales.
+              </p>
+            </div>
           </div>
         </section>
 
-        {/* Divider */}
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto flex items-center gap-4 py-4">
-            <div className="flex-1 h-px bg-gold/25" />
-            <div className="w-2 h-2 bg-gold rotate-45" />
-            <div className="flex-1 h-px bg-gold/25" />
-          </div>
-        </div>
-
-        {/* Items */}
-        <section className="container-custom py-12 md:py-16">
+        {/* Sections */}
+        <section className="container-custom pb-12 md:pb-16">
           <div className="max-w-3xl mx-auto">
-            {ITEMS.map((item, i) => (
-              <article key={i} className="mb-12 md:mb-14 last:mb-0">
-                <div className="flex items-baseline gap-3 mb-3">
-                  <span className="font-serif italic text-gold/70 text-lg md:text-xl leading-none">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <span className="text-gold/40 leading-none">—</span>
-                  <h2
-                    className="font-serif not-italic uppercase text-gold font-bold leading-tight"
-                    style={{
-                      fontSize: 'clamp(0.95rem, 2vw, 1.125rem)',
-                      letterSpacing: '0.15em',
-                    }}
-                  >
-                    {item.title}
-                  </h2>
+            {SECTIONS.map((section, i) => (
+              <div key={i} className="mb-14 md:mb-16 last:mb-0">
+                {/* Section divider */}
+                <div className="flex items-center gap-4 mb-7">
+                  <div className="flex-1 h-px bg-gold/30" />
+                  <div className="w-2 h-2 bg-gold rotate-45" />
+                  <div className="flex-1 h-px bg-gold/30" />
                 </div>
-                <div className="h-px bg-gold/20 mb-5" />
-                <div className="space-y-3 text-cream/85 font-sans text-[15px] md:text-base leading-relaxed pl-1">
-                  {item.content.map((p, j) => (
-                    <p key={j}>{p}</p>
+
+                {/* Section title */}
+                <h2
+                  className="font-serif not-italic uppercase text-gold font-bold text-center leading-tight mb-8"
+                  style={{
+                    fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
+                    letterSpacing: '0.18em',
+                  }}
+                >
+                  {section.title}
+                </h2>
+
+                {/* Items */}
+                <ul className="space-y-4 md:space-y-5 max-w-2xl mx-auto">
+                  {section.items.map((item, j) => (
+                    <li
+                      key={j}
+                      className="flex items-start gap-4 text-cream/85 font-sans text-[15px] md:text-base leading-relaxed"
+                    >
+                      <span className="flex-shrink-0 mt-2 w-1.5 h-1.5 bg-gold rotate-45" aria-hidden="true" />
+                      <span>{item}</span>
+                    </li>
                   ))}
-                </div>
-              </article>
+                </ul>
+              </div>
             ))}
           </div>
         </section>
 
-        {/* Divider */}
+        {/* Final divider */}
         <div className="container-custom">
           <div className="max-w-3xl mx-auto flex items-center gap-4 py-4">
-            <div className="flex-1 h-px bg-gold/25" />
+            <div className="flex-1 h-px bg-gold/30" />
             <div className="w-2 h-2 bg-gold rotate-45" />
-            <div className="flex-1 h-px bg-gold/25" />
+            <div className="flex-1 h-px bg-gold/30" />
           </div>
         </div>
 
@@ -252,13 +272,10 @@ export default function InformacionExpositoresPage() {
         <section className="container-custom py-12 md:py-16">
           <div className="max-w-2xl mx-auto text-center">
             <p
-              className="font-serif italic text-gold mb-4 leading-tight"
-              style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.25rem)' }}
+              className="font-serif italic text-gold leading-tight"
+              style={{ fontSize: 'clamp(1.375rem, 3vw, 2rem)' }}
             >
-              Gracias por formar parte de {season.name} <span aria-hidden="true">🌙</span>
-            </p>
-            <p className="font-serif italic text-cream/75 text-base md:text-lg leading-relaxed">
-              Estamos creando algo verdaderamente especial entre todos.
+              Gracias por ayudarnos a construir uno de los mercados nocturnos más especiales y cuidados del Centro Histórico de Puebla. <span aria-hidden="true">🌙✨</span>
             </p>
           </div>
         </section>
@@ -278,7 +295,7 @@ export default function InformacionExpositoresPage() {
               href={`https://wa.me/${settings.whatsapp}?text=${reservaMessage}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center gap-3 bg-gold hover:bg-gold-light text-charcoal px-6 py-4 text-sm uppercase tracking-[0.25em] font-sans font-medium transition-all duration-500"
+              className="inline-flex items-center justify-center gap-3 bg-gold hover:bg-gold-light text-charcoal px-6 py-4 text-sm uppercase tracking-[0.25em] font-sans font-medium transition-all duration-500"
             >
               <WhatsAppIcon className="w-5 h-5" />
               Reservar por WhatsApp

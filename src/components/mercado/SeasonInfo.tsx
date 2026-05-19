@@ -118,7 +118,7 @@ export default function SeasonInfo({
               href="/mercado-de-los-angeles/informacion"
               className="group inline-flex items-center justify-center gap-2 text-gold hover:text-gold-light text-xs md:text-sm uppercase tracking-[0.25em] font-sans font-medium transition-colors duration-300 border-b border-gold/30 hover:border-gold pb-1.5"
             >
-              Información completa
+              Lineamientos generales
               <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
             <Link
