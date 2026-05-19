@@ -71,19 +71,6 @@ export default function MercadoHero() {
             Av. Don Juan de Palafox y Mendoza 222
           </motion.p>
         </div>
-
-        {/* Anchor cue */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 1 }}
-          className="mt-16 md:mt-20 text-center"
-        >
-          <p className="text-[10px] uppercase tracking-[0.4em] text-gold/70 mb-3">Próximas ediciones</p>
-          <div className="flex items-center justify-center gap-2">
-            <div className="w-px h-8 bg-gold/40" />
-          </div>
-        </motion.div>
       </div>
     </section>
   )
