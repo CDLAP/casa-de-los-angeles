@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 
@@ -38,6 +39,7 @@ export default function ReservationModal({
   weekends,
   whatsapp,
 }: ReservationModalProps) {
+  const [mounted, setMounted] = useState(false)
   const [marca, setMarca] = useState('')
   const [instagram, setInstagram] = useState('')
   const [productos, setProductos] = useState('')
@@ -47,10 +49,14 @@ export default function ReservationModal({
 
   const requiredFechas = pkg.fechasIncluded
 
-  // Flat list of all days with their parent weekend (for label building)
   const allDays = weekends.flatMap(w =>
     w.days.map(d => ({ ...d, weekendLabel: `${w.label} de ${w.month}` }))
   )
+
+  // Mount flag for createPortal (avoid SSR issues)
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     if (isOpen) {
@@ -137,11 +143,13 @@ export default function ReservationModal({
 
   const remainingFechas = requiredFechas - selectedDays.length
 
-  return (
+  if (!mounted) return null
+
+  const modalContent = (
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-[100] flex items-start sm:items-center justify-center p-3 sm:p-4 md:p-6 bg-charcoal/85 backdrop-blur-md overflow-y-auto"
+          className="fixed inset-0 z-[200] flex items-start sm:items-center justify-center p-3 sm:p-4 md:p-6 bg-charcoal/90 backdrop-blur-md overflow-y-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -185,7 +193,6 @@ export default function ReservationModal({
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-4">
-                {/* Date selection — grouped by weekend */}
                 <div>
                   <div className="flex items-baseline justify-between mb-3">
                     <p className="text-[10px] uppercase tracking-[0.25em] text-cream/70">
@@ -206,7 +213,6 @@ export default function ReservationModal({
                           {weekend.days.map((day) => {
                             const checked = selectedDays.includes(day.id)
                             const disabled = !checked && selectedDays.length >= requiredFechas
-                            // Extract just "Viernes" or "Sábado" from the label
                             const dayName = day.label.split(' ')[0]
                             const dayNum = day.label.split(' ')[1]
                             return (
@@ -253,7 +259,6 @@ export default function ReservationModal({
                   )}
                 </div>
 
-                {/* Marca */}
                 <div>
                   <label htmlFor="marca" className="block text-[10px] uppercase tracking-[0.25em] text-cream/70 mb-1.5">
                     Marca
@@ -269,7 +274,6 @@ export default function ReservationModal({
                   />
                 </div>
 
-                {/* Instagram */}
                 <div>
                   <label htmlFor="instagram" className="block text-[10px] uppercase tracking-[0.25em] text-cream/70 mb-1.5">
                     Instagram
@@ -285,7 +289,6 @@ export default function ReservationModal({
                   />
                 </div>
 
-                {/* Productos */}
                 <div>
                   <label htmlFor="productos" className="block text-[10px] uppercase tracking-[0.25em] text-cream/70 mb-1.5">
                     Productos que vendo
@@ -325,4 +328,6 @@ export default function ReservationModal({
       )}
     </AnimatePresence>
   )
+
+  return createPortal(modalContent, document.body)
 }
