@@ -174,42 +174,47 @@ export default function ReservationModal({
               <X className="w-5 h-5" />
             </button>
 
-            <div className="p-5 sm:p-7 md:p-9">
+            <div className="p-6 sm:p-8 md:p-10">
               {/* Header */}
-              <div className="mb-5 pr-8">
-                <p className="text-[10px] uppercase tracking-[0.3em] text-gold mb-2">Reservar mi espacio</p>
-                <h2 className="font-serif italic text-xl sm:text-2xl md:text-3xl text-cream leading-tight mb-1">
+              <div className="mb-6 pr-8">
+                <p className="font-sans text-[10px] uppercase tracking-[0.25em] text-gold mb-3">
+                  Reservar mi espacio
+                </p>
+                <h2
+                  className="font-serif italic text-cream leading-tight mb-2"
+                  style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}
+                >
                   {eventName}
                 </h2>
-                <p className="font-sans uppercase tracking-[0.2em] text-gold/80 text-xs">
-                  {pkg.name}{pkg.subtitle ? ` · ${pkg.subtitle}` : ''} · ${pkg.price.toLocaleString('es-MX')} {pkg.priceLabel}
+                <p className="font-sans text-cream/75 text-sm md:text-[15px]">
+                  {pkg.name}{pkg.subtitle ? ` · ${pkg.subtitle}` : ''} · <span className="text-gold font-medium">${pkg.price.toLocaleString('es-MX')}</span> <span className="text-cream/55">{pkg.priceLabel}</span>
                 </p>
               </div>
 
-              <div className="flex items-center gap-3 mb-6">
-                <div className="flex-1 h-px bg-gold/20" />
-                <div className="w-1.5 h-1.5 bg-gold/40 rotate-45" />
-                <div className="flex-1 h-px bg-gold/20" />
-              </div>
+              {/* Hairline divider */}
+              <div className="h-px bg-cream/15 mb-7" />
 
               <form onSubmit={handleSubmit}>
-                {/* Two-column layout on desktop */}
-                <div className="grid md:grid-cols-2 gap-6 md:gap-10">
+                <div className="grid md:grid-cols-2 gap-7 md:gap-10">
                   {/* LEFT — Date selection */}
                   <div>
-                    <div className="flex items-baseline justify-between mb-3">
-                      <p className="text-[10px] uppercase tracking-[0.25em] text-cream/70">
+                    <div className="flex items-baseline justify-between mb-4">
+                      <p className="font-sans text-[10px] uppercase tracking-[0.25em] text-cream/70">
                         Selecciona {requiredFechas} {requiredFechas === 1 ? 'fecha' : 'fechas'}
                       </p>
-                      <p className={`text-[10px] uppercase tracking-[0.25em] ${datesValid ? 'text-gold' : 'text-cream/50'}`}>
+                      <p
+                        className={`font-sans text-[10px] uppercase tracking-[0.25em] ${
+                          datesValid ? 'text-gold' : 'text-cream/50'
+                        }`}
+                      >
                         {selectedDays.length} / {requiredFechas}
                       </p>
                     </div>
 
-                    <div className="space-y-3">
+                    <div className="space-y-3.5">
                       {weekends.map((weekend) => (
                         <div key={weekend.id}>
-                          <p className="font-sans uppercase tracking-[0.2em] text-cream/55 text-[10px] mb-1.5">
+                          <p className="font-sans uppercase tracking-[0.2em] text-cream/60 text-[10px] mb-2">
                             {weekend.label} de {weekend.month}
                           </p>
                           <div className="grid grid-cols-2 gap-1.5">
@@ -224,17 +229,17 @@ export default function ReservationModal({
                                   type="button"
                                   onClick={() => toggleDay(day.id)}
                                   disabled={disabled}
-                                  className={`flex items-center gap-2 px-3 py-2 border transition-all duration-300 text-left ${
+                                  className={`flex items-center gap-2 px-3 py-2.5 border transition-all duration-300 text-left ${
                                     checked
                                       ? 'border-gold bg-gold/10'
                                       : disabled
-                                        ? 'border-gold/10 opacity-40 cursor-not-allowed'
-                                        : 'border-gold/20 hover:border-gold/50'
+                                        ? 'border-cream/10 opacity-40 cursor-not-allowed'
+                                        : 'border-cream/20 hover:border-gold/60'
                                   }`}
                                 >
                                   <span
                                     className={`w-3.5 h-3.5 border flex items-center justify-center transition-colors flex-shrink-0 ${
-                                      checked ? 'border-gold bg-gold' : 'border-gold/40'
+                                      checked ? 'border-gold bg-gold' : 'border-cream/40'
                                     }`}
                                   >
                                     {checked && (
@@ -243,7 +248,7 @@ export default function ReservationModal({
                                       </svg>
                                     )}
                                   </span>
-                                  <span className="font-sans text-[12px] text-cream leading-tight">
+                                  <span className="font-sans text-[13px] text-cream leading-tight">
                                     <span className="font-medium">{dayName}</span>
                                     <span className="text-cream/55 ml-1">{dayNum}</span>
                                   </span>
@@ -256,17 +261,17 @@ export default function ReservationModal({
                     </div>
 
                     {remainingFechas > 0 && (
-                      <p className="text-[10px] text-cream/40 mt-3 font-sans">
+                      <p className="font-sans text-[11px] text-cream/55 mt-4">
                         Te falta{remainingFechas > 1 ? 'n' : ''} {remainingFechas} {remainingFechas === 1 ? 'fecha' : 'fechas'} por seleccionar
                       </p>
                     )}
                   </div>
 
                   {/* RIGHT — Form fields */}
-                  <div className="space-y-4 md:space-y-5">
+                  <div className="space-y-5 md:space-y-6">
                     {/* Marca */}
                     <div>
-                      <label htmlFor="marca" className="block text-[10px] uppercase tracking-[0.25em] text-cream/70 mb-1.5">
+                      <label htmlFor="marca" className="block font-sans text-[10px] uppercase tracking-[0.25em] text-cream/70 mb-2">
                         Marca
                       </label>
                       <input
@@ -275,14 +280,14 @@ export default function ReservationModal({
                         value={marca}
                         onChange={(e) => setMarca(e.target.value)}
                         placeholder="Nombre de tu marca"
-                        className="w-full bg-transparent border-b border-gold/30 focus:border-gold py-2 text-cream placeholder:text-cream/30 font-sans outline-none transition-colors"
+                        className="w-full bg-transparent border-b border-cream/25 focus:border-gold py-2 text-cream placeholder:text-cream/30 font-sans text-[15px] md:text-base outline-none transition-colors"
                         required
                       />
                     </div>
 
                     {/* Instagram */}
                     <div>
-                      <label htmlFor="instagram" className="block text-[10px] uppercase tracking-[0.25em] text-cream/70 mb-1.5">
+                      <label htmlFor="instagram" className="block font-sans text-[10px] uppercase tracking-[0.25em] text-cream/70 mb-2">
                         Instagram
                       </label>
                       <input
@@ -291,14 +296,14 @@ export default function ReservationModal({
                         value={instagram}
                         onChange={(e) => setInstagram(e.target.value)}
                         placeholder="@tumarca"
-                        className="w-full bg-transparent border-b border-gold/30 focus:border-gold py-2 text-cream placeholder:text-cream/30 font-sans outline-none transition-colors"
+                        className="w-full bg-transparent border-b border-cream/25 focus:border-gold py-2 text-cream placeholder:text-cream/30 font-sans text-[15px] md:text-base outline-none transition-colors"
                         required
                       />
                     </div>
 
                     {/* Productos */}
                     <div>
-                      <label htmlFor="productos" className="block text-[10px] uppercase tracking-[0.25em] text-cream/70 mb-1.5">
+                      <label htmlFor="productos" className="block font-sans text-[10px] uppercase tracking-[0.25em] text-cream/70 mb-2">
                         Productos que vendo
                       </label>
                       <textarea
@@ -307,27 +312,27 @@ export default function ReservationModal({
                         onChange={(e) => setProductos(e.target.value)}
                         placeholder="Joyería de autor, cerámica, café especial…"
                         rows={4}
-                        className="w-full bg-transparent border border-gold/30 focus:border-gold p-2.5 text-cream placeholder:text-cream/30 font-sans outline-none transition-colors resize-none text-sm"
+                        className="w-full bg-transparent border border-cream/25 focus:border-gold p-3 text-cream placeholder:text-cream/30 font-sans text-[15px] md:text-base outline-none transition-colors resize-none leading-[1.6]"
                         required
                       />
                     </div>
                   </div>
                 </div>
 
-                {/* Submit + disclaimer span full width */}
+                {/* Primary submit */}
                 <button
                   type="submit"
                   disabled={!isValid || submitting}
-                  className={`w-full mt-6 md:mt-8 py-3.5 md:py-4 text-sm uppercase tracking-[0.25em] font-sans font-medium transition-all duration-500 ${
+                  className={`w-full mt-7 md:mt-8 py-4 text-xs md:text-sm uppercase tracking-[0.2em] font-sans font-medium transition-all duration-500 ${
                     isValid && !submitting
                       ? 'bg-gold text-charcoal hover:bg-gold-light cursor-pointer'
-                      : 'bg-gold/20 text-cream/40 cursor-not-allowed'
+                      : 'bg-cream/10 text-cream/40 cursor-not-allowed'
                   }`}
                 >
                   {submitting ? 'Abriendo WhatsApp…' : 'Enviar reservación'}
                 </button>
 
-                <p className="text-[10px] sm:text-[11px] text-cream/40 text-center font-sans leading-relaxed mt-3">
+                <p className="font-sans text-[11px] sm:text-xs text-cream/55 text-center leading-relaxed mt-3.5">
                   Al enviar se abrirá WhatsApp con tu reservación lista. Te enviaremos los datos de pago manualmente.
                 </p>
               </form>

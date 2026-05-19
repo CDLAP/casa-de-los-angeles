@@ -132,7 +132,6 @@ const SECTIONS: Section[] = [
   },
 ]
 
-// Slugify Spanish text for stable anchor IDs
 function slugify(s: string): string {
   return s
     .toLowerCase()
@@ -182,46 +181,48 @@ export default function LineamientosPage() {
           <div className="max-w-3xl mx-auto text-center">
             <Link
               href="/mercado-de-los-angeles"
-              className="inline-flex items-center gap-2 text-[10px] md:text-xs uppercase tracking-[0.3em] text-cream/55 hover:text-gold transition-colors duration-300 mb-10"
+              className="inline-flex items-center gap-2 text-[10px] md:text-[11px] uppercase tracking-[0.25em] text-cream/65 hover:text-gold transition-colors duration-300 mb-12"
             >
               <ArrowLeft className="w-3 h-3" />
               Volver al Mercado de la Luna
             </Link>
 
-            <p className="font-serif italic text-gold text-2xl mb-4" aria-hidden="true">
+            <p className="font-serif italic text-gold text-2xl mb-5" aria-hidden="true">
               ✨
             </p>
 
+            {/* Page title — signature h1 keeps uppercase, slightly tighter */}
             <h1
-              className="font-serif not-italic text-gold uppercase leading-[1.05] mb-5"
+              className="font-serif not-italic text-gold uppercase leading-[1.05] mb-7"
               style={{
                 fontSize: 'clamp(1.875rem, 5vw, 3.5rem)',
                 fontWeight: 900,
-                letterSpacing: '0.05em',
+                letterSpacing: '0.015em',
                 textShadow: '0 0 30px rgba(201, 169, 97, 0.15)',
               }}
             >
               Lineamientos<br />Generales para<br />Expositores
             </h1>
 
-            <div className="flex items-center justify-center gap-3 md:gap-4 mb-8">
+            <div className="flex items-center justify-center gap-3 md:gap-4 mb-9">
               <div className="w-10 md:w-16 h-px bg-gold/40" />
               <div className="w-1.5 h-1.5 bg-gold rotate-45" />
-              <p className="font-sans uppercase tracking-[0.3em] text-gold text-[11px] md:text-xs whitespace-nowrap">
+              <p className="font-sans uppercase tracking-[0.25em] text-gold text-[10px] md:text-[11px] whitespace-nowrap">
                 {season.name} <span aria-hidden="true">🌙</span> Casa de los Ángeles
               </p>
               <div className="w-1.5 h-1.5 bg-gold rotate-45" />
               <div className="w-10 md:w-16 h-px bg-gold/40" />
             </div>
 
-            <div className="space-y-4 max-w-2xl mx-auto">
-              <p className="font-serif italic text-cream/85 text-base md:text-lg leading-relaxed">
+            {/* Intro — sans-serif, generous size, real reading comfort */}
+            <div className="space-y-4 md:space-y-5 max-w-2xl mx-auto">
+              <p className="font-sans text-cream text-base md:text-[17px] leading-[1.7]">
                 Gracias por formar parte de esta experiencia nocturna dentro de Casa de los Ángeles.
               </p>
-              <p className="font-serif italic text-cream/85 text-base md:text-lg leading-relaxed">
+              <p className="font-sans text-cream/90 text-base md:text-[17px] leading-[1.7]">
                 Nuestro objetivo es crear un mercado hermoso, organizado, rentable y con una experiencia premium tanto para expositores como para visitantes.
               </p>
-              <p className="font-sans text-cream/70 text-sm md:text-base leading-relaxed">
+              <p className="font-sans text-cream/75 text-[15px] md:text-base leading-[1.7]">
                 Para mantener la calidad y armonía del evento, les compartimos nuestros lineamientos generales.
               </p>
             </div>
@@ -229,27 +230,27 @@ export default function LineamientosPage() {
         </section>
 
         {/* TOC / Índice */}
-        <section className="container-custom pb-10 md:pb-14">
+        <section className="container-custom pb-12 md:pb-14">
           <div className="max-w-3xl mx-auto">
             <div className="flex items-center justify-center gap-4 mb-7">
               <div className="flex-1 max-w-[80px] h-px bg-gold/30" />
-              <p className="font-sans uppercase tracking-[0.3em] text-gold text-[10px] md:text-xs">
+              <p className="font-sans uppercase tracking-[0.3em] text-gold text-[10px] md:text-[11px]">
                 Índice
               </p>
               <div className="flex-1 max-w-[80px] h-px bg-gold/30" />
             </div>
 
-            <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-1">
+            <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-0">
               {SECTIONS.map((section, i) => (
                 <li key={i}>
                   <a
                     href={`#${slugify(section.title)}`}
-                    className="group flex items-baseline gap-2.5 text-cream/70 hover:text-gold py-2 transition-colors duration-300 border-b border-gold/10 hover:border-gold/40"
+                    className="group flex items-baseline gap-3 text-cream/75 hover:text-gold py-2.5 transition-colors duration-300 border-b border-cream/10 hover:border-gold/50"
                   >
-                    <span className="font-serif italic text-gold/55 text-xs group-hover:text-gold/90 transition-colors flex-shrink-0">
+                    <span className="font-serif text-cream/45 text-xs group-hover:text-gold transition-colors flex-shrink-0 tabular-nums">
                       {String(i + 1).padStart(2, '0')}
                     </span>
-                    <span className="font-sans text-[13px] md:text-sm leading-tight">
+                    <span className="font-sans text-[14px] md:text-[15px] leading-snug">
                       {section.title}
                     </span>
                   </a>
@@ -266,35 +267,36 @@ export default function LineamientosPage() {
               <div
                 key={i}
                 id={slugify(section.title)}
-                className="mb-14 md:mb-16 last:mb-0 scroll-mt-24 md:scroll-mt-28"
+                className="mb-16 md:mb-20 last:mb-0 scroll-mt-24 md:scroll-mt-28"
               >
-                {/* Section divider */}
-                <div className="flex items-center gap-4 mb-7">
+                {/* Section transition rombo */}
+                <div className="flex items-center gap-4 mb-8">
                   <div className="flex-1 h-px bg-gold/30" />
-                  <div className="w-2 h-2 bg-gold rotate-45" />
+                  <div className="w-1.5 h-1.5 bg-gold rotate-45" />
                   <div className="flex-1 h-px bg-gold/30" />
                 </div>
 
-                {/* Section title */}
+                {/* Section title — cream, title case, no aggressive tracking */}
                 <h2
-                  className="font-serif not-italic uppercase text-gold font-bold text-center leading-tight mb-8"
+                  className="font-serif not-italic text-cream text-center leading-tight mb-9"
                   style={{
-                    fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
-                    letterSpacing: '0.18em',
+                    fontSize: 'clamp(1.375rem, 3vw, 1.875rem)',
+                    fontWeight: 700,
+                    letterSpacing: '0.005em',
                   }}
                 >
                   {section.title}
                 </h2>
 
-                {/* Items */}
-                <ul className="space-y-4 md:space-y-5 max-w-2xl mx-auto">
+                {/* Items — editorial em-dash bullet, generous body type */}
+                <ul className="space-y-5 max-w-2xl mx-auto">
                   {section.items.map((item, j) => (
                     <li
                       key={j}
-                      className="flex items-start gap-4 text-cream/85 font-sans text-[15px] md:text-base leading-relaxed"
+                      className="flex items-start gap-4 text-cream/95 font-sans text-base md:text-[17px] leading-[1.7]"
                     >
                       <span
-                        className="flex-shrink-0 mt-2 w-1.5 h-1.5 bg-gold rotate-45"
+                        className="flex-shrink-0 mt-[0.7em] w-3 h-[1.5px] bg-gold"
                         aria-hidden="true"
                       />
                       <span>{item}</span>
@@ -306,11 +308,11 @@ export default function LineamientosPage() {
           </div>
         </section>
 
-        {/* Final divider */}
+        {/* Final transition */}
         <div className="container-custom">
           <div className="max-w-3xl mx-auto flex items-center gap-4 py-4">
             <div className="flex-1 h-px bg-gold/30" />
-            <div className="w-2 h-2 bg-gold rotate-45" />
+            <div className="w-1.5 h-1.5 bg-gold rotate-45" />
             <div className="flex-1 h-px bg-gold/30" />
           </div>
         </div>
@@ -328,57 +330,60 @@ export default function LineamientosPage() {
         </section>
 
         {/* Cross-link to Tips */}
-        <section className="container-custom pb-8 md:pb-12">
+        <section className="container-custom pb-10 md:pb-12">
           <Link
             href="/mercado-de-los-angeles/tips"
             className="group block max-w-2xl mx-auto"
           >
-            <div className="flex items-center gap-4 md:gap-5 border border-gold/30 group-hover:border-gold bg-[#0F1A2E]/40 group-hover:bg-[#0F1A2E]/70 px-5 py-5 md:px-7 md:py-6 transition-all duration-500">
+            <div className="flex items-center gap-4 md:gap-5 border border-cream/15 group-hover:border-gold bg-[#0F1A2E]/40 group-hover:bg-[#0F1A2E]/70 px-6 py-6 md:px-7 md:py-7 transition-all duration-500">
               <span className="flex items-center justify-center w-11 h-11 md:w-12 md:h-12 border border-gold/40 group-hover:border-gold text-gold flex-shrink-0 transition-colors">
                 <Lightbulb className="w-5 h-5" />
               </span>
               <span className="flex-1 min-w-0">
-                <span className="block font-sans uppercase tracking-[0.25em] text-gold/70 group-hover:text-gold text-[10px] md:text-xs transition-colors mb-1">
+                <span className="block font-sans uppercase tracking-[0.25em] text-gold text-[10px] md:text-[11px] mb-2">
                   Sigue con
                 </span>
-                <span className="block font-serif not-italic uppercase text-gold font-bold text-sm md:text-base leading-tight tracking-wider">
+                <span
+                  className="block font-serif not-italic text-cream leading-tight"
+                  style={{ fontSize: 'clamp(1.0625rem, 1.8vw, 1.25rem)', fontWeight: 700, letterSpacing: '0.005em' }}
+                >
                   10 Tips para Vender Mejor
                 </span>
               </span>
-              <ArrowRight className="w-4 h-4 text-gold/60 group-hover:text-gold transition-all duration-300 group-hover:translate-x-1 flex-shrink-0" />
+              <ArrowRight className="w-4 h-4 text-cream/50 group-hover:text-gold transition-all duration-300 group-hover:translate-x-1 flex-shrink-0" />
             </div>
           </Link>
         </section>
 
-        {/* CTAs */}
-        <section className="container-custom pb-20 md:pb-28 pt-4">
-          <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
-            {/* Volver — order last on mobile, first on desktop */}
+        {/* CTAs — three-level system: ghost / primary / secondary */}
+        <section className="container-custom pb-20 md:pb-28 pt-6">
+          <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center sm:items-stretch justify-center gap-3 sm:gap-4">
+            {/* Volver — ghost link, last on mobile, first on desktop */}
             <Link
               href="/mercado-de-los-angeles"
-              className="order-3 sm:order-1 inline-flex items-center justify-center gap-2 border border-gold/50 hover:border-gold text-gold hover:bg-gold/10 px-5 py-3.5 md:px-6 md:py-4 text-xs md:text-sm uppercase tracking-[0.25em] font-sans font-medium transition-all duration-500"
+              className="order-3 sm:order-1 inline-flex items-center justify-center gap-2 text-cream/70 hover:text-gold px-3 py-3 text-[11px] md:text-xs uppercase tracking-[0.25em] font-sans font-medium transition-colors duration-300"
             >
-              <ArrowLeft className="w-4 h-4" />
+              <ArrowLeft className="w-3.5 h-3.5" />
               Volver al Mercado
             </Link>
 
-            {/* Ya leí — primary, top on mobile, center on desktop */}
+            {/* Ya leí — primary gold filled */}
             <a
               href={`https://wa.me/${settings.whatsapp}?text=${yaLeiMessage}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="order-1 sm:order-2 inline-flex items-center justify-center gap-3 bg-gold hover:bg-gold-light text-charcoal px-5 py-3.5 md:px-7 md:py-4 text-xs md:text-sm uppercase tracking-[0.25em] font-sans font-medium transition-all duration-500"
+              className="order-1 sm:order-2 inline-flex items-center justify-center gap-3 bg-gold hover:bg-gold-light text-charcoal px-6 py-4 text-xs md:text-sm uppercase tracking-[0.18em] font-sans font-medium transition-all duration-500"
             >
               <Check className="w-4 h-4" />
               Ya leí, confirmo participación
             </a>
 
-            {/* Reservar — middle on mobile, last on desktop */}
+            {/* Reservar — secondary cream border */}
             <a
               href={`https://wa.me/${settings.whatsapp}?text=${reservaMessage}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="order-2 sm:order-3 inline-flex items-center justify-center gap-2.5 border border-gold/60 hover:border-gold text-gold hover:bg-gold/10 px-5 py-3.5 md:px-6 md:py-4 text-xs md:text-sm uppercase tracking-[0.25em] font-sans font-medium transition-all duration-500"
+              className="order-2 sm:order-3 inline-flex items-center justify-center gap-2.5 border border-cream/40 hover:border-cream text-cream hover:bg-cream/5 px-6 py-4 text-xs md:text-sm uppercase tracking-[0.18em] font-sans font-medium transition-all duration-500"
             >
               <WhatsAppIcon className="w-4 h-4" />
               Reservar

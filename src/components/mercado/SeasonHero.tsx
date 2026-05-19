@@ -28,8 +28,6 @@ export default function SeasonHero({
   hours,
   description,
 }: SeasonHeroProps) {
-  // Split the name so the first word sits on its own line
-  // (e.g. "Mercado" / "de la Luna")
   const [firstWord, ...restWords] = name.split(/\s+/)
   const restOfName = restWords.join(' ')
 
@@ -47,37 +45,31 @@ export default function SeasonHero({
       </div>
 
       <div className="container-custom relative z-10">
-        {/* Top stamp */}
+        {/* Top stamp — corner brackets removed, simple gold hairline */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="flex justify-center mb-10 md:mb-14"
         >
-          <div className="relative max-w-[280px] md:max-w-sm">
-            <div className="absolute -top-1 -left-1 w-3 h-3 border-t border-l border-gold" />
-            <div className="absolute -top-1 -right-1 w-3 h-3 border-t border-r border-gold" />
-            <div className="absolute -bottom-1 -left-1 w-3 h-3 border-b border-l border-gold" />
-            <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b border-r border-gold" />
-            <div className="border border-gold/60 px-6 py-3 md:px-8 md:py-4 text-center">
-              <p className="font-sans text-[10px] md:text-xs uppercase tracking-[0.25em] text-gold leading-relaxed">
-                {topStamp}
-              </p>
-            </div>
+          <div className="max-w-[280px] md:max-w-sm border border-gold/50 px-6 py-3 md:px-8 md:py-3.5 text-center">
+            <p className="font-sans text-[10px] md:text-[11px] uppercase tracking-[0.25em] text-gold leading-relaxed">
+              {topStamp}
+            </p>
           </div>
         </motion.div>
 
-        {/* Title block */}
+        {/* Title block — signature treatment kept */}
         <div className="text-center mb-10 md:mb-14">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="font-serif not-italic text-gold uppercase leading-[0.95] mb-6 md:mb-8"
+            className="font-serif not-italic text-gold uppercase leading-[0.95] mb-7 md:mb-9"
             style={{
               fontSize: 'clamp(2.75rem, 9vw, 7rem)',
               fontWeight: 900,
-              letterSpacing: '0.02em',
+              letterSpacing: '0.015em',
               textShadow: '0 0 30px rgba(201, 169, 97, 0.15)',
             }}
           >
@@ -90,18 +82,19 @@ export default function SeasonHero({
             )}
           </motion.h1>
 
+          {/* Location — eyebrow size + rombo decoration kept */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.45 }}
-            className="flex items-center justify-center gap-4 md:gap-5 mb-5"
+            className="flex items-center justify-center gap-4 md:gap-5 mb-4"
           >
             <div className="w-12 md:w-20 h-px bg-gold/50" />
-            <div className="w-2 h-2 bg-gold rotate-45" />
-            <p className="font-serif not-italic uppercase text-gold text-sm md:text-base tracking-[0.3em] whitespace-nowrap">
+            <div className="w-1.5 h-1.5 bg-gold rotate-45" />
+            <p className="font-sans uppercase text-gold text-[11px] md:text-xs tracking-[0.3em] whitespace-nowrap">
               {location}
             </p>
-            <div className="w-2 h-2 bg-gold rotate-45" />
+            <div className="w-1.5 h-1.5 bg-gold rotate-45" />
             <div className="w-12 md:w-20 h-px bg-gold/50" />
           </motion.div>
 
@@ -109,7 +102,7 @@ export default function SeasonHero({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.55 }}
-            className="font-sans uppercase tracking-[0.35em] text-cream/70 text-xs md:text-sm mb-6"
+            className="font-sans uppercase tracking-[0.25em] text-cream/65 text-[11px] md:text-xs mb-6"
           >
             {temporada}
           </motion.p>
@@ -125,12 +118,12 @@ export default function SeasonHero({
           </motion.div>
         </div>
 
-        {/* Hero image */}
+        {/* Hero image — corner brackets stay (signature opening moment) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="relative mb-12 md:mb-16 max-w-5xl mx-auto"
+          className="relative mb-14 md:mb-20 max-w-5xl mx-auto"
         >
           <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-gold z-10" />
           <div className="absolute -top-2 -right-2 w-6 h-6 border-t-2 border-r-2 border-gold z-10" />
@@ -146,19 +139,19 @@ export default function SeasonHero({
           </div>
         </motion.div>
 
-        {/* Description + Horario */}
+        {/* Description + Horario — bigger sans body, simple bordered hours box */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="grid md:grid-cols-[1fr_auto] gap-8 md:gap-12 items-stretch max-w-5xl mx-auto"
+          className="grid md:grid-cols-[1fr_auto] gap-10 md:gap-14 items-stretch max-w-5xl mx-auto"
         >
-          <div className="flex flex-col justify-center space-y-4 md:space-y-5">
+          <div className="flex flex-col justify-center space-y-5 md:space-y-6">
             {description.map((para, i) => (
               <p
                 key={i}
-                className={`font-sans text-cream/85 leading-relaxed text-[15px] md:text-base ${
-                  i === 1 ? 'font-medium text-cream' : ''
+                className={`font-sans leading-[1.7] text-base md:text-[17px] ${
+                  i === 1 ? 'text-cream font-medium' : 'text-cream/90'
                 }`}
               >
                 {para}
@@ -166,26 +159,26 @@ export default function SeasonHero({
             ))}
           </div>
 
-          <div className="relative">
-            <div className="absolute -top-1.5 -left-1.5 w-4 h-4 border-t-2 border-l-2 border-gold" />
-            <div className="absolute -top-1.5 -right-1.5 w-4 h-4 border-t-2 border-r-2 border-gold" />
-            <div className="absolute -bottom-1.5 -left-1.5 w-4 h-4 border-b-2 border-l-2 border-gold" />
-            <div className="absolute -bottom-1.5 -right-1.5 w-4 h-4 border-b-2 border-r-2 border-gold" />
-
-            <div className="border border-gold/50 px-8 py-6 md:px-12 md:py-8 text-center min-w-[200px] md:min-w-[260px] h-full flex flex-col justify-center">
-              <p className="font-sans uppercase tracking-[0.3em] text-gold text-xs md:text-sm mb-4">
-                {hours.label}
-              </p>
-              <p className="font-serif not-italic text-gold font-bold text-3xl md:text-4xl leading-none">
-                {hours.from}
-              </p>
-              <div className="my-2 flex items-center justify-center">
-                <div className="w-8 h-px bg-gold/60" />
-              </div>
-              <p className="font-serif not-italic text-gold font-bold text-3xl md:text-4xl leading-none">
-                {hours.to}
-              </p>
+          {/* Hours box — corner brackets removed, simple border */}
+          <div className="border border-gold/40 px-10 py-7 md:px-12 md:py-8 text-center min-w-[200px] md:min-w-[260px] flex flex-col justify-center">
+            <p className="font-sans uppercase tracking-[0.3em] text-gold text-[10px] md:text-[11px] mb-4">
+              {hours.label}
+            </p>
+            <p
+              className="font-serif not-italic text-gold font-bold leading-none"
+              style={{ fontSize: 'clamp(2.25rem, 4vw, 3rem)', letterSpacing: '0.01em' }}
+            >
+              {hours.from}
+            </p>
+            <div className="my-2.5 flex items-center justify-center">
+              <div className="w-8 h-px bg-gold/50" />
             </div>
+            <p
+              className="font-serif not-italic text-gold font-bold leading-none"
+              style={{ fontSize: 'clamp(2.25rem, 4vw, 3rem)', letterSpacing: '0.01em' }}
+            >
+              {hours.to}
+            </p>
           </div>
         </motion.div>
       </div>

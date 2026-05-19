@@ -47,24 +47,24 @@ export default function SeasonPaquetes({ eventName, packages, weekends, whatsapp
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.7 }}
-        className="text-center mb-12 md:mb-16"
+        className="text-center mb-14 md:mb-16"
       >
-        <div className="flex items-center justify-center gap-3 mb-6">
+        <div className="flex items-center justify-center gap-3 mb-7">
           <div className="w-12 md:w-20 h-px bg-gold/50" />
           <div className="w-1.5 h-1.5 bg-gold rotate-45" />
           <div className="w-12 md:w-20 h-px bg-gold/50" />
         </div>
         <h2
-          className="font-serif not-italic uppercase text-gold leading-tight"
+          className="font-serif not-italic text-cream leading-tight"
           style={{
-            fontSize: 'clamp(1.5rem, 4vw, 2.75rem)',
+            fontSize: 'clamp(1.875rem, 4.5vw, 3rem)',
             fontWeight: 700,
-            letterSpacing: '0.08em',
+            letterSpacing: '0.005em',
           }}
         >
           Inversión para Expositores
         </h2>
-        <p className="font-serif italic text-cream/65 text-sm md:text-base mt-4 max-w-xl mx-auto leading-relaxed">
+        <p className="font-serif italic text-cream/75 text-base md:text-lg mt-4 max-w-xl mx-auto leading-relaxed">
           Cada fecha equivale a un día — viernes o sábado de mercado.
         </p>
       </motion.div>
@@ -77,67 +77,68 @@ export default function SeasonPaquetes({ eventName, packages, weekends, whatsapp
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.7, delay: 0.1 + i * 0.12, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className={`relative flex flex-col ${
+            className={`relative flex flex-col transition-all duration-500 ${
               pkg.highlighted
                 ? 'bg-gradient-to-br from-[#3F1F26] to-[#1A1428] border-2 border-gold shadow-2xl shadow-gold/10'
-                : 'bg-[#0F1A2E]/50 border border-gold/30'
-            } transition-all duration-500 hover:border-gold`}
+                : 'bg-[#0F1A2E]/50 border border-cream/15 hover:border-gold/50'
+            }`}
           >
-            <div className="absolute -top-1 -left-1 w-3 h-3 border-t border-l border-gold" />
-            <div className="absolute -top-1 -right-1 w-3 h-3 border-t border-r border-gold" />
-            <div className="absolute -bottom-1 -left-1 w-3 h-3 border-b border-l border-gold" />
-            <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b border-r border-gold" />
-
-            <div className="p-7 md:p-8 flex flex-col flex-1">
+            <div className="p-8 md:p-9 flex flex-col flex-1">
               {pkg.highlighted && (
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gold text-charcoal px-4 py-1 text-[10px] uppercase tracking-[0.25em] font-sans font-medium whitespace-nowrap">
                   Recomendado
                 </div>
               )}
 
-              <div className="text-center mb-5">
+              {/* Title block */}
+              <div className="text-center mb-6">
                 <h3
-                  className="font-serif not-italic uppercase text-gold font-bold leading-tight"
-                  style={{ fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)', letterSpacing: '0.05em' }}
+                  className="font-serif not-italic text-cream leading-tight"
+                  style={{
+                    fontSize: 'clamp(1.375rem, 2.5vw, 1.75rem)',
+                    fontWeight: 700,
+                    letterSpacing: '0.005em',
+                  }}
                 >
                   {pkg.name}
                 </h3>
                 {pkg.subtitle && (
-                  <p className="font-sans uppercase tracking-[0.3em] text-gold/80 text-xs mt-2">
+                  <p className="font-sans uppercase tracking-[0.25em] text-gold text-[10px] md:text-[11px] mt-2.5">
                     {pkg.subtitle}
                   </p>
                 )}
               </div>
 
-              <div className="flex items-center gap-2 mb-5">
-                <div className="flex-1 h-px bg-gold/25" />
-                <div className="w-1 h-1 bg-gold/60 rotate-45" />
-                <div className="flex-1 h-px bg-gold/25" />
-              </div>
+              {/* Simple hairline divider */}
+              <div className="h-px bg-cream/15 mb-6" />
 
-              <div className="text-center mb-5">
+              {/* Price */}
+              <div className="text-center mb-6">
                 <p
                   className="font-serif not-italic text-gold font-bold leading-none mb-2"
-                  style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)' }}
+                  style={{ fontSize: 'clamp(2.75rem, 5vw, 3.75rem)', letterSpacing: '0.005em' }}
                 >
                   ${pkg.price.toLocaleString('es-MX')}
                 </p>
-                <p className="font-sans uppercase tracking-[0.2em] text-cream/70 text-xs">
+                <p className="font-sans uppercase tracking-[0.2em] text-cream/70 text-[11px] md:text-xs">
                   {pkg.priceLabel}
                 </p>
                 {pkg.subtext && (
-                  <p className="font-sans text-cream/55 text-xs mt-2 italic">
+                  <p className="font-serif italic text-cream/70 text-sm md:text-base mt-3">
                     {pkg.subtext}
                   </p>
                 )}
               </div>
 
               {pkg.benefits && pkg.benefits.length > 0 && (
-                <div className="mb-6 pt-5 border-t border-gold/25">
-                  <ul className="space-y-2.5">
+                <div className="mb-7 pt-6 border-t border-cream/15">
+                  <ul className="space-y-3">
                     {pkg.benefits.map((benefit, idx) => (
-                      <li key={idx} className="flex items-start gap-2.5 text-sm text-cream/80 font-sans leading-relaxed">
-                        <Check className="w-3.5 h-3.5 text-gold mt-1 flex-shrink-0" />
+                      <li
+                        key={idx}
+                        className="flex items-start gap-3 text-cream/95 font-sans leading-[1.6] text-[15px] md:text-base"
+                      >
+                        <Check className="w-4 h-4 text-gold mt-0.5 flex-shrink-0" />
                         <span>{benefit}</span>
                       </li>
                     ))}
@@ -147,12 +148,13 @@ export default function SeasonPaquetes({ eventName, packages, weekends, whatsapp
 
               <div className="flex-1" />
 
+              {/* CTA — primary if highlighted, secondary otherwise */}
               <button
                 onClick={() => handleReserve(pkg)}
-                className={`w-full py-3.5 text-sm uppercase tracking-[0.25em] font-sans font-medium transition-all duration-500 mt-2 ${
+                className={`w-full py-4 text-xs md:text-sm uppercase tracking-[0.2em] font-sans font-medium transition-all duration-500 mt-2 ${
                   pkg.highlighted
                     ? 'bg-gold text-charcoal hover:bg-gold-light'
-                    : 'border border-gold text-gold hover:bg-gold hover:text-charcoal'
+                    : 'border border-cream/40 text-cream hover:border-cream hover:bg-cream/5'
                 }`}
               >
                 Reservar
