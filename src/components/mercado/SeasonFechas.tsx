@@ -42,6 +42,9 @@ export default function SeasonFechas({ eventName, weekends, note, tagline }: Sea
         >
           Fechas de {eventName}
         </h2>
+        <p className="font-serif italic text-cream/75 text-base md:text-lg mt-4 max-w-xl mx-auto leading-relaxed">
+          Cupo limitado a 30 expositores por fecha · Reserva previa requerida.
+        </p>
       </motion.div>
 
       <motion.div

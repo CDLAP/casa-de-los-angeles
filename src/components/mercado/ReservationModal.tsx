@@ -198,7 +198,7 @@ export default function ReservationModal({
                 <div className="grid md:grid-cols-2 gap-7 md:gap-10">
                   {/* LEFT — Date selection */}
                   <div>
-                    <div className="flex items-baseline justify-between mb-4">
+                    <div className="flex items-baseline justify-between mb-2">
                       <p className="font-sans text-[10px] uppercase tracking-[0.25em] text-cream/70">
                         Selecciona {requiredFechas} {requiredFechas === 1 ? 'fecha' : 'fechas'}
                       </p>
@@ -210,6 +210,9 @@ export default function ReservationModal({
                         {selectedDays.length} / {requiredFechas}
                       </p>
                     </div>
+                    <p className="font-sans text-cream/55 text-[11px] mb-4 leading-snug">
+                      Cupo limitado a 30 expositores por fecha.
+                    </p>
 
                     <div className="space-y-3.5">
                       {weekends.map((weekend) => (
