@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 export default function MercadoHero() {
   return (
-    <section className="relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-24">
+    <section className="relative overflow-hidden pt-[150px] md:pt-[210px] pb-16 md:pb-24">
       {/* Decorative radial glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div
@@ -15,15 +15,6 @@ export default function MercadoHero() {
           }}
         />
       </div>
-
-      {/* Subtle texture overlay (optional, if /images/noise.png exists) */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.04] mix-blend-overlay"
-        style={{
-          backgroundImage: 'url(/images/noise.png)',
-          backgroundRepeat: 'repeat',
-        }}
-      />
 
       <div className="container-custom relative z-10">
         <div className="max-w-3xl mx-auto text-center">

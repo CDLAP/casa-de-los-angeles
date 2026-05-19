@@ -14,7 +14,7 @@ interface EventDate {
 interface MercadoEvent {
   id: string
   name: string
-  image: string
+  image?: string
   datesDisplay: string
   hours: string
   theme: string
@@ -45,7 +45,6 @@ export default function EventCard({ event, whatsapp, lastSpotsThreshold, index }
   const isSoldOut = event.soldOut || event.availableSpots === 0
   const isLastSpots = !isSoldOut && event.availableSpots > 0 && event.availableSpots <= lastSpotsThreshold
 
-  // Badge priority: sold-out > special-edition > last-spots
   let badge: 'sold-out' | 'last-spots' | 'special-edition' | null = null
   if (isSoldOut) badge = 'sold-out'
   else if (event.specialEdition) badge = 'special-edition'
@@ -60,73 +59,74 @@ export default function EventCard({ event, whatsapp, lastSpotsThreshold, index }
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.7, delay: index * 0.12, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="group relative flex flex-col bg-[#22433A]/40 border border-gold/15 hover:border-gold/40 transition-all duration-700"
+        className="group relative flex flex-col bg-[#22433A]/60 border border-gold/15 hover:border-gold/40 transition-all duration-700"
       >
-        {/* Image */}
-        <div className="relative aspect-[4/5] overflow-hidden bg-charcoal">
-          <div
-            className={`absolute inset-0 bg-cover bg-center transition-transform duration-1000 ease-out group-hover:scale-105 ${
-              isSoldOut ? 'opacity-50 grayscale' : ''
-            }`}
-            style={{ backgroundImage: `url('${event.image}')` }}
-          />
-          {/* Gradient overlay for legibility */}
-          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/10 to-transparent" />
+        {/* Decorative top accent */}
+        <div className="h-[2px] bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
 
-          {/* Badge */}
-          {badge && (
-            <div className="absolute top-4 right-4">
-              <StatusBadge variant={badge} />
-            </div>
-          )}
-
-          {/* Promotion ribbon (if present) */}
-          {event.promotion && !isSoldOut && (
-            <div className="absolute top-4 left-4 bg-bistro-dark/90 backdrop-blur-sm border border-gold/40 px-3 py-1.5">
-              <p className="text-[10px] uppercase tracking-[0.2em] text-gold font-sans">
-                {event.promotion}
-              </p>
-            </div>
-          )}
-
-          {/* Bottom overlay with name */}
-          <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
-            <h3 className="font-serif italic text-2xl md:text-3xl text-cream leading-tight drop-shadow-lg">
-              {event.name}
-            </h3>
+        {/* Badge top-right */}
+        {badge && (
+          <div className="absolute top-5 right-5 z-10">
+            <StatusBadge variant={badge} />
           </div>
-        </div>
+        )}
+
+        {/* Promotion top-left */}
+        {event.promotion && !isSoldOut && (
+          <div className="absolute top-5 left-5 z-10 bg-bistro-dark/90 backdrop-blur-sm border border-gold/40 px-3 py-1.5">
+            <p className="text-[10px] uppercase tracking-[0.2em] text-gold font-sans">
+              {event.promotion}
+            </p>
+          </div>
+        )}
 
         {/* Content */}
-        <div className="flex-1 flex flex-col p-6 md:p-7">
-          {/* Dates + Hours */}
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mb-5 pb-5 border-b border-gold/15">
-            <div className="flex items-center gap-2">
-              <Calendar className="w-3.5 h-3.5 text-gold" />
-              <span className="text-[11px] uppercase tracking-[0.2em] text-cream/80 font-sans">
-                {event.datesDisplay}
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Clock className="w-3.5 h-3.5 text-gold" />
-              <span className="text-[11px] uppercase tracking-[0.2em] text-cream/80 font-sans">
-                {event.hours}
-              </span>
-            </div>
+        <div className="flex-1 flex flex-col p-7 md:p-9 pt-16 md:pt-16">
+          {/* Date eyebrow */}
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <Calendar className="w-3.5 h-3.5 text-gold" />
+            <span className="text-[11px] uppercase tracking-[0.3em] text-gold font-sans">
+              {event.datesDisplay}
+            </span>
+          </div>
+
+          {/* Title */}
+          <h3
+            className={`font-serif italic text-cream text-center leading-[1.1] mb-4 ${
+              isSoldOut ? 'opacity-60' : ''
+            }`}
+            style={{ fontSize: 'clamp(1.875rem, 4vw, 2.5rem)' }}
+          >
+            {event.name}
+          </h3>
+
+          {/* Hours */}
+          <div className="flex items-center justify-center gap-2 mb-7">
+            <Clock className="w-3.5 h-3.5 text-cream/60" />
+            <span className="text-xs uppercase tracking-[0.25em] text-cream/70 font-sans">
+              {event.hours}
+            </span>
+          </div>
+
+          {/* Decorative divider */}
+          <div className="flex items-center gap-3 mb-7">
+            <div className="flex-1 h-px bg-gold/25" />
+            <div className="w-1.5 h-1.5 bg-gold/60 rotate-45" />
+            <div className="flex-1 h-px bg-gold/25" />
           </div>
 
           {/* Theme */}
-          <p className="text-cream/70 font-sans text-[15px] leading-relaxed mb-6">
+          <p className="text-cream/75 font-serif italic text-[15px] md:text-base leading-relaxed text-center mb-7">
             {event.theme}
           </p>
 
           {/* Includes */}
           {event.includes.length > 0 && (
-            <div className="mb-6">
-              <p className="text-[10px] uppercase tracking-[0.25em] text-gold/80 mb-3">Incluye</p>
-              <ul className="space-y-1.5">
+            <div className="mb-7">
+              <p className="text-[10px] uppercase tracking-[0.3em] text-gold/80 text-center mb-4">Incluye</p>
+              <ul className="space-y-2">
                 {event.includes.map((item, i) => (
-                  <li key={i} className="flex items-start gap-2.5 text-[14px] text-cream/75 font-sans">
+                  <li key={i} className="flex items-start gap-2.5 text-sm text-cream/75 font-sans leading-relaxed">
                     <Check className="w-3.5 h-3.5 text-gold/70 mt-1 flex-shrink-0" />
                     <span>{item}</span>
                   </li>
@@ -135,21 +135,28 @@ export default function EventCard({ event, whatsapp, lastSpotsThreshold, index }
             </div>
           )}
 
-          {/* Spacer */}
-          <div className="flex-1" />
+          {/* Spacer pushes price + CTA to bottom */}
+          <div className="flex-1 min-h-[12px]" />
+
+          {/* Decorative divider */}
+          <div className="flex items-center gap-3 mb-6">
+            <div className="flex-1 h-px bg-gold/25" />
+            <div className="w-1.5 h-1.5 bg-gold/60 rotate-45" />
+            <div className="flex-1 h-px bg-gold/25" />
+          </div>
 
           {/* Price + spots */}
-          <div className="flex items-baseline justify-between mb-5 pt-5 border-t border-gold/15">
+          <div className="flex items-baseline justify-between mb-6">
             <div>
-              <p className="text-[10px] uppercase tracking-[0.25em] text-cream/60 mb-1">Por espacio</p>
+              <p className="text-[10px] uppercase tracking-[0.25em] text-cream/55 mb-1">Por espacio</p>
               <p className="font-serif text-3xl text-gold leading-none">
                 ${event.price.toLocaleString('es-MX')}
-                <span className="text-xs text-cream/60 font-sans ml-2 not-italic">{event.currency}</span>
+                <span className="text-xs text-cream/55 font-sans ml-2 not-italic">{event.currency}</span>
               </p>
             </div>
             {!isSoldOut && (
               <div className="text-right">
-                <p className="text-[10px] uppercase tracking-[0.25em] text-cream/60 mb-1">Cupos</p>
+                <p className="text-[10px] uppercase tracking-[0.25em] text-cream/55 mb-1">Cupos</p>
                 <p className={`font-serif text-lg leading-none ${isLastSpots ? 'text-gold' : 'text-cream/80'}`}>
                   {event.availableSpots} <span className="text-xs text-cream/40 font-sans not-italic">disponibles</span>
                 </p>
@@ -170,6 +177,9 @@ export default function EventCard({ event, whatsapp, lastSpotsThreshold, index }
             {isSoldOut ? 'Agotado' : ctaLabel}
           </button>
         </div>
+
+        {/* Decorative bottom accent */}
+        <div className="h-[2px] bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
       </motion.article>
 
       <ReservationModal
