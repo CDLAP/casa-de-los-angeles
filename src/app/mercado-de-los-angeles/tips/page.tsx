@@ -98,7 +98,7 @@ export default function TipsPage() {
   const { settings, season } = mercadoData
 
   const reservaMessage = encodeURIComponent(
-    `Hola, quiero reservar mi espacio para ${season.name} en Casa de los Ángeles.`
+    `Hola, leí los 10 tips para vender mejor de ${season.name} y quiero reservar mi espacio como expositor.`
   )
 
   const yaLeiMessage = encodeURIComponent(
