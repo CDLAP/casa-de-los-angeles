@@ -101,37 +101,26 @@ export default function SeasonHero({
           </motion.p>
         </div>
 
-        {/* Hero image — applied night filter */}
+        {/* Hero image — portrait orientation, no filter (photo is already nocturnal) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="relative mb-12 md:mb-16"
+          className="relative mb-12 md:mb-16 max-w-md md:max-w-lg mx-auto"
         >
+          {/* Gold corner ornaments */}
           <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-gold z-10" />
           <div className="absolute -top-2 -right-2 w-6 h-6 border-t-2 border-r-2 border-gold z-10" />
           <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-2 border-l-2 border-gold z-10" />
           <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-gold z-10" />
 
-          <div className="relative aspect-[16/9] md:aspect-[21/9] overflow-hidden border border-gold/40">
-            {/* Image with night filter */}
+          <div className="relative aspect-[2/3] overflow-hidden border border-gold/40 shadow-2xl shadow-charcoal/60">
             <div
               className="absolute inset-0 bg-cover bg-center"
-              style={{
-                backgroundImage: `url('${heroImage}')`,
-                filter: 'brightness(0.42) saturate(0.7) contrast(1.15) hue-rotate(200deg)',
-              }}
+              style={{ backgroundImage: `url('${heroImage}')` }}
             />
-            {/* Blue night overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0A1828]/40 via-[#0A1428]/25 to-[#050A14]/70" />
-            {/* Subtle gold light from inside (warm windows) */}
-            <div
-              className="absolute inset-0 opacity-30 mix-blend-screen"
-              style={{
-                background:
-                  'radial-gradient(ellipse at 50% 70%, rgba(201, 169, 97, 0.35) 0%, transparent 45%)',
-              }}
-            />
+            {/* Very subtle bottom vignette to blend with page bg */}
+            <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-charcoal/40 to-transparent" />
           </div>
         </motion.div>
 
