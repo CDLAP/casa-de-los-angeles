@@ -3,6 +3,7 @@
 import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { ShoppingBag, Gem, Palette, Gift, Clock, MapPin, Calendar, Sparkles, FileText } from 'lucide-react'
+import Link from 'next/link'
 import LineamientosModal from '@/components/modals/LineamientosModal'
 
 const mercadoCategories = [
@@ -124,9 +125,20 @@ export default function MercadoSection() {
                 transition={{ duration: 0.6, delay: 0.6 }}
               >
                 <p className="text-charcoal-50 mb-6">
-                  ¿Te gustaría participar como expositor? Contáctanos para conocer los espacios disponibles.
+                  ¿Te gustaría participar como expositor? Consulta las próximas ediciones, fechas y reserva tu lugar.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center lg:justify-start">
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <Link
+                      href="/mercado-de-los-angeles"
+                      className="btn-filled w-full sm:w-auto text-center"
+                    >
+                      Ver Próximas Fechas
+                    </Link>
+                  </motion.div>
                   <motion.a
                     href="https://wa.me/522206224222?text=Hola,%20me%20interesa%20participar%20como%20expositor%20en%20el%20Mercado%20de%20Casa%20de%20los%20%C3%81ngeles"
                     target="_blank"
