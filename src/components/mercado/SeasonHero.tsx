@@ -1,11 +1,13 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import ProximaEdicion from './ProximaEdicion'
 
 interface SeasonHeroProps {
   name: string
   location: string
   temporada: string
+  firstDateIso: string
   heroImage: string
   topStamp: string
   hours: {
@@ -20,6 +22,7 @@ export default function SeasonHero({
   name,
   location,
   temporada,
+  firstDateIso,
   heroImage,
   topStamp,
   hours,
@@ -65,7 +68,7 @@ export default function SeasonHero({
         </motion.div>
 
         {/* Title block */}
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-10 md:mb-14">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -106,20 +109,29 @@ export default function SeasonHero({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.55 }}
-            className="font-sans uppercase tracking-[0.35em] text-cream/70 text-xs md:text-sm"
+            className="font-sans uppercase tracking-[0.35em] text-cream/70 text-xs md:text-sm mb-6"
           >
             {temporada}
           </motion.p>
+
+          {/* Próxima edición badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 5 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.7 }}
+            className="flex justify-center"
+          >
+            <ProximaEdicion firstDateIso={firstDateIso} />
+          </motion.div>
         </div>
 
-        {/* Hero image — portrait orientation, no filter (photo is already nocturnal) */}
+        {/* Hero image */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
           className="relative mb-12 md:mb-16 max-w-5xl mx-auto"
         >
-          {/* Gold corner ornaments */}
           <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-gold z-10" />
           <div className="absolute -top-2 -right-2 w-6 h-6 border-t-2 border-r-2 border-gold z-10" />
           <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-2 border-l-2 border-gold z-10" />
@@ -130,7 +142,6 @@ export default function SeasonHero({
               className="absolute inset-0 bg-cover bg-center"
               style={{ backgroundImage: `url('${heroImage}')` }}
             />
-            {/* Very subtle bottom vignette to blend with page bg */}
             <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-charcoal/40 to-transparent" />
           </div>
         </motion.div>

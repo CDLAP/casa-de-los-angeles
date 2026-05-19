@@ -2,8 +2,10 @@ import type { Metadata } from 'next'
 import SeasonHero from '@/components/mercado/SeasonHero'
 import SeasonFechas from '@/components/mercado/SeasonFechas'
 import SeasonPaquetes from '@/components/mercado/SeasonPaquetes'
+import RecursosExpositores from '@/components/mercado/RecursosExpositores'
 import SeasonInfo from '@/components/mercado/SeasonInfo'
 import StarsBackground from '@/components/mercado/StarsBackground'
+import FloatingReserveButton from '@/components/mercado/FloatingReserveButton'
 import mercadoData from '@/data/mercado-de-los-angeles.json'
 
 export const metadata: Metadata = {
@@ -51,6 +53,7 @@ export default function MercadoDeLosAngelesPage() {
           name={season.name}
           location={season.location}
           temporada={season.temporada}
+          firstDateIso={season.firstDateIso}
           heroImage={season.heroImage}
           topStamp={season.topStamp}
           hours={season.hours}
@@ -71,6 +74,8 @@ export default function MercadoDeLosAngelesPage() {
           whatsapp={settings.whatsapp}
         />
 
+        <RecursosExpositores />
+
         <SeasonInfo
           eventName={season.name}
           includes={season.includes}
@@ -79,6 +84,9 @@ export default function MercadoDeLosAngelesPage() {
           whatsappDisplay={settings.whatsappDisplay}
         />
       </div>
+
+      {/* Floating CTA — appears after hero, hides over packages section */}
+      <FloatingReserveButton targetId="paquetes" />
     </main>
   )
 }

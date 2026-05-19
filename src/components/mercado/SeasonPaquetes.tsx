@@ -41,7 +41,7 @@ export default function SeasonPaquetes({ eventName, packages, weekends, whatsapp
   }
 
   return (
-    <section className="container-custom py-16 md:py-24">
+    <section id="paquetes" className="container-custom py-16 md:py-24 scroll-mt-24">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -64,6 +64,9 @@ export default function SeasonPaquetes({ eventName, packages, weekends, whatsapp
         >
           Inversión para Expositores
         </h2>
+        <p className="font-serif italic text-cream/65 text-sm md:text-base mt-4 max-w-xl mx-auto leading-relaxed">
+          Cada fecha equivale a un día — viernes o sábado de mercado.
+        </p>
       </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
