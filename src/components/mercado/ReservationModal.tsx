@@ -4,29 +4,39 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 
-interface EventDate {
-  id: string
-  label: string
-}
-
-interface MercadoEvent {
+interface Pkg {
   id: string
   name: string
-  datesDisplay: string
-  hours: string
+  subtitle: string | null
   price: number
-  currency: string
-  dates: EventDate[]
+  priceLabel: string
+  subtext: string | null
+  fechasIncluded: number
+}
+
+interface SeasonDate {
+  id: string
+  label: string
+  month: string
 }
 
 interface ReservationModalProps {
   isOpen: boolean
   onClose: () => void
-  event: MercadoEvent
+  eventName: string
+  pkg: Pkg
+  dates: SeasonDate[]
   whatsapp: string
 }
 
-export default function ReservationModal({ isOpen, onClose, event, whatsapp }: ReservationModalProps) {
+export default function ReservationModal({
+  isOpen,
+  onClose,
+  eventName,
+  pkg,
+  dates,
+  whatsapp,
+}: ReservationModalProps) {
   const [marca, setMarca] = useState('')
   const [instagram, setInstagram] = useState('')
   const [productos, setProductos] = useState('')
@@ -34,20 +44,18 @@ export default function ReservationModal({ isOpen, onClose, event, whatsapp }: R
   const [submitting, setSubmitting] = useState(false)
   const modalRef = useRef<HTMLDivElement>(null)
 
-  const hasMultipleDates = event.dates.length > 1
+  const requiredFechas = pkg.fechasIncluded
 
-  // Reset state when modal opens
   useEffect(() => {
     if (isOpen) {
       setMarca('')
       setInstagram('')
       setProductos('')
-      setSelectedDates(hasMultipleDates ? [] : event.dates.map(d => d.id))
+      setSelectedDates([])
       setSubmitting(false)
     }
-  }, [isOpen, hasMultipleDates, event.dates])
+  }, [isOpen, pkg.id])
 
-  // ESC to close
   useEffect(() => {
     if (!isOpen) return
     const handleEsc = (e: KeyboardEvent) => {
@@ -57,7 +65,6 @@ export default function ReservationModal({ isOpen, onClose, event, whatsapp }: R
     return () => window.removeEventListener('keydown', handleEsc)
   }, [isOpen, onClose])
 
-  // Lock body scroll
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden'
@@ -68,18 +75,24 @@ export default function ReservationModal({ isOpen, onClose, event, whatsapp }: R
   }, [isOpen])
 
   const toggleDate = (dateId: string) => {
-    setSelectedDates(prev =>
-      prev.includes(dateId)
-        ? prev.filter(id => id !== dateId)
-        : [...prev, dateId]
-    )
+    setSelectedDates(prev => {
+      if (prev.includes(dateId)) {
+        return prev.filter(id => id !== dateId)
+      }
+      // If already at limit, don't add more
+      if (prev.length >= requiredFechas) {
+        return prev
+      }
+      return [...prev, dateId]
+    })
   }
 
+  const datesValid = selectedDates.length === requiredFechas
   const isValid =
     marca.trim().length > 0 &&
     instagram.trim().length > 0 &&
     productos.trim().length > 0 &&
-    selectedDates.length > 0
+    datesValid
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -87,16 +100,19 @@ export default function ReservationModal({ isOpen, onClose, event, whatsapp }: R
 
     setSubmitting(true)
 
-    const selectedLabels = event.dates
+    const selectedLabels = dates
       .filter(d => selectedDates.includes(d.id))
-      .map(d => d.label)
+      .map(d => `${d.label} de ${d.month}`)
       .join(', ')
 
+    const packageDescription = pkg.subtitle ? `${pkg.name} (${pkg.subtitle})` : pkg.name
+
     const message =
-      `Hola, quiero reservar mi espacio para ${event.name}.\n\n` +
+      `Hola, quiero reservar mi espacio para ${eventName}.\n\n` +
+      `Paquete: ${packageDescription} — $${pkg.price.toLocaleString('es-MX')} ${pkg.priceLabel}\n` +
+      `Fecha(s): ${selectedLabels}\n\n` +
       `Marca: ${marca.trim()}\n` +
       `Instagram: ${instagram.trim()}\n` +
-      `Fecha(s): ${selectedLabels}\n` +
       `Productos que vendo: ${productos.trim()}`
 
     const whatsappUrl = `https://wa.me/${whatsapp}?text=${encodeURIComponent(message)}`
@@ -113,6 +129,8 @@ export default function ReservationModal({ isOpen, onClose, event, whatsapp }: R
       onClose()
     }
   }
+
+  const remainingFechas = requiredFechas - selectedDates.length
 
   return (
     <AnimatePresence>
@@ -131,12 +149,10 @@ export default function ReservationModal({ isOpen, onClose, event, whatsapp }: R
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.98 }}
             transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="relative w-full max-w-md sm:max-w-lg my-4 sm:my-0 bg-[#1A3A2E] border border-gold/30 shadow-2xl"
+            className="relative w-full max-w-md sm:max-w-lg my-4 sm:my-0 bg-[#0F1A17] border border-gold/40 shadow-2xl"
           >
-            {/* Decorative top accent */}
             <div className="h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent" />
 
-            {/* Close button */}
             <button
               onClick={onClose}
               className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center text-cream/60 hover:text-gold transition-colors duration-300 z-10"
@@ -150,23 +166,75 @@ export default function ReservationModal({ isOpen, onClose, event, whatsapp }: R
               {/* Header */}
               <div className="mb-5 pr-8">
                 <p className="text-[10px] uppercase tracking-[0.3em] text-gold mb-2">Reservar mi espacio</p>
-                <h2 className="font-serif italic text-xl sm:text-2xl md:text-3xl text-cream leading-tight">
-                  {event.name}
+                <h2 className="font-serif italic text-xl sm:text-2xl text-cream leading-tight mb-1">
+                  {eventName}
                 </h2>
-                <p className="font-sans text-xs sm:text-sm text-cream/60 mt-1.5">
-                  {event.datesDisplay} · {event.hours}
+                <p className="font-sans uppercase tracking-[0.2em] text-gold/80 text-xs">
+                  {pkg.name}{pkg.subtitle ? ` · ${pkg.subtitle}` : ''} · ${pkg.price.toLocaleString('es-MX')} {pkg.priceLabel}
                 </p>
               </div>
 
-              {/* Decorative divider */}
               <div className="flex items-center gap-3 mb-5">
                 <div className="flex-1 h-px bg-gold/20" />
                 <div className="w-1.5 h-1.5 bg-gold/40 rotate-45" />
                 <div className="flex-1 h-px bg-gold/20" />
               </div>
 
-              {/* Form */}
               <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Date selection */}
+                <div>
+                  <div className="flex items-baseline justify-between mb-2">
+                    <p className="text-[10px] uppercase tracking-[0.25em] text-cream/70">
+                      Selecciona {requiredFechas} {requiredFechas === 1 ? 'fecha' : 'fechas'}
+                    </p>
+                    <p className={`text-[10px] uppercase tracking-[0.25em] ${datesValid ? 'text-gold' : 'text-cream/50'}`}>
+                      {selectedDates.length} / {requiredFechas}
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-2 gap-1.5">
+                    {dates.map((date) => {
+                      const checked = selectedDates.includes(date.id)
+                      const disabled = !checked && selectedDates.length >= requiredFechas
+                      return (
+                        <button
+                          key={date.id}
+                          type="button"
+                          onClick={() => toggleDate(date.id)}
+                          disabled={disabled}
+                          className={`flex items-center gap-2.5 px-3 py-2.5 border transition-all duration-300 text-left ${
+                            checked
+                              ? 'border-gold bg-gold/10'
+                              : disabled
+                                ? 'border-gold/10 opacity-40 cursor-not-allowed'
+                                : 'border-gold/20 hover:border-gold/50'
+                          }`}
+                        >
+                          <span
+                            className={`w-4 h-4 border flex items-center justify-center transition-colors flex-shrink-0 ${
+                              checked ? 'border-gold bg-gold' : 'border-gold/40'
+                            }`}
+                          >
+                            {checked && (
+                              <svg className="w-3 h-3 text-charcoal" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                                <polyline points="20 6 9 17 4 12" />
+                              </svg>
+                            )}
+                          </span>
+                          <span className="font-sans text-[13px] text-cream leading-tight">
+                            <span className="font-medium">{date.label}</span>
+                            <span className="text-cream/55 ml-1">{date.month}</span>
+                          </span>
+                        </button>
+                      )
+                    })}
+                  </div>
+                  {remainingFechas > 0 && (
+                    <p className="text-[10px] text-cream/40 mt-2 font-sans">
+                      Te falta{remainingFechas > 1 ? 'n' : ''} {remainingFechas} {remainingFechas === 1 ? 'fecha' : 'fechas'} por seleccionar
+                    </p>
+                  )}
+                </div>
+
                 {/* Marca */}
                 <div>
                   <label htmlFor="marca" className="block text-[10px] uppercase tracking-[0.25em] text-cream/70 mb-1.5">
@@ -215,53 +283,6 @@ export default function ReservationModal({ isOpen, onClose, event, whatsapp }: R
                   />
                 </div>
 
-                {/* Date selection - only show if multiple dates */}
-                {hasMultipleDates && (
-                  <div>
-                    <p className="block text-[10px] uppercase tracking-[0.25em] text-cream/70 mb-2">
-                      Fecha(s) que te interesan
-                    </p>
-                    <div className="space-y-1.5">
-                      {event.dates.map((date) => {
-                        const checked = selectedDates.includes(date.id)
-                        return (
-                          <button
-                            key={date.id}
-                            type="button"
-                            onClick={() => toggleDate(date.id)}
-                            className={`w-full flex items-center gap-3 px-3 py-2.5 border transition-all duration-300 text-left ${
-                              checked
-                                ? 'border-gold bg-gold/10'
-                                : 'border-gold/20 hover:border-gold/50'
-                            }`}
-                          >
-                            <span
-                              className={`w-4 h-4 border flex items-center justify-center transition-colors flex-shrink-0 ${
-                                checked ? 'border-gold bg-gold' : 'border-gold/50'
-                              }`}
-                            >
-                              {checked && (
-                                <svg className="w-3 h-3 text-charcoal" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                                  <polyline points="20 6 9 17 4 12" />
-                                </svg>
-                              )}
-                            </span>
-                            <span className="font-sans text-sm text-cream">{date.label}</span>
-                          </button>
-                        )
-                      })}
-                    </div>
-                  </div>
-                )}
-
-                {/* Price summary */}
-                <div className="border-t border-gold/20 pt-4 flex items-baseline justify-between">
-                  <span className="text-[10px] uppercase tracking-[0.25em] text-cream/70">Inversión por espacio</span>
-                  <span className="font-serif text-xl sm:text-2xl text-gold">
-                    ${event.price.toLocaleString('es-MX')} <span className="text-xs text-cream/60 font-sans not-italic">{event.currency}</span>
-                  </span>
-                </div>
-
                 {/* Submit */}
                 <button
                   type="submit"
@@ -281,7 +302,6 @@ export default function ReservationModal({ isOpen, onClose, event, whatsapp }: R
               </form>
             </div>
 
-            {/* Decorative bottom accent */}
             <div className="h-[2px] bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
           </motion.div>
         </motion.div>

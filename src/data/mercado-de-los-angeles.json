@@ -1,58 +1,86 @@
 {
   "settings": {
     "whatsapp": "522206224222",
-    "lastSpotsThreshold": 3
+    "whatsappDisplay": "220 6224 222"
   },
-  "events": [
-    {
-      "id": "mercado-de-la-luna-mayo-2026",
-      "name": "Mercado de la Luna",
-      "image": "/images/mdm.jpg",
-      "datesDisplay": "22 — 23 Mayo",
-      "dates": [
-        { "id": "luna-22-mayo", "label": "Sábado 22 de Mayo" },
-        { "id": "luna-23-mayo", "label": "Domingo 23 de Mayo" }
-      ],
-      "hours": "17:00 — 22:00",
-      "theme": "Una edición nocturna bajo la luna llena. Marcas curadas, gastronomía, mezcal y música en vivo dentro de la casona del siglo XVIII.",
-      "includes": [
-        "Mesa y silla incluidas",
-        "Espacio curado dentro de Casa de los Ángeles",
-        "Difusión en redes oficiales",
-        "Iluminación cinematográfica"
-      ],
-      "price": 500,
-      "currency": "MXN",
-      "totalSpots": 20,
-      "availableSpots": 15,
-      "promotion": null,
-      "specialEdition": false,
-      "soldOut": false,
-      "ctaLabel": null
+  "season": {
+    "name": "Mercado de la Luna",
+    "location": "Casa de los Ángeles",
+    "temporada": "Temporada Mayo — Junio 2026",
+    "heroImage": "/images/casa.jpeg",
+    "topStamp": "El primer y único punto de venta nocturno del Centro de Puebla",
+    "hours": {
+      "label": "Horario oficial",
+      "from": "5:00 PM",
+      "to": "10:00 PM"
     },
-    {
-      "id": "mercado-del-sol-junio-2026",
-      "name": "Mercado del Sol",
-      "image": "/images/mm.jpg",
-      "datesDisplay": "14 Junio",
-      "dates": [
-        { "id": "sol-14-junio", "label": "Sábado 14 de Junio" }
-      ],
-      "hours": "11:00 — 18:00",
-      "theme": "Edición diurna dedicada al diseño emergente y al arte contemporáneo poblano. Selección curada, café, pan y conversación.",
-      "includes": [
-        "Mesa y silla incluidas",
-        "Espacio curado dentro de Casa de los Ángeles",
-        "Difusión en redes oficiales"
-      ],
-      "price": 500,
-      "currency": "MXN",
-      "totalSpots": 20,
-      "availableSpots": 3,
-      "promotion": null,
-      "specialEdition": false,
-      "soldOut": false,
-      "ctaLabel": null
-    }
-  ]
+    "description": [
+      "Aprovecha el turismo nacional e internacional durante la temporada del Mundial y forma parte de una experiencia nocturna única dentro del Centro Histórico de Puebla.",
+      "Hasta 500 personas por día entre turismo, visitantes locales y flujo constante dentro de Casa de los Ángeles."
+    ],
+    "dates": [
+      { "id": "22-23-mayo", "label": "22 y 23", "month": "Mayo" },
+      { "id": "29-30-mayo", "label": "29 y 30", "month": "Mayo" },
+      { "id": "5-6-junio", "label": "5 y 6", "month": "Junio" },
+      { "id": "12-13-junio", "label": "12 y 13", "month": "Junio" },
+      { "id": "19-20-junio", "label": "19 y 20", "month": "Junio" },
+      { "id": "26-27-junio", "label": "26 y 27", "month": "Junio" }
+    ],
+    "datesNote": "Todas las fechas son viernes y sábado.",
+    "datesTagline": "Cada fin de semana, una experiencia distinta dentro de una casona histórica única.",
+    "packages": [
+      {
+        "id": "1-fecha",
+        "name": "1 fecha suelta",
+        "subtitle": null,
+        "price": 550,
+        "priceLabel": "por día",
+        "subtext": null,
+        "fechasIncluded": 1,
+        "highlighted": false,
+        "benefits": null
+      },
+      {
+        "id": "2-fechas",
+        "name": "2 fechas",
+        "subtitle": null,
+        "price": 900,
+        "priceLabel": "total",
+        "subtext": "$450 por día",
+        "fechasIncluded": 2,
+        "highlighted": false,
+        "benefits": null
+      },
+      {
+        "id": "residente",
+        "name": "Expositor residente",
+        "subtitle": "4 fechas",
+        "price": 3500,
+        "priceLabel": "total",
+        "subtext": "$875 por día",
+        "fechasIncluded": 4,
+        "highlighted": true,
+        "benefits": [
+          "Máxima exposición durante toda la temporada",
+          "Presencia constante dentro del evento",
+          "Ubicación preferencial",
+          "Mayor posicionamiento de marca"
+        ]
+      }
+    ],
+    "includes": [
+      "Mesa de 1.80 m",
+      "Silla",
+      "Mantel",
+      "Servicio de baño",
+      "Difusión en redes sociales",
+      "Ambientación temática"
+    ],
+    "notes": [
+      "Mercado cuidadosamente curado",
+      "Cupo limitado por categoría",
+      "Prioridad a marcas con propuesta estética y original",
+      "No se aceptan categorías repetidas"
+    ]
+  }
 }
