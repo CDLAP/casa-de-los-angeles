@@ -1,7 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { AlertCircle, Check } from 'lucide-react'
+import Link from 'next/link'
+import { AlertCircle, ArrowRight, Check } from 'lucide-react'
 
 interface SeasonInfoProps {
   eventName: string
@@ -100,6 +101,23 @@ export default function SeasonInfo({
             </motion.div>
           ))}
         </div>
+
+        {/* Link to full expositores info */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center mt-10 md:mt-12"
+        >
+          <Link
+            href="/mercado-de-los-angeles/informacion"
+            className="group inline-flex items-center gap-2 text-gold hover:text-gold-light text-xs md:text-sm uppercase tracking-[0.25em] font-sans font-medium transition-colors duration-300 border-b border-gold/30 hover:border-gold pb-1.5"
+          >
+            Ver información completa para expositores
+            <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
+        </motion.div>
       </section>
 
       {/* FOOTER */}
@@ -124,7 +142,6 @@ export default function SeasonInfo({
                   Reservaciones al WhatsApp
                 </p>
 
-                {/* The actual button */}
                 <motion.a
                   href={`https://wa.me/${whatsapp}?text=${reservaMessage}`}
                   target="_blank"
@@ -133,7 +150,6 @@ export default function SeasonInfo({
                   whileTap={{ scale: 0.98 }}
                   className="group relative inline-flex items-center gap-4 md:gap-5 border-2 border-gold bg-gold/5 hover:bg-gold px-5 py-4 md:px-7 md:py-5 transition-all duration-500 w-full md:w-auto justify-center md:justify-start"
                 >
-                  {/* Subtle pulse halo */}
                   <span className="absolute inset-0 border-2 border-gold opacity-0 group-hover:opacity-40 animate-ping" />
 
                   <span className="relative flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-gold text-charcoal flex-shrink-0">
@@ -141,7 +157,8 @@ export default function SeasonInfo({
                   </span>
 
                   <span className="relative flex flex-col items-start">
-                    <span className="font-serif not-italic text-gold group-hover:text-charcoal font-bold leading-none mb-1 transition-colors"
+                    <span
+                      className="font-serif not-italic text-gold group-hover:text-charcoal font-bold leading-none mb-1 transition-colors"
                       style={{
                         fontSize: 'clamp(1.5rem, 4vw, 2.25rem)',
                         letterSpacing: '0.04em',
