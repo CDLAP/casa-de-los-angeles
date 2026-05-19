@@ -25,6 +25,11 @@ export default function SeasonHero({
   hours,
   description,
 }: SeasonHeroProps) {
+  // Split the name so the first word sits on its own line
+  // (e.g. "Mercado" / "de la Luna")
+  const [firstWord, ...restWords] = name.split(/\s+/)
+  const restOfName = restWords.join(' ')
+
   return (
     <section className="relative pt-[150px] md:pt-[210px] pb-16">
       {/* Radial gold glow */}
@@ -73,7 +78,13 @@ export default function SeasonHero({
               textShadow: '0 0 30px rgba(201, 169, 97, 0.15)',
             }}
           >
-            {name}
+            {firstWord}
+            {restOfName && (
+              <>
+                <br />
+                {restOfName}
+              </>
+            )}
           </motion.h1>
 
           <motion.div
