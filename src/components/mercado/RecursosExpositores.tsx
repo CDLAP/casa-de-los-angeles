@@ -36,7 +36,7 @@ export default function RecursosExpositores() {
           >
             Antes de Reservar
           </h3>
-          <p className="font-sans text-cream/80 text-base md:text-[17px] leading-[1.7] max-w-xl mx-auto mt-4">
+          <p className="font-sans text-cream/90 text-[17px] md:text-[19px] leading-[1.75] max-w-xl mx-auto mt-4">
             Léenos con calma. Estos dos documentos son parte de tu participación.
           </p>
         </div>
@@ -51,7 +51,7 @@ export default function RecursosExpositores() {
               <BookOpen className="w-5 h-5" />
             </span>
             <span className="flex-1 min-w-0">
-              <span className="block font-sans uppercase tracking-[0.25em] text-gold text-[10px] md:text-[11px] mb-2">
+              <span className="block font-sans uppercase tracking-[0.25em] text-gold text-[11px] md:text-xs mb-2">
                 Documento 01
               </span>
               <span
@@ -60,7 +60,7 @@ export default function RecursosExpositores() {
               >
                 Lineamientos Generales
               </span>
-              <span className="block font-sans text-cream/65 text-sm mt-1.5 leading-snug">
+              <span className="block font-sans text-cream/75 text-[15px] md:text-base mt-1.5 leading-snug">
                 Reglamento oficial completo
               </span>
             </span>
@@ -75,7 +75,7 @@ export default function RecursosExpositores() {
               <Lightbulb className="w-5 h-5" />
             </span>
             <span className="flex-1 min-w-0">
-              <span className="block font-sans uppercase tracking-[0.25em] text-gold text-[10px] md:text-[11px] mb-2">
+              <span className="block font-sans uppercase tracking-[0.25em] text-gold text-[11px] md:text-xs mb-2">
                 Documento 02
               </span>
               <span
@@ -84,7 +84,7 @@ export default function RecursosExpositores() {
               >
                 10 Tips para Vender Mejor
               </span>
-              <span className="block font-sans text-cream/65 text-sm mt-1.5 leading-snug">
+              <span className="block font-sans text-cream/75 text-[15px] md:text-base mt-1.5 leading-snug">
                 Guía práctica para expositores
               </span>
             </span>

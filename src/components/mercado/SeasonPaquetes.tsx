@@ -65,7 +65,7 @@ export default function SeasonPaquetes({ eventName, packages, weekends, whatsapp
         >
           Inversión para Expositores
         </h2>
-        <p className="font-serif italic text-cream/75 text-base md:text-lg mt-4 max-w-xl mx-auto leading-relaxed">
+        <p className="font-serif italic text-cream/85 text-[17px] md:text-xl mt-4 max-w-xl mx-auto leading-relaxed">
           Cada fecha equivale a un día — viernes o sábado de mercado.
         </p>
       </motion.div>
@@ -86,7 +86,7 @@ export default function SeasonPaquetes({ eventName, packages, weekends, whatsapp
           >
             <div className="p-8 md:p-9 flex flex-col flex-1">
               {pkg.highlighted && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gold text-charcoal px-4 py-1 text-[10px] uppercase tracking-[0.25em] font-sans font-medium whitespace-nowrap">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gold text-charcoal px-4 py-1 text-[11px] uppercase tracking-[0.25em] font-sans font-medium whitespace-nowrap">
                   Recomendado
                 </div>
               )}
@@ -105,7 +105,7 @@ export default function SeasonPaquetes({ eventName, packages, weekends, whatsapp
                   {pkg.name}
                 </h3>
                 {pkg.subtitle && (
-                  <p className="font-sans uppercase tracking-[0.25em] text-gold text-[10px] md:text-[11px] mt-2.5">
+                  <p className="font-sans uppercase tracking-[0.25em] text-gold text-[11px] md:text-xs mt-2.5">
                     {pkg.subtitle}
                   </p>
                 )}
@@ -122,11 +122,11 @@ export default function SeasonPaquetes({ eventName, packages, weekends, whatsapp
                 >
                   ${pkg.price.toLocaleString('es-MX')}
                 </p>
-                <p className="font-sans uppercase tracking-[0.2em] text-cream/70 text-[11px] md:text-xs">
+                <p className="font-sans uppercase tracking-[0.2em] text-cream/80 text-xs md:text-[13px]">
                   {pkg.priceLabel}
                 </p>
                 {pkg.subtext && (
-                  <p className="font-serif italic text-cream/70 text-sm md:text-base mt-3">
+                  <p className="font-serif italic text-cream/80 text-base md:text-lg mt-3">
                     {pkg.subtext}
                   </p>
                 )}
@@ -138,9 +138,9 @@ export default function SeasonPaquetes({ eventName, packages, weekends, whatsapp
                     {pkg.benefits.map((benefit, idx) => (
                       <li
                         key={idx}
-                        className="flex items-start gap-3 text-cream/95 font-sans leading-[1.6] text-[15px] md:text-base"
+                        className="flex items-start gap-3 text-cream font-sans leading-[1.65] text-base md:text-[17px]"
                       >
-                        <Check className="w-4 h-4 text-gold mt-0.5 flex-shrink-0" />
+                        <Check className="w-4 h-4 text-gold mt-1 flex-shrink-0" />
                         <span>{benefit}</span>
                       </li>
                     ))}
@@ -153,7 +153,7 @@ export default function SeasonPaquetes({ eventName, packages, weekends, whatsapp
               {/* CTA — primary if highlighted, secondary otherwise */}
               <button
                 onClick={() => handleReserve(pkg)}
-                className={`w-full py-4 text-xs md:text-sm uppercase tracking-[0.2em] font-sans font-medium transition-all duration-500 mt-2 ${
+                className={`w-full py-4 text-sm md:text-base uppercase tracking-[0.2em] font-sans font-medium transition-all duration-500 mt-2 ${
                   pkg.highlighted
                     ? 'bg-gold text-charcoal hover:bg-gold-light'
                     : 'border border-cream/40 text-cream hover:border-cream hover:bg-cream/5'

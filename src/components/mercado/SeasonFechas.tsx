@@ -43,7 +43,7 @@ export default function SeasonFechas({ eventName, weekends, note, tagline }: Sea
         >
           Fechas de {eventName}
         </h2>
-        <p className="font-serif italic text-cream/75 text-base md:text-lg mt-4 max-w-xl mx-auto leading-relaxed">
+        <p className="font-serif italic text-cream/85 text-[17px] md:text-xl mt-4 max-w-xl mx-auto leading-relaxed">
           Cupo limitado a 30 expositores por fecha · Reserva previa requerida.
         </p>
       </motion.div>
@@ -74,7 +74,7 @@ export default function SeasonFechas({ eventName, weekends, note, tagline }: Sea
             >
               {weekend.label}
             </p>
-            <p className="font-sans uppercase tracking-[0.25em] text-cream/70 text-[10px] md:text-[11px]">
+            <p className="font-sans uppercase tracking-[0.25em] text-cream/80 text-[11px] md:text-xs">
               de {weekend.month}
             </p>
           </motion.div>
@@ -86,7 +86,7 @@ export default function SeasonFechas({ eventName, weekends, note, tagline }: Sea
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="font-sans text-center text-cream/85 text-base md:text-[17px] leading-[1.7] mb-5 max-w-2xl mx-auto"
+        className="font-sans text-center text-cream/95 text-[17px] md:text-[19px] leading-[1.75] mb-5 max-w-2xl mx-auto"
       >
         {note}
       </motion.p>
@@ -96,7 +96,7 @@ export default function SeasonFechas({ eventName, weekends, note, tagline }: Sea
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.4 }}
-        className="font-serif italic text-center text-gold text-lg md:text-xl leading-relaxed max-w-2xl mx-auto"
+        className="font-serif italic text-center text-gold text-xl md:text-2xl leading-relaxed max-w-2xl mx-auto"
       >
         {tagline}
       </motion.p>

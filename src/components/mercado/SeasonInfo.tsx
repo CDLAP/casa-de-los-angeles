@@ -49,8 +49,8 @@ export default function SeasonInfo({
           <div className="flex flex-wrap items-center justify-center gap-x-4 md:gap-x-6 gap-y-3 max-w-3xl mx-auto">
             {includes.map((item, i) => (
               <div key={i} className="flex items-center gap-2.5">
-                <Check className="w-3.5 h-3.5 text-gold flex-shrink-0" />
-                <span className="font-sans text-cream/95 text-base md:text-[17px] leading-snug">
+                <Check className="w-4 h-4 text-gold flex-shrink-0" />
+                <span className="font-sans text-cream text-[17px] md:text-[19px] leading-snug">
                   {item}
                 </span>
                 {i < includes.length - 1 && (
@@ -74,8 +74,8 @@ export default function SeasonInfo({
               transition={{ duration: 0.5, delay: i * 0.08 }}
               className="flex items-start gap-3 px-5 py-5 border border-cream/15 bg-[#0F1A2E]/30"
             >
-              <AlertCircle className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
-              <p className="font-sans text-cream/90 text-[15px] md:text-base leading-[1.6]">
+              <AlertCircle className="w-4 h-4 text-gold flex-shrink-0 mt-1" />
+              <p className="font-sans text-cream text-base md:text-[17px] leading-[1.65]">
                 {note}
               </p>
             </motion.div>
@@ -101,7 +101,7 @@ export default function SeasonInfo({
             <div className="grid md:grid-cols-2 gap-10 md:gap-12 items-center">
               {/* WhatsApp button block — primary CTA, stays gold */}
               <div className="text-center md:text-left">
-                <p className="font-sans uppercase tracking-[0.3em] text-gold text-[10px] md:text-[11px] mb-5">
+                <p className="font-sans uppercase tracking-[0.3em] text-gold text-[11px] md:text-xs mb-5">
                   Reservaciones al WhatsApp
                 </p>
 
@@ -129,13 +129,13 @@ export default function SeasonInfo({
                     >
                       {whatsappDisplay}
                     </span>
-                    <span className="font-sans uppercase tracking-[0.2em] text-gold/85 group-hover:text-charcoal/80 text-[10px] md:text-[11px] transition-colors">
+                    <span className="font-sans uppercase tracking-[0.2em] text-gold/85 group-hover:text-charcoal/80 text-[11px] md:text-xs transition-colors">
                       Click para reservar →
                     </span>
                   </span>
                 </motion.a>
 
-                <p className="font-sans text-cream/65 text-sm mt-4 max-w-xs mx-auto md:mx-0 leading-relaxed">
+                <p className="font-sans text-cream/75 text-[15px] md:text-base mt-4 max-w-xs mx-auto md:mx-0 leading-relaxed">
                   Te abrimos WhatsApp con tu mensaje de reservación listo.
                 </p>
               </div>
@@ -147,7 +147,7 @@ export default function SeasonInfo({
                 >
                   Casa de los Ángeles
                 </h4>
-                <p className="font-sans text-cream/85 text-base md:text-[17px] leading-[1.7]">
+                <p className="font-sans text-cream/90 text-[17px] md:text-[19px] leading-[1.75]">
                   Av. Don Juan de Palafox y Mendoza 222<br />
                   Centro Histórico, Puebla
                 </p>

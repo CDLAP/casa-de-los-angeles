@@ -181,9 +181,9 @@ export default function LineamientosPage() {
           <div className="max-w-3xl mx-auto text-center">
             <Link
               href="/mercado-de-los-angeles"
-              className="inline-flex items-center gap-2 text-[10px] md:text-[11px] uppercase tracking-[0.25em] text-cream/65 hover:text-gold transition-colors duration-300 mb-12"
+              className="inline-flex items-center gap-2 text-[11px] md:text-xs uppercase tracking-[0.25em] text-cream/75 hover:text-gold transition-colors duration-300 mb-12"
             >
-              <ArrowLeft className="w-3 h-3" />
+              <ArrowLeft className="w-3.5 h-3.5" />
               Volver al Mercado de la Luna
             </Link>
 
@@ -208,7 +208,7 @@ export default function LineamientosPage() {
             <div className="flex items-center justify-center gap-3 md:gap-4 mb-9">
               <div className="w-10 md:w-16 h-px bg-gold/40" />
               <div className="w-1.5 h-1.5 bg-gold rotate-45" />
-              <p className="font-sans uppercase tracking-[0.25em] text-gold text-[10px] md:text-[11px] whitespace-nowrap">
+              <p className="font-sans uppercase tracking-[0.25em] text-gold text-[11px] md:text-xs whitespace-nowrap">
                 {season.name} <span aria-hidden="true">🌙</span> Casa de los Ángeles
               </p>
               <div className="w-1.5 h-1.5 bg-gold rotate-45" />
@@ -217,13 +217,13 @@ export default function LineamientosPage() {
 
             {/* Intro — sans-serif, generous size, real reading comfort */}
             <div className="space-y-4 md:space-y-5 max-w-2xl mx-auto">
-              <p className="font-sans text-cream text-base md:text-[17px] leading-[1.7]">
+              <p className="font-sans text-cream text-[17px] md:text-[19px] leading-[1.75]">
                 Gracias por formar parte de esta experiencia nocturna dentro de Casa de los Ángeles.
               </p>
-              <p className="font-sans text-cream/90 text-base md:text-[17px] leading-[1.7]">
+              <p className="font-sans text-cream/95 text-[17px] md:text-[19px] leading-[1.75]">
                 Nuestro objetivo es crear un mercado hermoso, organizado, rentable y con una experiencia premium tanto para expositores como para visitantes.
               </p>
-              <p className="font-sans text-cream/75 text-[15px] md:text-base leading-[1.7]">
+              <p className="font-sans text-cream/85 text-base md:text-[17px] leading-[1.75]">
                 Para mantener la calidad y armonía del evento, les compartimos nuestros lineamientos generales.
               </p>
             </div>
@@ -235,7 +235,7 @@ export default function LineamientosPage() {
           <div className="max-w-3xl mx-auto">
             <div className="flex items-center justify-center gap-4 mb-7">
               <div className="flex-1 max-w-[80px] h-px bg-gold/30" />
-              <p className="font-sans uppercase tracking-[0.3em] text-gold text-[10px] md:text-[11px]">
+              <p className="font-sans uppercase tracking-[0.3em] text-gold text-[11px] md:text-xs">
                 Índice
               </p>
               <div className="flex-1 max-w-[80px] h-px bg-gold/30" />
@@ -246,12 +246,12 @@ export default function LineamientosPage() {
                 <li key={i}>
                   <a
                     href={`#${slugify(section.title)}`}
-                    className="group flex items-baseline gap-3 text-cream/75 hover:text-gold py-2.5 transition-colors duration-300 border-b border-cream/10 hover:border-gold/50"
+                    className="group flex items-baseline gap-3 text-cream/85 hover:text-gold py-3 transition-colors duration-300 border-b border-cream/10 hover:border-gold/50"
                   >
-                    <span className="font-serif text-cream/45 text-xs group-hover:text-gold transition-colors flex-shrink-0 tabular-nums">
+                    <span className="font-serif text-cream/55 text-sm group-hover:text-gold transition-colors flex-shrink-0 tabular-nums">
                       {String(i + 1).padStart(2, '0')}
                     </span>
-                    <span className="font-sans text-[14px] md:text-[15px] leading-snug">
+                    <span className="font-sans text-base md:text-[17px] leading-snug">
                       {section.title}
                     </span>
                   </a>
@@ -295,10 +295,10 @@ export default function LineamientosPage() {
                   {section.items.map((item, j) => (
                     <li
                       key={j}
-                      className="flex items-start gap-4 text-cream/95 font-sans text-base md:text-[17px] leading-[1.7]"
+                      className="flex items-start gap-4 text-cream font-sans text-[17px] md:text-[19px] leading-[1.75]"
                     >
                       <span
-                        className="flex-shrink-0 mt-[0.7em] w-3 h-[1.5px] bg-gold"
+                        className="flex-shrink-0 mt-[0.75em] w-3.5 h-[1.5px] bg-gold"
                         aria-hidden="true"
                       />
                       <span>{item}</span>
@@ -342,7 +342,7 @@ export default function LineamientosPage() {
                 <Lightbulb className="w-5 h-5" />
               </span>
               <span className="flex-1 min-w-0">
-                <span className="block font-sans uppercase tracking-[0.25em] text-gold text-[10px] md:text-[11px] mb-2">
+                <span className="block font-sans uppercase tracking-[0.25em] text-gold text-[11px] md:text-xs mb-2">
                   Sigue con
                 </span>
                 <span
@@ -363,9 +363,9 @@ export default function LineamientosPage() {
             {/* Volver — ghost link, last on mobile, first on desktop */}
             <Link
               href="/mercado-de-los-angeles"
-              className="order-3 sm:order-1 inline-flex items-center justify-center gap-2 text-cream/70 hover:text-gold px-3 py-3 text-[11px] md:text-xs uppercase tracking-[0.25em] font-sans font-medium transition-colors duration-300"
+              className="order-3 sm:order-1 inline-flex items-center justify-center gap-2 text-cream/80 hover:text-gold px-3 py-3 text-xs md:text-sm uppercase tracking-[0.25em] font-sans font-medium transition-colors duration-300"
             >
-              <ArrowLeft className="w-3.5 h-3.5" />
+              <ArrowLeft className="w-4 h-4" />
               Volver al Mercado
             </Link>
 
@@ -374,7 +374,7 @@ export default function LineamientosPage() {
               href={`https://wa.me/${settings.whatsapp}?text=${yaLeiMessage}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="order-1 sm:order-2 inline-flex items-center justify-center gap-3 bg-gold hover:bg-gold-light text-charcoal px-6 py-4 text-xs md:text-sm uppercase tracking-[0.18em] font-sans font-medium transition-all duration-500"
+              className="order-1 sm:order-2 inline-flex items-center justify-center gap-3 bg-gold hover:bg-gold-light text-charcoal px-6 py-4 text-sm md:text-base uppercase tracking-[0.18em] font-sans font-medium transition-all duration-500"
             >
               <Check className="w-4 h-4" />
               Ya leí, confirmo participación
@@ -385,7 +385,7 @@ export default function LineamientosPage() {
               href={`https://wa.me/${settings.whatsapp}?text=${reservaMessage}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="order-2 sm:order-3 inline-flex items-center justify-center gap-2.5 border border-cream/40 hover:border-cream text-cream hover:bg-cream/5 px-6 py-4 text-xs md:text-sm uppercase tracking-[0.18em] font-sans font-medium transition-all duration-500"
+              className="order-2 sm:order-3 inline-flex items-center justify-center gap-2.5 border border-cream/45 hover:border-cream text-cream hover:bg-cream/5 px-6 py-4 text-sm md:text-base uppercase tracking-[0.18em] font-sans font-medium transition-all duration-500"
             >
               <WhatsAppIcon className="w-4 h-4" />
               Reservar

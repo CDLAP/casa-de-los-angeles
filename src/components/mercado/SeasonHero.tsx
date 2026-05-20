@@ -53,9 +53,9 @@ export default function SeasonHero({
           className="flex justify-center mb-10 md:mb-14"
         >
           <div className="max-w-[280px] md:max-w-sm border border-gold/50 px-6 py-3 md:px-8 md:py-3.5 text-center">
-            <p className="font-sans text-[10px] md:text-[11px] uppercase tracking-[0.25em] text-gold leading-relaxed">
-              {topStamp}
-            </p>
+          <p className="font-sans text-[11px] md:text-xs uppercase tracking-[0.25em] text-gold leading-relaxed">
+          {topStamp}
+          </p>
           </div>
         </motion.div>
 
@@ -91,7 +91,7 @@ export default function SeasonHero({
           >
             <div className="w-12 md:w-20 h-px bg-gold/50" />
             <div className="w-1.5 h-1.5 bg-gold rotate-45" />
-            <p className="font-sans uppercase text-gold text-[11px] md:text-xs tracking-[0.3em] whitespace-nowrap">
+            <p className="font-sans uppercase text-gold text-xs md:text-[13px] tracking-[0.3em] whitespace-nowrap">
               {location}
             </p>
             <div className="w-1.5 h-1.5 bg-gold rotate-45" />
@@ -102,7 +102,7 @@ export default function SeasonHero({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.55 }}
-            className="font-sans uppercase tracking-[0.25em] text-cream/65 text-[11px] md:text-xs mb-6"
+            className="font-sans uppercase tracking-[0.25em] text-cream/75 text-xs md:text-[13px] mb-6"
           >
             {temporada}
           </motion.p>
@@ -150,8 +150,8 @@ export default function SeasonHero({
             {description.map((para, i) => (
               <p
                 key={i}
-                className={`font-sans leading-[1.7] text-base md:text-[17px] ${
-                  i === 1 ? 'text-cream font-medium' : 'text-cream/90'
+                className={`font-sans leading-[1.75] text-[17px] md:text-[19px] ${
+                  i === 1 ? 'text-cream font-medium' : 'text-cream/95'
                 }`}
               >
                 {para}
@@ -161,7 +161,7 @@ export default function SeasonHero({
 
           {/* Hours box — corner brackets removed, simple border */}
           <div className="border border-gold/40 px-10 py-7 md:px-12 md:py-8 text-center min-w-[200px] md:min-w-[260px] flex flex-col justify-center">
-            <p className="font-sans uppercase tracking-[0.3em] text-gold text-[10px] md:text-[11px] mb-4">
+            <p className="font-sans uppercase tracking-[0.3em] text-gold text-[11px] md:text-xs mb-4">
               {hours.label}
             </p>
             <p
