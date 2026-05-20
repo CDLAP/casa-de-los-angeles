@@ -33,9 +33,10 @@ export default function SeasonFechas({ eventName, weekends, note, tagline }: Sea
           <div className="w-12 md:w-20 h-px bg-gold/50" />
         </div>
         <h2
-          className="font-serif not-italic text-cream leading-tight"
+          className="not-italic text-cream leading-tight"
           style={{
-            fontSize: 'clamp(1.875rem, 4.5vw, 3rem)',
+            fontFamily: 'var(--font-fraunces), Georgia, serif',
+            fontSize: 'clamp(2rem, 4.8vw, 3.25rem)',
             fontWeight: 700,
             letterSpacing: '0.005em',
           }}
@@ -64,8 +65,12 @@ export default function SeasonFechas({ eventName, weekends, note, tagline }: Sea
             className="relative text-center py-6 md:py-7 px-3 border border-gold/25 hover:border-gold/50 transition-colors duration-500 bg-[#0F1A2E]/40"
           >
             <p
-              className="font-serif not-italic text-gold font-bold leading-none mb-2.5"
-              style={{ fontSize: 'clamp(1.625rem, 3vw, 2.125rem)', letterSpacing: '0.005em' }}
+              className="not-italic text-gold font-bold leading-none mb-2.5"
+              style={{
+                fontFamily: 'var(--font-fraunces), Georgia, serif',
+                fontSize: 'clamp(1.75rem, 3.2vw, 2.25rem)',
+                letterSpacing: '0.005em',
+              }}
             >
               {weekend.label}
             </p>

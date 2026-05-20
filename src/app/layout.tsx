@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Playfair_Display, Lato } from 'next/font/google'
+import { Playfair_Display, Lato, Fraunces } from 'next/font/google'
 import './globals.css'
 import LayoutShell from '@/components/layout/LayoutShell'
 import { HeroThemeProvider } from '@/context/HeroThemeContext'
@@ -15,6 +15,14 @@ const lato = Lato({
   subsets: ['latin'],
   weight: ['300', '400', '700'],
   variable: '--font-lato',
+  display: 'swap',
+})
+
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  weight: ['600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-fraunces',
   display: 'swap',
 })
 
@@ -355,7 +363,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es-MX" className={`${playfair.variable} ${lato.variable}`}>
+    <html lang="es-MX" className={`${playfair.variable} ${lato.variable} ${fraunces.variable}`}>
       <head>
         {/* Schema.org JSON-LD */}
         <script

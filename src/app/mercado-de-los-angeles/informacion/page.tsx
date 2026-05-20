@@ -191,13 +191,14 @@ export default function LineamientosPage() {
               ✨
             </p>
 
-            {/* Page title — signature h1 keeps uppercase, slightly tighter */}
+            {/* Page title — friendlier Fraunces */}
             <h1
-              className="font-serif not-italic text-gold uppercase leading-[1.05] mb-7"
+              className="not-italic text-gold uppercase leading-[1.05] mb-7"
               style={{
-                fontSize: 'clamp(1.875rem, 5vw, 3.5rem)',
-                fontWeight: 900,
-                letterSpacing: '0.015em',
+                fontFamily: 'var(--font-fraunces), Georgia, serif',
+                fontSize: 'clamp(2rem, 5.5vw, 3.75rem)',
+                fontWeight: 700,
+                letterSpacing: '0.01em',
                 textShadow: '0 0 30px rgba(201, 169, 97, 0.15)',
               }}
             >
@@ -276,11 +277,12 @@ export default function LineamientosPage() {
                   <div className="flex-1 h-px bg-gold/30" />
                 </div>
 
-                {/* Section title — cream, title case, no aggressive tracking */}
+                {/* Section title — Fraunces, friendlier */}
                 <h2
-                  className="font-serif not-italic text-cream text-center leading-tight mb-9"
+                  className="not-italic text-cream text-center leading-tight mb-9"
                   style={{
-                    fontSize: 'clamp(1.375rem, 3vw, 1.875rem)',
+                    fontFamily: 'var(--font-fraunces), Georgia, serif',
+                    fontSize: 'clamp(1.5rem, 3.2vw, 2rem)',
                     fontWeight: 700,
                     letterSpacing: '0.005em',
                   }}
@@ -344,8 +346,8 @@ export default function LineamientosPage() {
                   Sigue con
                 </span>
                 <span
-                  className="block font-serif not-italic text-cream leading-tight"
-                  style={{ fontSize: 'clamp(1.0625rem, 1.8vw, 1.25rem)', fontWeight: 700, letterSpacing: '0.005em' }}
+                  className="block not-italic text-cream leading-tight"
+                  style={{ fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.125rem, 1.9vw, 1.375rem)', fontWeight: 700, letterSpacing: '0.005em' }}
                 >
                   10 Tips para Vender Mejor
                 </span>

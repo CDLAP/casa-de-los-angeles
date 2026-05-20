@@ -26,9 +26,10 @@ export default function RecursosExpositores() {
             <div className="w-12 md:w-20 h-px bg-gold/50" />
           </div>
           <h3
-            className="font-serif not-italic text-cream leading-tight"
+            className="not-italic text-cream leading-tight"
             style={{
-              fontSize: 'clamp(1.625rem, 3.5vw, 2.25rem)',
+              fontFamily: 'var(--font-fraunces), Georgia, serif',
+              fontSize: 'clamp(1.75rem, 3.7vw, 2.5rem)',
               fontWeight: 700,
               letterSpacing: '0.005em',
             }}
@@ -54,8 +55,8 @@ export default function RecursosExpositores() {
                 Documento 01
               </span>
               <span
-                className="block font-serif not-italic text-cream leading-tight"
-                style={{ fontSize: 'clamp(1.0625rem, 1.8vw, 1.25rem)', fontWeight: 700, letterSpacing: '0.005em' }}
+                className="block not-italic text-cream leading-tight"
+                style={{ fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.125rem, 1.9vw, 1.375rem)', fontWeight: 700, letterSpacing: '0.005em' }}
               >
                 Lineamientos Generales
               </span>
@@ -78,8 +79,8 @@ export default function RecursosExpositores() {
                 Documento 02
               </span>
               <span
-                className="block font-serif not-italic text-cream leading-tight"
-                style={{ fontSize: 'clamp(1.0625rem, 1.8vw, 1.25rem)', fontWeight: 700, letterSpacing: '0.005em' }}
+                className="block not-italic text-cream leading-tight"
+                style={{ fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.125rem, 1.9vw, 1.375rem)', fontWeight: 700, letterSpacing: '0.005em' }}
               >
                 10 Tips para Vender Mejor
               </span>

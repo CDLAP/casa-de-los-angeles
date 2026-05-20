@@ -35,9 +35,10 @@ export default function SeasonInfo({
           className="max-w-5xl mx-auto border border-gold/35 py-10 md:py-12 px-6 md:px-12 text-center"
         >
           <h3
-            className="font-serif not-italic text-cream mb-8"
+            className="not-italic text-cream mb-8"
             style={{
-              fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+              fontFamily: 'var(--font-fraunces), Georgia, serif',
+              fontSize: 'clamp(1.625rem, 3.2vw, 2.25rem)',
               fontWeight: 700,
               letterSpacing: '0.005em',
             }}

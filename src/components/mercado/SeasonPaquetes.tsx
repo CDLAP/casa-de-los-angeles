@@ -55,9 +55,10 @@ export default function SeasonPaquetes({ eventName, packages, weekends, whatsapp
           <div className="w-12 md:w-20 h-px bg-gold/50" />
         </div>
         <h2
-          className="font-serif not-italic text-cream leading-tight"
+          className="not-italic text-cream leading-tight"
           style={{
-            fontSize: 'clamp(1.875rem, 4.5vw, 3rem)',
+            fontFamily: 'var(--font-fraunces), Georgia, serif',
+            fontSize: 'clamp(2rem, 4.8vw, 3.25rem)',
             fontWeight: 700,
             letterSpacing: '0.005em',
           }}
@@ -93,9 +94,10 @@ export default function SeasonPaquetes({ eventName, packages, weekends, whatsapp
               {/* Title block */}
               <div className="text-center mb-6">
                 <h3
-                  className="font-serif not-italic text-cream leading-tight"
+                  className="not-italic text-cream leading-tight"
                   style={{
-                    fontSize: 'clamp(1.375rem, 2.5vw, 1.75rem)',
+                    fontFamily: 'var(--font-fraunces), Georgia, serif',
+                    fontSize: 'clamp(1.5rem, 2.7vw, 1.875rem)',
                     fontWeight: 700,
                     letterSpacing: '0.005em',
                   }}
