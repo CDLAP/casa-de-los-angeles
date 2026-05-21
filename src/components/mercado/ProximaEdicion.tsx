@@ -39,9 +39,9 @@ export default function ProximaEdicion({ firstDateIso }: ProximaEdicionProps) {
   if (!mounted || !label) return null
 
   return (
-    <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-gold/40 bg-gold/5 backdrop-blur-sm">
-      <span className="w-1.5 h-1.5 bg-gold rounded-full animate-pulse" aria-hidden="true" />
-      <span className="font-sans uppercase tracking-[0.25em] text-gold text-[10px] md:text-[11px]">
+    <div className="inline-flex items-center gap-2.5 px-5 py-2 border border-gold/40 bg-gold/5 backdrop-blur-sm">
+      <span className="w-2 h-2 bg-gold rounded-full animate-pulse" aria-hidden="true" />
+      <span className="font-sans uppercase tracking-[0.25em] text-gold text-[11px] md:text-xs">
         {label}
       </span>
     </div>

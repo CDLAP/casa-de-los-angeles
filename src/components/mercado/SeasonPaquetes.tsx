@@ -86,7 +86,7 @@ export default function SeasonPaquetes({ eventName, packages, weekends, whatsapp
           >
             <div className="p-8 md:p-9 flex flex-col flex-1">
               {pkg.highlighted && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gold text-charcoal px-4 py-1 text-[11px] uppercase tracking-[0.25em] font-sans font-medium whitespace-nowrap">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gold text-charcoal px-5 py-1.5 text-xs uppercase tracking-[0.22em] font-sans font-medium whitespace-nowrap">
                   Recomendado
                 </div>
               )}

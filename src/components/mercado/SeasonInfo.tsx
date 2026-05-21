@@ -129,13 +129,13 @@ export default function SeasonInfo({
                     >
                       {whatsappDisplay}
                     </span>
-                    <span className="font-sans uppercase tracking-[0.2em] text-gold/85 group-hover:text-charcoal/80 text-[11px] md:text-xs transition-colors">
+                    <span className="font-sans uppercase tracking-[0.2em] text-gold/90 group-hover:text-charcoal/85 text-xs md:text-[13px] transition-colors">
                       Click para reservar →
                     </span>
                   </span>
                 </motion.a>
 
-                <p className="font-sans text-cream/75 text-[15px] md:text-base mt-4 max-w-xs mx-auto md:mx-0 leading-relaxed">
+                <p className="font-sans text-cream/80 text-base md:text-[17px] mt-4 max-w-xs mx-auto md:mx-0 leading-[1.65]">
                   Te abrimos WhatsApp con tu mensaje de reservación listo.
                 </p>
               </div>

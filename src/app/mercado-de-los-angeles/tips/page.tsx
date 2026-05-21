@@ -134,9 +134,9 @@ export default function TipsPage() {
           <div className="max-w-3xl mx-auto text-center">
             <Link
               href="/mercado-de-los-angeles"
-              className="inline-flex items-center gap-2 text-[11px] md:text-xs uppercase tracking-[0.25em] text-cream/75 hover:text-gold transition-colors duration-300 mb-12"
+              className="inline-flex items-center gap-2 text-xs md:text-sm uppercase tracking-[0.22em] text-cream/80 hover:text-gold transition-colors duration-300 mb-12"
             >
-              <ArrowLeft className="w-3.5 h-3.5" />
+              <ArrowLeft className="w-4 h-4" />
               Volver al Mercado de la Luna
             </Link>
 
@@ -188,7 +188,7 @@ export default function TipsPage() {
             {TIPS.map((tip, i) => (
               <article key={i} className="mb-14 md:mb-16 last:mb-0">
                 <div className="flex items-baseline gap-4 mb-4">
-                  <span className="font-serif italic text-gold/75 text-xl md:text-2xl leading-none tabular-nums">
+                  <span className="font-serif italic text-gold/80 text-2xl md:text-3xl leading-none tabular-nums">
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <span className="text-gold/40 leading-none">—</span>
@@ -196,7 +196,7 @@ export default function TipsPage() {
                     className="not-italic text-cream leading-tight"
                     style={{
                       fontFamily: 'var(--font-fraunces), Georgia, serif',
-                      fontSize: 'clamp(1.25rem, 2.4vw, 1.625rem)',
+                      fontSize: 'clamp(1.375rem, 2.6vw, 1.75rem)',
                       fontWeight: 700,
                       letterSpacing: '0.005em',
                     }}

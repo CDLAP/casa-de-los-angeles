@@ -53,7 +53,7 @@ export default function FloatingReserveButton({ targetId }: FloatingReserveButto
           transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.96 }}
-          className="fixed bottom-5 right-5 sm:bottom-7 sm:right-7 z-40 group bg-gold text-charcoal shadow-2xl shadow-gold/30 px-5 py-3.5 sm:px-7 sm:py-4 flex items-center gap-3 font-sans text-xs sm:text-sm uppercase tracking-[0.18em] font-medium hover:bg-gold-light transition-colors duration-300"
+          className="fixed bottom-5 right-5 sm:bottom-7 sm:right-7 z-40 group bg-gold text-charcoal shadow-2xl shadow-gold/30 px-6 py-4 sm:px-7 sm:py-4 flex items-center gap-3 font-sans text-sm sm:text-base uppercase tracking-[0.18em] font-medium hover:bg-gold-light transition-colors duration-300"
           aria-label="Ir a paquetes para reservar"
         >
           {/* Subtle pulse halo */}

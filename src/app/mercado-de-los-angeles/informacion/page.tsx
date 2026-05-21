@@ -181,9 +181,9 @@ export default function LineamientosPage() {
           <div className="max-w-3xl mx-auto text-center">
             <Link
               href="/mercado-de-los-angeles"
-              className="inline-flex items-center gap-2 text-[11px] md:text-xs uppercase tracking-[0.25em] text-cream/75 hover:text-gold transition-colors duration-300 mb-12"
+              className="inline-flex items-center gap-2 text-xs md:text-sm uppercase tracking-[0.22em] text-cream/80 hover:text-gold transition-colors duration-300 mb-12"
             >
-              <ArrowLeft className="w-3.5 h-3.5" />
+              <ArrowLeft className="w-4 h-4" />
               Volver al Mercado de la Luna
             </Link>
 
@@ -282,7 +282,7 @@ export default function LineamientosPage() {
                   className="not-italic text-cream text-center leading-tight mb-9"
                   style={{
                     fontFamily: 'var(--font-fraunces), Georgia, serif',
-                    fontSize: 'clamp(1.5rem, 3.2vw, 2rem)',
+                    fontSize: 'clamp(1.625rem, 3.4vw, 2.125rem)',
                     fontWeight: 700,
                     letterSpacing: '0.005em',
                   }}

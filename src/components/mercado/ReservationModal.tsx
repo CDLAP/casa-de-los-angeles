@@ -210,7 +210,7 @@ export default function ReservationModal({
                         {selectedDays.length} / {requiredFechas}
                       </p>
                     </div>
-                    <p className="font-sans text-cream/70 text-xs md:text-[13px] mb-4 leading-snug">
+                    <p className="font-sans text-cream/75 text-[13px] md:text-sm mb-4 leading-snug">
                       Cupo limitado a 30 expositores por fecha.
                     </p>
 
@@ -251,9 +251,9 @@ export default function ReservationModal({
                                       </svg>
                                     )}
                                   </span>
-                                  <span className="font-sans text-[14px] text-cream leading-tight">
+                                  <span className="font-sans text-[15px] text-cream leading-tight">
                                     <span className="font-medium">{dayName}</span>
-                                    <span className="text-cream/65 ml-1">{dayNum}</span>
+                                    <span className="text-cream/70 ml-1">{dayNum}</span>
                                   </span>
                                 </button>
                               )
@@ -264,7 +264,7 @@ export default function ReservationModal({
                     </div>
 
                     {remainingFechas > 0 && (
-                      <p className="font-sans text-xs text-cream/65 mt-4">
+                      <p className="font-sans text-[13px] md:text-sm text-cream/75 mt-4">
                         Te falta{remainingFechas > 1 ? 'n' : ''} {remainingFechas} {remainingFechas === 1 ? 'fecha' : 'fechas'} por seleccionar
                       </p>
                     )}
@@ -335,7 +335,7 @@ export default function ReservationModal({
                   {submitting ? 'Abriendo WhatsApp…' : 'Enviar reservación'}
                 </button>
 
-                <p className="font-sans text-xs sm:text-[13px] text-cream/65 text-center leading-relaxed mt-3.5">
+                <p className="font-sans text-[13px] sm:text-sm text-cream/75 text-center leading-relaxed mt-3.5">
                   Al enviar se abrirá WhatsApp con tu reservación lista. Te enviaremos los datos de pago manualmente.
                 </p>
               </form>
