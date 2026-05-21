@@ -84,7 +84,7 @@ export default function SeasonPaquetes({ eventName, packages, weekends, whatsapp
                 : 'bg-[#0F1A2E]/50 border border-cream/15 hover:border-gold/50'
             }`}
           >
-            <div className="p-8 md:p-9 flex flex-col flex-1">
+            <div className="p-7 md:p-8 flex flex-col flex-1">
               {pkg.highlighted && (
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gold text-charcoal px-5 py-1.5 text-xs uppercase tracking-[0.22em] font-sans font-medium whitespace-nowrap">
                   Recomendado
@@ -92,7 +92,7 @@ export default function SeasonPaquetes({ eventName, packages, weekends, whatsapp
               )}
 
               {/* Title block */}
-              <div className="text-center mb-6">
+              <div className="text-center mb-5">
                 <h3
                   className="not-italic text-cream leading-tight"
                   style={{
@@ -112,33 +112,39 @@ export default function SeasonPaquetes({ eventName, packages, weekends, whatsapp
               </div>
 
               {/* Simple hairline divider */}
-              <div className="h-px bg-cream/15 mb-6" />
+              <div className="h-px bg-cream/15 mb-5" />
 
               {/* Price */}
-              <div className="text-center mb-6">
+              <div className="text-center mb-5">
                 <p
                   className="font-serif not-italic text-gold font-bold leading-none mb-2"
-                  style={{ fontSize: 'clamp(2.75rem, 5vw, 3.75rem)', letterSpacing: '0.005em' }}
+                  style={{ fontSize: 'clamp(2.5rem, 4.6vw, 3.5rem)', letterSpacing: '0.005em' }}
                 >
                   ${pkg.price.toLocaleString('es-MX')}
+                  <span
+                    className="font-sans text-cream/55 align-baseline ml-1.5"
+                    style={{ fontSize: '0.32em', letterSpacing: '0.15em', fontWeight: 500 }}
+                  >
+                    MXN
+                  </span>
                 </p>
                 <p className="font-sans uppercase tracking-[0.2em] text-cream/80 text-xs md:text-[13px]">
                   {pkg.priceLabel}
                 </p>
                 {pkg.subtext && (
-                  <p className="font-serif italic text-cream/80 text-base md:text-lg mt-3">
+                  <p className="font-serif italic text-cream/80 text-base md:text-lg mt-2.5">
                     {pkg.subtext}
                   </p>
                 )}
               </div>
 
               {pkg.benefits && pkg.benefits.length > 0 && (
-                <div className="mb-7 pt-6 border-t border-cream/15">
-                  <ul className="space-y-3">
+                <div className="mb-6 pt-5 border-t border-cream/15">
+                  <ul className="space-y-2.5">
                     {pkg.benefits.map((benefit, idx) => (
                       <li
                         key={idx}
-                        className="flex items-start gap-3 text-cream font-sans leading-[1.65] text-base md:text-[17px]"
+                        className="flex items-start gap-3 text-cream font-sans leading-[1.55] text-[15px] md:text-base"
                       >
                         <Check className="w-4 h-4 text-gold mt-1 flex-shrink-0" />
                         <span>{benefit}</span>

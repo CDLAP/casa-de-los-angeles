@@ -87,7 +87,11 @@
         "subtext": null,
         "fechasIncluded": 1,
         "highlighted": false,
-        "benefits": null
+        "benefits": [
+          "Una noche dentro del Mercado de la Luna",
+          "Espacio asignado por el equipo organizador",
+          "Servicios y mobiliario básico incluidos"
+        ]
       },
       {
         "id": "2-fechas",
@@ -98,7 +102,11 @@
         "subtext": "$450 por día",
         "fechasIncluded": 2,
         "highlighted": false,
-        "benefits": null
+        "benefits": [
+          "Fin de semana completo (viernes y sábado)",
+          "Mejor relación de costo por día",
+          "Mayor exposición con tus clientes"
+        ]
       },
       {
         "id": "residente",

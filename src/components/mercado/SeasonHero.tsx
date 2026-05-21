@@ -29,7 +29,7 @@ export default function SeasonHero({
   description,
 }: SeasonHeroProps) {
   return (
-    <section className="relative pt-[150px] md:pt-[210px] pb-16">
+    <section className="relative pt-[150px] md:pt-[260px] pb-16">
       {/* Radial gold glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div
@@ -156,24 +156,24 @@ export default function SeasonHero({
 
           {/* Hours box — corner brackets removed, simple border */}
           <div className="border border-gold/40 px-10 py-7 md:px-12 md:py-8 text-center min-w-[200px] md:min-w-[260px] flex flex-col justify-center">
-            <p className="font-sans uppercase tracking-[0.3em] text-gold text-[11px] md:text-xs mb-4">
+            <p className="font-sans uppercase tracking-[0.3em] text-gold text-[11px] md:text-xs mb-5">
               {hours.label}
             </p>
-            <p
-              className="font-serif not-italic text-gold font-bold leading-none"
-              style={{ fontSize: 'clamp(2.25rem, 4vw, 3rem)', letterSpacing: '0.01em' }}
-            >
-              {hours.from}
-            </p>
-            <div className="my-2.5 flex items-center justify-center">
-              <div className="w-8 h-px bg-gold/50" />
+            <div className="flex flex-col items-center gap-2">
+              <p
+                className="font-serif not-italic text-gold font-bold leading-none"
+                style={{ fontSize: 'clamp(2.25rem, 4vw, 3rem)', letterSpacing: '0.01em' }}
+              >
+                {hours.from}
+              </p>
+              <span className="font-sans uppercase text-gold/60 text-[10px] tracking-[0.35em]">a</span>
+              <p
+                className="font-serif not-italic text-gold font-bold leading-none"
+                style={{ fontSize: 'clamp(2.25rem, 4vw, 3rem)', letterSpacing: '0.01em' }}
+              >
+                {hours.to}
+              </p>
             </div>
-            <p
-              className="font-serif not-italic text-gold font-bold leading-none"
-              style={{ fontSize: 'clamp(2.25rem, 4vw, 3rem)', letterSpacing: '0.01em' }}
-            >
-              {hours.to}
-            </p>
           </div>
         </motion.div>
       </div>
