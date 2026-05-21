@@ -28,9 +28,6 @@ export default function SeasonHero({
   hours,
   description,
 }: SeasonHeroProps) {
-  const [firstWord, ...restWords] = name.split(/\s+/)
-  const restOfName = restWords.join(' ')
-
   return (
     <section className="relative pt-[150px] md:pt-[210px] pb-16">
       {/* Radial gold glow */}
@@ -59,27 +56,25 @@ export default function SeasonHero({
           </div>
         </motion.div>
 
-        {/* Title block — signature treatment kept */}
+        {/* Title block — brand logo replaces typographic title */}
         <div className="text-center mb-10 md:mb-14">
+          {/* h1 wraps the logo image for SEO; visual is the logo PNG */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="font-serif not-italic text-gold uppercase leading-[0.95] mb-7 md:mb-9"
-            style={{
-              fontSize: 'clamp(2.75rem, 9vw, 7rem)',
-              fontWeight: 900,
-              letterSpacing: '0.015em',
-              textShadow: '0 0 30px rgba(201, 169, 97, 0.15)',
-            }}
+            transition={{ duration: 0.9, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="flex justify-center mb-7 md:mb-9"
           >
-            {firstWord}
-            {restOfName && (
-              <>
-                <br />
-                {restOfName}
-              </>
-            )}
+            <span className="sr-only">{name} · {location}</span>
+            <img
+              src="/images/mercado/mercado-de-la-luna-logo.png"
+              alt={`${name} · ${location}`}
+              className="w-full max-w-[300px] sm:max-w-[400px] md:max-w-[520px] lg:max-w-[620px] h-auto select-none"
+              style={{
+                filter: 'drop-shadow(0 0 50px rgba(201, 169, 97, 0.2)) drop-shadow(0 4px 20px rgba(0, 0, 0, 0.3))',
+              }}
+              draggable={false}
+            />
           </motion.h1>
 
           {/* Location — eyebrow size + rombo decoration kept */}
