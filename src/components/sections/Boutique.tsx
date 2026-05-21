@@ -6,11 +6,6 @@ import { Crown, Gem, Shirt, Sparkles } from 'lucide-react'
 
 const boutiqueItems = [
   {
-    icon: Crown,
-    title: 'Sombrería',
-    description: 'Sombreros artesanales y de diseñador, piezas únicas que combinan tradición y estilo contemporáneo.',
-  },
-  {
     icon: Gem,
     title: 'Joyería Artesanal',
     description: 'Colección curada de joyería hecha a mano por artesanos locales con materiales selectos.',
@@ -19,6 +14,11 @@ const boutiqueItems = [
     icon: Shirt,
     title: 'Moda & Accesorios',
     description: 'Prendas y accesorios de diseñadores independientes con identidad y personalidad.',
+  },
+  {
+    icon: Crown,
+    title: 'Sombrería',
+    description: 'Sombreros disponibles dentro de la boutique.',
   },
   {
     icon: Sparkles,
@@ -43,7 +43,7 @@ export default function Boutique() {
         >
           <h2 className="section-title">Boutique</h2>
           <p className="section-subtitle">
-            Sombrería, artesanías y productos selectos en un espacio con alma.
+            Artesanías, joyería y productos selectos en un espacio con alma.
           </p>
           <div className="divider">
             <div className="w-16 h-px bg-gold/40" />
@@ -62,7 +62,7 @@ export default function Boutique() {
           >
             <div className="space-y-6 text-charcoal-50 leading-relaxed text-lg">
               <p>
-                Nuestra <span className="text-gold-dark font-medium">Boutique</span> es un espacio permanente dentro de Casa de los Ángeles donde encontrarás una selección curada de sombrería artesanal, joyería, moda de autor y objetos de arte.
+                Nuestra <span className="text-gold-dark font-medium">Boutique</span> es un espacio permanente dentro de Casa de los Ángeles donde encontrarás una selección curada de joyería, moda de autor y objetos de arte.
               </p>
               <p>
                 Cada pieza ha sido elegida por su calidad, originalidad y conexión con la tradición artesanal mexicana. Un lugar para descubrir regalos únicos y llevarte un pedazo del alma de Puebla.
