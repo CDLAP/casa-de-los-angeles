@@ -27,7 +27,7 @@ export default function ProximaEdicion({ firstDateIso }: ProximaEdicionProps) {
     const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24))
 
     if (diffDays > 0) {
-      setLabel(`Próxima edición · faltan ${diffDays} ${diffDays === 1 ? 'día' : 'días'}`)
+      setLabel(`Próxima edición · ${diffDays === 1 ? `falta 1 día` : `faltan ${diffDays} días`}`)
     } else if (diffDays === 0) {
       setLabel('Próxima edición · es hoy')
     } else {

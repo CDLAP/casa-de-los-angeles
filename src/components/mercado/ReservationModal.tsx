@@ -161,7 +161,7 @@ export default function ReservationModal({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.98 }}
             transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="relative w-full max-w-md sm:max-w-lg md:max-w-3xl lg:max-w-4xl my-4 sm:my-0 bg-[#0A1428] border border-gold/40 shadow-2xl"
+            className="relative w-full max-w-md sm:max-w-lg md:max-w-3xl lg:max-w-4xl my-4 sm:my-0 bg-[#14223D] border border-gold/40 shadow-2xl"
           >
             <div className="h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent" />
 

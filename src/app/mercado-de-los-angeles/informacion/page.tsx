@@ -153,7 +153,7 @@ export default function LineamientosPage() {
   )
 
   return (
-    <main className="relative min-h-screen bg-[#070C18] text-cream overflow-hidden">
+    <main className="relative min-h-screen bg-[#101A33] text-cream overflow-hidden">
       <ReadingProgress />
 
       <div className="absolute inset-0 pointer-events-none">
@@ -161,7 +161,7 @@ export default function LineamientosPage() {
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(180deg, #060A14 0%, #0A1428 35%, #08101F 70%, #050912 100%)',
+              'linear-gradient(180deg, #101A33 0%, #1B2A48 35%, #15243F 70%, #101A33 100%)',
           }}
         />
         <div
