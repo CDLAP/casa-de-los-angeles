@@ -125,7 +125,7 @@ export default function SeasonHero({
           <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-2 border-l-2 border-gold z-10" />
           <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-gold z-10" />
 
-          <div className="relative aspect-[16/9] overflow-hidden border border-gold/40 shadow-2xl shadow-charcoal/60">
+          <div className="relative aspect-[4/3] overflow-hidden border border-gold/40 shadow-2xl shadow-charcoal/60">
             <div
               className="absolute inset-0 bg-cover bg-center"
               style={{ backgroundImage: `url('${heroImage}')` }}
