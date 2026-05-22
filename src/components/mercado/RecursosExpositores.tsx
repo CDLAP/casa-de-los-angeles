@@ -34,7 +34,7 @@ export default function RecursosExpositores() {
               letterSpacing: '0.005em',
             }}
           >
-            Antes de Reservar
+            Lee antes de reservar
           </h3>
           <p className="font-sans text-cream/90 text-[17px] md:text-[19px] leading-[1.75] max-w-xl mx-auto mt-4">
             Léenos con calma. Estos dos documentos son parte de tu participación.

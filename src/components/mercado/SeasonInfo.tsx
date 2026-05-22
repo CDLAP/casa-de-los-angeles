@@ -50,7 +50,7 @@ export default function SeasonInfo({
               letterSpacing: '0.005em',
             }}
           >
-            Incluye para Expositores
+            Tu mesa incluye
           </h3>
 
           <div className="flex flex-wrap items-center justify-center gap-x-5 md:gap-x-7 gap-y-3 max-w-3xl mx-auto">

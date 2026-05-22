@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import SeasonHero from '@/components/mercado/SeasonHero'
+import ComoFunciona from '@/components/mercado/ComoFunciona'
 import SeasonFechas from '@/components/mercado/SeasonFechas'
 import SeasonPaquetes from '@/components/mercado/SeasonPaquetes'
 import RecursosExpositores from '@/components/mercado/RecursosExpositores'
@@ -59,6 +60,8 @@ export default function MercadoDeLosAngelesPage() {
           hours={season.hours}
           description={season.description}
         />
+
+        <ComoFunciona />
 
         <SeasonFechas
           eventName={season.name}
