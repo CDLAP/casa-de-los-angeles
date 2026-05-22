@@ -41,13 +41,13 @@ export default function SeasonPaquetes({ eventName, packages, weekends, whatsapp
   }
 
   return (
-    <section id="paquetes" className="container-custom py-16 md:py-24 scroll-mt-24">
+    <section id="paquetes" className="container-custom py-10 md:py-16 scroll-mt-24">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.7 }}
-        className="text-center mb-14 md:mb-16"
+        className="text-center mb-10 md:mb-12"
       >
         <div className="flex items-center justify-center gap-3 mb-7">
           <div className="w-12 md:w-20 h-px bg-gold/50" />

@@ -29,7 +29,7 @@ export default function SeasonHero({
   description,
 }: SeasonHeroProps) {
   return (
-    <section className="relative pt-[150px] md:pt-[260px] pb-16">
+    <section className="relative pt-[140px] md:pt-[200px] pb-12">
       {/* Radial gold glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div
@@ -47,7 +47,7 @@ export default function SeasonHero({
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="flex justify-center mb-10 md:mb-14"
+          className="flex justify-center mb-7 md:mb-10"
         >
           <div className="max-w-[280px] md:max-w-sm border border-gold/50 px-6 py-3 md:px-8 md:py-3.5 text-center">
           <p className="font-sans text-[11px] md:text-xs uppercase tracking-[0.25em] text-gold leading-relaxed">
@@ -57,13 +57,13 @@ export default function SeasonHero({
         </motion.div>
 
         {/* Title block — brand logo replaces typographic title */}
-        <div className="text-center mb-10 md:mb-14">
+        <div className="text-center mb-8 md:mb-12">
           {/* h1 wraps the logo image for SEO; visual is the logo PNG */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="flex justify-center mb-7 md:mb-9"
+            className="flex justify-center mb-5 md:mb-7"
           >
             <span className="sr-only">{name} · {location}</span>
             <img
@@ -82,7 +82,7 @@ export default function SeasonHero({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.45 }}
-            className="flex items-center justify-center gap-4 md:gap-5 mb-4"
+            className="flex items-center justify-center gap-4 md:gap-5 mb-3"
           >
             <div className="w-12 md:w-20 h-px bg-gold/50" />
             <div className="w-1.5 h-1.5 bg-gold rotate-45" />
@@ -97,7 +97,7 @@ export default function SeasonHero({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.55 }}
-            className="font-sans uppercase tracking-[0.25em] text-cream/75 text-xs md:text-[13px] mb-6"
+            className="font-sans uppercase tracking-[0.25em] text-cream/75 text-xs md:text-[13px] mb-5"
           >
             {temporada}
           </motion.p>
@@ -118,7 +118,7 @@ export default function SeasonHero({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="relative mb-14 md:mb-20 max-w-5xl mx-auto"
+          className="relative mb-10 md:mb-14 max-w-5xl mx-auto"
         >
           <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-gold z-10" />
           <div className="absolute -top-2 -right-2 w-6 h-6 border-t-2 border-r-2 border-gold z-10" />

@@ -33,7 +33,7 @@ const STEPS: Step[] = [
 
 export default function ComoFunciona() {
   return (
-    <section className="container-custom py-14 md:py-20">
+    <section className="container-custom py-10 md:py-14">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -42,7 +42,7 @@ export default function ComoFunciona() {
         className="max-w-5xl mx-auto"
       >
         {/* Section header */}
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-9 md:mb-12">
           <div className="flex items-center justify-center gap-3 mb-7">
             <div className="w-12 md:w-20 h-px bg-gold/50" />
             <div className="w-1.5 h-1.5 bg-gold rotate-45" />

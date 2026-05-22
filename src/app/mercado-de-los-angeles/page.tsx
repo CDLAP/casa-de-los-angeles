@@ -61,8 +61,6 @@ export default function MercadoDeLosAngelesPage() {
           description={season.description}
         />
 
-        <ComoFunciona />
-
         <SeasonFechas
           eventName={season.name}
           weekends={season.weekends}
@@ -76,6 +74,8 @@ export default function MercadoDeLosAngelesPage() {
           weekends={season.weekends}
           whatsapp={settings.whatsapp}
         />
+
+        <ComoFunciona />
 
         <RecursosExpositores />
 

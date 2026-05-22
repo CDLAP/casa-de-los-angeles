@@ -18,13 +18,13 @@ interface SeasonFechasProps {
 
 export default function SeasonFechas({ eventName, weekends, note, tagline }: SeasonFechasProps) {
   return (
-    <section className="container-custom py-16 md:py-24">
+    <section className="container-custom py-10 md:py-16">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.7 }}
-        className="text-center mb-14 md:mb-16"
+        className="text-center mb-10 md:mb-12"
       >
         {/* Section transition rombo — kept (signature) */}
         <div className="flex items-center justify-center gap-3 mb-7">
@@ -53,7 +53,7 @@ export default function SeasonFechas({ eventName, weekends, note, tagline }: Sea
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.8, delay: 0.1 }}
-        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6 mb-12 max-w-6xl mx-auto"
+        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6 mb-8 max-w-6xl mx-auto"
       >
         {weekends.map((weekend, i) => (
           <motion.div

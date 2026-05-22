@@ -26,7 +26,7 @@ export default function SeasonInfo({
   return (
     <>
       {/* INCLUYE — open layout, no boxed container */}
-      <section className="container-custom py-14 md:py-20">
+      <section className="container-custom py-10 md:py-14">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -42,7 +42,7 @@ export default function SeasonInfo({
           </div>
 
           <h3
-            className="not-italic text-cream mb-10"
+            className="not-italic text-cream mb-8"
             style={{
               fontFamily: 'var(--font-fraunces), Georgia, serif',
               fontSize: 'clamp(1.625rem, 3.2vw, 2.25rem)',
@@ -69,32 +69,30 @@ export default function SeasonInfo({
         </motion.div>
       </section>
 
-      {/* NOTES — informational items, no boxes */}
-      <section className="container-custom pb-14 md:pb-20">
-        <div className="max-w-3xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-4">
-            {notes.map((note, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-30px' }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="flex items-start gap-3.5 text-cream/90 font-sans text-base md:text-[17px] leading-[1.65]"
-              >
-                <span
-                  className="flex-shrink-0 mt-[0.7em] w-3 h-[1.5px] bg-gold"
-                  aria-hidden="true"
-                />
-                <p>{note}</p>
-              </motion.div>
-            ))}
-          </div>
+      {/* NOTES — single inline row, compact */}
+      <section className="container-custom pb-10 md:pb-12">
+        <div className="max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+          {notes.map((note, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 6 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-30px' }}
+              transition={{ duration: 0.4, delay: i * 0.06 }}
+              className="flex items-center gap-2.5 text-cream/85 font-sans text-[15px] md:text-base leading-snug"
+            >
+              <span
+                className="flex-shrink-0 w-2.5 h-[1.5px] bg-gold"
+                aria-hidden="true"
+              />
+              <span>{note}</span>
+            </motion.div>
+          ))}
         </div>
       </section>
 
       {/* FOOTER — open layout, no outer box, no corner brackets */}
-      <section className="container-custom py-16 md:py-24">
+      <section className="container-custom py-12 md:py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -103,7 +101,7 @@ export default function SeasonInfo({
           className="max-w-5xl mx-auto"
         >
           {/* Section transition rombo */}
-          <div className="flex items-center justify-center gap-3 mb-10">
+          <div className="flex items-center justify-center gap-3 mb-8">
             <div className="w-12 md:w-20 h-px bg-gold/50" />
             <div className="w-1.5 h-1.5 bg-gold rotate-45" />
             <div className="w-12 md:w-20 h-px bg-gold/50" />
