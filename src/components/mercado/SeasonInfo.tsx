@@ -143,10 +143,6 @@ export default function SeasonInfo({
                   </span>
                 </span>
               </motion.a>
-
-              <p className="font-sans text-cream/80 text-base md:text-[17px] mt-4 max-w-xs mx-auto md:mx-0 leading-[1.65]">
-                Te abrimos WhatsApp con tu mensaje de reservación listo.
-              </p>
             </div>
 
             {/* Dirección — clean text, subtle separator on desktop only */}

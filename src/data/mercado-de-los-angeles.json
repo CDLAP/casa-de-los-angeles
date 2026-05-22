@@ -16,8 +16,8 @@
       "to": "10:00 PM"
     },
     "description": [
-      "Aprovecha el turismo nacional e internacional durante la temporada del Mundial y forma parte de una experiencia nocturna única dentro del Centro Histórico de Puebla.",
-      "Hasta 500 personas por día entre turismo, visitantes locales y flujo constante dentro de Casa de los Ángeles."
+      "Hasta 500 personas por día entre turistas, locales y flujo dentro de la casona.",
+      "Vende tu marca en el corazón del Centro Histórico de Puebla."
     ],
     "weekends": [
       {
@@ -75,8 +75,8 @@
         ]
       }
     ],
-    "datesNote": "Todas las fechas son viernes y sábado.",
-    "datesTagline": "Cada fin de semana, una experiencia distinta dentro de una casona histórica única.",
+    "datesNote": "Viernes y sábado de cada fin de semana.",
+    "datesTagline": "",
     "packages": [
       {
         "id": "1-fecha",
@@ -118,10 +118,9 @@
         "fechasIncluded": 8,
         "highlighted": true,
         "benefits": [
-          "Máxima exposición durante toda la temporada",
-          "Presencia constante dentro del evento",
+          "Toda la temporada (8 fechas)",
           "Ubicación preferencial",
-          "Mayor posicionamiento de marca"
+          "Máximo posicionamiento de marca"
         ]
       }
     ],
@@ -130,14 +129,13 @@
       "Silla",
       "Mantel",
       "Servicio de baño",
-      "Difusión en redes sociales",
+      "Difusión en redes",
       "Ambientación temática"
     ],
     "notes": [
-      "Mercado cuidadosamente curado",
+      "Mercado curado: solo marcas con propuesta original",
       "Cupo limitado por categoría",
-      "Prioridad a marcas con propuesta estética y original",
-      "No se aceptan categorías repetidas"
+      "Mesas listas y asignadas por el equipo"
     ]
   }
 }

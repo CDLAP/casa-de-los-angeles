@@ -14,22 +14,19 @@ const STEPS: Step[] = [
   {
     number: '01',
     title: 'Elige tus fechas',
-    description:
-      'Mira qué fines de semana de la temporada quieres participar. Puedes ir 1 sola noche, un fin de semana o toda la temporada.',
+    description: 'Una noche, un fin de semana o toda la temporada.',
     Icon: Calendar,
   },
   {
     number: '02',
     title: 'Llena el formulario',
-    description:
-      'Dinos tu marca, tu Instagram y qué productos vendes. Te toma un minuto desde el celular.',
+    description: 'Marca, Instagram y productos. Un minuto.',
     Icon: FileText,
   },
   {
     number: '03',
     title: 'Confirma por WhatsApp',
-    description:
-      'Nosotros te respondemos con los datos para liquidar tu reservación y apartar tu mesa.',
+    description: 'Te enviamos los datos para apartar tu mesa.',
     Icon: MessageCircle,
   },
 ]
@@ -60,11 +57,8 @@ export default function ComoFunciona() {
               letterSpacing: '0.005em',
             }}
           >
-            Cómo Reservar tu Mesa
+            Cómo reservar tu mesa
           </h2>
-          <p className="font-sans text-cream/85 text-[17px] md:text-[19px] leading-[1.75] mt-4 max-w-xl mx-auto">
-            Tres pasos sencillos. Te toma menos de cinco minutos.
-          </p>
         </div>
 
         {/* Steps */}

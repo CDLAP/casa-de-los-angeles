@@ -44,7 +44,7 @@ export default function SeasonFechas({ eventName, weekends, note, tagline }: Sea
           Fechas de {eventName}
         </h2>
         <p className="font-serif italic text-cream/85 text-[17px] md:text-xl mt-4 max-w-xl mx-auto leading-relaxed">
-          Cupo limitado a 30 expositores por fecha · Reserva previa requerida.
+          Cupo limitado: 30 expositores por fecha.
         </p>
       </motion.div>
 
@@ -86,19 +86,9 @@ export default function SeasonFechas({ eventName, weekends, note, tagline }: Sea
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="font-sans text-center text-cream/95 text-[17px] md:text-[19px] leading-[1.75] mb-5 max-w-2xl mx-auto"
+        className="font-sans text-center text-cream/95 text-[17px] md:text-[19px] leading-[1.75] max-w-2xl mx-auto"
       >
         {note}
-      </motion.p>
-
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.4 }}
-        className="font-serif italic text-center text-gold text-xl md:text-2xl leading-relaxed max-w-2xl mx-auto"
-      >
-        {tagline}
       </motion.p>
     </section>
   )

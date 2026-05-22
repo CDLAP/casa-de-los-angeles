@@ -66,7 +66,7 @@ export default function SeasonPaquetes({ eventName, packages, weekends, whatsapp
           Elige tu paquete
         </h2>
         <p className="font-serif italic text-cream/85 text-[17px] md:text-xl mt-4 max-w-xl mx-auto leading-relaxed">
-          Cada fecha equivale a un día — viernes o sábado de mercado.
+          Cada fecha = un día. Viernes o sábado.
         </p>
       </motion.div>
 
