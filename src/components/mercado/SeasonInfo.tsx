@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { Check } from 'lucide-react'
 import WhatsAppIcon from './WhatsAppIcon'
 
@@ -108,12 +109,8 @@ export default function SeasonInfo({
           </div>
 
           <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-            {/* WhatsApp CTA — primary visual focus */}
+            {/* WhatsApp CTA — primary visual focus, eyebrow removed */}
             <div className="text-center md:text-left">
-              <p className="font-sans uppercase tracking-[0.3em] text-gold text-[11px] md:text-xs mb-5">
-                Reservaciones al WhatsApp
-              </p>
-
               <motion.a
                 href={`https://wa.me/${whatsapp}?text=${reservaMessage}`}
                 target="_blank"
@@ -156,6 +153,23 @@ export default function SeasonInfo({
                 Centro Histórico, Puebla
               </p>
             </div>
+          </div>
+
+          {/* Subtle post-footer links — reference docs available after the main CTA */}
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 mt-12 md:mt-14 pt-7 border-t border-cream/10 max-w-3xl mx-auto">
+            <Link
+              href="/mercado-de-los-angeles/informacion"
+              className="font-sans uppercase tracking-[0.22em] text-cream/55 hover:text-gold transition-colors duration-300 text-[11px] md:text-xs"
+            >
+              Lineamientos del mercado
+            </Link>
+            <span className="text-cream/20 text-xs" aria-hidden="true">·</span>
+            <Link
+              href="/mercado-de-los-angeles/tips"
+              className="font-sans uppercase tracking-[0.22em] text-cream/55 hover:text-gold transition-colors duration-300 text-[11px] md:text-xs"
+            >
+              Tips para vender mejor
+            </Link>
           </div>
         </motion.div>
       </section>

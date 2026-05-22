@@ -134,47 +134,45 @@ export default function SeasonHero({
           </div>
         </motion.div>
 
-        {/* Description + Horario — bigger sans body, simple bordered hours box */}
+        {/* Bottom block — premium centered hierarchy: lead description → supporting → horario → CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="grid md:grid-cols-[1fr_auto] gap-10 md:gap-14 items-stretch max-w-5xl mx-auto"
+          className="text-center max-w-3xl mx-auto"
         >
-          <div className="flex flex-col justify-center space-y-5 md:space-y-6">
-            {description.map((para, i) => (
-              <p
-                key={i}
-                className={`font-sans leading-[1.75] text-[17px] md:text-[19px] ${
-                  i === 1 ? 'text-cream font-medium' : 'text-cream/95'
-                }`}
-              >
-                {para}
-              </p>
-            ))}
+          {/* Lead description — serif display, magazine subtitle feel */}
+          <p
+            className="font-serif not-italic text-cream leading-tight mb-5 md:mb-6"
+            style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.25rem)', fontWeight: 400, letterSpacing: '0.005em' }}
+          >
+            {description[0]}
+          </p>
+
+          {/* Supporting line */}
+          {description[1] && (
+            <p className="font-sans text-cream/85 text-[17px] md:text-[19px] leading-[1.7] max-w-xl mx-auto mb-8 md:mb-10">
+              {description[1]}
+            </p>
+          )}
+
+          {/* Horario — single elegant line with hairlines */}
+          <div className="flex items-center justify-center gap-3 mb-8 md:mb-10">
+            <div className="w-8 h-px bg-gold/40" />
+            <p className="font-sans uppercase tracking-[0.3em] text-gold text-xs md:text-[13px]">
+              Viernes y Sábado · {hours.from} — {hours.to}
+            </p>
+            <div className="w-8 h-px bg-gold/40" />
           </div>
 
-          {/* Hours box — corner brackets removed, simple border */}
-          <div className="border border-gold/40 px-10 py-7 md:px-12 md:py-8 text-center min-w-[200px] md:min-w-[260px] flex flex-col justify-center">
-            <p className="font-sans uppercase tracking-[0.3em] text-gold text-[11px] md:text-xs mb-5">
-              {hours.label}
-            </p>
-            <div className="flex flex-col items-center gap-2">
-              <p
-                className="font-serif not-italic text-gold font-bold leading-none"
-                style={{ fontSize: 'clamp(2.25rem, 4vw, 3rem)', letterSpacing: '0.01em' }}
-              >
-                {hours.from}
-              </p>
-              <span className="font-sans uppercase text-gold/60 text-[10px] tracking-[0.35em]">a</span>
-              <p
-                className="font-serif not-italic text-gold font-bold leading-none"
-                style={{ fontSize: 'clamp(2.25rem, 4vw, 3rem)', letterSpacing: '0.01em' }}
-              >
-                {hours.to}
-              </p>
-            </div>
-          </div>
+          {/* Primary CTA — lifts the user to packages without scrolling */}
+          <a
+            href="#paquetes"
+            className="group inline-flex items-center gap-3 bg-gold hover:bg-gold-light text-charcoal px-8 py-4 md:px-10 md:py-5 text-sm md:text-base uppercase tracking-[0.2em] font-sans font-medium transition-all duration-500"
+          >
+            Reservar mi mesa
+            <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </a>
         </motion.div>
       </div>
     </section>
