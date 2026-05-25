@@ -12,8 +12,8 @@
     "topStamp": "El primer y único punto de venta nocturno del Centro de Puebla",
     "hours": {
       "label": "Horario oficial",
-      "from": "5:00 PM",
-      "to": "10:00 PM"
+      "from": "4:00 PM",
+      "to": "9:00 PM"
     },
     "description": [
       "Hasta 500 personas por día entre turistas, locales y flujo dentro de la casona.",
@@ -21,104 +21,101 @@
     ],
     "weekends": [
       {
-        "id": "weekend-22-23-mayo",
-        "label": "22 y 23",
+        "id": "fecha-22-mayo",
+        "label": "22",
         "month": "Mayo",
         "days": [
-          { "id": "vie-22-mayo", "label": "Viernes 22 de Mayo" },
-          { "id": "sab-23-mayo", "label": "Sábado 23 de Mayo" }
+          { "id": "vie-22-mayo", "label": "Viernes 22 de Mayo" }
         ]
       },
       {
-        "id": "weekend-29-30-mayo",
-        "label": "29 y 30",
+        "id": "fecha-29-mayo",
+        "label": "29",
         "month": "Mayo",
         "days": [
-          { "id": "vie-29-mayo", "label": "Viernes 29 de Mayo" },
-          { "id": "sab-30-mayo", "label": "Sábado 30 de Mayo" }
+          { "id": "vie-29-mayo", "label": "Viernes 29 de Mayo" }
         ]
       },
       {
-        "id": "weekend-5-6-junio",
-        "label": "5 y 6",
+        "id": "fecha-5-junio",
+        "label": "5",
         "month": "Junio",
         "days": [
-          { "id": "vie-5-junio", "label": "Viernes 5 de Junio" },
-          { "id": "sab-6-junio", "label": "Sábado 6 de Junio" }
+          { "id": "vie-5-junio", "label": "Viernes 5 de Junio" }
         ]
       },
       {
-        "id": "weekend-12-13-junio",
-        "label": "12 y 13",
+        "id": "fecha-12-junio",
+        "label": "12",
         "month": "Junio",
         "days": [
-          { "id": "vie-12-junio", "label": "Viernes 12 de Junio" },
-          { "id": "sab-13-junio", "label": "Sábado 13 de Junio" }
+          { "id": "vie-12-junio", "label": "Viernes 12 de Junio" }
         ]
       },
       {
-        "id": "weekend-19-20-junio",
-        "label": "19 y 20",
+        "id": "fecha-19-junio",
+        "label": "19",
         "month": "Junio",
         "days": [
-          { "id": "vie-19-junio", "label": "Viernes 19 de Junio" },
-          { "id": "sab-20-junio", "label": "Sábado 20 de Junio" }
+          { "id": "vie-19-junio", "label": "Viernes 19 de Junio" }
         ]
       },
       {
-        "id": "weekend-26-27-junio",
-        "label": "26 y 27",
+        "id": "fecha-26-junio",
+        "label": "26",
         "month": "Junio",
         "days": [
-          { "id": "vie-26-junio", "label": "Viernes 26 de Junio" },
-          { "id": "sab-27-junio", "label": "Sábado 27 de Junio" }
+          { "id": "vie-26-junio", "label": "Viernes 26 de Junio" }
         ]
       }
     ],
-    "datesNote": "Viernes y sábado de cada fin de semana.",
+    "datesNote": "Cada viernes de la temporada · 4 a 9 PM.",
     "datesTagline": "",
     "packages": [
       {
-        "id": "1-fecha",
-        "name": "1 fecha suelta",
-        "subtitle": null,
-        "price": 550,
-        "priceLabel": "por día",
-        "subtext": null,
+        "id": "primera",
+        "name": "Primera participación",
+        "subtitle": "Solo primera vez",
+        "price": 300,
+        "priceOverride": null,
+        "priceLabel": "desde · por fecha",
+        "subtext": "Mesa y silla incluidas",
         "fechasIncluded": 1,
         "highlighted": false,
         "benefits": [
-          "Una noche dentro del Mercado de la Luna",
-          "Espacio asignado por el equipo organizador",
-          "Servicios y mobiliario básico incluidos"
+          "Mesa de 1.80 m y silla incluidas",
+          "Espacio asignado por el equipo",
+          "Para probar el mercado por primera vez"
         ]
       },
       {
-        "id": "2-fechas",
-        "name": "2 fechas",
+        "id": "regular",
+        "name": "Tarifa regular",
         "subtitle": null,
-        "price": 900,
-        "priceLabel": "total",
-        "subtext": "$450 por día",
-        "fechasIncluded": 2,
+        "price": 500,
+        "priceOverride": null,
+        "priceLabel": "desde · por fecha",
+        "subtext": "Según zona y disponibilidad",
+        "fechasIncluded": 1,
         "highlighted": false,
         "benefits": [
-          "Fin de semana completo (viernes y sábado)",
-          "Mejor relación de costo por día",
-          "Mayor exposición con tus clientes"
+          "Una noche del Mercado de la Luna",
+          "Mesa, silla y mantel incluidos",
+          "Difusión en redes sociales"
         ]
       },
       {
         "id": "residente",
         "name": "Expositor residente",
-        "subtitle": "8 fechas",
-        "price": 3500,
-        "priceLabel": "total",
-        "subtext": "$437.50 por día",
-        "fechasIncluded": 8,
+        "subtitle": "Toda la temporada",
+        "price": 0,
+        "priceOverride": "Preferencial",
+        "priceLabel": "tarifa especial",
+        "subtext": "Para marcas constantes",
+        "fechasIncluded": 6,
         "highlighted": true,
         "benefits": [
-          "Toda la temporada (8 fechas)",
+          "Toda la temporada (6 viernes)",
           "Ubicación preferencial",
           "Máximo posicionamiento de marca"
         ]

@@ -10,6 +10,7 @@ interface Pkg {
   name: string
   subtitle: string | null
   price: number
+  priceOverride: string | null
   priceLabel: string
   subtext: string | null
   fechasIncluded: number
@@ -117,9 +118,13 @@ export default function ReservationModal({
 
     const packageDescription = pkg.subtitle ? `${pkg.name} (${pkg.subtitle})` : pkg.name
 
+    const priceText = pkg.priceOverride
+      ? `${pkg.priceOverride} — ${pkg.priceLabel}`
+      : `$${pkg.price.toLocaleString('es-MX')} ${pkg.priceLabel}`
+
     const message =
       `Hola, quiero reservar mi espacio para ${eventName}.\n\n` +
-      `Paquete: ${packageDescription} — $${pkg.price.toLocaleString('es-MX')} ${pkg.priceLabel}\n\n` +
+      `Paquete: ${packageDescription} — ${priceText}\n\n` +
       `Fechas seleccionadas:\n  • ${selectedLabels}\n\n` +
       `Marca: ${marca.trim()}\n` +
       `Instagram: ${instagram.trim()}\n` +
@@ -187,7 +192,7 @@ export default function ReservationModal({
                   {eventName}
                 </h2>
                 <p className="font-sans text-cream/85 text-[15px] md:text-base">
-                  {pkg.name}{pkg.subtitle ? ` · ${pkg.subtitle}` : ''} · <span className="text-gold font-medium">${pkg.price.toLocaleString('es-MX')}</span> <span className="text-cream/65">{pkg.priceLabel}</span>
+                  {pkg.name}{pkg.subtitle ? ` · ${pkg.subtitle}` : ''} · <span className="text-gold font-medium">{pkg.priceOverride ? pkg.priceOverride : `$${pkg.price.toLocaleString('es-MX')}`}</span> <span className="text-cream/65">{pkg.priceLabel}</span>
                 </p>
               </div>
 

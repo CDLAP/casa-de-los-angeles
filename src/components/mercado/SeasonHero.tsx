@@ -160,7 +160,7 @@ export default function SeasonHero({
           <div className="flex items-center justify-center gap-3 mb-8 md:mb-10">
             <div className="w-8 h-px bg-gold/40" />
             <p className="font-sans uppercase tracking-[0.3em] text-gold text-xs md:text-[13px]">
-              Viernes y Sábado · {hours.from} — {hours.to}
+              Viernes · {hours.from} — {hours.to}
             </p>
             <div className="w-8 h-px bg-gold/40" />
           </div>

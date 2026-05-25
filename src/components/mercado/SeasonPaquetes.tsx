@@ -10,6 +10,7 @@ interface Pkg {
   name: string
   subtitle: string | null
   price: number
+  priceOverride: string | null
   priceLabel: string
   subtext: string | null
   fechasIncluded: number
@@ -66,7 +67,7 @@ export default function SeasonPaquetes({ eventName, packages, weekends, whatsapp
           Elige tu paquete
         </h2>
         <p className="font-serif italic text-cream/85 text-[17px] md:text-xl mt-4 max-w-xl mx-auto leading-relaxed">
-          Cada fecha = un día. Viernes o sábado.
+          Tarifa según tu tipo de participación.
         </p>
       </motion.div>
 
@@ -116,18 +117,27 @@ export default function SeasonPaquetes({ eventName, packages, weekends, whatsapp
 
               {/* Price */}
               <div className="text-center mb-5">
-                <p
-                  className="font-serif not-italic text-gold font-bold leading-none mb-2"
-                  style={{ fontSize: 'clamp(2.5rem, 4.6vw, 3.5rem)', letterSpacing: '0.005em' }}
-                >
-                  ${pkg.price.toLocaleString('es-MX')}
-                  <span
-                    className="font-sans text-cream/55 align-baseline ml-1.5"
-                    style={{ fontSize: '0.32em', letterSpacing: '0.15em', fontWeight: 500 }}
+                {pkg.priceOverride ? (
+                  <p
+                    className="font-serif italic text-gold leading-tight mb-2"
+                    style={{ fontSize: 'clamp(1.75rem, 3.4vw, 2.5rem)', letterSpacing: '0.005em', fontWeight: 700 }}
                   >
-                    MXN
-                  </span>
-                </p>
+                    {pkg.priceOverride}
+                  </p>
+                ) : (
+                  <p
+                    className="font-serif not-italic text-gold font-bold leading-none mb-2"
+                    style={{ fontSize: 'clamp(2.5rem, 4.6vw, 3.5rem)', letterSpacing: '0.005em' }}
+                  >
+                    ${pkg.price.toLocaleString('es-MX')}
+                    <span
+                      className="font-sans text-cream/55 align-baseline ml-1.5"
+                      style={{ fontSize: '0.32em', letterSpacing: '0.15em', fontWeight: 500 }}
+                    >
+                      MXN
+                    </span>
+                  </p>
+                )}
                 <p className="font-sans uppercase tracking-[0.2em] text-cream/80 text-xs md:text-[13px]">
                   {pkg.priceLabel}
                 </p>
