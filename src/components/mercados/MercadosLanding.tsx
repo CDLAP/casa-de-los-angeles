@@ -3,8 +3,6 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import {
-  Moon,
-  Sun,
   Check,
   Crown,
   Sparkles,
@@ -39,7 +37,7 @@ const MARKETS = [
     hours: '4:00 PM — 9:00 PM',
     concept:
       'Mercado nocturno. Ambiente especial, música, velas, mezcal y recorrido dentro de la casa histórica.',
-    Icon: Moon,
+    logo: '/images/mercado/mercado-de-la-luna-logo.png',
     href: '/mercado-de-los-angeles',
   },
   {
@@ -49,7 +47,7 @@ const MARKETS = [
     hours: '11:00 AM — 8:00 PM',
     concept:
       'Turismo, café, compras, recorrido de la casa y movimiento constante durante el día.',
-    Icon: Sun,
+    logo: '/images/mercado/mercado-de-los-angeles-logo.png',
     href: null, // detail page not built yet
   },
 ]
@@ -228,25 +226,19 @@ export default function MercadosLanding() {
                 transition={{ duration: 0.7, delay: 0.1 + i * 0.12 }}
                 className="relative flex flex-col bg-[#0F1A2E]/50 border border-cream/15 hover:border-gold/60 transition-all duration-500"
               >
-                <div className="p-7 md:p-9 flex flex-col flex-1">
-                  {/* Icon */}
-                  <div className="flex justify-start mb-6">
-                    <div className="w-14 h-14 flex items-center justify-center border border-gold/50 bg-gold/5">
-                      <market.Icon className="w-6 h-6 text-gold" strokeWidth={1.5} />
-                    </div>
-                  </div>
-
-                  {/* Name */}
-                  <h3
-                    className="not-italic text-cream mb-4 leading-tight"
-                    style={{
-                      fontFamily: 'var(--font-fraunces), Georgia, serif',
-                      fontSize: 'clamp(1.5rem, 3vw, 2rem)',
-                      fontWeight: 700,
-                      letterSpacing: '0.005em',
-                    }}
-                  >
-                    {market.name}
+                <div className="p-7 md:p-9 flex flex-col flex-1 text-center">
+                  {/* Logo as brand identifier — h3 wraps img for SEO, sr-only span carries the name */}
+                  <h3 className="flex justify-center mb-6 md:mb-7">
+                    <span className="sr-only">{market.name}</span>
+                    <img
+                      src={market.logo}
+                      alt={market.name}
+                      className="w-full max-w-[220px] md:max-w-[260px] h-auto select-none"
+                      style={{
+                        filter: 'drop-shadow(0 0 30px rgba(201, 169, 97, 0.18)) drop-shadow(0 2px 12px rgba(0, 0, 0, 0.25))',
+                      }}
+                      draggable={false}
+                    />
                   </h3>
 
                   {/* Day + Hours */}
@@ -260,7 +252,7 @@ export default function MercadosLanding() {
                   </div>
 
                   {/* Concept */}
-                  <p className="font-sans text-cream/90 text-[16px] md:text-[17px] leading-[1.65] flex-1">
+                  <p className="font-sans text-cream/90 text-[16px] md:text-[17px] leading-[1.65] flex-1 max-w-sm mx-auto">
                     {market.concept}
                   </p>
 
@@ -268,7 +260,7 @@ export default function MercadosLanding() {
                   {market.href && (
                     <Link
                       href={market.href}
-                      className="group/link inline-flex items-center gap-2 mt-6 font-sans uppercase tracking-[0.22em] text-gold hover:text-gold-light text-xs md:text-[13px] transition-colors"
+                      className="group/link inline-flex items-center justify-center gap-2 mt-6 font-sans uppercase tracking-[0.22em] text-gold hover:text-gold-light text-xs md:text-[13px] transition-colors"
                     >
                       Ver detalles
                       <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover/link:translate-x-1" />
