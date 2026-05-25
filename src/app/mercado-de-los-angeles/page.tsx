@@ -76,8 +76,6 @@ export default function MercadoDeLosAngelesPage() {
 
         <ComoFunciona />
 
-        <RecursosExpositores />
-
         <SeasonInfo
           eventName={season.name}
           includes={season.includes}
