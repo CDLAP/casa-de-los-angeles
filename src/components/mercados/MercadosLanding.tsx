@@ -144,17 +144,17 @@ export default function MercadosLanding() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="not-italic text-cream leading-[1.05] mb-6 md:mb-7"
+            className="not-italic text-cream leading-[1.1] mb-6 md:mb-7"
             style={{
               fontFamily: 'var(--font-fraunces), Georgia, serif',
-              fontSize: 'clamp(2.25rem, 6vw, 4.5rem)',
+              fontSize: 'clamp(1.875rem, 5vw, 3.75rem)',
               fontWeight: 700,
               letterSpacing: '0.005em',
             }}
           >
-            Mercados de
+            Participa en nuestros mercados
             <br />
-            <span className="text-gold">Casa de los Ángeles</span>
+            <span className="text-gold">dentro de Casa de los Ángeles</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -165,7 +165,7 @@ export default function MercadosLanding() {
             className="font-serif italic text-cream/90 leading-[1.5] mb-9 md:mb-11 max-w-2xl mx-auto"
             style={{ fontSize: 'clamp(1.125rem, 2.4vw, 1.5rem)' }}
           >
-            Una casa histórica del siglo XVIII donde las marcas forman parte de una
+            Una casa histórica en el Centro de Puebla donde las marcas forman parte de una
             experiencia, no de un bazar tradicional.
           </motion.p>
 
@@ -182,7 +182,7 @@ export default function MercadosLanding() {
               className="group inline-flex items-center gap-3 bg-gold hover:bg-gold-light text-charcoal px-7 py-4 md:px-9 md:py-5 text-sm md:text-base uppercase tracking-[0.2em] font-sans font-medium transition-all duration-500"
             >
               <WhatsAppIcon className="w-5 h-5" />
-              Hablar por WhatsApp
+              Reservar / Hablar por WhatsApp
               <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </a>
           </motion.div>
@@ -311,8 +311,9 @@ export default function MercadosLanding() {
           </h2>
 
           <p className="font-serif italic text-cream/90 text-center text-[17px] md:text-[19px] leading-[1.65] max-w-2xl mx-auto mb-9 md:mb-11">
-            La gente recorre la casa y descubre las marcas durante la experiencia. Muchas
-            personas pasan por las mesas al entrar y también al salir.
+            Casa de los Ángeles funciona distinto porque la gente recorre la casa y
+            descubre las marcas durante la experiencia. Muchas personas pasan por las
+            mesas al entrar y también al salir.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 max-w-2xl mx-auto">
@@ -365,7 +366,8 @@ export default function MercadosLanding() {
           </h2>
 
           <p className="font-sans text-cream/85 text-center text-[16px] md:text-[17px] leading-[1.65] max-w-2xl mx-auto mb-10 md:mb-12">
-            Una presentación cuidada, precios visibles y un montaje fácil de recorrer.
+            Te recomendamos venir con una presentación cuidada, precios visibles y un
+            montaje fácil de recorrer.
           </p>
 
           {/* Photo grid — placeholders ready for Elisabeth's photos */}
@@ -505,20 +507,25 @@ export default function MercadosLanding() {
                 className="flex items-center gap-5 md:gap-6 border-b border-cream/15 pb-5"
               >
                 {/* Price */}
-                <div className="flex-shrink-0 min-w-[110px] md:min-w-[140px] text-right">
+                <div className="flex-shrink-0 min-w-[110px] md:min-w-[150px] text-right">
                   {tarifa.price ? (
-                    <p
-                      className="font-serif not-italic text-gold font-bold leading-none"
-                      style={{ fontSize: 'clamp(1.75rem, 3.6vw, 2.5rem)', letterSpacing: '0.005em' }}
-                    >
-                      ${tarifa.price}
-                      <span
-                        className="font-sans text-cream/55 align-baseline ml-1"
-                        style={{ fontSize: '0.32em', letterSpacing: '0.15em', fontWeight: 500 }}
+                    <>
+                      <p className="font-sans uppercase tracking-[0.2em] text-cream/55 text-[10px] md:text-[11px] mb-1">
+                        Desde
+                      </p>
+                      <p
+                        className="font-serif not-italic text-gold font-bold leading-none"
+                        style={{ fontSize: 'clamp(1.75rem, 3.6vw, 2.5rem)', letterSpacing: '0.005em' }}
                       >
-                        MXN
-                      </span>
-                    </p>
+                        ${tarifa.price}
+                        <span
+                          className="font-sans text-cream/55 align-baseline ml-1"
+                          style={{ fontSize: '0.32em', letterSpacing: '0.15em', fontWeight: 500 }}
+                        >
+                          MXN
+                        </span>
+                      </p>
+                    </>
                   ) : (
                     <p
                       className="font-serif italic text-gold/85 leading-tight"
@@ -577,7 +584,7 @@ export default function MercadosLanding() {
                     letterSpacing: '0.005em',
                   }}
                 >
-                  Lineamientos para expositores
+                  Ver lineamientos para expositores
                 </span>
                 <span className="block font-sans text-cream/75 text-[14px] md:text-[15px] mt-1 leading-snug">
                   Reglas, requisitos y proceso
@@ -603,7 +610,7 @@ export default function MercadosLanding() {
                     letterSpacing: '0.005em',
                   }}
                 >
-                  Tips para vender mejor
+                  Ver tips para vender mejor
                 </span>
                 <span className="block font-sans text-cream/75 text-[14px] md:text-[15px] mt-1 leading-snug">
                   Guía práctica para expositores
