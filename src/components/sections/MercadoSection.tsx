@@ -21,8 +21,8 @@ const markets = [
     id: 'angeles',
     icon: Sun,
     name: 'Mercado de los Ángeles',
-    day: 'Viernes, Sábado y Domingo',
-    hours: '11:00 AM — 8:00 PM',
+    day: 'Vie · Sáb · Dom',
+    hours: 'Vie 4–9pm · Sáb–Dom 11am–8pm',
     concept: 'Diurno · turismo · café · compras',
   },
 ]

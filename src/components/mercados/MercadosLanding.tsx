@@ -36,8 +36,9 @@ const MARKETS = [
   {
     id: 'luna',
     name: 'Mercado de la Luna',
-    day: 'Viernes',
-    hours: '4:00 PM — 9:00 PM',
+    schedule: [
+      { day: 'Viernes', hours: '4:00 PM — 9:00 PM' },
+    ],
     concept:
       'Mercado nocturno. Ambiente especial, música, velas, mezcal y recorrido dentro de la casa histórica.',
     logo: '/images/mercado/mercado-de-la-luna-logo.png',
@@ -48,12 +49,14 @@ const MARKETS = [
   {
     id: 'angeles',
     name: 'Mercado de los Ángeles',
-    day: 'Viernes, Sábado y Domingo',
-    hours: '11:00 AM — 8:00 PM',
+    schedule: [
+      { day: 'Viernes', hours: '4:00 PM — 9:00 PM' },
+      { day: 'Sábado y Domingo', hours: '11:00 AM — 8:00 PM' },
+    ],
     concept:
       'Turismo, café, compras, recorrido de la casa y movimiento constante durante el día.',
     logo: '/images/mercado/mercado-de-los-angeles-logo.png',
-    href: `https://wa.me/522206224222?text=${encodeURIComponent('Hola, quiero información sobre el Mercado de los Ángeles (viernes, sábado y domingo) en Casa de los Ángeles. Mi marca se llama: __ y vendo: __.')}`,
+    href: `https://wa.me/522206224222?text=${encodeURIComponent('Hola, quiero información sobre el Mercado de los Ángeles (viernes 4–9pm, sábado y domingo 11am–8pm) en Casa de los Ángeles. Mi marca se llama: __ y vendo: __.')}`,
     isExternal: true,
     ctaLabel: 'Hablar por WhatsApp',
   },
@@ -203,20 +206,24 @@ export default function MercadosLanding() {
                       />
                     </div>
 
-                    {/* Days */}
-                    <div className="flex items-center justify-center gap-2 mb-3">
-                      <CalendarDays className="w-5 h-5 text-gold-dark" strokeWidth={1.5} />
-                      <p className="font-sans uppercase tracking-[0.22em] text-gold-dark text-xs md:text-sm font-medium">
-                        {market.day}
-                      </p>
-                    </div>
-
-                    {/* Hours */}
-                    <div className="flex items-center justify-center gap-2 mb-6">
-                      <Clock className="w-5 h-5 text-charcoal-50" strokeWidth={1.5} />
-                      <p className="font-sans text-charcoal text-lg md:text-xl font-medium">
-                        {market.hours}
-                      </p>
+                    {/* Schedule blocks — uno por cada bloque de horario */}
+                    <div className="mb-6 space-y-4">
+                      {market.schedule.map((s, idx) => (
+                        <div key={idx}>
+                          <div className="flex items-center justify-center gap-2 mb-1.5">
+                            <CalendarDays className="w-5 h-5 text-gold-dark" strokeWidth={1.5} />
+                            <p className="font-sans uppercase tracking-[0.22em] text-gold-dark text-xs md:text-sm font-medium">
+                              {s.day}
+                            </p>
+                          </div>
+                          <div className="flex items-center justify-center gap-2">
+                            <Clock className="w-5 h-5 text-charcoal-50" strokeWidth={1.5} />
+                            <p className="font-sans text-charcoal text-lg md:text-xl font-medium">
+                              {s.hours}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
                     </div>
 
                     {/* Concept */}
