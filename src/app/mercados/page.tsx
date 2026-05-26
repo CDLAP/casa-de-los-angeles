@@ -14,9 +14,5 @@ export const metadata: Metadata = {
 }
 
 export default function MercadosPage() {
-  return (
-    <main className="relative min-h-screen bg-cream text-charcoal overflow-hidden">
-      <MercadosLanding />
-    </main>
-  )
+  return <MercadosLanding />
 }
