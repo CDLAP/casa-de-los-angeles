@@ -5,8 +5,12 @@ import { motion, useInView } from 'framer-motion'
 import { Moon, Sun, Clock, MapPin, Calendar, FileText } from 'lucide-react'
 import Link from 'next/link'
 
+// CLIENTE: re-activar cuando Mercado de la Luna esté listo
+const SHOW_LUNA = false
+
 const markets = [
   {
+    id: 'luna',
     icon: Moon,
     name: 'Mercado de la Luna',
     day: 'Viernes',
@@ -14,6 +18,7 @@ const markets = [
     concept: 'Nocturno · velas · mezcal · música',
   },
   {
+    id: 'angeles',
     icon: Sun,
     name: 'Mercado de los Ángeles',
     day: 'Sábado y Domingo',
@@ -21,6 +26,8 @@ const markets = [
     concept: 'Diurno · turismo · café · compras',
   },
 ]
+
+const visibleMarkets = SHOW_LUNA ? markets : markets.filter(m => m.id !== 'luna')
 
 export default function MercadoSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -45,16 +52,15 @@ export default function MercadoSection() {
             </h2>
             <p className="text-charcoal-50 text-lg leading-relaxed mb-4">
               Una casa histórica del siglo XVIII donde las marcas forman parte de una
-              experiencia, no de un bazar tradicional. Dos mercados con perfil distinto, mismo
-              espíritu curado.
+              experiencia, no de un bazar tradicional.{visibleMarkets.length > 1 ? ' Dos mercados con perfil distinto, mismo espíritu curado.' : ''}
             </p>
             <p className="text-charcoal-50 text-lg leading-relaxed mb-8">
               A media cuadra del Zócalo, en el corazón del Centro Histórico de Puebla.
             </p>
 
-            {/* Two markets quick view */}
-            <div className="grid sm:grid-cols-2 gap-5 mb-10">
-              {markets.map((market, index) => (
+            {/* Markets quick view */}
+            <div className={`grid ${visibleMarkets.length > 1 ? 'sm:grid-cols-2' : 'max-w-md mx-auto lg:mx-0'} gap-5 mb-10`}>
+              {visibleMarkets.map((market, index) => (
                 <motion.div
                   key={market.name}
                   className="bg-white border border-gold/20 rounded-xl p-5 text-left"
@@ -122,7 +128,7 @@ export default function MercadoSection() {
               transition={{ duration: 0.6, delay: 0.6 }}
             >
               <p className="text-charcoal-50 mb-6">
-                ¿Te gustaría participar como expositor? Conoce los dos mercados, sus zonas y tarifas.
+                ¿Te gustaría participar como expositor? Conoce {visibleMarkets.length > 1 ? 'los dos mercados, sus zonas y tarifas' : 'el mercado, sus zonas y tarifas'}.
               </p>
               <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center lg:justify-start">
                 <motion.div
@@ -133,7 +139,7 @@ export default function MercadoSection() {
                     href="/mercados"
                     className="btn-filled w-full sm:w-auto text-center"
                   >
-                    Ver los Mercados
+                    {visibleMarkets.length > 1 ? 'Ver los Mercados' : 'Ver el Mercado'}
                   </Link>
                 </motion.div>
                 <motion.a

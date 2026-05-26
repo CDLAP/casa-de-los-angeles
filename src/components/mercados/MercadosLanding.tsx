@@ -13,10 +13,18 @@ import {
   Camera,
 } from 'lucide-react'
 import WhatsAppIcon from '@/components/mercado/WhatsAppIcon'
+import { GALLERY_PHOTOS } from '@/data/gallery-photos'
 
 /* ============================================================
    DATA — single source of truth from Elisabeth's brief
    ============================================================ */
+
+// CLIENTE: re-activar cuando Mercado de la Luna esté listo
+const SHOW_LUNA = false
+
+// Gallery photos viven en src/data/gallery-photos.ts (auto-generado).
+// Para agregar fotos: pon archivos en /public/images/mercado/gallery/ y corre `npm run gallery`
+// (o solo push — corre automático antes de cada build de Vercel).
 
 const WHATSAPP = '522206224222'
 const WHATSAPP_DISPLAY = '220 6224 222'
@@ -39,6 +47,8 @@ const MARKETS = [
       'Mercado nocturno. Ambiente especial, música, velas, mezcal y recorrido dentro de la casa histórica.',
     logo: '/images/mercado/mercado-de-la-luna-logo.png',
     href: '/mercado-de-los-angeles',
+    isExternal: false,
+    ctaLabel: 'Ver detalles',
   },
   {
     id: 'angeles',
@@ -48,9 +58,13 @@ const MARKETS = [
     concept:
       'Turismo, café, compras, recorrido de la casa y movimiento constante durante el día.',
     logo: '/images/mercado/mercado-de-los-angeles-logo.png',
-    href: null, // detail page not built yet
+    href: `https://wa.me/522206224222?text=${encodeURIComponent('Hola, quiero información sobre el Mercado de los Ángeles diurno (sábado y domingo) en Casa de los Ángeles. Mi marca se llama: __ y vendo: __.')}`,
+    isExternal: true,
+    ctaLabel: 'Hablar por WhatsApp',
   },
 ]
+
+const VISIBLE_MARKETS = SHOW_LUNA ? MARKETS : MARKETS.filter(m => m.id !== 'luna')
 
 const RAZONES = [
   'Casa histórica en el Centro de Puebla',
@@ -114,7 +128,7 @@ export default function MercadosLanding() {
       {/* ==========================================================
           1. HERO
           ========================================================== */}
-      <section className="relative pt-[140px] md:pt-[200px] pb-12 md:pb-16">
+      <section className="relative pt-[160px] md:pt-[300px] pb-12 md:pb-16">
         {/* Radial gold glow */}
         <div className="absolute inset-0 pointer-events-none">
           <div
@@ -213,20 +227,13 @@ export default function MercadosLanding() {
               letterSpacing: '0.005em',
             }}
           >
-            Nuestros mercados
+            {VISIBLE_MARKETS.length === 1 ? 'Nuestro mercado' : 'Nuestros mercados'}
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {MARKETS.map((market, i) => (
-              <motion.div
-                key={market.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.7, delay: 0.1 + i * 0.12 }}
-                className="relative flex flex-col bg-[#0F1A2E]/50 border border-cream/15 hover:border-gold/60 transition-all duration-500"
-              >
-                <div className="p-7 md:p-9 flex flex-col flex-1 text-center">
+          <div className={`grid grid-cols-1 ${VISIBLE_MARKETS.length > 1 ? 'md:grid-cols-2' : 'max-w-md mx-auto'} gap-6 md:gap-8`}>
+            {VISIBLE_MARKETS.map((market, i) => {
+              const cardInner = (
+                <div className="p-7 md:p-9 flex flex-col flex-1 text-center h-full">
                   {/* Logo as brand identifier — h3 wraps img for SEO, sr-only span carries the name */}
                   <h3 className="flex justify-center mb-6 md:mb-7">
                     <span className="sr-only">{market.name}</span>
@@ -256,19 +263,42 @@ export default function MercadosLanding() {
                     {market.concept}
                   </p>
 
-                  {/* Optional link */}
-                  {market.href && (
-                    <Link
+                  {/* CTA cue — the whole card is clickable; this signals where it leads */}
+                  <span className="inline-flex items-center justify-center gap-2 mt-6 font-sans uppercase tracking-[0.22em] text-gold group-hover:text-gold-light text-xs md:text-[13px] transition-colors duration-300">
+                    {market.ctaLabel}
+                    <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                  </span>
+                </div>
+              )
+
+              const cardClasses = "group block relative flex flex-col h-full bg-[#0F1A2E]/50 border border-cream/15 hover:border-gold/60 hover:bg-[#0F1A2E]/70 transition-all duration-500 cursor-pointer"
+
+              return (
+                <motion.div
+                  key={market.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ duration: 0.7, delay: 0.1 + i * 0.12 }}
+                  className="flex"
+                >
+                  {market.isExternal ? (
+                    <a
                       href={market.href}
-                      className="group/link inline-flex items-center justify-center gap-2 mt-6 font-sans uppercase tracking-[0.22em] text-gold hover:text-gold-light text-xs md:text-[13px] transition-colors"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={cardClasses}
                     >
-                      Ver detalles
-                      <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover/link:translate-x-1" />
+                      {cardInner}
+                    </a>
+                  ) : (
+                    <Link href={market.href} className={cardClasses}>
+                      {cardInner}
                     </Link>
                   )}
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              )
+            })}
           </div>
         </motion.div>
       </section>
@@ -362,28 +392,39 @@ export default function MercadosLanding() {
             montaje fácil de recorrer.
           </p>
 
-          {/* Photo grid — placeholders ready for Elisabeth's photos */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-            {[1, 2, 3, 4, 5, 6].map((n) => (
-              <motion.div
-                key={n}
-                initial={{ opacity: 0, scale: 0.96 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: '-30px' }}
-                transition={{ duration: 0.5, delay: 0.05 * n }}
-                className="aspect-[4/5] border border-gold/20 bg-[#0F1A2E]/50 flex flex-col items-center justify-center text-center p-4 group"
-              >
-                <Camera className="w-6 h-6 text-gold/40 group-hover:text-gold/70 transition-colors mb-2.5" strokeWidth={1.5} />
-                <span className="font-sans uppercase tracking-[0.2em] text-cream/35 text-[10px] md:text-[11px]">
-                  Foto {String(n).padStart(2, '0')}
-                </span>
-              </motion.div>
-            ))}
-          </div>
-
-          <p className="font-sans italic text-cream/55 text-center text-sm mt-7 max-w-xl mx-auto">
-            Galería en construcción. Las fotos de los montajes se sumarán próximamente.
-          </p>
+          {/* Photo gallery — masonry when populated, single placeholder when empty */}
+          {GALLERY_PHOTOS.length > 0 ? (
+            <div className="columns-1 sm:columns-2 md:columns-3 gap-3 md:gap-4">
+              {GALLERY_PHOTOS.map((photo, i) => (
+                <motion.div
+                  key={photo.src}
+                  initial={{ opacity: 0, scale: 0.97 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, margin: '-30px' }}
+                  transition={{ duration: 0.5, delay: Math.min(0.04 * i, 0.32) }}
+                  className="break-inside-avoid mb-3 md:mb-4"
+                >
+                  <img
+                    src={photo.src}
+                    alt={photo.alt}
+                    loading="lazy"
+                    className="w-full h-auto block hover:opacity-90 transition-opacity duration-300 select-none"
+                    draggable={false}
+                  />
+                </motion.div>
+              ))}
+            </div>
+          ) : (
+            <div className="border border-gold/20 bg-[#0F1A2E]/40 py-16 md:py-20 px-6 flex flex-col items-center justify-center text-center">
+              <Camera className="w-10 h-10 text-gold/40 mb-4" strokeWidth={1.5} />
+              <p className="font-serif italic text-cream/70 text-lg md:text-xl leading-snug mb-2">
+                Galería en construcción
+              </p>
+              <p className="font-sans text-cream/55 text-sm max-w-md leading-[1.65]">
+                Las fotos de los montajes se sumarán próximamente.
+              </p>
+            </div>
+          )}
         </motion.div>
       </section>
 
@@ -669,7 +710,14 @@ export default function MercadosLanding() {
           </a>
 
           <p className="font-sans text-cream/55 text-sm mt-7 max-w-md mx-auto leading-[1.65]">
-            Centro Histórico de Puebla · A media cuadra del Zócalo
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Casa+de+los+Angeles+Palafox+222+Puebla"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-gold transition-colors duration-300"
+            >
+              Av. Don Juan de Palafox y Mendoza 222 · Centro Histórico de Puebla
+            </a>
           </p>
         </motion.div>
       </section>
