@@ -53,12 +53,12 @@ const MARKETS = [
   {
     id: 'angeles',
     name: 'Mercado de los Ángeles',
-    day: 'Sábado y Domingo',
+    day: 'Viernes, Sábado y Domingo',
     hours: '11:00 AM — 8:00 PM',
     concept:
       'Turismo, café, compras, recorrido de la casa y movimiento constante durante el día.',
     logo: '/images/mercado/mercado-de-los-angeles-logo.png',
-    href: `https://wa.me/522206224222?text=${encodeURIComponent('Hola, quiero información sobre el Mercado de los Ángeles diurno (sábado y domingo) en Casa de los Ángeles. Mi marca se llama: __ y vendo: __.')}`,
+    href: `https://wa.me/522206224222?text=${encodeURIComponent('Hola, quiero información sobre el Mercado de los Ángeles (viernes, sábado y domingo) en Casa de los Ángeles. Mi marca se llama: __ y vendo: __.')}`,
     isExternal: true,
     ctaLabel: 'Hablar por WhatsApp',
   },
@@ -129,7 +129,6 @@ export default function MercadosLanding() {
           1. HERO
           ========================================================== */}
       <section className="relative pt-[160px] md:pt-[300px] pb-12 md:pb-16">
-        {/* Radial gold glow */}
         <div className="absolute inset-0 pointer-events-none">
           <div
             className="absolute top-0 left-1/2 -translate-x-1/2 w-[150%] h-[60vh] opacity-40"
@@ -141,7 +140,6 @@ export default function MercadosLanding() {
         </div>
 
         <div className="container-custom relative z-10 text-center max-w-3xl mx-auto">
-          {/* Eyebrow */}
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -151,25 +149,48 @@ export default function MercadosLanding() {
             Casa de los Ángeles · Centro Histórico de Puebla
           </motion.p>
 
-          {/* Title */}
+          {/* Title — three-tier editorial composition */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="not-italic text-cream leading-[1.1] mb-6 md:mb-7"
-            style={{
-              fontFamily: 'var(--font-fraunces), Georgia, serif',
-              fontSize: 'clamp(1.875rem, 5vw, 3.75rem)',
-              fontWeight: 700,
-              letterSpacing: '0.005em',
-            }}
+            className="mb-6 md:mb-7"
           >
-            Participa en nuestros mercados
-            <br />
-            <span className="text-gold">dentro de Casa de los Ángeles</span>
+            <span
+              className="block font-serif not-italic text-cream leading-tight"
+              style={{
+                fontFamily: 'var(--font-fraunces), Georgia, serif',
+                fontSize: 'clamp(1.75rem, 4.4vw, 3rem)',
+                fontWeight: 700,
+                letterSpacing: '0.005em',
+              }}
+            >
+              Participa en {VISIBLE_MARKETS.length === 1 ? 'nuestro mercado' : 'nuestros mercados'}
+            </span>
+            <span
+              className="block font-serif italic text-cream/70 my-2.5 md:my-3.5"
+              style={{
+                fontFamily: 'var(--font-fraunces), Georgia, serif',
+                fontSize: 'clamp(0.9rem, 1.6vw, 1.125rem)',
+                fontWeight: 400,
+                letterSpacing: '0.04em',
+              }}
+            >
+              dentro de
+            </span>
+            <span
+              className="block font-serif not-italic text-gold leading-[1.05]"
+              style={{
+                fontFamily: 'var(--font-fraunces), Georgia, serif',
+                fontSize: 'clamp(2.25rem, 5.8vw, 4.25rem)',
+                fontWeight: 700,
+                letterSpacing: '-0.005em',
+              }}
+            >
+              Casa de los Ángeles
+            </span>
           </motion.h1>
 
-          {/* Subtitle */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -181,7 +202,6 @@ export default function MercadosLanding() {
             experiencia, no de un bazar tradicional.
           </motion.p>
 
-          {/* CTA */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -202,7 +222,7 @@ export default function MercadosLanding() {
       </section>
 
       {/* ==========================================================
-          2. NUESTROS MERCADOS — two cards
+          2. NUESTROS MERCADOS — cards
           ========================================================== */}
       <section className="container-custom py-12 md:py-16">
         <motion.div
@@ -234,7 +254,6 @@ export default function MercadosLanding() {
             {VISIBLE_MARKETS.map((market, i) => {
               const cardInner = (
                 <div className="p-7 md:p-9 flex flex-col flex-1 text-center h-full">
-                  {/* Logo as brand identifier — h3 wraps img for SEO, sr-only span carries the name */}
                   <h3 className="flex justify-center mb-6 md:mb-7">
                     <span className="sr-only">{market.name}</span>
                     <img
@@ -248,7 +267,6 @@ export default function MercadosLanding() {
                     />
                   </h3>
 
-                  {/* Day + Hours */}
                   <div className="mb-5 space-y-1.5">
                     <p className="font-sans uppercase tracking-[0.22em] text-gold text-xs md:text-[13px]">
                       {market.day}
@@ -258,12 +276,10 @@ export default function MercadosLanding() {
                     </p>
                   </div>
 
-                  {/* Concept */}
                   <p className="font-sans text-cream/90 text-[16px] md:text-[17px] leading-[1.65] flex-1 max-w-sm mx-auto">
                     {market.concept}
                   </p>
 
-                  {/* CTA cue — the whole card is clickable; this signals where it leads */}
                   <span className="inline-flex items-center justify-center gap-2 mt-6 font-sans uppercase tracking-[0.22em] text-gold group-hover:text-gold-light text-xs md:text-[13px] transition-colors duration-300">
                     {market.ctaLabel}
                     <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -359,70 +375,86 @@ export default function MercadosLanding() {
       </section>
 
       {/* ==========================================================
-          4. ASÍ SE PUEDE VER TU ESPACIO — gallery (placeholders for now)
+          4. ASÍ SE PUEDE VER TU ESPACIO — Swipe carousel
           ========================================================== */}
-      <section className="container-custom py-12 md:py-16">
+      <section className="py-12 md:py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7 }}
-          className="max-w-5xl mx-auto"
         >
-          <div className="flex items-center justify-center gap-3 mb-7">
-            <div className="w-12 md:w-20 h-px bg-gold/50" />
-            <div className="w-1.5 h-1.5 bg-gold rotate-45" />
-            <div className="w-12 md:w-20 h-px bg-gold/50" />
+          <div className="container-custom">
+            <div className="flex items-center justify-center gap-3 mb-7">
+              <div className="w-12 md:w-20 h-px bg-gold/50" />
+              <div className="w-1.5 h-1.5 bg-gold rotate-45" />
+              <div className="w-12 md:w-20 h-px bg-gold/50" />
+            </div>
+
+            <h2
+              className="not-italic text-cream text-center mb-5 leading-tight"
+              style={{
+                fontFamily: 'var(--font-fraunces), Georgia, serif',
+                fontSize: 'clamp(2rem, 4.8vw, 3.25rem)',
+                fontWeight: 700,
+                letterSpacing: '0.005em',
+              }}
+            >
+              Así se puede ver tu espacio
+            </h2>
+
+            <p className="font-sans text-cream/85 text-center text-[16px] md:text-[17px] leading-[1.65] max-w-2xl mx-auto mb-10 md:mb-12">
+              Te recomendamos venir con una presentación cuidada, precios visibles y un
+              montaje fácil de recorrer.
+            </p>
           </div>
 
-          <h2
-            className="not-italic text-cream text-center mb-5 leading-tight"
-            style={{
-              fontFamily: 'var(--font-fraunces), Georgia, serif',
-              fontSize: 'clamp(2rem, 4.8vw, 3.25rem)',
-              fontWeight: 700,
-              letterSpacing: '0.005em',
-            }}
-          >
-            Así se puede ver tu espacio
-          </h2>
-
-          <p className="font-sans text-cream/85 text-center text-[16px] md:text-[17px] leading-[1.65] max-w-2xl mx-auto mb-10 md:mb-12">
-            Te recomendamos venir con una presentación cuidada, precios visibles y un
-            montaje fácil de recorrer.
-          </p>
-
-          {/* Photo gallery — masonry when populated, single placeholder when empty */}
+          {/* Swipe carousel — horizontal snap scroll, edges bleed for premium feel */}
           {GALLERY_PHOTOS.length > 0 ? (
-            <div className="columns-1 sm:columns-2 md:columns-3 gap-3 md:gap-4">
-              {GALLERY_PHOTOS.map((photo, i) => (
-                <motion.div
-                  key={photo.src}
-                  initial={{ opacity: 0, scale: 0.97 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true, margin: '-30px' }}
-                  transition={{ duration: 0.5, delay: Math.min(0.04 * i, 0.32) }}
-                  className="break-inside-avoid mb-3 md:mb-4"
-                >
-                  <img
-                    src={photo.src}
-                    alt={photo.alt}
-                    loading="lazy"
-                    className="w-full h-auto block hover:opacity-90 transition-opacity duration-300 select-none"
-                    draggable={false}
-                  />
-                </motion.div>
-              ))}
-            </div>
+            <>
+              <div
+                className="overflow-x-auto snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden"
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              >
+                <div className="flex gap-3 md:gap-4 px-[10vw] sm:px-[15vw] md:px-[calc((100vw-880px)/2)]">
+                  {GALLERY_PHOTOS.map((photo, i) => (
+                    <motion.div
+                      key={photo.src}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true, margin: '-30px' }}
+                      transition={{ duration: 0.5, delay: Math.min(0.04 * i, 0.3) }}
+                      className="snap-center shrink-0 w-[80vw] sm:w-[65vw] md:w-[420px] aspect-[4/5] overflow-hidden bg-[#0F1A2E]/40 group cursor-grab active:cursor-grabbing"
+                    >
+                      <img
+                        src={photo.src}
+                        alt={photo.alt}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 select-none pointer-events-none"
+                        draggable={false}
+                      />
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="container-custom">
+                <p className="text-center font-sans uppercase tracking-[0.3em] text-cream/45 text-[10px] md:text-[11px] mt-7 md:mt-9">
+                  ← Desliza para ver más →
+                </p>
+              </div>
+            </>
           ) : (
-            <div className="border border-gold/20 bg-[#0F1A2E]/40 py-16 md:py-20 px-6 flex flex-col items-center justify-center text-center">
-              <Camera className="w-10 h-10 text-gold/40 mb-4" strokeWidth={1.5} />
-              <p className="font-serif italic text-cream/70 text-lg md:text-xl leading-snug mb-2">
-                Galería en construcción
-              </p>
-              <p className="font-sans text-cream/55 text-sm max-w-md leading-[1.65]">
-                Las fotos de los montajes se sumarán próximamente.
-              </p>
+            <div className="container-custom">
+              <div className="border border-gold/20 bg-[#0F1A2E]/40 py-16 md:py-20 px-6 flex flex-col items-center justify-center text-center max-w-5xl mx-auto">
+                <Camera className="w-10 h-10 text-gold/40 mb-4" strokeWidth={1.5} />
+                <p className="font-serif italic text-cream/70 text-lg md:text-xl leading-snug mb-2">
+                  Galería en construcción
+                </p>
+                <p className="font-sans text-cream/55 text-sm max-w-md leading-[1.65]">
+                  Las fotos de los montajes se sumarán próximamente.
+                </p>
+              </div>
             </div>
           )}
         </motion.div>
@@ -539,7 +571,6 @@ export default function MercadosLanding() {
                 transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
                 className="flex items-center gap-5 md:gap-6 border-b border-cream/15 pb-5"
               >
-                {/* Price */}
                 <div className="flex-shrink-0 min-w-[110px] md:min-w-[150px] text-right">
                   {tarifa.price ? (
                     <>
@@ -569,7 +600,6 @@ export default function MercadosLanding() {
                   )}
                 </div>
 
-                {/* Description */}
                 <div className="flex-1 min-w-0">
                   <h3 className="font-sans uppercase tracking-[0.18em] text-cream text-sm md:text-base font-medium mb-1.5">
                     {tarifa.name}
