@@ -14,7 +14,7 @@ const baseIncludes = [
   'Uso del espacio por 2 horas',
   'Montaje tipo conferencia',
   'Bocina y micrófono incluidos',
-  'Café americano ilimitado',
+  'Café americano',
   'Agua natural',
   'Personal de apoyo',
   'Limpieza antes y después',
