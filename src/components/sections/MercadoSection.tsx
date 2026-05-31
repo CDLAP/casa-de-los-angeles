@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Moon, Sun, Clock, MapPin, Calendar, FileText } from 'lucide-react'
+import { Moon, Sun, Clock, MapPin, FileText } from 'lucide-react'
 import Link from 'next/link'
 
 // CLIENTE: re-activar cuando Mercado de la Luna esté listo
@@ -109,13 +109,6 @@ export default function MercadoSection() {
                     >
                       Casa de los Ángeles
                     </a>
-                  </div>
-                </div>
-                <div className="flex flex-col items-center lg:flex-row lg:items-center gap-2 lg:gap-3">
-                  <Calendar className="w-5 h-5 text-emerald" />
-                  <div>
-                    <p className="text-xs text-charcoal-50 uppercase tracking-wider">Tarifas</p>
-                    <p className="text-charcoal font-medium">Desde $300 MXN</p>
                   </div>
                 </div>
               </div>

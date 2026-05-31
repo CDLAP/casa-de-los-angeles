@@ -402,10 +402,10 @@ export default function MercadosLanding() {
             transition={{ duration: 0.7 }}
           >
             <p className="font-sans uppercase tracking-[0.3em] text-gold text-xs md:text-sm mb-4 text-center">
-              Inversión
+              Participación
             </p>
             <h2 className="font-serif text-display-md text-gold-dark text-center mb-12">
-              Tarifas
+              Modalidades de participación
             </h2>
 
             <div className="bg-white border border-gold/20 rounded-2xl shadow-lg overflow-hidden">
@@ -416,36 +416,14 @@ export default function MercadosLanding() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-30px' }}
                   transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
-                  className={`flex items-center gap-6 p-6 md:p-8 ${i < TARIFAS.length - 1 ? 'border-b border-cream-300' : ''}`}
+                  className={`p-6 md:p-8 ${i < TARIFAS.length - 1 ? 'border-b border-cream-300' : ''}`}
                 >
-                  <div className="flex-shrink-0 min-w-[110px] md:min-w-[150px] text-right">
-                    {tarifa.price ? (
-                      <>
-                        <p className="font-sans uppercase tracking-[0.2em] text-charcoal-50 text-[11px] md:text-xs mb-1.5">
-                          Desde
-                        </p>
-                        <p className="font-serif text-display-sm text-gold-dark leading-none">
-                          ${tarifa.price}
-                          <span className="font-sans text-charcoal-50 text-xs md:text-sm ml-1.5 tracking-wider not-italic font-medium">
-                            MXN
-                          </span>
-                        </p>
-                      </>
-                    ) : (
-                      <p className="font-serif text-xl md:text-2xl text-gold-dark leading-tight">
-                        Preferencial
-                      </p>
-                    )}
-                  </div>
-
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-sans uppercase tracking-[0.18em] text-charcoal text-sm md:text-base font-semibold mb-2 not-italic">
-                      {tarifa.name}
-                    </h3>
-                    <p className="text-charcoal-50 text-base md:text-lg leading-relaxed">
-                      {tarifa.description}
-                    </p>
-                  </div>
+                  <h3 className="font-sans uppercase tracking-[0.18em] text-charcoal text-sm md:text-base font-semibold mb-2 not-italic">
+                    {tarifa.name}
+                  </h3>
+                  <p className="text-charcoal-50 text-base md:text-lg leading-relaxed">
+                    {tarifa.description}
+                  </p>
                 </motion.div>
               ))}
             </div>

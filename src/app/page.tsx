@@ -8,7 +8,6 @@ import Hero from '@/components/sections/Hero'
 import About from '@/components/sections/About'
 import CafeSection from '@/components/sections/CafeSection'
 import Boutique from '@/components/sections/Boutique'
-import Atelier from '@/components/sections/Atelier'
 import RuedaPrensa from '@/components/sections/RuedaPrensa'
 import MercadoSection from '@/components/sections/MercadoSection'
 import Contact from '@/components/sections/Contact'
@@ -25,7 +24,6 @@ export default function Home() {
       <CafeSection />
       <About />
       <Boutique />
-      <Atelier />
       <MercadoSection />
       <RuedaPrensa />
       <Contact />

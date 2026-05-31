@@ -12,7 +12,6 @@ const mainLinks = [
   { href: '/#menu', label: 'Café' },
   { href: '/museo', label: 'Museo' },
   { href: '/#boutique', label: 'Boutique' },
-  { href: '/#atelier', label: 'Atelier' },
   { href: '/mercados', label: 'Mercados' },
   { href: '/#rueda-de-prensa', label: 'Prensa' },
 ]

@@ -12,7 +12,6 @@ export default function Footer() {
     { label: 'Café', href: '/#menu' },
     { label: 'Museo', href: '/#nosotros' },
     { label: 'Boutique', href: '/#boutique' },
-    { label: 'Atelier', href: '/#atelier' },
     { label: 'Prensa', href: '/#rueda-de-prensa' },
     { label: 'Mercado', href: '/#mercado' },
     { label: 'Contacto', href: '/#contacto' },

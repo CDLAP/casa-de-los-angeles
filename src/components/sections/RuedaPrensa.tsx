@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect, useCallback } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Coffee, UtensilsCrossed, Check, Clock, Monitor, ClipboardList, Camera, Plus } from 'lucide-react'
+import { Coffee, UtensilsCrossed, Check } from 'lucide-react'
 
 const pressImages = [
   { src: '/images/prensa/prensa1.jpg', alt: 'Rueda de prensa en Casa de los Ángeles - Vista de panelistas' },
@@ -19,30 +19,6 @@ const baseIncludes = [
   'Personal de apoyo',
   'Limpieza antes y después',
   'Conexión eléctrica para equipo',
-]
-
-const extras = [
-  {
-    icon: Clock,
-    title: 'Hora extra del espacio',
-    price: '$800 MXN',
-  },
-  {
-    icon: Monitor,
-    title: 'Pantalla para presentaciones',
-    price: '$1,000 MXN',
-    note: 'Sin proyector incluido',
-  },
-  {
-    icon: ClipboardList,
-    title: 'Registro de invitados / recepción',
-    price: '$400 MXN',
-  },
-  {
-    icon: Camera,
-    title: 'Fotografía del evento',
-    price: 'Desde $1,500 MXN',
-  },
 ]
 
 function PressCarousel() {
@@ -188,7 +164,7 @@ export default function RuedaPrensa() {
 
               <div className="mb-6 text-center md:text-left">
                 <div className="flex items-baseline gap-1 justify-center md:justify-start">
-                  <span className="font-serif text-3xl md:text-4xl text-gold-dark">$2,500</span>
+                  <span className="font-serif text-3xl md:text-4xl text-gold-dark">$3,000</span>
                   <span className="text-charcoal-50 text-sm">MXN</span>
                 </div>
                 <p className="text-sm text-charcoal-50 mt-1">Hasta 20 personas</p>
@@ -237,7 +213,7 @@ export default function RuedaPrensa() {
 
               <div className="mb-6 text-center md:text-left">
                 <div className="flex items-baseline gap-1 justify-center md:justify-start">
-                  <span className="font-serif text-3xl md:text-4xl text-gold-dark">$3,000</span>
+                  <span className="font-serif text-3xl md:text-4xl text-gold-dark">$4,000</span>
                   <span className="text-charcoal-50 text-sm">MXN</span>
                 </div>
                 <p className="text-sm text-charcoal-50 mt-1">Hasta 20 personas</p>
@@ -269,44 +245,6 @@ export default function RuedaPrensa() {
                 Reservar
               </motion.a>
             </motion.div>
-          </div>
-        </motion.div>
-
-        {/* Servicios Adicionales */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.5 }}
-        >
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-2 mb-4">
-              <Plus className="w-5 h-5 text-gold-dark" />
-              <h3 className="font-serif text-2xl text-gold-dark">Servicios Adicionales</h3>
-            </div>
-            <p className="text-charcoal-50 max-w-xl mx-auto">
-              Personalice su evento con los complementos que necesite.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            {extras.map((extra, index) => (
-              <motion.div
-                key={extra.title}
-                className="group p-6 rounded-2xl border border-gold/10 bg-cream/30 hover:bg-cream hover:border-gold/30 hover:shadow-lg transition-all duration-500 text-center"
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-              >
-                <div className="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-gold/20 transition-colors duration-300">
-                  <extra.icon className="w-5 h-5 text-gold-dark" />
-                </div>
-                <h4 className="font-serif text-lg text-charcoal mb-2">{extra.title}</h4>
-                {extra.note && (
-                  <p className="text-xs text-charcoal-50 mb-2 italic">{extra.note}</p>
-                )}
-                <p className="text-gold-dark font-semibold">{extra.price}</p>
-              </motion.div>
-            ))}
           </div>
         </motion.div>
       </div>
