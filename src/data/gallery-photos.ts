@@ -2,4 +2,149 @@
 // To update: drop photos in /public/images/mercado/gallery/ and the next build will refresh this file.
 // Manual refresh: npm run gallery
 
-export const GALLERY_PHOTOS: ReadonlyArray<{ src: string; alt: string }> = [] as const
+export const GALLERY_PHOTOS: ReadonlyArray<{ src: string; alt: string }> = [
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.12.13 (1).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.12.13 (2).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.12.13 (3).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.12.13 (4).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.12.13 (5).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.12.13.jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.12.14 (1).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.12.14 (2).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.12.14 (3).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.12.14 (6).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.12.14 (7).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.12.15 (1).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.12.15 (2).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.12.15 (3).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.12.15 (4).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.12.15 (5).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.12.15 (6).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.12.15 (7).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.12.15 (8).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.12.16 (1).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.12.16 (2).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.12.16.jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.12.27 (1).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.12.27.jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.52.32 (1).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.52.32 (2).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.52.32 (3).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.52.32.jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.52.33 (1).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.52.33 (2).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.52.33 (3).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.52.33 (5).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.52.33 (6).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.52.33 (8).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.52.33 (9).jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  },
+  {
+    "src": "/images/mercado/gallery/WhatsApp Image 2026-05-25 at 17.52.33.jpeg",
+    "alt": "Montaje del mercado en Casa de los Ángeles"
+  }
+] as const
