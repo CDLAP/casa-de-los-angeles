@@ -14,6 +14,7 @@ const mainLinks = [
   { href: '/#boutique', label: 'Boutique' },
   { href: '/mercados', label: 'Mercados' },
   { href: '/#rueda-de-prensa', label: 'Prensa' },
+  { href: '/artesania-visual', label: 'Artesanía Visual' },
 ]
 
 const moreLinks = [
@@ -36,6 +37,7 @@ export default function Header() {
   const isEventos = pathname === '/eventos'
   const isPromocion = pathname === '/promocion'
   const isRP = pathname === '/relaciones-publicas'
+  const isArtesania = pathname === '/artesania-visual'
   const isMuseo = pathname === '/museo'
   const isMercado = pathname === '/mercados' || pathname.startsWith('/mercados/') || pathname.startsWith('/mercado-de-los-angeles')
   const [isScrolled, setIsScrolled] = useState(false)
@@ -50,6 +52,7 @@ export default function Header() {
     if (isEventos) { setActiveSection('/eventos'); return }
     if (isPromocion) { setActiveSection('/promocion'); return }
     if (isRP) { setActiveSection('/relaciones-publicas'); return }
+    if (isArtesania) { setActiveSection('/artesania-visual'); return }
     if (isMuseo) { setActiveSection('/museo'); return }
     if (isMercado) { setActiveSection('/mercados'); return }
     const sections = document.querySelectorAll('section[id]')
@@ -64,7 +67,7 @@ export default function Header() {
     )
     sections.forEach((s) => observer.observe(s))
     return () => observer.disconnect()
-  }, [isBistro, isCultura, isEventos, isPromocion, isRP, isMuseo, isMercado, pathname])
+  }, [isBistro, isCultura, isEventos, isPromocion, isRP, isArtesania, isMuseo, isMercado, pathname])
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50)
