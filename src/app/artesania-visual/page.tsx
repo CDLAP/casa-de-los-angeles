@@ -20,7 +20,9 @@ import {
 // type 'image' o 'video'; los videos se reproducen solos en silencio. El label aparece sobre cada pieza.
 const galleryItems: { type: 'image' | 'video'; src: string; label: string }[] = [
   { type: 'image', src: '/images/artesania/dp.jpg', label: 'Desayuno París' },
+  { type: 'image', src: '/images/artesania/ss.jpg', label: 'Lifestyle' },
   { type: 'image', src: '/images/artesania/cc.jpg', label: 'Café' },
+  { type: 'image', src: '/images/artesania/pan.jpg', label: 'Panadería' },
   { type: 'image', src: '/images/artesania/branding.jpg', label: 'Branding' },
   { type: 'image', src: '/images/artesania/talavera.jpg', label: 'Talavera' },
   { type: 'image', src: '/images/artesania/textil.jpg', label: 'Textil' },
