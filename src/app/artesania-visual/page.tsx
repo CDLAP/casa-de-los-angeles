@@ -105,7 +105,7 @@ export default function ArtesaniaVisualPage() {
           <div className="absolute inset-0 bg-gradient-to-br from-bistro-dark via-bistro to-bistro-600" />
           <div className="absolute inset-0 bg-gradient-radial from-gold/8 via-transparent to-transparent" />
         </div>
-        <div className="relative z-10 text-center px-5 max-w-4xl mx-auto pt-[150px] md:pt-[210px] pb-16">
+        <div className="relative z-10 text-center px-5 max-w-4xl mx-auto pt-[150px] md:pt-[290px] pb-16">
           <motion.p
             className="text-gold/70 text-sm uppercase tracking-[0.3em] mb-6"
             initial={{ opacity: 0 }}
