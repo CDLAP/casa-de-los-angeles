@@ -11,21 +11,25 @@ import {
   TrendingUp,
   Mail,
   MessageCircle,
-  Play,
   Check,
   Send,
 } from 'lucide-react'
 
 // ─── Configuración rápida ───────────────────────────────────────────
-// Cambia src de null a la ruta real (ej. '/images/artesania/ejemplo-1.jpg')
-// cuando subas las imágenes/videos. Mientras siga en null se muestra el placeholder.
-const galleryItems: { type: 'image' | 'video'; src: string | null; label: string }[] = [
-  { type: 'image', src: null, label: 'Fotografía de producto' },
-  { type: 'video', src: null, label: 'Video promocional' },
-  { type: 'image', src: null, label: 'Lifestyle & montaje' },
-  { type: 'image', src: null, label: 'Historia para redes' },
-  { type: 'video', src: null, label: 'Reel cinematográfico' },
-  { type: 'image', src: null, label: 'Branding visual' },
+// Agregar más es tan simple como sumar objetos a este arreglo.
+// type 'image' o 'video'; los videos se reproducen solos en silencio. El label aparece sobre cada pieza.
+const galleryItems: { type: 'image' | 'video'; src: string; label: string }[] = [
+  { type: 'image', src: '/images/artesania/dp.jpg', label: 'Desayuno París' },
+  { type: 'image', src: '/images/artesania/cc.jpg', label: 'Café' },
+  { type: 'image', src: '/images/artesania/branding.jpg', label: 'Branding' },
+  { type: 'image', src: '/images/artesania/talavera.jpg', label: 'Talavera' },
+  { type: 'image', src: '/images/artesania/textil.jpg', label: 'Textil' },
+  { type: 'image', src: '/images/artesania/moda.jpg', label: 'Moda' },
+  { type: 'image', src: '/images/artesania/cita.jpg', label: 'Editorial' },
+  { type: 'image', src: '/images/artesania/mezcal.jpg', label: 'Mezcal' },
+  { type: 'image', src: '/images/artesania/plata.jpg', label: 'Joyería' },
+  { type: 'image', src: '/images/artesania/talagold.jpg', label: 'Cerámica' },
+  { type: 'image', src: '/images/artesania/artes.jpg', label: 'Arte' },
 ]
 
 const WHATSAPP = '522206224222'
@@ -284,35 +288,30 @@ export default function ArtesaniaVisualPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto mb-28">
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 md:gap-6 max-w-5xl mx-auto mb-28">
             {galleryItems.map((item, index) => (
               <motion.div
                 key={index}
-                className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-gold/10 bg-cream/5 group"
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.1 + index * 0.08 }}
+                className="relative mb-4 md:mb-6 break-inside-avoid rounded-2xl overflow-hidden border border-gold/10 bg-cream/5 group"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.6, delay: (index % 3) * 0.08 }}
               >
-                {item.src ? (
-                  item.type === 'video' ? (
-                    <video src={item.src} className="w-full h-full object-cover" muted loop playsInline />
-                  ) : (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={item.src} alt={item.label} className="w-full h-full object-cover" />
-                  )
+                {item.type === 'video' ? (
+                  <video src={item.src} className="w-full h-auto block" autoPlay muted loop playsInline preload="metadata" />
                 ) : (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center px-3">
-                    <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center">
-                      {item.type === 'video' ? (
-                        <Play className="w-5 h-5 text-gold/70" />
-                      ) : (
-                        <Camera className="w-5 h-5 text-gold/70" />
-                      )}
-                    </div>
-                    <p className="text-cream/40 text-sm">{item.label}</p>
-                    <span className="text-cream/25 text-xs uppercase tracking-widest">Próximamente</span>
-                  </div>
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={item.src}
+                    alt={item.label}
+                    loading="lazy"
+                    className="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.04]"
+                  />
                 )}
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-bistro-dark/90 via-bistro-dark/30 to-transparent px-5 pt-12 pb-4">
+                  <span className="text-cream text-sm uppercase tracking-[0.18em] font-sans">{item.label}</span>
+                </div>
               </motion.div>
             ))}
           </div>
