@@ -18,11 +18,12 @@ import {
 // ─── Configuración rápida ───────────────────────────────────────────
 // Agregar más es tan simple como sumar objetos a este arreglo.
 // type 'image' o 'video'; los videos se reproducen solos en silencio. El label aparece sobre cada pieza.
-const galleryItems: { type: 'image' | 'video'; src: string; label: string }[] = [
-  { type: 'image', src: '/images/artesania/dp.jpg', label: 'Desayuno París' },
+const galleryItems: { type: 'image' | 'video'; src: string; label: string; hideLabel?: boolean }[] = [
+  { type: 'image', src: '/images/artesania/dp.jpg', label: 'Desayuno París', hideLabel: true },
   { type: 'image', src: '/images/artesania/ss.jpg', label: 'Lifestyle' },
   { type: 'image', src: '/images/artesania/cc.jpg', label: 'Café' },
   { type: 'image', src: '/images/artesania/pan.jpg', label: 'Panadería' },
+  { type: 'video', src: '/images/artesania/madres.mp4', label: 'Reel' },
   { type: 'image', src: '/images/artesania/branding.jpg', label: 'Branding' },
   { type: 'image', src: '/images/artesania/talavera.jpg', label: 'Talavera' },
   { type: 'image', src: '/images/artesania/textil.jpg', label: 'Textil' },
@@ -311,9 +312,11 @@ export default function ArtesaniaVisualPage() {
                     className="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.04]"
                   />
                 )}
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-bistro-dark/90 via-bistro-dark/30 to-transparent px-5 pt-12 pb-4">
-                  <span className="text-cream text-sm uppercase tracking-[0.18em] font-sans">{item.label}</span>
-                </div>
+                {!item.hideLabel && (
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-bistro-dark/90 via-bistro-dark/30 to-transparent px-5 pt-12 pb-4">
+                    <span className="text-cream text-sm uppercase tracking-[0.18em] font-sans">{item.label}</span>
+                  </div>
+                )}
               </motion.div>
             ))}
           </div>
