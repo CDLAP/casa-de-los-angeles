@@ -28,6 +28,7 @@ const galleryItems: { type: 'image' | 'video'; src: string; label: string; hideL
   { type: 'image', src: '/images/artesania/talavera.jpg', label: 'Talavera' },
   { type: 'image', src: '/images/artesania/textil.jpg', label: 'Textil' },
   { type: 'image', src: '/images/artesania/moda.jpg', label: 'Moda' },
+  { type: 'video', src: '/images/artesania/te.mp4', label: 'Té' },
   { type: 'image', src: '/images/artesania/cita.jpg', label: 'Editorial' },
   { type: 'image', src: '/images/artesania/mezcal.jpg', label: 'Mezcal' },
   { type: 'image', src: '/images/artesania/plata.jpg', label: 'Joyería' },
