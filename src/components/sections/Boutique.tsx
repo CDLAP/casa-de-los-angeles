@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Crown, Gem, Shirt, Sparkles } from 'lucide-react'
+import { Gem, Shirt, ShoppingBag, Sparkles } from 'lucide-react'
 
 const boutiqueItems = [
   {
@@ -16,9 +16,9 @@ const boutiqueItems = [
     description: 'Prendas y accesorios de diseñadores independientes con identidad y personalidad.',
   },
   {
-    icon: Crown,
-    title: 'Sombrería',
-    description: 'Sombreros disponibles dentro de la boutique.',
+    icon: ShoppingBag,
+    title: 'Complementos',
+    description: 'Bolsos, complementos y piezas para rematar cualquier look con personalidad.',
   },
   {
     icon: Sparkles,
