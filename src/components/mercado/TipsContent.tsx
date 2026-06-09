@@ -24,69 +24,59 @@ import mercadoData from '@/data/mercado-de-los-angeles.json'
 
 interface TipItem {
   title: string
-  content: string[]
+  content: string
 }
 
 const TIPS: TipItem[] = [
   {
     title: 'Tu stand es tu escaparate',
-    content: [
+    content:
       'La presentación lo es todo. Un espacio limpio, iluminado, ordenado y visualmente atractivo vende muchísimo más que uno saturado o improvisado.',
-    ],
   },
   {
     title: 'La iluminación vende',
-    content: [
+    content:
       'Los mercados dependen muchísimo de la luz. Una buena iluminación cálida puede hacer que tu producto se vea hasta 3 veces más atractivo.',
-    ],
   },
   {
     title: 'No te sientes todo el tiempo',
-    content: [
+    content:
       'Los clientes conectan mucho más con expositores presentes, sonrientes y activos. La energía del vendedor cambia completamente las ventas.',
-    ],
   },
   {
     title: 'Los precios deben ser claros',
-    content: [
+    content:
       'Cuando la gente no entiende cuánto cuesta algo, normalmente no pregunta. Tener precios visibles aumenta muchísimo la conversión.',
-    ],
   },
   {
     title: 'Ofrece diferentes rangos',
-    content: [
+    content:
       'Tener productos pequeños impulsa compras espontáneas. Muchas veces una venta pequeña termina convirtiéndose en una venta grande.',
-    ],
   },
   {
     title: 'Crea experiencia, no solo venta',
-    content: [
+    content:
       'La gente recuerda emociones. Cuenta la historia de tu marca, explica procesos y deja que toquen, huelan o prueben cuando sea posible.',
-    ],
   },
   {
     title: 'Graba y sube contenido',
-    content: [
+    content:
       'Las historias generan tráfico en tiempo real. Los expositores que más publican durante el evento normalmente son los que más venden.',
-    ],
   },
   {
     title: 'Los clientes observan',
-    content: [
+    content:
       'Aunque parezca que hay poco movimiento, muchas personas primero recorren el mercado y regresan después. Mantén tu stand listo y tu mejor actitud.',
-    ],
   },
   {
     title: 'Haz red con otros expositores',
-    content: [
+    content:
       'Los mejores mercados funcionan como comunidad. Cuando los expositores se recomiendan entre sí, todos venden más.',
-    ],
   },
   {
     title: 'La constancia es lo que más vende',
-    content: [
+    content:
       'Muchas marcas comienzan vendiendo poco y terminan siendo favoritas del público por estar presentes constantemente. Los clientes necesitan ver una marca varias veces para confiar.',
-    ],
   },
 ]
 
@@ -159,39 +149,30 @@ export default function TipsContent() {
         </div>
       </section>
 
-      {/* TIPS — cards 3 por fila */}
+      {/* TIPS — lista limpia */}
       <section className="section bg-cream-200">
-        <div className="container-custom max-w-6xl">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 items-start">
+        <div className="container-custom max-w-2xl">
+          <div className="divide-y divide-gold/15">
             {TIPS.map((tip, i) => {
               const Icon = TIP_ICONS[i] ?? Store
               return (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-40px' }}
-                  transition={{ duration: 0.5, delay: Math.min(i * 0.05, 0.3) }}
-                  className="group bg-white border border-gold/20 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 p-7 md:p-8 flex flex-col"
+                  transition={{ duration: 0.5 }}
+                  className="py-9 first:pt-0"
                 >
-                  <div className="flex items-center justify-between mb-5">
-                    <span className="flex items-center justify-center w-14 h-14 bg-gold/10 rounded-full flex-shrink-0 group-hover:bg-gold/20 transition-colors">
-                      <Icon className="w-6 h-6 text-gold-dark" strokeWidth={1.5} />
-                    </span>
-                    <span className="font-serif text-gold-dark/40 text-4xl leading-none tabular-nums">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
+                  <div className="flex items-center gap-3 mb-3">
+                    <Icon className="w-5 h-5 md:w-6 md:h-6 text-gold-dark flex-shrink-0" strokeWidth={1.5} />
+                    <h2 className="font-serif text-xl md:text-2xl text-charcoal leading-tight">
+                      {tip.title}
+                    </h2>
                   </div>
-
-                  <h2 className="font-serif text-xl md:text-2xl text-charcoal leading-tight mb-3">
-                    {tip.title}
-                  </h2>
-
-                  <div className="space-y-3 text-charcoal-50 text-[15px] md:text-base leading-relaxed">
-                    {tip.content.map((p, j) => (
-                      <p key={j}>{p}</p>
-                    ))}
-                  </div>
+                  <p className="text-charcoal-50 text-base md:text-[17px] leading-relaxed pl-8">
+                    {tip.content}
+                  </p>
                 </motion.div>
               )
             })}

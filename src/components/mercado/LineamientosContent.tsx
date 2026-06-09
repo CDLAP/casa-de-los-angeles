@@ -20,10 +20,6 @@ import {
   Users,
   Share2,
   TrendingUp,
-  Table,
-  Layers,
-  Armchair,
-  Wrench,
   ShoppingBag,
   Moon,
 } from 'lucide-react'
@@ -40,10 +36,10 @@ const SECTIONS: Section[] = [
   {
     title: 'Horarios y montaje',
     items: [
-      'El montaje se realiza de 4:00 PM a 5:00 PM.',
-      'La venta comienza oficialmente a las 5:00 PM.',
-      'Todos los expositores deberán estar listos o presentes a esa hora.',
-      'Después de las 5:00 PM se aplica una cuota de puntualidad de $100 MXN.',
+      'El montaje se realiza durante la hora previa a la apertura.',
+      'Los horarios son: viernes de 4:00 PM a 9:00 PM; sábado y domingo de 11:00 AM a 8:00 PM.',
+      'Todos los expositores deberán estar listos o presentes a la hora de apertura.',
+      'Pasada la hora de apertura se aplica una cuota de puntualidad de $100 MXN.',
     ],
   },
   {
@@ -108,6 +104,7 @@ const SECTIONS: Section[] = [
   {
     title: 'Mobiliario y espacio',
     items: [
+      'Incluimos 1 mesa de 1.80 m, 1 mantel y 1 silla por expositor.',
       'El mobiliario deberá entregarse en las mismas condiciones en las que fue recibido.',
       'En caso de daños, se aplicará una cuota de recuperación de $500 MXN.',
       'En caso de asistir más personas, deberá notificarse previamente para autorización.',
@@ -162,14 +159,15 @@ const SECTION_ICONS = [
   TrendingUp,
 ]
 
-const TIMELINE = [
-  { time: '4:00 PM', label: 'Montaje', Icon: Wrench, active: false },
-  { time: '5:00 PM', label: 'Inicia la venta', Icon: ShoppingBag, active: true },
-  { time: '9:00 PM', label: 'Cierre', Icon: Moon, active: false },
-]
+const SCHEDULE = {
+  viernes: { label: 'Viernes', apertura: '4:00 PM', cierre: '9:00 PM' },
+  finde: { label: 'Sábado y Domingo', apertura: '11:00 AM', cierre: '8:00 PM' },
+} as const
+
+type DayKey = keyof typeof SCHEDULE
 
 const COSTS = [
-  { value: 100, label: 'Puntualidad', sub: 'después de las 5 PM' },
+  { value: 100, label: 'Puntualidad', sub: 'tras la hora de apertura' },
   { value: 50, label: 'Electricidad', sub: 'por día' },
   { value: 500, label: 'Daños', sub: 'a mobiliario' },
 ]
@@ -228,6 +226,8 @@ function CountUp({ value, prefix = '' }: { value: number; prefix?: string }) {
 
 export default function LineamientosContent() {
   const { settings, season } = mercadoData
+  const [day, setDay] = useState<DayKey>('viernes')
+  const current = SCHEDULE[day]
 
   const reservaMessage = encodeURIComponent(
     `Hola, leí los Lineamientos Generales completos de ${season.name} y quiero reservar mi espacio como expositor.`
@@ -297,39 +297,65 @@ export default function LineamientosContent() {
             Cómo transcurre el mercado
           </h2>
 
+          {/* Toggle de día */}
+          <div className="flex justify-center gap-2 mb-10">
+            {(Object.keys(SCHEDULE) as DayKey[]).map((d) => (
+              <button
+                key={d}
+                onClick={() => setDay(d)}
+                className={`px-5 py-2.5 rounded-full text-xs md:text-sm font-sans uppercase tracking-[0.15em] transition-all duration-300 ${
+                  day === d
+                    ? 'bg-emerald text-white shadow-md'
+                    : 'bg-white border border-gold/30 text-charcoal-50 hover:border-gold hover:text-gold-dark'
+                }`}
+              >
+                {SCHEDULE[d].label}
+              </button>
+            ))}
+          </div>
+
           {/* Timeline */}
-          <div className="relative max-w-xl mx-auto mb-14">
-            <div className="absolute top-[19px] left-[8%] right-[8%] h-[2px] bg-gold/20" />
-            <motion.div
-              className="absolute top-[19px] left-[8%] right-[8%] h-[2px] bg-gold origin-left"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 1, ease: 'easeInOut' }}
-            />
-            <div className="relative flex justify-between">
-              {TIMELINE.map((node, i) => (
-                <motion.div
-                  key={i}
-                  className="text-center w-1/3"
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-60px' }}
-                  transition={{ duration: 0.5, delay: 0.3 + i * 0.25 }}
-                >
-                  <div
-                    className={`w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-3 ${
-                      node.active
-                        ? 'bg-emerald border-2 border-emerald text-white'
-                        : 'bg-white border-2 border-gold text-gold-dark'
-                    }`}
-                  >
-                    <node.Icon className="w-[18px] h-[18px]" strokeWidth={1.5} />
-                  </div>
-                  <div className="font-serif text-charcoal text-lg">{node.time}</div>
-                  <div className="text-charcoal-50 text-[13px] mt-0.5">{node.label}</div>
-                </motion.div>
-              ))}
+          <div className="flex items-start justify-center max-w-md mx-auto mb-14">
+            <div className="text-center w-28 flex-shrink-0">
+              <div className="w-10 h-10 rounded-full bg-emerald border-2 border-emerald text-white flex items-center justify-center mx-auto mb-3">
+                <ShoppingBag className="w-[18px] h-[18px]" strokeWidth={1.5} />
+              </div>
+              <motion.div
+                key={`ap-${day}`}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.15 }}
+                className="font-serif text-charcoal text-lg"
+              >
+                {current.apertura}
+              </motion.div>
+              <div className="text-charcoal-50 text-[13px] mt-0.5">Apertura</div>
+            </div>
+
+            <div className="flex-1 h-[2px] bg-gold/20 mt-[19px] relative overflow-hidden">
+              <motion.div
+                key={`line-${day}`}
+                className="absolute inset-0 bg-gold origin-left"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.8, ease: 'easeInOut' }}
+              />
+            </div>
+
+            <div className="text-center w-28 flex-shrink-0">
+              <div className="w-10 h-10 rounded-full bg-white border-2 border-gold text-gold-dark flex items-center justify-center mx-auto mb-3">
+                <Moon className="w-[18px] h-[18px]" strokeWidth={1.5} />
+              </div>
+              <motion.div
+                key={`ci-${day}`}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.3 }}
+                className="font-serif text-charcoal text-lg"
+              >
+                {current.cierre}
+              </motion.div>
+              <div className="text-charcoal-50 text-[13px] mt-0.5">Cierre</div>
             </div>
           </div>
 
@@ -345,7 +371,7 @@ export default function LineamientosContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-30px' }}
                 transition={{ duration: 0.5, delay: 0.1 + i * 0.12 }}
-                className="bg-white border border-gold/20 rounded-2xl shadow-lg p-5 text-center"
+                className="bg-white border border-gold/20 rounded-2xl shadow-sm p-5 text-center"
               >
                 <div className="font-serif text-gold-dark text-2xl md:text-[2rem] leading-none">
                   <CountUp value={c.value} prefix="$" />
@@ -360,110 +386,42 @@ export default function LineamientosContent() {
         </div>
       </section>
 
-      {/* MAPA DE TEMAS — fila de 4 */}
+      {/* LINEAMIENTOS — check-list limpia */}
       <section className="section bg-cream">
-        <div className="container-custom max-w-5xl">
-          <p className="font-sans uppercase tracking-[0.3em] text-gold text-xs md:text-sm mb-3 text-center">
-            Los temas
-          </p>
-          <h2 className="font-serif text-display-sm text-gold-dark text-center mb-12">
-            Todo lo que cubre el reglamento
-          </h2>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
-            {SECTIONS.map((section, i) => {
-              const Icon = SECTION_ICONS[i] ?? Sparkles
-              return (
-                <motion.a
-                  key={i}
-                  href={`#${slugify(section.title)}`}
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-30px' }}
-                  transition={{ duration: 0.4, delay: Math.min(i * 0.04, 0.3) }}
-                  className="group bg-white border border-gold/20 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-4 md:p-5 text-center flex flex-col items-center gap-2.5"
-                >
-                  <span className="flex items-center justify-center w-11 h-11 bg-gold/10 rounded-full group-hover:bg-gold/20 transition-colors">
-                    <Icon className="w-5 h-5 text-gold-dark" strokeWidth={1.5} />
-                  </span>
-                  <span className="font-serif text-charcoal text-sm leading-tight">
-                    {section.title}
-                  </span>
-                </motion.a>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* DETALLE — cards */}
-      <section className="section bg-cream-200">
-        <div className="container-custom max-w-5xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 items-start">
+        <div className="container-custom max-w-2xl">
+          <div className="divide-y divide-gold/15">
             {SECTIONS.map((section, i) => {
               const Icon = SECTION_ICONS[i] ?? Sparkles
               return (
                 <motion.div
                   key={i}
                   id={slugify(section.title)}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-40px' }}
                   transition={{ duration: 0.5 }}
-                  className="scroll-mt-28 bg-white border border-gold/20 rounded-2xl shadow-lg p-7 md:p-8 flex flex-col"
+                  className="scroll-mt-28 py-9 first:pt-0"
                 >
-                  <div className="flex items-center gap-4 mb-6">
-                    <span className="flex items-center justify-center w-12 h-12 bg-gold/10 rounded-full flex-shrink-0">
-                      <Icon className="w-5 h-5 text-gold-dark" strokeWidth={1.5} />
-                    </span>
-                    <div className="flex items-baseline gap-2.5 min-w-0">
-                      <span className="font-serif text-gold-dark/50 text-lg tabular-nums flex-shrink-0">
-                        {String(i + 1).padStart(2, '0')}
-                      </span>
-                      <h3 className="font-serif text-xl md:text-2xl text-charcoal leading-tight">
-                        {section.title}
-                      </h3>
-                    </div>
+                  <div className="flex items-center gap-3 mb-5">
+                    <Icon className="w-5 h-5 md:w-6 md:h-6 text-gold-dark flex-shrink-0" strokeWidth={1.5} />
+                    <h3 className="font-serif text-xl md:text-2xl text-charcoal leading-tight">
+                      {section.title}
+                    </h3>
                   </div>
 
                   <ul className="space-y-3.5">
                     {section.items.map((item, j) => (
                       <li
                         key={j}
-                        className="flex items-start gap-3 text-charcoal-50 text-[15px] md:text-base leading-relaxed"
+                        className="flex items-start gap-3 text-charcoal-50 text-base md:text-[17px] leading-relaxed"
                       >
-                        <span className="flex items-center justify-center w-5 h-5 rounded-full bg-gold/10 flex-shrink-0 mt-0.5">
+                        <span className="flex items-center justify-center w-5 h-5 rounded-full bg-gold/15 flex-shrink-0 mt-1">
                           <Check className="w-3 h-3 text-gold-dark" strokeWidth={2.5} />
                         </span>
                         <span>{highlightMoney(item)}</span>
                       </li>
                     ))}
                   </ul>
-
-                  {section.title === 'Mobiliario y espacio' && (
-                    <div className="mt-6 grid grid-cols-3 gap-3">
-                      {[
-                        { icon: Table, label: 'Mesa', detail: '1.80 m' },
-                        { icon: Layers, label: 'Mantel', detail: 'Incluido' },
-                        { icon: Armchair, label: 'Silla', detail: '1 pieza' },
-                      ].map((m) => (
-                        <div
-                          key={m.label}
-                          className="flex flex-col items-center text-center gap-2 bg-cream-200 rounded-xl px-2 py-4"
-                        >
-                          <span className="flex items-center justify-center w-10 h-10 bg-white rounded-full shadow-sm">
-                            <m.icon className="w-4 h-4 text-gold-dark" strokeWidth={1.5} />
-                          </span>
-                          <span className="font-serif text-charcoal text-sm leading-tight">
-                            {m.label}
-                          </span>
-                          <span className="font-sans uppercase tracking-[0.14em] text-gold-dark text-[10px]">
-                            {m.detail}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
                 </motion.div>
               )
             })}
@@ -472,7 +430,7 @@ export default function LineamientosContent() {
       </section>
 
       {/* CLOSING */}
-      <section className="bg-cream py-16 md:py-24">
+      <section className="bg-cream-200 py-16 md:py-24">
         <div className="container-custom max-w-2xl text-center">
           <p className="font-serif text-display-sm text-gold-dark leading-tight">
             Gracias por ayudarnos a construir uno de los mercados más especiales y cuidados
@@ -482,7 +440,7 @@ export default function LineamientosContent() {
       </section>
 
       {/* CROSS-LINK to Tips */}
-      <section className="bg-cream-200 pt-16 md:pt-20">
+      <section className="bg-cream pt-16 md:pt-20">
         <div className="container-custom max-w-2xl">
           <Link
             href="/mercado-de-los-angeles/tips"
@@ -505,7 +463,7 @@ export default function LineamientosContent() {
       </section>
 
       {/* CTAs */}
-      <section className="section bg-cream-200">
+      <section className="section bg-cream">
         <div className="container-custom max-w-4xl flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
           <Link
             href="/mercados"
