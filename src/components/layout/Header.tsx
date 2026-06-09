@@ -9,9 +9,7 @@ import { ChevronDown } from 'lucide-react'
 
 const mainLinks = [
   { href: '/', label: 'Inicio' },
-  { href: '/#menu', label: 'Café' },
   { href: '/museo', label: 'Museo' },
-  { href: '/#boutique', label: 'Boutique' },
   { href: '/mercados', label: 'Mercados' },
   { href: '/#rueda-de-prensa', label: 'Prensa' },
   { href: '/artesania-visual', label: 'Studio' },

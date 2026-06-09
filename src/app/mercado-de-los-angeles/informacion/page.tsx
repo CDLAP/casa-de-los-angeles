@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowLeft, ArrowRight, Check, Lightbulb, Table, Layers, Armchair } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Check, Lightbulb, Table, Layers, Armchair, Clock, Sparkles, BadgeCheck, UtensilsCrossed, LayoutGrid, CreditCard, RefreshCw, Sofa, Package, Users, Share2, TrendingUp } from 'lucide-react'
 import StarsBackground from '@/components/mercado/StarsBackground'
 import ReadingProgress from '@/components/mercado/ReadingProgress'
 import WhatsAppIcon from '@/components/mercado/WhatsAppIcon'
@@ -130,6 +130,37 @@ const SECTIONS: Section[] = [
     ],
   },
 ]
+
+const SECTION_ICONS = [
+  Clock,
+  Sparkles,
+  Lightbulb,
+  BadgeCheck,
+  UtensilsCrossed,
+  LayoutGrid,
+  CreditCard,
+  RefreshCw,
+  Sofa,
+  Package,
+  Users,
+  Share2,
+  TrendingUp,
+]
+
+function highlightMoney(text: string) {
+  return text.split(/(\$[\d,]+\s*MXN)/g).map((part, k) =>
+    /^\$[\d,]+\s*MXN$/.test(part) ? (
+      <span
+        key={k}
+        className="inline-flex items-center bg-gold/10 border border-gold/35 text-gold-light px-2 py-[1px] rounded-full text-[12px] md:text-[13px] font-medium tracking-wide whitespace-nowrap"
+      >
+        {part}
+      </span>
+    ) : (
+      part
+    )
+  )
+}
 
 function slugify(s: string): string {
   return s
@@ -262,78 +293,87 @@ export default function LineamientosPage() {
 
         {/* Sections */}
         <section className="container-custom pb-12 md:pb-16">
-          <div className="max-w-3xl mx-auto">
-            {SECTIONS.map((section, i) => (
+          <div className="max-w-5xl mx-auto">
+            {SECTIONS.map((section, i) => {
+              const Icon = SECTION_ICONS[i] ?? Sparkles
+              return (
               <div
                 key={i}
                 id={slugify(section.title)}
-                className="mb-16 md:mb-20 last:mb-0 scroll-mt-24 md:scroll-mt-28"
+                className="grid md:grid-cols-[200px_1fr] gap-7 md:gap-12 py-12 md:py-16 border-t border-gold/15 first:border-t-0 scroll-mt-24 md:scroll-mt-28"
               >
-                {/* Section transition rombo */}
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="flex-1 h-px bg-gold/30" />
-                  <div className="w-1.5 h-1.5 bg-gold rotate-45" />
-                  <div className="flex-1 h-px bg-gold/30" />
+                {/* Left rail: number + icon + title */}
+                <div className="md:sticky md:top-28 md:self-start flex flex-row md:flex-col items-center md:items-start gap-4 md:gap-5 text-center md:text-left">
+                  <span
+                    className="font-serif italic text-gold/80 leading-none tabular-nums"
+                    style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}
+                  >
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span className="flex items-center justify-center w-12 h-12 md:w-14 md:h-14 border border-gold/40 text-gold flex-shrink-0">
+                    <Icon className="w-5 h-5 md:w-6 md:h-6" />
+                  </span>
+                  <h2
+                    className="not-italic text-cream leading-tight"
+                    style={{
+                      fontFamily: 'var(--font-fraunces), Georgia, serif',
+                      fontSize: 'clamp(1.375rem, 2.4vw, 1.875rem)',
+                      fontWeight: 700,
+                      letterSpacing: '0.005em',
+                    }}
+                  >
+                    {section.title}
+                  </h2>
                 </div>
 
-                {/* Section title — Fraunces, friendlier */}
-                <h2
-                  className="not-italic text-cream text-center leading-tight mb-9"
-                  style={{
-                    fontFamily: 'var(--font-fraunces), Georgia, serif',
-                    fontSize: 'clamp(1.625rem, 3.4vw, 2.125rem)',
-                    fontWeight: 700,
-                    letterSpacing: '0.005em',
-                  }}
-                >
-                  {section.title}
-                </h2>
-
-                {/* Items — editorial em-dash bullet, generous body type */}
-                <ul className="space-y-5 max-w-2xl mx-auto">
-                  {section.items.map((item, j) => (
-                    <li
-                      key={j}
-                      className="flex items-start gap-4 text-cream font-sans text-[17px] md:text-[19px] leading-[1.75]"
-                    >
-                      <span
-                        className="flex-shrink-0 mt-[0.75em] w-3.5 h-[1.5px] bg-gold"
-                        aria-hidden="true"
-                      />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {section.title === 'Mobiliario y espacio' && (
-                  <div className="mt-10 grid grid-cols-3 gap-3 md:gap-4 max-w-2xl mx-auto">
-                    {[
-                      { icon: Table, label: 'Mesa', detail: '1.80 m' },
-                      { icon: Layers, label: 'Mantel', detail: 'Incluido' },
-                      { icon: Armchair, label: 'Silla', detail: '1 pieza' },
-                    ].map((m) => (
-                      <div
-                        key={m.label}
-                        className="flex flex-col items-center text-center gap-3 border border-cream/15 bg-[#0F1A2E]/40 px-3 py-6 md:px-4 md:py-7"
+                {/* Right column: items */}
+                <div>
+                  <ul className="space-y-4 md:space-y-5">
+                    {section.items.map((item, j) => (
+                      <li
+                        key={j}
+                        className="flex items-start gap-4 text-cream font-sans text-[16px] md:text-[18px] leading-[1.7]"
                       >
-                        <span className="flex items-center justify-center w-12 h-12 md:w-14 md:h-14 border border-gold/40 text-gold">
-                          <m.icon className="w-5 h-5 md:w-6 md:h-6" />
-                        </span>
                         <span
-                          className="not-italic text-cream leading-tight"
-                          style={{ fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.05rem, 2vw, 1.3rem)', fontWeight: 700, letterSpacing: '0.005em' }}
-                        >
-                          {m.label}
-                        </span>
-                        <span className="font-sans uppercase tracking-[0.18em] text-gold text-[11px] md:text-xs">
-                          {m.detail}
-                        </span>
-                      </div>
+                          className="flex-shrink-0 mt-[0.7em] w-3.5 h-[1.5px] bg-gold"
+                          aria-hidden="true"
+                        />
+                        <span>{highlightMoney(item)}</span>
+                      </li>
                     ))}
-                  </div>
-                )}
+                  </ul>
+
+                  {section.title === 'Mobiliario y espacio' && (
+                    <div className="mt-8 grid grid-cols-3 gap-3 md:gap-4 max-w-md">
+                      {[
+                        { icon: Table, label: 'Mesa', detail: '1.80 m' },
+                        { icon: Layers, label: 'Mantel', detail: 'Incluido' },
+                        { icon: Armchair, label: 'Silla', detail: '1 pieza' },
+                      ].map((m) => (
+                        <div
+                          key={m.label}
+                          className="flex flex-col items-center text-center gap-3 border border-cream/15 bg-[#0F1A2E]/40 px-3 py-6"
+                        >
+                          <span className="flex items-center justify-center w-12 h-12 border border-gold/40 text-gold">
+                            <m.icon className="w-5 h-5" />
+                          </span>
+                          <span
+                            className="not-italic text-cream leading-tight"
+                            style={{ fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1rem, 2vw, 1.2rem)', fontWeight: 700, letterSpacing: '0.005em' }}
+                          >
+                            {m.label}
+                          </span>
+                          <span className="font-sans uppercase tracking-[0.18em] text-gold text-[11px]">
+                            {m.detail}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
-            ))}
+              )
+            })}
           </div>
         </section>
 

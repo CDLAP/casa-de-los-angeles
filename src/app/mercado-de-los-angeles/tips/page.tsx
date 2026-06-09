@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowLeft, ArrowRight, BookOpen, Check } from 'lucide-react'
+import { ArrowLeft, ArrowRight, BookOpen, Check, Store, Lightbulb, Smile, Tag, Layers, Heart, Camera, Eye, Users, Repeat } from 'lucide-react'
 import StarsBackground from '@/components/mercado/StarsBackground'
 import ReadingProgress from '@/components/mercado/ReadingProgress'
 import WhatsAppIcon from '@/components/mercado/WhatsAppIcon'
@@ -94,6 +94,19 @@ const TIPS: TipItem[] = [
   },
 ]
 
+const TIP_ICONS = [
+  Store,
+  Lightbulb,
+  Smile,
+  Tag,
+  Layers,
+  Heart,
+  Camera,
+  Eye,
+  Users,
+  Repeat,
+]
+
 export default function TipsPage() {
   const { settings, season } = mercadoData
 
@@ -184,19 +197,30 @@ export default function TipsPage() {
 
         {/* Tips */}
         <section className="container-custom py-12 md:py-16">
-          <div className="max-w-3xl mx-auto">
-            {TIPS.map((tip, i) => (
-              <article key={i} className="mb-14 md:mb-16 last:mb-0">
-                <div className="flex items-baseline gap-4 mb-4">
-                  <span className="font-serif italic text-gold/80 text-2xl md:text-3xl leading-none tabular-nums">
+          <div className="max-w-5xl mx-auto">
+            {TIPS.map((tip, i) => {
+              const Icon = TIP_ICONS[i] ?? Store
+              return (
+              <article
+                key={i}
+                className="grid md:grid-cols-[200px_1fr] gap-7 md:gap-12 py-12 md:py-14 border-t border-cream/15 first:border-t-0"
+              >
+                {/* Left rail: number + icon + title */}
+                <div className="md:sticky md:top-28 md:self-start flex flex-row md:flex-col items-center md:items-start gap-4 md:gap-5 text-center md:text-left">
+                  <span
+                    className="font-serif italic text-gold/80 leading-none tabular-nums"
+                    style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}
+                  >
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <span className="text-gold/40 leading-none">—</span>
+                  <span className="flex items-center justify-center w-12 h-12 md:w-14 md:h-14 border border-gold/40 text-gold flex-shrink-0">
+                    <Icon className="w-5 h-5 md:w-6 md:h-6" />
+                  </span>
                   <h2
                     className="not-italic text-cream leading-tight"
                     style={{
                       fontFamily: 'var(--font-fraunces), Georgia, serif',
-                      fontSize: 'clamp(1.375rem, 2.6vw, 1.75rem)',
+                      fontSize: 'clamp(1.375rem, 2.4vw, 1.875rem)',
                       fontWeight: 700,
                       letterSpacing: '0.005em',
                     }}
@@ -204,14 +228,16 @@ export default function TipsPage() {
                     {tip.title}
                   </h2>
                 </div>
-                <div className="h-px bg-cream/15 mb-5" />
-                <div className="space-y-3.5 text-cream font-sans text-[17px] md:text-[19px] leading-[1.75] pl-1">
+
+                {/* Right column: content */}
+                <div className="space-y-3.5 text-cream font-sans text-[16px] md:text-[18px] leading-[1.7] md:pt-2">
                   {tip.content.map((p, j) => (
                     <p key={j}>{p}</p>
                   ))}
                 </div>
               </article>
-            ))}
+              )
+            })}
           </div>
         </section>
 
