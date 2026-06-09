@@ -1,15 +1,29 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowLeft, ArrowRight, BookOpen, Check, Store, Lightbulb, Smile, Tag, Layers, Heart, Camera, Eye, Users, Repeat } from 'lucide-react'
-import StarsBackground from '@/components/mercado/StarsBackground'
-import ReadingProgress from '@/components/mercado/ReadingProgress'
+import {
+  ArrowLeft,
+  ArrowRight,
+  BookOpen,
+  Check,
+  Store,
+  Lightbulb,
+  Smile,
+  Tag,
+  Layers,
+  Heart,
+  Camera,
+  Eye,
+  Users,
+  Repeat,
+} from 'lucide-react'
 import WhatsAppIcon from '@/components/mercado/WhatsAppIcon'
+import ReadingProgress from '@/components/mercado/ReadingProgress'
 import mercadoData from '@/data/mercado-de-los-angeles.json'
 
 export const metadata: Metadata = {
-  title: '10 Tips para Vender Mejor | Mercado de la Luna · Casa de los Ángeles',
+  title: '10 Tips para Vender Mejor | Mercado de los Ángeles',
   description:
-    '10 principios prácticos para vender mejor en mercados y eventos. Guía para expositores del Mercado de la Luna en Casa de los Ángeles.',
+    '10 principios prácticos para vender mejor en mercados y eventos. Guía para expositores del Mercado de los Ángeles en Puebla.',
   robots: {
     index: false,
     follow: true,
@@ -119,220 +133,145 @@ export default function TipsPage() {
   )
 
   return (
-    <main className="relative min-h-screen bg-[#070E22] text-cream overflow-hidden">
+    <main className="bg-cream text-charcoal">
       <ReadingProgress />
 
-      <div className="absolute inset-0 pointer-events-none">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'linear-gradient(180deg, #070E22 0%, #0C1830 35%, #091529 70%, #070E22 100%)',
-          }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'radial-gradient(ellipse at 30% 0%, rgba(201, 169, 97, 0.08) 0%, transparent 45%), radial-gradient(ellipse at 70% 100%, rgba(201, 169, 97, 0.05) 0%, transparent 50%)',
-          }}
-        />
-      </div>
+      {/* HERO */}
+      <section className="section bg-cream pt-[150px] md:pt-[230px]">
+        <div className="container-custom max-w-3xl text-center">
+          <Link
+            href="/mercado-de-los-angeles"
+            className="inline-flex items-center gap-2 text-xs md:text-sm uppercase tracking-[0.22em] text-charcoal-50 hover:text-gold-dark transition-colors duration-300 mb-10"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Volver al Mercado de los Ángeles
+          </Link>
 
-      <StarsBackground />
+          <p className="font-sans uppercase tracking-[0.3em] text-gold text-xs md:text-sm mb-6">
+            {season.name} · Guía para expositores
+          </p>
 
-      <div className="relative z-10">
-        {/* Hero */}
-        <section className="container-custom pt-[150px] md:pt-[210px] pb-12 md:pb-16">
-          <div className="max-w-3xl mx-auto text-center">
-            <Link
-              href="/mercado-de-los-angeles"
-              className="inline-flex items-center gap-2 text-xs md:text-sm uppercase tracking-[0.22em] text-cream/80 hover:text-gold transition-colors duration-300 mb-12"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Volver al Mercado de la Luna
-            </Link>
+          <h1 className="font-serif text-display-md text-gold-dark mb-7">
+            10 Tips para Vender Mejor
+          </h1>
 
-            <p className="font-serif italic text-gold text-2xl mb-5" aria-hidden="true">
-              ✨
-            </p>
-
-            <h1
-              className="not-italic text-gold uppercase leading-[1.05] mb-7"
-              style={{
-                fontFamily: 'var(--font-fraunces), Georgia, serif',
-                fontSize: 'clamp(2rem, 5.5vw, 3.75rem)',
-                fontWeight: 700,
-                letterSpacing: '0.01em',
-                textShadow: '0 0 30px rgba(201, 169, 97, 0.15)',
-              }}
-            >
-              10 Tips para<br />Vender Mejor
-            </h1>
-
-            <div className="flex items-center justify-center gap-3 md:gap-4 mb-9">
-              <div className="w-10 md:w-16 h-px bg-gold/40" />
-              <div className="w-1.5 h-1.5 bg-gold rotate-45" />
-              <p className="font-sans uppercase tracking-[0.25em] text-gold text-[11px] md:text-xs whitespace-nowrap">
-                {season.name} · Casa de los Ángeles
-              </p>
-              <div className="w-1.5 h-1.5 bg-gold rotate-45" />
-              <div className="w-10 md:w-16 h-px bg-gold/40" />
-            </div>
-
-            <p className="font-sans text-cream text-[17px] md:text-[19px] leading-[1.75] max-w-2xl mx-auto">
-              Los mercados son una mezcla entre estrategia, presentación y energía. Hay días de flujo alto y otros más tranquilos, pero los expositores que más venden normalmente siguen estos principios.
-            </p>
-          </div>
-        </section>
-
-        {/* Section transition */}
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto flex items-center gap-4 py-4">
-            <div className="flex-1 h-px bg-gold/30" />
-            <div className="w-1.5 h-1.5 bg-gold rotate-45" />
-            <div className="flex-1 h-px bg-gold/30" />
-          </div>
+          <p className="text-charcoal-50 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
+            Los mercados son una mezcla entre estrategia, presentación y energía. Hay días de
+            flujo alto y otros más tranquilos, pero los expositores que más venden normalmente
+            siguen estos principios.
+          </p>
         </div>
+      </section>
 
-        {/* Tips */}
-        <section className="container-custom py-12 md:py-16">
-          <div className="max-w-5xl mx-auto">
+      {/* TIPS — cards */}
+      <section className="section bg-cream-200">
+        <div className="container-custom max-w-5xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6 items-start">
             {TIPS.map((tip, i) => {
               const Icon = TIP_ICONS[i] ?? Store
               return (
-              <article
-                key={i}
-                className="grid md:grid-cols-[200px_1fr] gap-7 md:gap-12 py-12 md:py-14 border-t border-cream/15 first:border-t-0"
-              >
-                {/* Left rail: number + icon + title */}
-                <div className="md:sticky md:top-28 md:self-start flex flex-row md:flex-col items-center md:items-start gap-4 md:gap-5 text-center md:text-left">
-                  <span
-                    className="font-serif italic text-gold/80 leading-none tabular-nums"
-                    style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}
-                  >
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <span className="flex items-center justify-center w-12 h-12 md:w-14 md:h-14 border border-gold/40 text-gold flex-shrink-0">
-                    <Icon className="w-5 h-5 md:w-6 md:h-6" />
-                  </span>
-                  <h2
-                    className="not-italic text-cream leading-tight"
-                    style={{
-                      fontFamily: 'var(--font-fraunces), Georgia, serif',
-                      fontSize: 'clamp(1.375rem, 2.4vw, 1.875rem)',
-                      fontWeight: 700,
-                      letterSpacing: '0.005em',
-                    }}
-                  >
+                <div
+                  key={i}
+                  className="group bg-white border border-gold/20 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 p-7 md:p-8 flex flex-col"
+                >
+                  <div className="flex items-center justify-between mb-5">
+                    <span className="flex items-center justify-center w-14 h-14 bg-gold/10 rounded-full flex-shrink-0 group-hover:bg-gold/20 transition-colors">
+                      <Icon className="w-6 h-6 text-gold-dark" strokeWidth={1.5} />
+                    </span>
+                    <span className="font-serif text-gold-dark/40 text-4xl leading-none tabular-nums">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                  </div>
+
+                  <h2 className="font-serif text-xl md:text-2xl text-charcoal leading-tight mb-4">
                     {tip.title}
                   </h2>
-                </div>
 
-                {/* Right column: content */}
-                <div className="space-y-3.5 text-cream font-sans text-[16px] md:text-[18px] leading-[1.7] md:pt-2">
-                  {tip.content.map((p, j) => (
-                    <p key={j}>{p}</p>
-                  ))}
+                  <div className="space-y-3 text-charcoal-50 text-[15px] md:text-base leading-relaxed">
+                    {tip.content.map((p, j) => (
+                      <p key={j}>{p}</p>
+                    ))}
+                  </div>
                 </div>
-              </article>
               )
             })}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Section transition */}
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto flex items-center gap-4 py-4">
-            <div className="flex-1 h-px bg-gold/30" />
-            <div className="w-1.5 h-1.5 bg-gold rotate-45" />
-            <div className="flex-1 h-px bg-gold/30" />
+      {/* RECUERDA */}
+      <section className="section bg-cream">
+        <div className="container-custom max-w-3xl">
+          <div className="text-center bg-emerald/5 border border-emerald/20 rounded-2xl p-10 md:p-14">
+            <p className="font-sans uppercase tracking-[0.3em] text-emerald text-xs md:text-sm mb-4">
+              Recuerda
+            </p>
+            <p className="font-serif text-display-sm text-emerald-forest leading-tight mb-2">
+              No solo se trata del flujo.
+            </p>
+            <p className="text-charcoal-50 text-lg md:text-xl leading-relaxed max-w-xl mx-auto">
+              Las ventas dependen muchísimo de presentación, actitud, experiencia y
+              constancia.
+            </p>
           </div>
         </div>
+      </section>
 
-        {/* Recuerda reflection */}
-        <section className="container-custom py-12 md:py-16">
-          <div className="max-w-2xl mx-auto text-center">
-            <p className="font-serif italic text-gold text-2xl md:text-3xl mb-5">
-              <span aria-hidden="true">✨</span> Recuerda
-            </p>
-            <p className="font-sans text-cream text-[17px] md:text-[19px] leading-[1.75]">
-              Las ventas no dependen únicamente del flujo. Dependen muchísimo de presentación, actitud, experiencia y constancia.
-            </p>
-          </div>
-        </section>
-
-        {/* Closing */}
-        <section className="container-custom py-8 md:py-12">
-          <div className="max-w-2xl mx-auto text-center">
-            <p
-              className="font-serif italic text-gold leading-tight"
-              style={{ fontSize: 'clamp(1.375rem, 3vw, 2rem)' }}
-            >
-              Gracias por formar parte de {season.name} <span aria-hidden="true">🌙</span>
-            </p>
-          </div>
-        </section>
-
-        {/* Cross-link to Lineamientos */}
-        <section className="container-custom pb-10 md:pb-12">
+      {/* CROSS-LINK to Lineamientos */}
+      <section className="bg-cream-200 py-16 md:py-20">
+        <div className="container-custom max-w-2xl">
           <Link
             href="/mercado-de-los-angeles/informacion"
-            className="group block max-w-2xl mx-auto"
+            className="group bg-white border border-gold/20 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 p-6 md:p-7 flex items-center gap-5"
           >
-            <div className="flex items-center gap-4 md:gap-5 border border-cream/15 group-hover:border-gold bg-[#0F1A2E]/40 group-hover:bg-[#0F1A2E]/70 px-6 py-6 md:px-7 md:py-7 transition-all duration-500">
-              <span className="flex items-center justify-center w-11 h-11 md:w-12 md:h-12 border border-gold/40 group-hover:border-gold text-gold flex-shrink-0 transition-colors">
-                <BookOpen className="w-5 h-5" />
+            <span className="flex items-center justify-center w-14 h-14 bg-gold/10 rounded-full flex-shrink-0 group-hover:bg-gold/20 transition-colors">
+              <BookOpen className="w-6 h-6 text-gold-dark" strokeWidth={1.5} />
+            </span>
+            <span className="flex-1 min-w-0">
+              <span className="block font-sans uppercase tracking-[0.22em] text-gold text-[11px] md:text-xs mb-1.5">
+                Lee también
               </span>
-              <span className="flex-1 min-w-0">
-                <span className="block font-sans uppercase tracking-[0.25em] text-gold text-[11px] md:text-xs mb-2">
-                  Lee también
-                </span>
-                <span
-                  className="block not-italic text-cream leading-tight"
-                  style={{ fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.125rem, 1.9vw, 1.375rem)', fontWeight: 700, letterSpacing: '0.005em' }}
-                >
-                  Lineamientos Generales
-                </span>
+              <span className="block font-serif text-xl md:text-2xl text-charcoal leading-tight">
+                Lineamientos Generales
               </span>
-              <ArrowRight className="w-4 h-4 text-cream/50 group-hover:text-gold transition-all duration-300 group-hover:translate-x-1 flex-shrink-0" />
-            </div>
+            </span>
+            <ArrowRight className="w-5 h-5 text-charcoal-50 group-hover:text-gold-dark transition-all duration-300 group-hover:translate-x-1 flex-shrink-0" />
           </Link>
-        </section>
+        </div>
+      </section>
 
-        {/* CTAs — three-level system */}
-        <section className="container-custom pb-20 md:pb-28 pt-6">
-          <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center sm:items-stretch justify-center gap-3 sm:gap-4">
-            <Link
-              href="/mercado-de-los-angeles"
-              className="order-3 sm:order-1 inline-flex items-center justify-center gap-2 text-cream/80 hover:text-gold px-3 py-3 text-xs md:text-sm uppercase tracking-[0.25em] font-sans font-medium transition-colors duration-300"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Volver al Mercado
-            </Link>
+      {/* CTAs */}
+      <section className="section bg-cream-200 !pt-0">
+        <div className="container-custom max-w-4xl flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <Link
+            href="/mercado-de-los-angeles"
+            className="order-3 sm:order-1 inline-flex items-center justify-center gap-2 text-charcoal-50 hover:text-gold-dark px-3 py-3 text-xs md:text-sm uppercase tracking-[0.25em] font-sans font-medium transition-colors duration-300"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Volver al Mercado
+          </Link>
 
-            <a
-              href={`https://wa.me/${settings.whatsapp}?text=${yaLeiMessage}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="order-1 sm:order-2 inline-flex items-center justify-center gap-3 bg-gold hover:bg-gold-light text-charcoal px-6 py-4 text-sm md:text-base uppercase tracking-[0.18em] font-sans font-medium transition-all duration-500"
-            >
-              <Check className="w-4 h-4" />
-              Ya leí, confirmo participación
-            </a>
+          <a
+            href={`https://wa.me/${settings.whatsapp}?text=${yaLeiMessage}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-filled order-1 sm:order-2 inline-flex items-center justify-center gap-3"
+          >
+            <Check className="w-4 h-4" />
+            Ya leí, confirmo participación
+          </a>
 
-            <a
-              href={`https://wa.me/${settings.whatsapp}?text=${reservaMessage}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="order-2 sm:order-3 inline-flex items-center justify-center gap-2.5 border border-cream/45 hover:border-cream text-cream hover:bg-cream/5 px-6 py-4 text-sm md:text-base uppercase tracking-[0.18em] font-sans font-medium transition-all duration-500"
-            >
-              <WhatsAppIcon className="w-4 h-4" />
-              Reservar
-            </a>
-          </div>
-        </section>
-      </div>
+          <a
+            href={`https://wa.me/${settings.whatsapp}?text=${reservaMessage}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="order-2 sm:order-3 inline-flex items-center justify-center gap-2.5 border border-gold/40 hover:border-gold-dark text-charcoal hover:bg-gold/5 rounded-full px-6 py-3.5 text-sm md:text-base uppercase tracking-[0.18em] font-sans font-medium transition-all duration-300"
+          >
+            <WhatsAppIcon className="w-4 h-4" />
+            Reservar
+          </a>
+        </div>
+      </section>
     </main>
   )
 }
