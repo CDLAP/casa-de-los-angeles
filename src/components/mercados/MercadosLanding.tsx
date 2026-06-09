@@ -111,7 +111,7 @@ export default function MercadosLanding() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-sans uppercase tracking-[0.3em] text-gold text-xs md:text-sm mb-6"
           >
-            Casa de los Ángeles · Centro Histórico de Puebla
+            Centro Histórico de Puebla
           </motion.p>
 
           {/* Title — Participa en nuestro mercado */}
