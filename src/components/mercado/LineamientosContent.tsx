@@ -245,7 +245,7 @@ export default function LineamientosContent() {
       <section className="section bg-cream pt-[150px] md:pt-[230px]">
         <div className="container-custom max-w-3xl text-center">
           <Link
-            href="/mercado-de-los-angeles"
+            href="/mercados"
             className="inline-flex items-center gap-2 text-xs md:text-sm uppercase tracking-[0.22em] text-charcoal-50 hover:text-gold-dark transition-colors duration-300 mb-10"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -508,7 +508,7 @@ export default function LineamientosContent() {
       <section className="section bg-cream-200">
         <div className="container-custom max-w-4xl flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
           <Link
-            href="/mercado-de-los-angeles"
+            href="/mercados"
             className="order-3 sm:order-1 inline-flex items-center justify-center gap-2 text-charcoal-50 hover:text-gold-dark px-3 py-3 text-xs md:text-sm uppercase tracking-[0.25em] font-sans font-medium transition-colors duration-300"
           >
             <ArrowLeft className="w-4 h-4" />
