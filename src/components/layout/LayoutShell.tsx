@@ -11,6 +11,7 @@ const standalonePages = ['/lineamientos']
 export default function LayoutShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const isStandalone = standalonePages.includes(pathname)
+  const isHome = pathname === '/'
 
   if (isStandalone) {
     return <main>{children}</main>
@@ -18,7 +19,7 @@ export default function LayoutShell({ children }: { children: React.ReactNode })
 
   return (
     <>
-      <Loader />
+      {isHome && <Loader />}
       <Header />
       <StickyAngel />
       <main>{children}</main>
