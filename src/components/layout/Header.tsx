@@ -14,7 +14,7 @@ const mainLinks = [
   { href: '/#boutique', label: 'Boutique' },
   { href: '/mercados', label: 'Mercados' },
   { href: '/#rueda-de-prensa', label: 'Prensa' },
-  { href: '/artesania-visual', label: 'Artesanía Visual' },
+  { href: '/artesania-visual', label: 'Studio' },
 ]
 
 const moreLinks = [

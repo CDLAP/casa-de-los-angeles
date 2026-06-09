@@ -93,7 +93,7 @@ export default function ArtesaniaVisualPage() {
 
   const handleSubmit = () => {
     const texto =
-      `Hola, me interesan los planes de Artesanía Visual de Casa de los Ángeles.%0A%0A` +
+      `Hola, me interesan los planes de Casa de los Ángeles Studio.%0A%0A` +
       `Nombre: ${form.nombre}%0A` +
       `Marca / Negocio: ${form.marca}%0A` +
       `Contacto: ${form.contacto}%0A` +
@@ -120,7 +120,7 @@ export default function ArtesaniaVisualPage() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Casa de los Ángeles
+            Estudio creativo
           </motion.p>
           <motion.h1
             className="font-serif text-4xl sm:text-5xl md:text-6xl text-gold mb-6"
@@ -128,7 +128,7 @@ export default function ArtesaniaVisualPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            Artesanía Visual
+            Casa de los Ángeles Studio
           </motion.h1>
           <motion.p
             className="text-cream/60 text-xl max-w-2xl mx-auto font-light mb-6"
@@ -391,7 +391,7 @@ export default function ArtesaniaVisualPage() {
                   Enviar por WhatsApp
                 </motion.button>
                 <motion.a
-                  href={`mailto:${EMAIL}?subject=Artesan%C3%ADa%20Visual%20-%20Informaci%C3%B3n%20de%20planes`}
+                  href={`mailto:${EMAIL}?subject=Casa%20de%20los%20%C3%81ngeles%20Studio%20-%20Informaci%C3%B3n%20de%20planes`}
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-gold text-gold text-sm uppercase tracking-[0.15em] font-sans font-medium transition-all duration-500 hover:bg-gold hover:text-white rounded-xl"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -403,7 +403,7 @@ export default function ArtesaniaVisualPage() {
 
               <div className="flex items-center justify-center gap-2 mt-6">
                 <a
-                  href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Hola, me interesa Artesanía Visual de Casa de los Ángeles')}`}
+                  href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Hola, me interesa Casa de los Ángeles Studio')}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-cream/40 text-sm hover:text-gold transition-colors"
