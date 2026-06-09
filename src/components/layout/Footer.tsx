@@ -9,9 +9,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   const navLinks = [
-    { label: 'Café', href: '/#menu' },
     { label: 'Museo', href: '/#nosotros' },
-    { label: 'Boutique', href: '/#boutique' },
     { label: 'Prensa', href: '/#rueda-de-prensa' },
     { label: 'Mercado', href: '/#mercado' },
     { label: 'Contacto', href: '/#contacto' },

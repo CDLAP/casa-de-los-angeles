@@ -6,8 +6,8 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Hero from '@/components/sections/Hero'
 import About from '@/components/sections/About'
-import CafeSection from '@/components/sections/CafeSection'
-import Boutique from '@/components/sections/Boutique'
+// import CafeSection from '@/components/sections/CafeSection' // oculto a petición del cliente
+// import Boutique from '@/components/sections/Boutique' // oculto a petición del cliente
 import RuedaPrensa from '@/components/sections/RuedaPrensa'
 import MercadoSection from '@/components/sections/MercadoSection'
 import Contact from '@/components/sections/Contact'
@@ -21,9 +21,9 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <CafeSection />
+      {/* <CafeSection /> oculto a petición del cliente */}
       <About />
-      <Boutique />
+      {/* <Boutique /> oculto a petición del cliente */}
       <MercadoSection />
       <RuedaPrensa />
       <Contact />
