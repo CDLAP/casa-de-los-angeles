@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowLeft, ArrowRight, Check, Lightbulb } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Check, Lightbulb, Table, Layers, Armchair } from 'lucide-react'
 import StarsBackground from '@/components/mercado/StarsBackground'
 import ReadingProgress from '@/components/mercado/ReadingProgress'
 import WhatsAppIcon from '@/components/mercado/WhatsAppIcon'
@@ -95,7 +95,6 @@ const SECTIONS: Section[] = [
     items: [
       'El mobiliario deberá entregarse en las mismas condiciones en las que fue recibido.',
       'En caso de daños, se aplicará una cuota de recuperación de $500 MXN.',
-      'Incluimos únicamente 1 silla por expositor.',
       'En caso de asistir más personas, deberá notificarse previamente para autorización.',
     ],
   },
@@ -305,6 +304,34 @@ export default function LineamientosPage() {
                     </li>
                   ))}
                 </ul>
+
+                {section.title === 'Mobiliario y espacio' && (
+                  <div className="mt-10 grid grid-cols-3 gap-3 md:gap-4 max-w-2xl mx-auto">
+                    {[
+                      { icon: Table, label: 'Mesa', detail: '1.80 m' },
+                      { icon: Layers, label: 'Mantel', detail: 'Incluido' },
+                      { icon: Armchair, label: 'Silla', detail: '1 pieza' },
+                    ].map((m) => (
+                      <div
+                        key={m.label}
+                        className="flex flex-col items-center text-center gap-3 border border-cream/15 bg-[#0F1A2E]/40 px-3 py-6 md:px-4 md:py-7"
+                      >
+                        <span className="flex items-center justify-center w-12 h-12 md:w-14 md:h-14 border border-gold/40 text-gold">
+                          <m.icon className="w-5 h-5 md:w-6 md:h-6" />
+                        </span>
+                        <span
+                          className="not-italic text-cream leading-tight"
+                          style={{ fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.05rem, 2vw, 1.3rem)', fontWeight: 700, letterSpacing: '0.005em' }}
+                        >
+                          {m.label}
+                        </span>
+                        <span className="font-sans uppercase tracking-[0.18em] text-gold text-[11px] md:text-xs">
+                          {m.detail}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
           </div>
