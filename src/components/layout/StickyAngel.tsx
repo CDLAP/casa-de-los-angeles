@@ -40,9 +40,8 @@ export default function StickyAngel() {
   // El querubín CDLA (con lentes) sólo en el Studio; el ángel normal en el resto del sitio.
   const angelSrc = isStudio ? '/images/cdla-angel.png' : '/images/logo-short-1000x1000.png'
   const angelAlt = isStudio ? 'CDLA Studio' : 'Casa de los Ángeles'
-  // En el Studio el querubín CDLA es más voluminoso: más compacto y un poco más abajo para que no se trepe al menú.
-  const topClass = isStudio ? 'top-[10px] md:top-[52px]' : 'top-[-4px] md:top-[28px]'
-  const sizeClass = isStudio ? 'w-24 h-24 md:w-36 md:h-36' : 'w-40 h-40 md:w-56 md:h-56'
+  // En el Studio el querubín baja para quedar completo en la franja bajo el menú, sin treparse a los textos.
+  const topClass = isStudio ? 'top-[24px] md:top-[100px]' : 'top-[-4px] md:top-[28px]'
 
   return (
     <div
@@ -54,7 +53,7 @@ export default function StickyAngel() {
         alt={angelAlt}
         width={448}
         height={448}
-        className={`object-contain drop-shadow-2xl ${sizeClass}`}
+        className="object-contain drop-shadow-2xl w-40 h-40 md:w-56 md:h-56"
         priority
       />
     </div>
