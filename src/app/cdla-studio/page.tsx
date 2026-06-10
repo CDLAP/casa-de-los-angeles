@@ -44,7 +44,7 @@ const featuredItems: GalleryItem[] = [
 ]
 
 // Fotos del Studio (studio-01 … studio-41), generadas automáticamente y sin etiqueta.
-const studioFills: GalleryItem[] = Array.from({ length: 41 }, (_, i) => ({
+const studioFills: GalleryItem[] = Array.from({ length: 42 }, (_, i) => ({
   type: 'image' as const,
   src: `/images/artesania/studio-${String(i + 1).padStart(2, '0')}.jpg`,
   label: 'CDLA Studio',
