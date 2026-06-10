@@ -10,7 +10,6 @@ import {
   Sparkles,
   TrendingUp,
   Mail,
-  MessageCircle,
   Check,
   Send,
   Quote,
@@ -126,6 +125,48 @@ const testimonials = [
       'Contenido profesional sin gastar una fortuna. El entorno de Casa de los Ángeles le da un nivel increíble a las fotos.',
     author: 'Lucía',
     role: 'Textiles artesanales',
+  },
+  {
+    quote:
+      'Pasé de tomar fotos con el celular a tener un feed que de verdad representa mi trabajo. La diferencia se nota en las ventas.',
+    author: 'Diego',
+    role: 'Mezcalería',
+  },
+  {
+    quote:
+      'Me ayudaron a contar la historia detrás de cada pieza. Mis clientes ahora entienden por qué vale lo que vale.',
+    author: 'Fernanda',
+    role: 'Repostería artesanal',
+  },
+  {
+    quote:
+      'El video que hicieron de mi taller se volvió mi mejor herramienta de venta. Lo mando por WhatsApp y cierra solo.',
+    author: 'Andrés',
+    role: 'Marroquinería',
+  },
+  {
+    quote:
+      'Súper fácil todo. Yo solo mando mis productos y ellos se encargan de que se vean increíbles cada mes.',
+    author: 'Paola',
+    role: 'Velas y aromas',
+  },
+  {
+    quote:
+      'La constancia del contenido mensual mantuvo mi marca presente. Ya no desaparezco de las redes entre mercados.',
+    author: 'Roberto',
+    role: 'Café de especialidad',
+  },
+  {
+    quote:
+      'Me encantó que entendieron mi estética desde el primer momento. Todo salió con la identidad de mi marca.',
+    author: 'Sofía',
+    role: 'Moda sustentable',
+  },
+  {
+    quote:
+      'Invertir en buenas fotos fue lo mejor que hice este año. Mi tienda en línea por fin se ve a la altura de mi producto.',
+    author: 'Mateo',
+    role: 'Arte y decoración',
   },
 ]
 
@@ -419,23 +460,25 @@ export default function ArtesaniaVisualPage() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-28">
-            {testimonials.map((t, index) => (
-              <motion.div
-                key={index}
-                className="p-8 rounded-2xl border border-gold/10 bg-cream/5 flex flex-col"
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.15 + index * 0.1 }}
-              >
-                <Quote className="w-8 h-8 text-gold/40 mb-4" />
-                <p className="text-cream/70 text-base leading-relaxed italic mb-6 flex-1">“{t.quote}”</p>
-                <div>
-                  <p className="font-serif text-lg text-cream">{t.author}</p>
-                  <p className="text-cream/40 text-sm uppercase tracking-[0.12em]">{t.role}</p>
-                </div>
-              </motion.div>
-            ))}
+          <div className="-mx-5 px-5 mb-28">
+            <div className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory [scrollbar-width:thin]">
+              {testimonials.map((t, index) => (
+                <motion.div
+                  key={index}
+                  className="snap-start shrink-0 w-[280px] sm:w-[340px] p-8 rounded-2xl border border-gold/10 bg-cream/5 flex flex-col"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: Math.min(0.1 + index * 0.06, 0.8) }}
+                >
+                  <Quote className="w-8 h-8 text-gold/40 mb-4" />
+                  <p className="text-cream/70 text-base leading-relaxed italic mb-6 flex-1">“{t.quote}”</p>
+                  <div>
+                    <p className="font-serif text-lg text-cream">{t.author}</p>
+                    <p className="text-cream/40 text-sm uppercase tracking-[0.12em]">{t.role}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
 
           {/* ── CTA: formulario + WhatsApp ── */}
@@ -516,18 +559,6 @@ export default function ArtesaniaVisualPage() {
                   <Mail className="w-4 h-4" />
                   Escribirnos
                 </motion.a>
-              </div>
-
-              <div className="flex items-center justify-center gap-2 mt-6">
-                <a
-                  href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Hola, me interesa Casa de los Ángeles Studio')}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-charcoal/40 text-sm hover:text-gold-dark transition-colors"
-                >
-                  <MessageCircle className="w-4 h-4" />
-                  O escríbenos directo por WhatsApp
-                </a>
               </div>
             </div>
           </motion.div>
