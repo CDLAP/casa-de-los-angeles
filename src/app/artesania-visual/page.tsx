@@ -14,6 +14,9 @@ import {
   Send,
   Quote,
   ArrowRight,
+  Target,
+  Compass,
+  Eye,
 } from 'lucide-react'
 
 // ─── Configuración rápida ───────────────────────────────────────────
@@ -210,7 +213,7 @@ export default function ArtesaniaVisualPage() {
         </div>
         <div className="relative z-10 text-center px-5 max-w-4xl mx-auto pt-[150px] md:pt-[290px] pb-16">
           <motion.img
-            src="/images/artesania/cdla-studio.png"
+            src="/images/cdla-angel.png"
             alt="CDLA Studio"
             className="w-36 sm:w-44 md:w-52 mx-auto mb-8"
             initial={{ opacity: 0, scale: 0.92 }}
@@ -291,27 +294,33 @@ export default function ArtesaniaVisualPage() {
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-28">
             {[
               {
+                icon: Target,
                 label: 'Propósito',
                 text: 'Transformar negocios artesanales, culturales y locales en marcas memorables mediante creatividad, contenido y dirección estratégica.',
               },
               {
+                icon: Compass,
                 label: 'Misión',
                 text: 'Elevar la percepción de marcas mexicanas a través de storytelling, diseño, contenido y experiencias visuales de alta calidad.',
               },
               {
+                icon: Eye,
                 label: 'Visión',
                 text: 'Convertirnos en el estudio creativo de referencia para marcas artesanales, culturales y boutique de México.',
               },
             ].map((b, index) => (
               <motion.div
                 key={b.label}
-                className="p-8 rounded-2xl border border-gold/10 bg-cream/5"
+                className="bg-cream shadow-xl rounded-2xl p-8 text-center"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
               >
-                <p className="font-sans uppercase tracking-[0.25em] text-gold text-xs mb-4">{b.label}</p>
-                <p className="text-cream/60 text-base leading-relaxed">{b.text}</p>
+                <div className="w-14 h-14 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-5">
+                  <b.icon className="w-6 h-6 text-gold-dark" />
+                </div>
+                <p className="font-sans uppercase tracking-[0.25em] text-gold-dark text-xs mb-3">{b.label}</p>
+                <p className="text-charcoal/70 text-base leading-relaxed">{b.text}</p>
               </motion.div>
             ))}
           </div>

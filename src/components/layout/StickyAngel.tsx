@@ -7,6 +7,7 @@ import Image from 'next/image'
 export default function StickyAngel() {
   const pathname = usePathname()
   const isHome = pathname === '/'
+  const isStudio = pathname === '/artesania-visual'
   const [isStuck, setIsStuck] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -19,24 +20,35 @@ export default function StickyAngel() {
     return () => window.removeEventListener('mobileMenuToggle', handler)
   }, [])
 
-  // Listen for Hero's scroll calculation — single source of truth
+  // Decide when the angel is "stuck" (visible)
   useEffect(() => {
-    if (!isHome) {
-      setIsStuck(true)
-      return
+    // Home: single source of truth is the Hero's scroll calculation
+    if (isHome) {
+      setIsStuck(false)
+      const handler = (e: Event) => setIsStuck((e as CustomEvent).detail.stuck)
+      window.addEventListener('angelStuck', handler)
+      return () => window.removeEventListener('angelStuck', handler)
     }
 
-    setIsStuck(false)
-
-    const handler = (e: Event) => {
-      setIsStuck((e as CustomEvent).detail.stuck)
+    // Studio: el hero ya muestra el logo grande, así que el ángel anclado
+    // aparece sólo después de hacer scroll para no duplicarlo.
+    if (isStudio) {
+      const onScroll = () => setIsStuck(window.scrollY > 500)
+      onScroll()
+      window.addEventListener('scroll', onScroll, { passive: true })
+      return () => window.removeEventListener('scroll', onScroll)
     }
-    window.addEventListener('angelStuck', handler)
-    return () => window.removeEventListener('angelStuck', handler)
-  }, [isHome, pathname])
+
+    // Resto de páginas: siempre visible
+    setIsStuck(true)
+  }, [isHome, isStudio, pathname])
 
   // Hide when menu is open (menu has its own cherub)
   const visible = isStuck && !menuOpen
+
+  // El querubín CDLA (con lentes) sólo en el Studio; el ángel normal en el resto del sitio.
+  const angelSrc = isStudio ? '/images/cdla-angel.png' : '/images/logo-short-1000x1000.png'
+  const angelAlt = isStudio ? 'CDLA Studio' : 'Casa de los Ángeles'
 
   return (
     <div
@@ -44,8 +56,8 @@ export default function StickyAngel() {
       style={{ zIndex: 58, opacity: visible ? 1 : 0 }}
     >
       <Image
-        src="/images/logo-short-1000x1000.png"
-        alt="Casa de los Ángeles"
+        src={angelSrc}
+        alt={angelAlt}
         width={160}
         height={160}
         className="object-contain drop-shadow-2xl w-40 h-40 md:w-56 md:h-56"
