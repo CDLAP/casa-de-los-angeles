@@ -13,6 +13,7 @@ import {
   MessageCircle,
   Check,
   Send,
+  Quote,
 } from 'lucide-react'
 
 // ─── Configuración rápida ───────────────────────────────────────────
@@ -20,12 +21,13 @@ import {
 // type 'image' o 'video'; los videos se reproducen solos en silencio. El label aparece sobre cada pieza.
 const galleryItems: { type: 'image' | 'video'; src: string; label: string; hideLabel?: boolean }[] = [
   { type: 'image', src: '/images/artesania/dp.jpg', label: 'Desayuno París', hideLabel: true },
+  { type: 'video', src: '/images/artesania/talavera.mp4', label: 'Talavera' },
   { type: 'image', src: '/images/artesania/ss.jpg', label: 'Lifestyle' },
   { type: 'image', src: '/images/artesania/cc.jpg', label: 'Café' },
   { type: 'image', src: '/images/artesania/pan.jpg', label: 'Panadería' },
   { type: 'video', src: '/images/artesania/madres.mp4', label: 'Reel' },
   { type: 'image', src: '/images/artesania/branding.jpg', label: 'Branding' },
-  { type: 'image', src: '/images/artesania/talavera.jpg', label: 'Talavera' },
+  { type: 'image', src: '/images/artesania/talavera.jpg', label: 'Cerámica' },
   { type: 'image', src: '/images/artesania/textil.jpg', label: 'Textil' },
   { type: 'image', src: '/images/artesania/moda.jpg', label: 'Moda' },
   { type: 'video', src: '/images/artesania/te.mp4', label: 'Té' },
@@ -66,18 +68,60 @@ const services = [
   },
 ]
 
-const plans = [
+const packages = [
   {
     icon: Camera,
-    title: 'Plan Estático',
+    title: 'Presencia Artesanal',
+    price: '$1,500 MXN',
+    period: 'al mes',
     description:
-      'Posteos mensuales en formato imagen: fotografía de producto, montajes y piezas gráficas con identidad uniforme para alimentar tus redes con constancia.',
+      'Ideal para artesanos, emprendedores y pequeños negocios que quieren mantener presencia digital constante.',
+    features: [
+      '8 fotografías profesionales de producto',
+      '4 diseños para publicaciones de feed',
+      '4 historias para Instagram o WhatsApp',
+      'Adaptación de logo y datos de contacto',
+      '1 publicación en las historias de Casa de los Ángeles',
+      'Asesoría de imagen y presentación (30 min)',
+    ],
+    featured: false,
   },
   {
     icon: Film,
-    title: 'Plan Video',
+    title: 'Impulso Artesanal',
+    price: '$3,500 MXN',
+    period: 'al mes',
     description:
-      'Posteos mensuales en formato video: reels y piezas cinematográficas que dan movimiento a tu marca y conectan con tu audiencia de forma orgánica.',
+      'Para marcas que buscan crecer visualmente con video, más contenido y dirección creativa completa.',
+    features: [
+      'Video cinematográfico mensual',
+      '30 fotografías para redes',
+      'Dirección creativa completa',
+      'Promoción dentro del ecosistema Casa de los Ángeles',
+    ],
+    featured: true,
+  },
+]
+
+// Testimonios de MUESTRA — reemplazar por testimonios reales antes de publicar.
+const testimonials = [
+  {
+    quote:
+      'El contenido cambió por completo cómo se ve mi marca. Las fotos parecen de revista y mis ventas en redes crecieron.',
+    author: 'Mariana',
+    role: 'Joyería artesanal',
+  },
+  {
+    quote:
+      'La dirección creativa hizo la diferencia. Por fin mi negocio se ve profesional y con identidad propia.',
+    author: 'Carlos',
+    role: 'Cerámica de Talavera',
+  },
+  {
+    quote:
+      'Contenido profesional sin gastar una fortuna. El entorno de Casa de los Ángeles le da un nivel increíble a las fotos.',
+    author: 'Lucía',
+    role: 'Textiles artesanales',
   },
 ]
 
@@ -85,7 +129,7 @@ export default function ArtesaniaVisualPage() {
   const contentRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(contentRef, { once: true, margin: '-100px' })
 
-  const [form, setForm] = useState({ nombre: '', marca: '', contacto: '', plan: 'Ambos', mensaje: '' })
+  const [form, setForm] = useState({ nombre: '', marca: '', contacto: '', plan: 'Presencia Artesanal', mensaje: '' })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -211,70 +255,80 @@ export default function ArtesaniaVisualPage() {
             ))}
           </div>
 
-          {/* ── Planes mensuales ── */}
+          {/* ── Planes y paquetes ── */}
           <motion.div
             className="text-center mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="font-serif text-3xl sm:text-4xl text-gold mb-4">Planes de posteo mensual</h2>
+            <h2 className="font-serif text-3xl sm:text-4xl text-gold mb-4">Planes y paquetes</h2>
             <p className="text-cream/50 text-lg max-w-2xl mx-auto">
-              Elige el formato que mejor cuenta tu historia. Cada plan mantiene una estética uniforme y un branding visual
-              consistente mes con mes.
+              Elige el nivel que mejor acompaña a tu marca. Cada paquete mantiene una estética uniforme y un branding
+              visual consistente mes con mes.
             </p>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
-            {plans.map((plan, index) => (
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-8 items-stretch">
+            {packages.map((pkg, index) => (
               <motion.div
-                key={plan.title}
-                className="group p-8 rounded-2xl border border-gold/10 bg-cream/5 hover:border-gold/25 transition-all duration-500 text-center"
+                key={pkg.title}
+                className={`group relative p-8 md:p-10 rounded-2xl border transition-all duration-500 flex flex-col ${
+                  pkg.featured
+                    ? 'border-gold/40 bg-gold/5'
+                    : 'border-gold/10 bg-cream/5 hover:border-gold/25'
+                }`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
               >
-                <div className="w-16 h-16 mx-auto bg-gold/10 rounded-full flex items-center justify-center mb-5 group-hover:bg-gold/20 transition-colors duration-300">
-                  <plan.icon className="w-7 h-7 text-gold" />
+                {pkg.featured && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 bg-gold text-charcoal text-xs uppercase tracking-[0.18em] font-medium px-4 py-1.5 rounded-full">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    Más popular
+                  </div>
+                )}
+                <div className="w-14 h-14 bg-gold/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-gold/20 transition-colors duration-300">
+                  <pkg.icon className="w-6 h-6 text-gold" />
                 </div>
-                <h3 className="font-serif text-2xl text-cream mb-3 group-hover:text-gold transition-colors">
-                  {plan.title}
-                </h3>
-                <p className="text-cream/50 text-base leading-relaxed">{plan.description}</p>
+                <h3 className="font-serif text-2xl text-cream mb-2">{pkg.title}</h3>
+                <div className="flex items-baseline gap-2 mb-5">
+                  <span className="font-serif text-3xl text-gold">{pkg.price}</span>
+                  <span className="text-cream/40 text-sm">{pkg.period}</span>
+                </div>
+                <p className="text-cream/50 text-base leading-relaxed mb-6">{pkg.description}</p>
+                <ul className="space-y-3 mt-auto">
+                  {pkg.features.map((f) => (
+                    <li key={f} className="flex items-start gap-3 text-cream/70 text-[15px] leading-relaxed">
+                      <Check className="w-4 h-4 text-gold flex-shrink-0 mt-1" />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
             ))}
           </div>
 
-          {/* ── Paquete Impulso Artesanal ── */}
+          {/* ── Complemento: video por pieza ── */}
           <motion.div
-            className="max-w-3xl mx-auto mb-28"
-            initial={{ opacity: 0, y: 30 }}
+            className="max-w-4xl mx-auto mb-28"
+            initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="relative bg-gold/5 border border-gold/20 rounded-2xl p-8 md:p-12 text-center overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-radial from-gold/5 via-transparent to-transparent" />
-              <div className="relative z-10">
-                <div className="inline-flex items-center gap-2 text-gold/70 text-sm uppercase tracking-[0.2em] mb-5">
-                  <Sparkles className="w-4 h-4" />
-                  Paquete destacado
-                </div>
-                <h3 className="font-serif text-3xl sm:text-4xl text-gold mb-3">Impulso Artesanal</h3>
-                <p className="text-cream text-2xl font-light mb-6">Desde $3,500 MXN mensuales</p>
-                <p className="text-cream/50 text-lg max-w-xl mx-auto mb-8">
-                  Ideal para artesanos, marcas emergentes, expositores, diseñadores, proyectos creativos y negocios
-                  mexicanos que buscan crecer visualmente.
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 border border-gold/15 rounded-2xl bg-cream/5 px-8 py-6 text-center sm:text-left">
+              <div className="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
+                <Film className="w-5 h-5 text-gold" />
+              </div>
+              <div className="flex-1">
+                <h4 className="font-serif text-xl text-cream mb-1">¿Solo quieres un video?</h4>
+                <p className="text-cream/50 text-base">
+                  Video cinematográfico de 15 segundos, listo para redes. Disponible como pieza individual.
                 </p>
-                <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-cream/60 text-base">
-                  {['Producción de video', 'Contenido para redes', 'Dirección creativa', 'Promoción en el ecosistema'].map(
-                    (f) => (
-                      <span key={f} className="inline-flex items-center gap-2">
-                        <Check className="w-4 h-4 text-gold" />
-                        {f}
-                      </span>
-                    )
-                  )}
-                </div>
+              </div>
+              <div className="flex items-baseline gap-2 flex-shrink-0">
+                <span className="font-serif text-2xl text-gold">$1,000 MXN</span>
+                <span className="text-cream/40 text-sm">c/u</span>
               </div>
             </div>
           </motion.div>
@@ -322,6 +376,38 @@ export default function ArtesaniaVisualPage() {
             ))}
           </div>
 
+          {/* ── Testimonios ── */}
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="font-serif text-3xl sm:text-4xl text-gold mb-4">Lo que dicen las marcas</h2>
+            <p className="text-cream/50 text-lg max-w-2xl mx-auto">
+              Marcas que ya elevaron su imagen con nosotros.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-28">
+            {testimonials.map((t, index) => (
+              <motion.div
+                key={index}
+                className="p-8 rounded-2xl border border-gold/10 bg-cream/5 flex flex-col"
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.15 + index * 0.1 }}
+              >
+                <Quote className="w-8 h-8 text-gold/40 mb-4" />
+                <p className="text-cream/70 text-base leading-relaxed italic mb-6 flex-1">“{t.quote}”</p>
+                <div>
+                  <p className="font-serif text-lg text-cream">{t.author}</p>
+                  <p className="text-cream/40 text-sm uppercase tracking-[0.12em]">{t.role}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
           {/* ── CTA: formulario + WhatsApp ── */}
           <motion.div
             className="max-w-3xl mx-auto"
@@ -365,9 +451,9 @@ export default function ArtesaniaVisualPage() {
                   className={inputClass}
                 />
                 <select name="plan" value={form.plan} onChange={handleChange} className={inputClass}>
-                  <option value="Ambos">Plan: Ambos (estático y video)</option>
-                  <option value="Estático">Plan Estático</option>
-                  <option value="Video">Plan Video</option>
+                  <option value="Presencia Artesanal">Presencia Artesanal — $1,500</option>
+                  <option value="Impulso Artesanal">Impulso Artesanal — $3,500</option>
+                  <option value="Video por pieza">Video por pieza — $1,000</option>
                   <option value="No estoy seguro">No estoy seguro aún</option>
                 </select>
               </div>
