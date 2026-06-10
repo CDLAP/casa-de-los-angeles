@@ -30,18 +30,9 @@ export default function StickyAngel() {
       return () => window.removeEventListener('angelStuck', handler)
     }
 
-    // Studio: el hero ya muestra el logo grande, así que el ángel anclado
-    // aparece sólo después de hacer scroll para no duplicarlo.
-    if (isStudio) {
-      const onScroll = () => setIsStuck(window.scrollY > 500)
-      onScroll()
-      window.addEventListener('scroll', onScroll, { passive: true })
-      return () => window.removeEventListener('scroll', onScroll)
-    }
-
-    // Resto de páginas: siempre visible
+    // Resto de páginas (incluido el Studio): siempre visible
     setIsStuck(true)
-  }, [isHome, isStudio, pathname])
+  }, [isHome, pathname])
 
   // Hide when menu is open (menu has its own cherub)
   const visible = isStuck && !menuOpen
