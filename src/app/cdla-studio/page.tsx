@@ -576,7 +576,7 @@ export default function ArtesaniaVisualPage() {
                     src={item.src}
                     alt={item.label}
                     loading="lazy"
-                    className="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.06]"
+                    className={`w-full h-auto block transition-transform duration-700 ${item.src.includes('studio-42') ? 'origin-bottom scale-[1.1] group-hover:scale-[1.16]' : 'group-hover:scale-[1.06]'}`}
                   />
                 )}
                 {!item.hideLabel && (
@@ -625,7 +625,7 @@ export default function ArtesaniaVisualPage() {
                         src={item.src}
                         alt={item.label}
                         loading="lazy"
-                        className="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.06]"
+                        className={`w-full h-auto block transition-transform duration-700 ${item.src.includes('studio-42') ? 'origin-bottom scale-[1.1] group-hover:scale-[1.16]' : 'group-hover:scale-[1.06]'}`}
                       />
                     )}
                     {!item.hideLabel && (
