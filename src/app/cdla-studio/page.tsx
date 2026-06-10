@@ -222,7 +222,7 @@ export default function ArtesaniaVisualPage() {
           <motion.img
             src="/images/cdla-studio.png"
             alt="Casa de los Ángeles Studio"
-            className="w-56 sm:w-72 md:w-80 mx-auto mb-8"
+            className="w-72 sm:w-96 md:w-[28rem] mx-auto mb-8"
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9, delay: 0.1 }}
@@ -482,25 +482,25 @@ export default function ArtesaniaVisualPage() {
             </p>
           </motion.div>
 
-          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 md:gap-6 max-w-5xl mx-auto mb-28">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4 max-w-7xl mx-auto mb-28">
             {galleryItems.map((item, index) => (
               <motion.div
                 key={index}
-                className="relative mb-4 md:mb-6 break-inside-avoid rounded-2xl overflow-hidden border border-gold/10 bg-cream/5 group"
+                className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-gold/10 bg-cream/5 group"
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 0.6, delay: (index % 3) * 0.08 }}
+                transition={{ duration: 0.5, delay: (index % 5) * 0.06 }}
               >
                 {item.type === 'video' ? (
-                  <video src={item.src} className="w-full h-auto block" autoPlay muted loop playsInline preload="metadata" />
+                  <video src={item.src} className="w-full h-full object-cover block" autoPlay muted loop playsInline preload="metadata" />
                 ) : (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={item.src}
                     alt={item.label}
                     loading="lazy"
-                    className="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.04]"
+                    className="w-full h-full object-cover block transition-transform duration-700 group-hover:scale-[1.06]"
                   />
                 )}
                 {!item.hideLabel && (
