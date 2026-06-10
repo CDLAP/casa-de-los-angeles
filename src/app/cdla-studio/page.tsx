@@ -294,6 +294,30 @@ export default function ArtesaniaVisualPage() {
             </p>
           </motion.div>
 
+          {/* ── Tira horizontal destacada (galería rápida, arriba) ── */}
+          <div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen mb-28">
+            <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar px-5 sm:px-8 lg:px-12">
+              {studioHighlights.map((src, i) => (
+                <motion.div
+                  key={i}
+                  className="snap-start shrink-0 w-[240px] sm:w-[280px] aspect-[4/5] rounded-2xl overflow-hidden border border-gold/10 bg-cream/5 group"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-40px' }}
+                  transition={{ duration: 0.5, delay: Math.min(i * 0.05, 0.4) }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={src}
+                    alt="CDLA Studio"
+                    loading="lazy"
+                    className={`w-full h-full object-cover block transition-transform duration-700 ${src.includes('studio-h-07') ? 'scale-[1.12] group-hover:scale-[1.18]' : 'group-hover:scale-[1.06]'}`}
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
           {/* ── Quiénes somos · Propósito · Misión · Visión ── */}
           <motion.div
             className="text-center mb-12"
@@ -378,30 +402,6 @@ export default function ArtesaniaVisualPage() {
                 </div>
               </motion.div>
             ))}
-          </div>
-
-          {/* ── Tira horizontal destacada (después de servicios) ── */}
-          <div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen mb-28">
-            <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar px-5 sm:px-8 lg:px-12">
-              {studioHighlights.map((src, i) => (
-                <motion.div
-                  key={i}
-                  className="snap-start shrink-0 w-[240px] sm:w-[280px] aspect-[4/5] rounded-2xl overflow-hidden border border-gold/10 bg-cream/5 group"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-40px' }}
-                  transition={{ duration: 0.5, delay: Math.min(i * 0.05, 0.4) }}
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={src}
-                    alt="CDLA Studio"
-                    loading="lazy"
-                    className={`w-full h-full object-cover block transition-transform duration-700 ${src.includes('studio-h-07') ? 'scale-[1.12] group-hover:scale-[1.18]' : 'group-hover:scale-[1.06]'}`}
-                  />
-                </motion.div>
-              ))}
-            </div>
           </div>
 
           {/* ── Planes y paquetes ── */}
