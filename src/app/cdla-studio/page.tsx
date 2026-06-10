@@ -397,7 +397,7 @@ export default function ArtesaniaVisualPage() {
                     src={src}
                     alt="CDLA Studio"
                     loading="lazy"
-                    className="w-full h-full object-cover block transition-transform duration-700 group-hover:scale-[1.06]"
+                    className={`w-full h-full object-cover block transition-transform duration-700 ${src.includes('studio-h-07') ? 'scale-[1.12] group-hover:scale-[1.18]' : 'group-hover:scale-[1.06]'}`}
                   />
                 </motion.div>
               ))}
