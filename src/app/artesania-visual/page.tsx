@@ -14,6 +14,7 @@ import {
   Check,
   Send,
   Quote,
+  ArrowRight,
 } from 'lucide-react'
 
 // ─── Configuración rápida ───────────────────────────────────────────
@@ -130,9 +131,15 @@ const testimonials = [
 
 export default function ArtesaniaVisualPage() {
   const contentRef = useRef<HTMLDivElement>(null)
+  const formRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(contentRef, { once: true, margin: '-100px' })
 
   const [form, setForm] = useState({ nombre: '', marca: '', contacto: '', plan: 'Presencia Artesanal', mensaje: '' })
+
+  const selectPlan = (plan: string) => {
+    setForm((f) => ({ ...f, plan }))
+    formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -150,7 +157,7 @@ export default function ArtesaniaVisualPage() {
   }
 
   const inputClass =
-    'w-full bg-cream/5 border border-gold/15 rounded-xl px-4 py-3 text-cream text-base placeholder:text-cream/30 focus:border-gold/50 focus:outline-none transition-colors'
+    'w-full bg-white border border-gold/25 rounded-xl px-4 py-3 text-charcoal text-base placeholder:text-charcoal/40 focus:border-gold focus:outline-none transition-colors'
 
   return (
     <div className="min-h-screen bg-bistro">
@@ -267,8 +274,7 @@ export default function ArtesaniaVisualPage() {
           >
             <h2 className="font-serif text-3xl sm:text-4xl text-gold mb-4">Planes y paquetes</h2>
             <p className="text-cream/50 text-lg max-w-2xl mx-auto">
-              Elige el nivel que mejor acompaña a tu marca. Cada paquete mantiene una estética uniforme y un branding
-              visual consistente mes con mes.
+              Elige el nivel que mejor acompaña a tu marca. Toca un plan y te llevamos al formulario con esa opción lista.
             </p>
           </motion.div>
 
@@ -276,10 +282,17 @@ export default function ArtesaniaVisualPage() {
             {packages.map((pkg, index) => (
               <motion.div
                 key={pkg.title}
-                className={`group relative p-8 md:p-10 rounded-2xl border transition-all duration-500 flex flex-col ${
-                  pkg.featured
-                    ? 'border-gold/40 bg-gold/5'
-                    : 'border-gold/10 bg-cream/5 hover:border-gold/25'
+                onClick={() => selectPlan(pkg.title)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    selectPlan(pkg.title)
+                  }
+                }}
+                className={`group relative p-8 md:p-10 rounded-2xl transition-all duration-500 flex flex-col cursor-pointer bg-cream shadow-xl hover:shadow-2xl hover:-translate-y-1 ${
+                  pkg.featured ? 'border-2 border-gold' : 'border border-cream-300'
                 }`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -292,22 +305,25 @@ export default function ArtesaniaVisualPage() {
                   </div>
                 )}
                 <div className="w-14 h-14 bg-gold/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-gold/20 transition-colors duration-300">
-                  <pkg.icon className="w-6 h-6 text-gold" />
+                  <pkg.icon className="w-6 h-6 text-gold-dark" />
                 </div>
-                <h3 className="font-serif text-2xl text-cream mb-2">{pkg.title}</h3>
+                <h3 className="font-serif text-2xl text-charcoal mb-2">{pkg.title}</h3>
                 <div className="flex items-baseline gap-2 mb-5">
-                  <span className="font-serif text-3xl text-gold">{pkg.price}</span>
-                  <span className="text-cream/40 text-sm">{pkg.period}</span>
+                  <span className="font-serif text-3xl text-gold-dark">{pkg.price}</span>
+                  <span className="text-charcoal/40 text-sm">{pkg.period}</span>
                 </div>
-                <p className="text-cream/50 text-base leading-relaxed mb-6">{pkg.description}</p>
-                <ul className="space-y-3 mt-auto">
+                <p className="text-charcoal/60 text-base leading-relaxed mb-6">{pkg.description}</p>
+                <ul className="space-y-3">
                   {pkg.features.map((f) => (
-                    <li key={f} className="flex items-start gap-3 text-cream/70 text-[15px] leading-relaxed">
-                      <Check className="w-4 h-4 text-gold flex-shrink-0 mt-1" />
+                    <li key={f} className="flex items-start gap-3 text-charcoal/70 text-[15px] leading-relaxed">
+                      <Check className="w-4 h-4 text-gold-dark flex-shrink-0 mt-1" />
                       <span>{f}</span>
                     </li>
                   ))}
                 </ul>
+                <span className="mt-7 inline-flex items-center gap-1.5 text-gold-dark text-sm uppercase tracking-[0.14em] font-medium group-hover:gap-3 transition-all">
+                  Me interesa <ArrowRight className="w-4 h-4" />
+                </span>
               </motion.div>
             ))}
           </div>
@@ -319,19 +335,30 @@ export default function ArtesaniaVisualPage() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 border border-gold/15 rounded-2xl bg-cream/5 px-8 py-6 text-center sm:text-left">
+            <div
+              onClick={() => selectPlan('Video por pieza')}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault()
+                  selectPlan('Video por pieza')
+                }
+              }}
+              className="group flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 rounded-2xl bg-cream shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 cursor-pointer px-8 py-6 text-center sm:text-left"
+            >
               <div className="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
-                <Film className="w-5 h-5 text-gold" />
+                <Film className="w-5 h-5 text-gold-dark" />
               </div>
               <div className="flex-1">
-                <h4 className="font-serif text-xl text-cream mb-1">¿Solo quieres un video?</h4>
-                <p className="text-cream/50 text-base">
+                <h4 className="font-serif text-xl text-charcoal mb-1">¿Solo quieres un video?</h4>
+                <p className="text-charcoal/55 text-base">
                   Video cinematográfico de 15 segundos, listo para redes. Disponible como pieza individual.
                 </p>
               </div>
               <div className="flex items-baseline gap-2 flex-shrink-0">
-                <span className="font-serif text-2xl text-gold">$1,000 MXN</span>
-                <span className="text-cream/40 text-sm">c/u</span>
+                <span className="font-serif text-2xl text-gold-dark">$1,000 MXN</span>
+                <span className="text-charcoal/40 text-sm">c/u</span>
               </div>
             </div>
           </motion.div>
@@ -413,19 +440,20 @@ export default function ArtesaniaVisualPage() {
 
           {/* ── CTA: formulario + WhatsApp ── */}
           <motion.div
-            className="max-w-3xl mx-auto"
+            ref={formRef}
+            className="max-w-3xl mx-auto scroll-mt-28"
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="bg-gold/5 border border-gold/15 rounded-2xl p-8 md:p-12">
+            <div className="bg-cream shadow-2xl rounded-2xl p-8 md:p-12">
               <div className="text-center mb-10">
-                <div className="inline-flex items-center gap-2 text-gold/70 text-sm uppercase tracking-[0.2em] mb-4">
+                <div className="inline-flex items-center gap-2 text-gold-dark text-sm uppercase tracking-[0.2em] mb-4">
                   <TrendingUp className="w-4 h-4" />
                   Haz crecer tu marca
                 </div>
-                <h3 className="font-serif text-3xl sm:text-4xl text-gold mb-4">Pregunta por nuestros planes</h3>
-                <p className="text-cream/50 text-lg max-w-xl mx-auto">
+                <h3 className="font-serif text-3xl sm:text-4xl text-gold-dark mb-4">Pregunta por nuestros planes</h3>
+                <p className="text-charcoal/60 text-lg max-w-xl mx-auto">
                   Cuéntanos sobre tu marca y te enviamos la propuesta ideal para llevar tu artesanía al siguiente nivel.
                 </p>
               </div>
@@ -472,7 +500,7 @@ export default function ArtesaniaVisualPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <motion.button
                   onClick={handleSubmit}
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gold text-charcoal text-sm uppercase tracking-[0.15em] font-sans font-medium transition-all duration-300 hover:bg-gold-light rounded-xl"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gold text-charcoal text-sm uppercase tracking-[0.15em] font-sans font-medium transition-all duration-300 hover:bg-gold-dark hover:text-white rounded-xl"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -481,7 +509,7 @@ export default function ArtesaniaVisualPage() {
                 </motion.button>
                 <motion.a
                   href={`mailto:${EMAIL}?subject=Casa%20de%20los%20%C3%81ngeles%20Studio%20-%20Informaci%C3%B3n%20de%20planes`}
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-gold text-gold text-sm uppercase tracking-[0.15em] font-sans font-medium transition-all duration-500 hover:bg-gold hover:text-white rounded-xl"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-gold-dark text-gold-dark text-sm uppercase tracking-[0.15em] font-sans font-medium transition-all duration-500 hover:bg-gold-dark hover:text-white rounded-xl"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -495,7 +523,7 @@ export default function ArtesaniaVisualPage() {
                   href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Hola, me interesa Casa de los Ángeles Studio')}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-cream/40 text-sm hover:text-gold transition-colors"
+                  className="inline-flex items-center gap-2 text-charcoal/40 text-sm hover:text-gold-dark transition-colors"
                 >
                   <MessageCircle className="w-4 h-4" />
                   O escríbenos directo por WhatsApp
