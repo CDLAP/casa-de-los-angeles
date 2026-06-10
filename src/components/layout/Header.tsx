@@ -12,7 +12,7 @@ const mainLinks = [
   { href: '/museo', label: 'Museo' },
   { href: '/mercados', label: 'Mercados' },
   { href: '/#rueda-de-prensa', label: 'Prensa' },
-  { href: '/artesania-visual', label: 'Studio' },
+  { href: '/cdla-studio', label: 'Studio' },
 ]
 
 const moreLinks = [
@@ -35,7 +35,7 @@ export default function Header() {
   const isEventos = pathname === '/eventos'
   const isPromocion = pathname === '/promocion'
   const isRP = pathname === '/relaciones-publicas'
-  const isArtesania = pathname === '/artesania-visual'
+  const isArtesania = pathname === '/cdla-studio'
   const isMuseo = pathname === '/museo'
   const isMercado = pathname === '/mercados' || pathname.startsWith('/mercados/') || pathname.startsWith('/mercado-de-los-angeles')
   const [isScrolled, setIsScrolled] = useState(false)
@@ -50,7 +50,7 @@ export default function Header() {
     if (isEventos) { setActiveSection('/eventos'); return }
     if (isPromocion) { setActiveSection('/promocion'); return }
     if (isRP) { setActiveSection('/relaciones-publicas'); return }
-    if (isArtesania) { setActiveSection('/artesania-visual'); return }
+    if (isArtesania) { setActiveSection('/cdla-studio'); return }
     if (isMuseo) { setActiveSection('/museo'); return }
     if (isMercado) { setActiveSection('/mercados'); return }
     const sections = document.querySelectorAll('section[id]')

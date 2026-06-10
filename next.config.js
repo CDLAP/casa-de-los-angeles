@@ -70,6 +70,12 @@ const nextConfig = {
     return [
       // Redirigir versión sin www a www (consistencia de URL)
       // Nota: Esto se maneja mejor en el hosting (Vercel/Netlify)
+      // La sección "Artesanía Visual" se renombró a "CDLA Studio".
+      {
+        source: '/artesania-visual',
+        destination: '/cdla-studio',
+        permanent: true,
+      },
     ];
   },
 
