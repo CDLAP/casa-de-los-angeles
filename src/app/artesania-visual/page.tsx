@@ -511,7 +511,7 @@ export default function ArtesaniaVisualPage() {
           </motion.div>
 
           <div className="-mx-5 px-5 mb-28">
-            <div className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory [scrollbar-width:thin]">
+            <div className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar">
               {testimonials.map((t, index) => (
                 <motion.div
                   key={index}
