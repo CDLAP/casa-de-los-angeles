@@ -20,9 +20,11 @@ import {
 } from 'lucide-react'
 
 // ─── Configuración rápida ───────────────────────────────────────────
-// Agregar más es tan simple como sumar objetos a este arreglo.
 // type 'image' o 'video'; los videos se reproducen solos en silencio. El label aparece sobre cada pieza.
-const galleryItems: { type: 'image' | 'video'; src: string; label: string; hideLabel?: boolean }[] = [
+type GalleryItem = { type: 'image' | 'video'; src: string; label: string; hideLabel?: boolean }
+
+// Piezas destacadas (originales + videos) — aspectos variados.
+const featuredItems: GalleryItem[] = [
   { type: 'image', src: '/images/artesania/dp.jpg', label: 'Desayuno París', hideLabel: true },
   { type: 'video', src: '/images/artesania/talavera.mp4', label: 'Talavera' },
   { type: 'image', src: '/images/artesania/ss.jpg', label: 'Lifestyle' },
@@ -39,14 +41,33 @@ const galleryItems: { type: 'image' | 'video'; src: string; label: string; hideL
   { type: 'image', src: '/images/artesania/plata.jpg', label: 'Joyería' },
   { type: 'image', src: '/images/artesania/talagold.jpg', label: 'Cerámica' },
   { type: 'image', src: '/images/artesania/artes.jpg', label: 'Arte' },
-  // Fotos nuevas del Studio (studio-01 … studio-41), generadas automáticamente y sin etiqueta.
-  ...Array.from({ length: 41 }, (_, i) => ({
-    type: 'image' as const,
-    src: `/images/artesania/studio-${String(i + 1).padStart(2, '0')}.jpg`,
-    label: 'CDLA Studio',
-    hideLabel: true,
-  })),
 ]
+
+// Fotos del Studio (studio-01 … studio-41), generadas automáticamente y sin etiqueta.
+const studioFills: GalleryItem[] = Array.from({ length: 41 }, (_, i) => ({
+  type: 'image' as const,
+  src: `/images/artesania/studio-${String(i + 1).padStart(2, '0')}.jpg`,
+  label: 'CDLA Studio',
+  hideLabel: true,
+}))
+
+// Intercalado determinista: repartimos las destacadas/videos de forma pareja entre las
+// fotos del studio para que las verticales no se amontonen en un solo lado del grid.
+const galleryItems: GalleryItem[] = (() => {
+  const out: GalleryItem[] = []
+  let fi = 0
+  let si = 0
+  const F = featuredItems.length
+  const S = studioFills.length
+  while (fi < F || si < S) {
+    if (si >= S || (fi < F && (fi + 0.5) / F <= (si + 0.5) / S)) {
+      out.push(featuredItems[fi++])
+    } else {
+      out.push(studioFills[si++])
+    }
+  }
+  return out
+})()
 
 // Tira horizontal destacada (formato 4:5) — fotos propias que no se repiten con el grid de abajo.
 const studioHighlights = Array.from({ length: 15 }, (_, i) =>
@@ -515,7 +536,7 @@ export default function ArtesaniaVisualPage() {
             </p>
           </motion.div>
 
-          <div className="columns-2 sm:columns-3 lg:columns-4 gap-3 md:gap-4 max-w-7xl mx-auto mb-28">
+          <div className="columns-2 sm:columns-3 lg:columns-5 gap-3 md:gap-4 max-w-7xl mx-auto mb-28">
             {galleryItems.map((item, index) => (
               <motion.div
                 key={index}
