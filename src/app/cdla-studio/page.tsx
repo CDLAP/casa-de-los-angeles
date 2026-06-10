@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
 import {
   Film,
@@ -70,9 +70,10 @@ const galleryItems: GalleryItem[] = (() => {
 })()
 
 // Tira horizontal destacada (formato 4:5) — fotos propias que no se repiten con el grid de abajo.
-const studioHighlights = Array.from({ length: 15 }, (_, i) =>
+// Excluimos studio-h-07 (no era 4:5 / traía orilla). El orden se baraja en cada carga (ver useEffect).
+const tiraPool = Array.from({ length: 15 }, (_, i) =>
   `/images/artesania/studio-h-${String(i + 1).padStart(2, '0')}.jpg`
-)
+).filter((src) => !src.includes('studio-h-07'))
 
 const WHATSAPP = '522206224222'
 const EMAIL = 'contacto@casadelosangelespuebla.com'
@@ -213,6 +214,17 @@ export default function ArtesaniaVisualPage() {
 
   const [form, setForm] = useState({ nombre: '', marca: '', contacto: '', plan: 'Presencia Artesanal', mensaje: '' })
 
+  // Tira aleatoria: barajamos en el cliente tras montar (evita desajuste de hidratación).
+  const [tiraImages, setTiraImages] = useState(tiraPool)
+  useEffect(() => {
+    const arr = [...tiraPool]
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[arr[i], arr[j]] = [arr[j], arr[i]]
+    }
+    setTiraImages(arr)
+  }, [])
+
   const selectPlan = (plan: string) => {
     setForm((f) => ({ ...f, plan }))
     formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -318,9 +330,9 @@ export default function ArtesaniaVisualPage() {
           {/* ── Tira horizontal destacada (galería rápida, arriba) ── */}
           <div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen mb-28">
             <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar px-5 sm:px-8 lg:px-12">
-              {studioHighlights.map((src, i) => (
+              {tiraImages.map((src, i) => (
                 <motion.div
-                  key={i}
+                  key={src}
                   className="snap-start shrink-0 w-[240px] sm:w-[280px] aspect-[4/5] rounded-2xl overflow-hidden border border-gold/10 bg-cream/5 group"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -332,7 +344,7 @@ export default function ArtesaniaVisualPage() {
                     src={src}
                     alt="CDLA Studio"
                     loading="lazy"
-                    className={`w-full h-full block transition-transform duration-700 ${src.includes('studio-h-07') ? 'object-cover scale-[1.2] group-hover:scale-[1.26]' : 'object-contain group-hover:scale-[1.06]'}`}
+                    className="w-full h-full object-cover block transition-transform duration-700 group-hover:scale-[1.06]"
                   />
                 </motion.div>
               ))}
