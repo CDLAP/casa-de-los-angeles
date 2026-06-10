@@ -49,8 +49,8 @@ export default function StickyAngel() {
       <Image
         src={angelSrc}
         alt={angelAlt}
-        width={160}
-        height={160}
+        width={448}
+        height={448}
         className="object-contain drop-shadow-2xl w-40 h-40 md:w-56 md:h-56"
         priority
       />
