@@ -94,10 +94,13 @@ const packages = [
     description:
       'Para marcas que buscan crecer visualmente con video, más contenido y dirección creativa completa.',
     features: [
-      'Video cinematográfico mensual',
-      '30 fotografías para redes',
+      'Video cinematográfico mensual (45 segundos)',
+      '30 fotografías profesionales para redes',
+      'Diseños para publicaciones de feed e historias',
       'Dirección creativa completa',
-      'Promoción dentro del ecosistema Casa de los Ángeles',
+      'Adaptación de logo, branding y datos de contacto',
+      'Publicación en las historias de Casa de los Ángeles',
+      'Promoción dentro del ecosistema (campañas y mercados)',
     ],
     featured: true,
   },
