@@ -7,7 +7,6 @@ import Image from 'next/image'
 export default function StickyAngel() {
   const pathname = usePathname()
   const isHome = pathname === '/'
-  const isStudio = pathname === '/artesania-visual'
   const [isStuck, setIsStuck] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -37,38 +36,19 @@ export default function StickyAngel() {
   // Hide when menu is open (menu has its own cherub)
   const visible = isStuck && !menuOpen
 
-  // El querubín CDLA (con lentes) sólo en el Studio; el ángel normal en el resto del sitio.
-  const angelSrc = isStudio ? '/images/cdla-angel.png' : '/images/logo-short-1000x1000.png'
-  const angelAlt = isStudio ? 'CDLA Studio' : 'Casa de los Ángeles'
-
   return (
     <div
       className="fixed left-0 right-0 flex justify-center pointer-events-none transition-opacity duration-0 top-[-4px] md:top-[28px]"
       style={{ zIndex: 58, opacity: visible ? 1 : 0 }}
     >
-      {isStudio ? (
-        // El archivo del Studio trae el texto "CDLA STUDIO" debajo del querubín:
-        // recortamos (object-top) para mostrar SÓLO el querubín y que no choque con el hero.
-        <div className="relative w-40 h-24 md:w-56 md:h-36 overflow-hidden">
-          <Image
-            src={angelSrc}
-            alt={angelAlt}
-            fill
-            sizes="(min-width: 768px) 224px, 160px"
-            className="object-cover object-top drop-shadow-2xl"
-            priority
-          />
-        </div>
-      ) : (
-        <Image
-          src={angelSrc}
-          alt={angelAlt}
-          width={448}
-          height={448}
-          className="object-contain drop-shadow-2xl w-40 h-40 md:w-56 md:h-56"
-          priority
-        />
-      )}
+      <Image
+        src="/images/logo-short-1000x1000.png"
+        alt="Casa de los Ángeles"
+        width={448}
+        height={448}
+        className="object-contain drop-shadow-2xl w-40 h-40 md:w-56 md:h-56"
+        priority
+      />
     </div>
   )
 }

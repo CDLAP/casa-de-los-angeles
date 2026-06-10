@@ -212,6 +212,14 @@ export default function ArtesaniaVisualPage() {
           <div className="absolute inset-0 bg-gradient-radial from-gold/8 via-transparent to-transparent" />
         </div>
         <div className="relative z-10 text-center px-5 max-w-4xl mx-auto pt-[150px] md:pt-[290px] pb-16">
+          <motion.img
+            src="/images/cdla-studio.png"
+            alt="Casa de los Ángeles Studio"
+            className="w-44 sm:w-52 md:w-64 mx-auto mb-8"
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9, delay: 0.1 }}
+          />
           <motion.p
             className="text-gold/70 text-sm uppercase tracking-[0.3em] mb-6"
             initial={{ opacity: 0 }}
