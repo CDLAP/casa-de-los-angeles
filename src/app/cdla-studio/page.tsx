@@ -49,7 +49,7 @@ const galleryItems: { type: 'image' | 'video'; src: string; label: string; hideL
 ]
 
 // Tira horizontal destacada (formato 4:5) — fotos propias que no se repiten con el grid de abajo.
-const studioHighlights = Array.from({ length: 16 }, (_, i) =>
+const studioHighlights = Array.from({ length: 15 }, (_, i) =>
   `/images/artesania/studio-h-${String(i + 1).padStart(2, '0')}.jpg`
 )
 
@@ -197,6 +197,10 @@ export default function ArtesaniaVisualPage() {
     formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
+  const goToForm = () => {
+    formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
@@ -223,11 +227,11 @@ export default function ArtesaniaVisualPage() {
           <div className="absolute inset-0 bg-gradient-to-br from-bistro-dark via-bistro to-bistro-600" />
           <div className="absolute inset-0 bg-gradient-radial from-gold/8 via-transparent to-transparent" />
         </div>
-        <div className="relative z-10 text-center px-5 max-w-4xl mx-auto pt-[150px] md:pt-[270px] pb-16">
+        <div className="relative z-10 text-center px-5 max-w-4xl mx-auto pt-[140px] md:pt-[210px] pb-12">
           <motion.img
             src="/images/cdla-studio.png"
             alt="Casa de los Ángeles Studio"
-            className="w-72 sm:w-96 md:w-[28rem] mx-auto mb-10"
+            className="w-72 sm:w-96 md:w-[28rem] mx-auto mb-5"
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9, delay: 0.1 }}
@@ -377,8 +381,8 @@ export default function ArtesaniaVisualPage() {
           </div>
 
           {/* ── Tira horizontal destacada (después de servicios) ── */}
-          <div className="-mx-5 px-5 mb-28">
-            <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar">
+          <div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen mb-28">
+            <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar px-5 sm:px-8 lg:px-12">
               {studioHighlights.map((src, i) => (
                 <motion.div
                   key={i}
@@ -507,15 +511,24 @@ export default function ArtesaniaVisualPage() {
           >
             <h2 className="font-serif text-3xl sm:text-4xl text-gold mb-4">Ejemplos de nuestro trabajo</h2>
             <p className="text-cream/50 text-lg max-w-2xl mx-auto">
-              Una muestra del contenido que creamos para las marcas que forman parte de Casa de los Ángeles.
+              Una muestra del contenido que creamos para las marcas.
             </p>
           </motion.div>
 
-          <div className="columns-2 sm:columns-3 lg:columns-4 xl:columns-5 gap-3 md:gap-4 max-w-7xl mx-auto mb-28">
+          <div className="columns-2 sm:columns-3 lg:columns-4 gap-3 md:gap-4 max-w-7xl mx-auto mb-28">
             {galleryItems.map((item, index) => (
               <motion.div
                 key={index}
-                className="relative mb-3 md:mb-4 break-inside-avoid rounded-2xl overflow-hidden border border-gold/10 bg-cream/5 group"
+                onClick={goToForm}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    goToForm()
+                  }
+                }}
+                className="relative mb-3 md:mb-4 break-inside-avoid rounded-2xl overflow-hidden border border-gold/10 bg-cream/5 group cursor-pointer"
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
@@ -537,6 +550,11 @@ export default function ArtesaniaVisualPage() {
                     <span className="text-cream text-sm uppercase tracking-[0.18em] font-sans">{item.label}</span>
                   </div>
                 )}
+                <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-bistro-dark/0 group-hover:bg-bistro-dark/50 transition-colors duration-300">
+                  <span className="inline-flex items-center gap-1.5 text-cream text-sm uppercase tracking-[0.16em] font-medium opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                    Me interesa <ArrowRight className="w-4 h-4" />
+                  </span>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -554,8 +572,8 @@ export default function ArtesaniaVisualPage() {
             </p>
           </motion.div>
 
-          <div className="-mx-5 px-5 mb-28">
-            <div className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar">
+          <div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen mb-28">
+            <div className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar px-5 sm:px-8 lg:px-12">
               {testimonials.map((t, index) => (
                 <motion.div
                   key={index}
