@@ -209,6 +209,14 @@ export default function ArtesaniaVisualPage() {
           <div className="absolute inset-0 bg-gradient-radial from-gold/8 via-transparent to-transparent" />
         </div>
         <div className="relative z-10 text-center px-5 max-w-4xl mx-auto pt-[150px] md:pt-[290px] pb-16">
+          <motion.img
+            src="/images/artesania/cdla-studio.png"
+            alt="CDLA Studio"
+            className="w-36 sm:w-44 md:w-52 mx-auto mb-8"
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9, delay: 0.1 }}
+          />
           <motion.p
             className="text-gold/70 text-sm uppercase tracking-[0.3em] mb-6"
             initial={{ opacity: 0 }}
@@ -266,6 +274,47 @@ export default function ArtesaniaVisualPage() {
               los productos cuentan historias y las marcas mexicanas elevan su imagen.
             </p>
           </motion.div>
+
+          {/* ── Quiénes somos · Propósito · Misión · Visión ── */}
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="font-serif text-3xl sm:text-4xl text-gold mb-4">Quiénes somos</h2>
+            <p className="text-cream/50 text-lg max-w-2xl mx-auto">
+              Un estudio creativo para marcas artesanales, culturales y boutique de México.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-28">
+            {[
+              {
+                label: 'Propósito',
+                text: 'Transformar negocios artesanales, culturales y locales en marcas memorables mediante creatividad, contenido y dirección estratégica.',
+              },
+              {
+                label: 'Misión',
+                text: 'Elevar la percepción de marcas mexicanas a través de storytelling, diseño, contenido y experiencias visuales de alta calidad.',
+              },
+              {
+                label: 'Visión',
+                text: 'Convertirnos en el estudio creativo de referencia para marcas artesanales, culturales y boutique de México.',
+              },
+            ].map((b, index) => (
+              <motion.div
+                key={b.label}
+                className="p-8 rounded-2xl border border-gold/10 bg-cream/5"
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+              >
+                <p className="font-sans uppercase tracking-[0.25em] text-gold text-xs mb-4">{b.label}</p>
+                <p className="text-cream/60 text-base leading-relaxed">{b.text}</p>
+              </motion.div>
+            ))}
+          </div>
 
           {/* ── ¿Qué hacemos? ── */}
           <motion.div
