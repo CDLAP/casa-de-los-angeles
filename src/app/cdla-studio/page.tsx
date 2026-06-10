@@ -43,8 +43,8 @@ const featuredItems: GalleryItem[] = [
   { type: 'image', src: '/images/artesania/artes.jpg', label: 'Arte' },
 ]
 
-// Fotos del Studio (studio-01 … studio-41), generadas automáticamente y sin etiqueta.
-const studioFills: GalleryItem[] = Array.from({ length: 42 }, (_, i) => ({
+// Fotos del Studio (studio-01 … studio-52), generadas automáticamente y sin etiqueta.
+const studioFills: GalleryItem[] = Array.from({ length: 52 }, (_, i) => ({
   type: 'image' as const,
   src: `/images/artesania/studio-${String(i + 1).padStart(2, '0')}.jpg`,
   label: 'CDLA Studio',
@@ -74,6 +74,9 @@ const galleryItems: GalleryItem[] = (() => {
 const tiraPool = Array.from({ length: 15 }, (_, i) =>
   `/images/artesania/studio-h-${String(i + 1).padStart(2, '0')}.jpg`
 ).filter((src) => !src.includes('studio-h-07'))
+
+// Cuántas se muestran en la tira por carga (subconjunto, para que roten y no salgan siempre las mismas).
+const TIRA_VISIBLE = 10
 
 const WHATSAPP = '522206224222'
 const EMAIL = 'contacto@casadelosangelespuebla.com'
@@ -215,14 +218,14 @@ export default function ArtesaniaVisualPage() {
   const [form, setForm] = useState({ nombre: '', marca: '', contacto: '', plan: 'Presencia Artesanal', mensaje: '' })
 
   // Tira aleatoria: barajamos en el cliente tras montar (evita desajuste de hidratación).
-  const [tiraImages, setTiraImages] = useState(tiraPool)
+  const [tiraImages, setTiraImages] = useState(() => tiraPool.slice(0, TIRA_VISIBLE))
   useEffect(() => {
     const arr = [...tiraPool]
     for (let i = arr.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1))
       ;[arr[i], arr[j]] = [arr[j], arr[i]]
     }
-    setTiraImages(arr)
+    setTiraImages(arr.slice(0, TIRA_VISIBLE))
   }, [])
 
   const selectPlan = (plan: string) => {
