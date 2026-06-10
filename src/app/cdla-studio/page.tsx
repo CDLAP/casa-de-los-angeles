@@ -352,7 +352,7 @@ export default function ArtesaniaVisualPage() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-28">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto mb-28">
             {[
               {
                 icon: Target,
@@ -401,7 +401,7 @@ export default function ArtesaniaVisualPage() {
           </motion.div>
 
           {/* ── Servicios ── */}
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-28">
+          <div className="grid sm:grid-cols-2 gap-8 max-w-5xl mx-auto mb-28">
             {services.map((item, index) => (
               <motion.div
                 key={item.title}
@@ -438,7 +438,7 @@ export default function ArtesaniaVisualPage() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-8 items-stretch">
+          <div className="grid sm:grid-cols-2 gap-8 max-w-4xl mx-auto mb-8 items-stretch">
             {packages.map((pkg, index) => (
               <motion.div
                 key={pkg.title}
@@ -536,7 +536,8 @@ export default function ArtesaniaVisualPage() {
             </p>
           </motion.div>
 
-          <div className="columns-2 sm:columns-3 lg:columns-5 gap-3 md:gap-4 max-w-7xl mx-auto mb-28">
+          <div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen px-5 sm:px-8 lg:px-12 mb-28">
+            <div className="columns-2 sm:columns-3 lg:columns-5 gap-3 md:gap-4 max-w-[1800px] mx-auto">
             {galleryItems.map((item, index) => (
               <motion.div
                 key={index}
@@ -578,6 +579,7 @@ export default function ArtesaniaVisualPage() {
                 </div>
               </motion.div>
             ))}
+          </div>
           </div>
 
           {/* ── Testimonios ── */}
