@@ -482,25 +482,25 @@ export default function ArtesaniaVisualPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4 max-w-7xl mx-auto mb-28">
+          <div className="columns-2 sm:columns-3 lg:columns-4 xl:columns-5 gap-3 md:gap-4 max-w-7xl mx-auto mb-28">
             {galleryItems.map((item, index) => (
               <motion.div
                 key={index}
-                className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-gold/10 bg-cream/5 group"
+                className="relative mb-3 md:mb-4 break-inside-avoid rounded-2xl overflow-hidden border border-gold/10 bg-cream/5 group"
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.5, delay: (index % 5) * 0.06 }}
               >
                 {item.type === 'video' ? (
-                  <video src={item.src} className="w-full h-full object-cover block" autoPlay muted loop playsInline preload="metadata" />
+                  <video src={item.src} className="w-full h-auto block" autoPlay muted loop playsInline preload="metadata" />
                 ) : (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={item.src}
                     alt={item.label}
                     loading="lazy"
-                    className="w-full h-full object-cover block transition-transform duration-700 group-hover:scale-[1.06]"
+                    className="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.06]"
                   />
                 )}
                 {!item.hideLabel && (
