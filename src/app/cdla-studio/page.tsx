@@ -48,6 +48,11 @@ const galleryItems: { type: 'image' | 'video'; src: string; label: string; hideL
   })),
 ]
 
+// Tira horizontal destacada (formato 4:5) — fotos propias que no se repiten con el grid de abajo.
+const studioHighlights = Array.from({ length: 16 }, (_, i) =>
+  `/images/artesania/studio-h-${String(i + 1).padStart(2, '0')}.jpg`
+)
+
 const WHATSAPP = '522206224222'
 const EMAIL = 'contacto@casadelosangelespuebla.com'
 
@@ -218,11 +223,11 @@ export default function ArtesaniaVisualPage() {
           <div className="absolute inset-0 bg-gradient-to-br from-bistro-dark via-bistro to-bistro-600" />
           <div className="absolute inset-0 bg-gradient-radial from-gold/8 via-transparent to-transparent" />
         </div>
-        <div className="relative z-10 text-center px-5 max-w-4xl mx-auto pt-[200px] md:pt-[340px] pb-16">
+        <div className="relative z-10 text-center px-5 max-w-4xl mx-auto pt-[150px] md:pt-[270px] pb-16">
           <motion.img
             src="/images/cdla-studio.png"
             alt="Casa de los Ángeles Studio"
-            className="w-72 sm:w-96 md:w-[28rem] mx-auto mb-8"
+            className="w-72 sm:w-96 md:w-[28rem] mx-auto mb-10"
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9, delay: 0.1 }}
@@ -369,6 +374,30 @@ export default function ArtesaniaVisualPage() {
                 </div>
               </motion.div>
             ))}
+          </div>
+
+          {/* ── Tira horizontal destacada (después de servicios) ── */}
+          <div className="-mx-5 px-5 mb-28">
+            <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar">
+              {studioHighlights.map((src, i) => (
+                <motion.div
+                  key={i}
+                  className="snap-start shrink-0 w-[240px] sm:w-[280px] aspect-[4/5] rounded-2xl overflow-hidden border border-gold/10 bg-cream/5 group"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-40px' }}
+                  transition={{ duration: 0.5, delay: Math.min(i * 0.05, 0.4) }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={src}
+                    alt="CDLA Studio"
+                    loading="lazy"
+                    className="w-full h-full object-cover block transition-transform duration-700 group-hover:scale-[1.06]"
+                  />
+                </motion.div>
+              ))}
+            </div>
           </div>
 
           {/* ── Planes y paquetes ── */}
