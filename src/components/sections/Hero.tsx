@@ -176,12 +176,10 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.6 }}
           >
-            <a href="/#menu" className="inline-block px-5 py-2.5 text-xs uppercase tracking-[0.2em] font-light border border-gold/50 text-gold transition-all duration-300 hover:bg-gold hover:text-[#3F1F26]">Café</a>
             <a href="/museo" className="inline-block px-5 py-2.5 text-xs uppercase tracking-[0.2em] font-light border border-gold/50 text-gold transition-all duration-300 hover:bg-gold hover:text-[#3F1F26]">Museo</a>
-            <a href="/#boutique" className="inline-block px-5 py-2.5 text-xs uppercase tracking-[0.2em] font-light border border-gold/50 text-gold transition-all duration-300 hover:bg-gold hover:text-[#3F1F26]">Boutique</a>
-            <a href="/#atelier" className="inline-block px-5 py-2.5 text-xs uppercase tracking-[0.2em] font-light border border-gold/50 text-gold transition-all duration-300 hover:bg-gold hover:text-[#3F1F26]">Atelier</a>
-            <a href="/#mercado" className="inline-block px-5 py-2.5 text-xs uppercase tracking-[0.2em] font-light border border-gold/50 text-gold transition-all duration-300 hover:bg-gold hover:text-[#3F1F26]">Mercado</a>
+            <a href="/mercados" className="inline-block px-5 py-2.5 text-xs uppercase tracking-[0.2em] font-light border border-gold/50 text-gold transition-all duration-300 hover:bg-gold hover:text-[#3F1F26]">Mercados</a>
             <a href="/#rueda-de-prensa" className="inline-block px-5 py-2.5 text-xs uppercase tracking-[0.2em] font-light border border-gold/50 text-gold transition-all duration-300 hover:bg-gold hover:text-[#3F1F26]">Prensa</a>
+            <a href="/cdla-studio" className="inline-block px-5 py-2.5 text-xs uppercase tracking-[0.2em] font-light border border-gold/50 text-gold transition-all duration-300 hover:bg-gold hover:text-[#3F1F26]">Studio</a>
             <a href="/eventos" className="inline-block px-5 py-2.5 text-xs uppercase tracking-[0.2em] font-light border border-gold/50 text-gold transition-all duration-300 hover:bg-gold hover:text-[#3F1F26]">Eventos</a>
             <a href="/promocion" className="inline-block px-5 py-2.5 text-xs uppercase tracking-[0.2em] font-light border border-gold/50 text-gold transition-all duration-300 hover:bg-gold hover:text-[#3F1F26]">Promoción del Día</a>
             <a href="/relaciones-publicas" className="inline-block px-5 py-2.5 text-xs uppercase tracking-[0.2em] font-light border border-gold/50 text-gold transition-all duration-300 hover:bg-gold hover:text-[#3F1F26]">Relaciones Públicas</a>
