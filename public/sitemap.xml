@@ -42,6 +42,14 @@
     <priority>0.85</priority>
   </url>
 
+  <!-- CDLA Studio — Estudio creativo para marcas artesanales -->
+  <url>
+    <loc>https://www.casadelosangelespuebla.com/cdla-studio</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- Cultura -->
   <url>
     <loc>https://www.casadelosangelespuebla.com/cultura</loc>

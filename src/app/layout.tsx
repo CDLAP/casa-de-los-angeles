@@ -45,7 +45,6 @@ export const metadata: Metadata = {
     // Productos
     'café de especialidad puebla',
     'café artesanal puebla',
-    'sombrería puebla',
     'joyería artesanal puebla',
     // Ubicación
     'palafox puebla',
@@ -55,7 +54,6 @@ export const metadata: Metadata = {
     'centro cultural puebla',
     'eventos culturales puebla',
     'galería arte puebla',
-    'atelier puebla',
     'lugar para eventos puebla',
     'café instagrameable puebla',
     // Long tail
@@ -234,7 +232,7 @@ const jsonLd = {
         name: 'Puebla',
         '@id': 'https://www.wikidata.org/wiki/Q46475',
       },
-      keywords: 'café, arte, boutique, centro histórico puebla, café especialidad, eventos culturales, atelier, sombrería, joyería artesanal',
+      keywords: 'café, arte, boutique, centro histórico puebla, café especialidad, eventos culturales, joyería artesanal',
     },
     // Sitio Web
     {
