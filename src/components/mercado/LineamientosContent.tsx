@@ -334,7 +334,7 @@ export default function LineamientosContent() {
               <div className="text-charcoal-50 text-[13px] mt-0.5">Montaje</div>
             </div>
 
-            <div className="flex-1 h-[2px] bg-gold/20 mt-[19px] relative overflow-hidden">
+            <div className="flex-1 max-w-[64px] md:max-w-[96px] h-[2px] bg-gold/20 mt-[19px] relative overflow-hidden">
               <motion.div
                 key={`line1-${day}`}
                 className="absolute inset-0 bg-gold/50 origin-left"
@@ -361,7 +361,7 @@ export default function LineamientosContent() {
               <div className="text-charcoal-50 text-[13px] mt-0.5">Apertura</div>
             </div>
 
-            <div className="flex-1 h-[2px] bg-gold/20 mt-[19px] relative overflow-hidden">
+            <div className="flex-1 max-w-[64px] md:max-w-[96px] h-[2px] bg-gold/20 mt-[19px] relative overflow-hidden">
               <motion.div
                 key={`line2-${day}`}
                 className="absolute inset-0 bg-gold origin-left"
