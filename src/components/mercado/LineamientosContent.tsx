@@ -37,7 +37,7 @@ const SECTIONS: Section[] = [
   {
     title: 'Horarios y montaje',
     items: [
-      'El montaje se realiza durante la hora previa a la apertura (viernes 4:00 PM; sábado y domingo 10:00 AM).',
+      'El montaje se realiza durante la hora previa a la apertura: viernes a las 4:00 PM, y sábado y domingo a las 10:00 AM.',
       'Los horarios son: viernes de 5:00 PM a 9:00 PM; sábado y domingo de 11:00 AM a 8:00 PM.',
       'Todos los expositores deberán estar listos o presentes a la hora de apertura.',
       'Pasada la hora de apertura se aplica una cuota de puntualidad de $100 MXN.',
@@ -295,7 +295,7 @@ export default function LineamientosContent() {
             El día, de un vistazo
           </p>
           <h2 className="font-serif text-display-sm text-gold-dark text-center mb-12">
-            Cómo transcurre el mercado
+            ¿Cómo transcurre el mercado?
           </h2>
 
           {/* Toggle de día */}
