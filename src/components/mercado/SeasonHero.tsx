@@ -12,8 +12,12 @@ interface SeasonHeroProps {
   topStamp: string
   hours: {
     label: string
-    from: string
-    to: string
+    schedule: {
+      days: string
+      open: string
+      close: string
+      montaje: string
+    }[]
   }
   description: string[]
 }
@@ -156,13 +160,27 @@ export default function SeasonHero({
             </p>
           )}
 
-          {/* Horario — single elegant line with hairlines */}
-          <div className="flex items-center justify-center gap-3 mb-8 md:mb-10">
-            <div className="w-8 h-px bg-gold/40" />
-            <p className="font-sans uppercase tracking-[0.3em] text-gold text-xs md:text-[13px]">
-              Viernes · {hours.from} — {hours.to}
-            </p>
-            <div className="w-8 h-px bg-gold/40" />
+          {/* Horario — apertura/cierre + montaje por día, con hairlines */}
+          <div className="mb-8 md:mb-10">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="w-8 h-px bg-gold/40" />
+              <p className="font-sans uppercase tracking-[0.3em] text-gold text-xs md:text-[13px]">
+                {hours.label}
+              </p>
+              <div className="w-8 h-px bg-gold/40" />
+            </div>
+            <div className="flex flex-col items-center gap-3">
+              {hours.schedule.map((block) => (
+                <div key={block.days} className="text-center">
+                  <p className="font-sans uppercase tracking-[0.2em] text-cream text-[13px] md:text-sm">
+                    {block.days} · {block.open} — {block.close}
+                  </p>
+                  <p className="font-sans uppercase tracking-[0.2em] text-gold/70 text-[10px] md:text-[11px] mt-1">
+                    Montaje {block.montaje}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Primary CTA — lifts the user to packages without scrolling */}

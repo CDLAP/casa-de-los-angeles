@@ -12,8 +12,20 @@
     "topStamp": "El primer y único punto de venta nocturno del Centro de Puebla",
     "hours": {
       "label": "Horario oficial",
-      "from": "4:00 PM",
-      "to": "9:00 PM"
+      "schedule": [
+        {
+          "days": "Viernes",
+          "open": "5:00 PM",
+          "close": "9:00 PM",
+          "montaje": "4:00 PM"
+        },
+        {
+          "days": "Sábado y domingo",
+          "open": "11:00 AM",
+          "close": "8:00 PM",
+          "montaje": "10:00 AM"
+        }
+      ]
     },
     "description": [
       "Hasta 500 personas por día entre turistas, locales y flujo dentro de la casona.",
@@ -69,7 +81,7 @@
         ]
       }
     ],
-    "datesNote": "Cada viernes de la temporada · 4 a 9 PM.",
+    "datesNote": "Cada viernes de la temporada · 5 a 9 PM.",
     "datesTagline": "",
     "packages": [
       {
