@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 import Link from 'next/link'
 import {
   ArrowLeft,
@@ -218,12 +217,11 @@ export default function TipsContent() {
           >
             {/* Portada */}
             <div className="relative aspect-[3/4] bg-[#063A2F] sm:aspect-auto sm:min-h-[300px]">
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src="/recursos/guia-portada.jpg"
-                alt="Portada de la Guía Práctica para Incrementar tus Ventas Artesanales"
-                fill
-                className="object-cover"
-                sizes="(max-width: 640px) 100vw, 200px"
+                alt="Portada de la guía"
+                className="absolute inset-0 h-full w-full object-cover"
               />
             </div>
             {/* Texto */}
