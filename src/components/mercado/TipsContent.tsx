@@ -235,17 +235,17 @@ export default function TipsContent() {
                 Llévate la guía completa
               </h2>
               <p className="text-charcoal-50 text-base leading-relaxed mb-6">
-                Preparamos esta guía para acompañarte más allá del mercado. Profundiza en todo lo que
-                viste aquí —cómo presentar tu marca, tomar mejores fotos con tu celular, usar
-                Instagram y lograr que tus clientes regresen— e incluye un plan de acción de 30 días.
-                Es nuestra forma de apoyar a la comunidad artesanal: descárgala gratis, sin registro,
-                y vuelve a ella cuando la necesites.
+                Preparamos esta guía para acompañarte más allá del mercado. Profundiza en cómo
+                presentar tu marca, tomar mejores fotos con tu celular, usar Instagram y lograr que
+                tus clientes regresen, y trae un plan de acción de 30 días. Es nuestra forma de
+                apoyar a la comunidad artesanal: descárgala gratis, sin registro, y vuelve a ella
+                cuando la necesites.
               </p>
               <p className="font-sans text-xs text-charcoal-50/70 mb-6">
                 PDF · 26 páginas · Descarga gratuita
               </p>
               <a
-                href="/recursos/guia-incrementar-ventas-artesanales.pdf"
+                href="/recursos/Guia_CDLA_Vender_Más_Mercados_Artesanales.pdf"
                 download
                 className="btn-filled inline-flex items-center justify-center gap-3 self-start"
               >
