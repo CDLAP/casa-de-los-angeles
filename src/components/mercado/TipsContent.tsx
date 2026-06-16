@@ -1,12 +1,14 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import Link from 'next/link'
 import {
   ArrowLeft,
   ArrowRight,
   BookOpen,
   Check,
+  Download,
   Store,
   Lightbulb,
   Smile,
@@ -200,6 +202,57 @@ export default function TipsContent() {
               Las ventas dependen muchísimo de presentación, actitud, experiencia y
               constancia.
             </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* GUÍA DESCARGABLE — recurso gratuito para expositores */}
+      <section id="guia" className="section bg-cream">
+        <div className="container-custom max-w-3xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.7 }}
+            className="grid grid-cols-1 sm:grid-cols-[200px_1fr] overflow-hidden rounded-2xl border border-gold/25 bg-white shadow-lg"
+          >
+            {/* Portada */}
+            <div className="relative aspect-[3/4] bg-[#063A2F] sm:aspect-auto sm:min-h-[300px]">
+              <Image
+                src="/recursos/guia-portada.jpg"
+                alt="Portada de la Guía Práctica para Incrementar tus Ventas Artesanales"
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 100vw, 200px"
+              />
+            </div>
+            {/* Texto */}
+            <div className="flex flex-col p-7 md:p-9">
+              <p className="font-sans uppercase tracking-[0.22em] text-gold text-[11px] md:text-xs mb-2">
+                Recurso gratuito · PDF
+              </p>
+              <h2 className="font-serif text-2xl md:text-3xl text-charcoal leading-snug mb-3">
+                Llévate la guía completa
+              </h2>
+              <p className="text-charcoal-50 text-base leading-relaxed mb-6">
+                Preparamos esta guía para acompañarte más allá del mercado. Profundiza en todo lo que
+                viste aquí —cómo presentar tu marca, tomar mejores fotos con tu celular, usar
+                Instagram y lograr que tus clientes regresen— e incluye un plan de acción de 30 días.
+                Es nuestra forma de apoyar a la comunidad artesanal: descárgala gratis, sin registro,
+                y vuelve a ella cuando la necesites.
+              </p>
+              <p className="font-sans text-xs text-charcoal-50/70 mb-6">
+                PDF · 26 páginas · Descarga gratuita
+              </p>
+              <a
+                href="/recursos/guia-incrementar-ventas-artesanales.pdf"
+                download
+                className="btn-filled inline-flex items-center justify-center gap-3 self-start"
+              >
+                <Download className="w-4 h-4" />
+                Descargar guía
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>

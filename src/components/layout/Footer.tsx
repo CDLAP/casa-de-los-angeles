@@ -134,6 +134,10 @@ export default function Footer() {
           © {currentYear} Casa de los Ángeles
         </p>
         <div className="flex items-center gap-4 text-xs">
+          <Link href="/recursos" className="text-cream/40 hover:text-gold transition-colors">
+            Recursos
+          </Link>
+          <span className="text-cream/20">·</span>
           <Link href="/privacidad" className="text-cream/40 hover:text-gold transition-colors">
             Privacidad
           </Link>
