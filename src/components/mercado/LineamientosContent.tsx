@@ -22,6 +22,7 @@ import {
   TrendingUp,
   ShoppingBag,
   Moon,
+  Hammer,
 } from 'lucide-react'
 import WhatsAppIcon from '@/components/mercado/WhatsAppIcon'
 import ReadingProgress from '@/components/mercado/ReadingProgress'
@@ -36,8 +37,8 @@ const SECTIONS: Section[] = [
   {
     title: 'Horarios y montaje',
     items: [
-      'El montaje se realiza durante la hora previa a la apertura.',
-      'Los horarios son: viernes de 4:00 PM a 9:00 PM; sábado y domingo de 11:00 AM a 8:00 PM.',
+      'El montaje se realiza durante la hora previa a la apertura (viernes 4:00 PM; sábado y domingo 10:00 AM).',
+      'Los horarios son: viernes de 5:00 PM a 9:00 PM; sábado y domingo de 11:00 AM a 8:00 PM.',
       'Todos los expositores deberán estar listos o presentes a la hora de apertura.',
       'Pasada la hora de apertura se aplica una cuota de puntualidad de $100 MXN.',
     ],
@@ -160,8 +161,8 @@ const SECTION_ICONS = [
 ]
 
 const SCHEDULE = {
-  viernes: { label: 'Viernes', apertura: '4:00 PM', cierre: '9:00 PM' },
-  finde: { label: 'Sábado y Domingo', apertura: '11:00 AM', cierre: '8:00 PM' },
+  viernes: { label: 'Viernes', montaje: '4:00 PM', apertura: '5:00 PM', cierre: '9:00 PM' },
+  finde: { label: 'Sábado y Domingo', montaje: '10:00 AM', apertura: '11:00 AM', cierre: '8:00 PM' },
 } as const
 
 type DayKey = keyof typeof SCHEDULE
@@ -314,9 +315,37 @@ export default function LineamientosContent() {
             ))}
           </div>
 
-          {/* Timeline */}
-          <div className="flex items-start justify-center max-w-md mx-auto mb-14">
-            <div className="text-center w-28 flex-shrink-0">
+          {/* Timeline — Montaje → Apertura → Cierre */}
+          <div className="flex items-start justify-center max-w-2xl mx-auto mb-14">
+            {/* Montaje */}
+            <div className="text-center w-20 md:w-24 flex-shrink-0">
+              <div className="w-10 h-10 rounded-full bg-cream-200 border-2 border-gold/40 text-gold-dark flex items-center justify-center mx-auto mb-3">
+                <Hammer className="w-[18px] h-[18px]" strokeWidth={1.5} />
+              </div>
+              <motion.div
+                key={`mo-${day}`}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.1 }}
+                className="font-serif text-charcoal text-base md:text-lg"
+              >
+                {current.montaje}
+              </motion.div>
+              <div className="text-charcoal-50 text-[13px] mt-0.5">Montaje</div>
+            </div>
+
+            <div className="flex-1 h-[2px] bg-gold/20 mt-[19px] relative overflow-hidden">
+              <motion.div
+                key={`line1-${day}`}
+                className="absolute inset-0 bg-gold/50 origin-left"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.6, ease: 'easeInOut' }}
+              />
+            </div>
+
+            {/* Apertura */}
+            <div className="text-center w-20 md:w-24 flex-shrink-0">
               <div className="w-10 h-10 rounded-full bg-emerald border-2 border-emerald text-white flex items-center justify-center mx-auto mb-3">
                 <ShoppingBag className="w-[18px] h-[18px]" strokeWidth={1.5} />
               </div>
@@ -324,8 +353,8 @@ export default function LineamientosContent() {
                 key={`ap-${day}`}
                 initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.15 }}
-                className="font-serif text-charcoal text-lg"
+                transition={{ duration: 0.4, delay: 0.2 }}
+                className="font-serif text-charcoal text-base md:text-lg"
               >
                 {current.apertura}
               </motion.div>
@@ -334,15 +363,16 @@ export default function LineamientosContent() {
 
             <div className="flex-1 h-[2px] bg-gold/20 mt-[19px] relative overflow-hidden">
               <motion.div
-                key={`line-${day}`}
+                key={`line2-${day}`}
                 className="absolute inset-0 bg-gold origin-left"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
-                transition={{ duration: 0.8, ease: 'easeInOut' }}
+                transition={{ duration: 0.8, ease: 'easeInOut', delay: 0.2 }}
               />
             </div>
 
-            <div className="text-center w-28 flex-shrink-0">
+            {/* Cierre */}
+            <div className="text-center w-20 md:w-24 flex-shrink-0">
               <div className="w-10 h-10 rounded-full bg-white border-2 border-gold text-gold-dark flex items-center justify-center mx-auto mb-3">
                 <Moon className="w-[18px] h-[18px]" strokeWidth={1.5} />
               </div>
@@ -350,8 +380,8 @@ export default function LineamientosContent() {
                 key={`ci-${day}`}
                 initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.3 }}
-                className="font-serif text-charcoal text-lg"
+                transition={{ duration: 0.4, delay: 0.4 }}
+                className="font-serif text-charcoal text-base md:text-lg"
               >
                 {current.cierre}
               </motion.div>
