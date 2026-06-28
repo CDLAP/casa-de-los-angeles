@@ -176,22 +176,33 @@ export default function JulioBanner() {
         </div>
       </div>
 
-      {/* ===== MÓVIL — programado, alta calidad: cintillo flat-lay + contenido + banda ===== */}
+      {/* ===== MÓVIL — arte vertical oficial (aprobado) + botón WhatsApp ===== */}
       <div className="md:hidden">
-        <div className="relative w-full aspect-[16/9] overflow-hidden">
+        <a href={WA_URL} target="_blank" rel="noopener noreferrer" className="block">
           <Image
-            src="/images/mercado/backjulio.jpg"
-            alt="Objetos vintage y de colección — Mercado de los Ángeles"
-            fill
+            src="/images/mercado/verticaljulio.jpeg"
+            alt="Convocatoria Mercado de los Ángeles — Edición Julio. $4,000 pesos por 12 fechas, precio especial por todo julio."
+            width={1080}
+            height={1440}
             priority
             sizes="100vw"
-            className="object-cover object-center"
+            className="w-full h-auto block"
           />
+        </a>
+        <div className="px-5 py-6 text-center" style={{ backgroundColor: ROSE.band }}>
+          <a
+            href={WA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-filled inline-flex items-center gap-3 w-full max-w-sm mx-auto justify-center"
+          >
+            <WhatsAppIcon className="w-5 h-5" />
+            Asegura tu lugar por WhatsApp
+          </a>
+          <p className="font-sans uppercase tracking-[0.18em] text-[0.65rem] mt-3" style={{ color: ROSE.dark }}>
+            Sé parte de este mercado exclusivo
+          </p>
         </div>
-        <div className="bg-cream pt-8 pb-9">
-          <Upper />
-        </div>
-        <OfferBand />
       </div>
 
       {/* Aire para que el querubín de la pleca caiga sobre cream, no sobre la banda */}
