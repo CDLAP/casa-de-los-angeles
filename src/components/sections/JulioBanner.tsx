@@ -165,7 +165,8 @@ export default function JulioBanner() {
               {/* Precio */}
               <div className="flex flex-col justify-center text-center">
                 <p className="leading-none mb-1">
-                  <span className="font-serif not-italic text-4xl lg:text-5xl" style={{ color: ROSE.price, letterSpacing: '-0.01em' }}>$4,000</span>
+                  <span className="font-sans align-top text-xl lg:text-2xl mr-0.5" style={{ color: ROSE.soft }}>$</span>
+                  <span className="font-serif not-italic text-4xl lg:text-5xl" style={{ color: ROSE.price, letterSpacing: '-0.01em' }}>4,000</span>
                   <span className="font-sans uppercase tracking-[0.2em] text-sm lg:text-base ml-2" style={{ color: ROSE.soft }}>Pesos</span>
                 </p>
                 <p className="font-serif not-italic text-base lg:text-lg" style={{ color: ROSE.dark }}>
