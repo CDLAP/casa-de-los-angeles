@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <>
       {SHOW_JULIO_BANNER && <JulioBanner />}
-      <Hero navOffset={!SHOW_JULIO_BANNER} />
+      <Hero navOffset={!SHOW_JULIO_BANNER} showFacade={!SHOW_JULIO_BANNER} />
       {/* <CafeSection /> oculto a petición del cliente */}
       <About />
       {/* <Boutique /> oculto a petición del cliente */}

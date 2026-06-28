@@ -22,7 +22,7 @@ const heroImages = [
   '/images/casa.jpeg',
 ]
 
-export default function Hero({ navOffset = true }: { navOffset?: boolean } = {}) {
+export default function Hero({ navOffset = true, showFacade = true }: { navOffset?: boolean; showFacade?: boolean } = {}) {
   const plecaRef = useRef<HTMLElement>(null)
   const [hideStatic, setHideStatic] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -67,7 +67,8 @@ export default function Hero({ navOffset = true }: { navOffset?: boolean } = {})
 
   return (
     <>
-      {/* Foto de la casa — crossfade carousel */}
+      {/* Foto de la casa — crossfade carousel (oculta cuando el banner de Julio es el principal) */}
+      {showFacade && (
       <section id="inicio" className={`w-full pt-0 ${navOffset ? 'md:pt-[84px]' : ''} bg-cream`}>
         <div className="relative w-full overflow-hidden">
           <motion.div
@@ -103,6 +104,7 @@ export default function Hero({ navOffset = true }: { navOffset?: boolean } = {})
           </motion.div>
         </div>
       </section>
+      )}
 
       {/* Pleca guinda */}
       <section ref={plecaRef} className="relative w-full">
