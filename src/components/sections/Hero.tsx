@@ -22,7 +22,7 @@ const heroImages = [
   '/images/casa.jpeg',
 ]
 
-export default function Hero() {
+export default function Hero({ navOffset = true }: { navOffset?: boolean } = {}) {
   const plecaRef = useRef<HTMLElement>(null)
   const [hideStatic, setHideStatic] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -68,7 +68,7 @@ export default function Hero() {
   return (
     <>
       {/* Foto de la casa — crossfade carousel */}
-      <section id="inicio" className="w-full pt-0 md:pt-[84px] bg-cream">
+      <section id="inicio" className={`w-full pt-0 ${navOffset ? 'md:pt-[84px]' : ''} bg-cream`}>
         <div className="relative w-full overflow-hidden">
           <motion.div
             initial={{ opacity: 0, scale: 1.05 }}
