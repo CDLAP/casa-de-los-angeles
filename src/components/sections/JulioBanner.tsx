@@ -2,13 +2,24 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { Users, MapPin, ShoppingBag, Camera } from 'lucide-react'
+import { Users, MapPin, ShoppingBag, Camera, Heart } from 'lucide-react'
 import WhatsAppIcon from '@/components/mercado/WhatsAppIcon'
 
 const WHATSAPP = '522206224222'
-const WA_MSG = encodeURIComponent(
+const WA_URL = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
   'Hola, quiero asegurar mi lugar en el Mercado de los Ángeles — Edición Julio (vintage, de colección, moda y diseño) en Casa de los Ángeles. Mi marca se llama: __ y vendo: __.'
-)
+)}`
+
+/* Paleta exacta de la campaña (muestreada del arte oficial) — NO cambiar, es el concepto */
+const ROSE = {
+  band: '#F3DDD5',   // blush de la banda
+  dark: '#9E635E',   // rosa fuerte (PROMOCIÓN, 30 de junio)
+  price: '#BE7E74',  // rosa del precio
+  soft: '#C99A92',   // rosa suave (PESOS, secundarios)
+  line: '#E2C4BB',   // divisores
+  ribbon: '#C68D89', // listón Edición Julio
+}
+const BROWN = '#4A3526'
 
 const FEATURES = [
   { icon: Users, label: 'Gran flujo de visitantes' },
@@ -17,16 +28,107 @@ const FEATURES = [
   { icon: Camera, label: 'Promoción en redes y medios' },
 ]
 
+/* Sello circular bronce — clickable a WhatsApp */
+function Seal({ size = 132 }: { size?: number }) {
+  return (
+    <a
+      href={WA_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Asegura tu lugar por WhatsApp"
+      className="group relative flex items-center justify-center rounded-full shrink-0 transition-transform duration-300 hover:scale-[1.03]"
+      style={{
+        width: size,
+        height: size,
+        background: 'radial-gradient(circle at 35% 28%, #B89255 0%, #9A6F37 55%, #8A5E2E 100%)',
+        boxShadow: '0 8px 22px rgba(74,53,38,0.30)',
+      }}
+    >
+      <span
+        className="absolute rounded-full"
+        style={{ inset: 6, border: '1px solid rgba(244,234,218,0.55)' }}
+      />
+      <span className="px-3 text-center" style={{ color: '#F5EBDA' }}>
+        <span className="block font-sans uppercase leading-tight" style={{ fontSize: '0.6rem', letterSpacing: '0.1em' }}>
+          Asegura tu lugar<br />y sé parte de este<br />mercado exclusivo
+        </span>
+        <Heart className="w-3 h-3 mx-auto mt-1.5" style={{ color: '#F5EBDA' }} fill="#F5EBDA" />
+      </span>
+    </a>
+  )
+}
+
+/* Bloque superior — logo, títulos, beneficios (desktop sobre el centro despejado del flat-lay) */
+function Upper() {
+  return (
+    <div className="w-full max-w-2xl mx-auto px-5 text-center">
+      <div className="flex justify-center mb-3 md:mb-4">
+        <Image
+          src="/images/mercado/mdla-horizontal.png"
+          alt="Mercado de los Ángeles"
+          width={1200}
+          height={610}
+          priority
+          className="w-[230px] md:w-[300px] h-auto"
+        />
+      </div>
+
+      <h2 className="text-gradient-gold font-serif not-italic text-3xl md:text-5xl mb-2" style={{ letterSpacing: '0.1em' }}>
+        CONVOCATORIA
+      </h2>
+
+      <div className="flex items-center justify-center gap-3 mb-3">
+        <span className="w-10 h-px bg-gold/50" />
+        <span className="font-sans uppercase tracking-[0.32em] text-charcoal-50 text-[0.6rem] md:text-[0.7rem]">
+          Para nuestro mercado
+        </span>
+        <span className="w-10 h-px bg-gold/50" />
+      </div>
+
+      <h3 className="font-serif not-italic text-xl md:text-3xl leading-tight mb-4" style={{ letterSpacing: '-0.01em', color: BROWN }}>
+        Vintage, de colección<br />moda y diseño
+      </h3>
+
+      <div className="flex justify-center mb-4 md:mb-5">
+        <span
+          className="inline-flex items-center text-white px-5 py-1.5 font-sans uppercase tracking-[0.3em] text-[0.65rem] md:text-xs shadow-sm"
+          style={{ backgroundColor: ROSE.ribbon }}
+        >
+          Edición Julio
+        </span>
+      </div>
+
+      <p className="text-charcoal-50 text-sm md:text-base leading-relaxed max-w-lg mx-auto mb-5 md:mb-6">
+        Aprovecha las ventas vacacionales en el mero Centro Histórico de Puebla,
+        un punto clave para turistas y locales.
+      </p>
+
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-5 gap-y-4 max-w-lg mx-auto">
+        {FEATURES.map(({ icon: Icon, label }) => (
+          <div key={label} className="flex flex-col items-center gap-2">
+            <span className="flex items-center justify-center w-10 h-10 rounded-full bg-cream border border-gold/30">
+              <Icon className="w-4 h-4 text-gold-dark" strokeWidth={1.5} />
+            </span>
+            <span className="text-charcoal-50 text-[0.7rem] md:text-xs leading-snug">{label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function JulioBanner() {
   return (
-    <section
+    <motion.section
       id="inicio"
       aria-label="Convocatoria Mercado de los Ángeles — Edición Julio"
       className="relative w-full bg-cream pt-16 md:pt-[84px]"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
     >
-      {/* Marco 16:9 (en desktop define la altura; en móvil crece con el contenido) */}
-      <div className="relative w-full overflow-hidden md:aspect-[16/9] md:max-h-[calc(100dvh-84px)]">
-        {/* Fondo decorativo — objetos a los lados, centro libre */}
+      {/* ===== DESKTOP — programado, alta calidad, 16:9 con banda rosa + sello ===== */}
+      <div className="hidden md:block relative w-full aspect-[16/9] max-h-[calc(100dvh-84px)] overflow-hidden">
         <Image
           src="/images/mercado/backjulio.jpg"
           alt=""
@@ -35,119 +137,94 @@ export default function JulioBanner() {
           sizes="100vw"
           className="object-cover object-center"
         />
-        {/* Glow cream centrado para legibilidad */}
-        <div className="absolute inset-0 bg-gradient-radial from-cream via-cream/75 to-transparent" />
-        {/* Velo extra en móvil */}
-        <div className="absolute inset-0 bg-cream/25 md:bg-transparent" />
 
-        {/* Contenido — centrado dentro del 16:9 */}
-        <div className="relative md:absolute md:inset-0 flex items-center justify-center">
-          <motion.div
-            className="w-full max-w-3xl mx-auto px-5 text-center py-10 md:py-4"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.7 }}
-          >
-            {/* Logo */}
-            <div className="flex justify-center mb-2 md:mb-3">
-              <Image
-                src="/images/mercado/mdla-horizontal.png"
-                alt="Mercado de los Ángeles"
-                width={1200}
-                height={610}
-                priority
-                className="w-[230px] sm:w-[270px] md:w-[300px] h-auto"
-              />
-            </div>
+        {/* Contenido centrado, dejando aire para la banda */}
+        <div className="absolute inset-0 flex items-center justify-center pb-[160px] lg:pb-[170px]">
+          <Upper />
+        </div>
 
-            {/* CONVOCATORIA */}
-            <h2
-              className="font-serif not-italic text-gold-dark text-3xl md:text-5xl mb-2"
-              style={{ letterSpacing: '0.08em' }}
-            >
-              CONVOCATORIA
-            </h2>
-
-            {/* Para nuestro mercado */}
-            <div className="flex items-center justify-center gap-3 mb-2 md:mb-3">
-              <span className="w-8 h-px bg-gold/50" />
-              <span className="font-sans uppercase tracking-[0.3em] text-charcoal-50 text-[0.6rem] md:text-xs">
-                Para nuestro mercado
-              </span>
-              <span className="w-8 h-px bg-gold/50" />
-            </div>
-
-            {/* Vintage, de colección, moda y diseño */}
-            <h3
-              className="font-serif not-italic text-charcoal text-xl md:text-3xl leading-tight mb-3"
-              style={{ letterSpacing: '-0.01em' }}
-            >
-              Vintage, de colección<br />moda y diseño
-            </h3>
-
-            {/* Edición Julio */}
-            <div className="flex justify-center mb-3 md:mb-4">
-              <span className="inline-flex items-center bg-bistro-300 text-white px-5 py-1.5 rounded-sm font-sans uppercase tracking-[0.25em] text-[0.7rem] md:text-sm shadow-sm">
-                Edición Julio
-              </span>
-            </div>
-
-            {/* Descripción */}
-            <p className="text-charcoal-50 text-sm md:text-base leading-relaxed max-w-xl mx-auto mb-4 md:mb-5">
-              Aprovecha las ventas vacacionales en el mero Centro Histórico de Puebla,
-              un punto clave para turistas y locales.
-            </p>
-
-            {/* Beneficios */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-4 max-w-xl mx-auto mb-4 md:mb-5">
-              {FEATURES.map(({ icon: Icon, label }) => (
-                <div key={label} className="flex flex-col items-center gap-1.5">
-                  <span className="flex items-center justify-center w-9 h-9 rounded-full bg-gold/10 border border-gold/20">
-                    <Icon className="w-4 h-4 text-gold-dark" strokeWidth={1.5} />
-                  </span>
-                  <span className="text-charcoal-50 text-[0.7rem] md:text-xs leading-snug">
-                    {label}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            {/* Oferta — fila compacta */}
-            <div className="mb-4 md:mb-5">
-              <div className="flex flex-wrap items-baseline justify-center gap-x-3 gap-y-1">
-                <span
-                  className="font-serif not-italic text-charcoal text-3xl md:text-4xl leading-none"
-                  style={{ letterSpacing: '-0.01em' }}
-                >
-                  $4,000
-                </span>
-                <span className="font-sans uppercase tracking-[0.2em] text-charcoal-50 text-sm">
-                  Pesos
-                </span>
-                <span className="text-gold/60">·</span>
-                <span className="font-sans uppercase tracking-[0.2em] text-gold-dark text-xs md:text-sm">
-                  12 fechas en total
-                </span>
+        {/* Banda de oferta — rosa de la campaña */}
+        <div className="absolute inset-x-0 bottom-0 border-t border-gold/40" style={{ backgroundColor: ROSE.band }}>
+          <div className="container-custom py-4 lg:py-5">
+            <div className="flex items-stretch justify-center gap-5 lg:gap-8">
+              {/* Promoción */}
+              <div className="flex flex-col justify-center text-center">
+                <p className="font-sans uppercase tracking-[0.22em] text-sm lg:text-base font-semibold" style={{ color: ROSE.dark }}>
+                  Promoción
+                </p>
+                <p className="font-sans uppercase tracking-[0.18em] text-[0.6rem] lg:text-xs" style={{ color: ROSE.soft }}>
+                  Válida hasta
+                </p>
+                <p className="font-serif not-italic text-lg lg:text-xl" style={{ color: ROSE.dark }}>
+                  30 de junio
+                </p>
               </div>
-              <p className="font-sans uppercase tracking-[0.2em] text-bistro-500 text-[0.6rem] md:text-xs mt-1.5">
-                Promoción válida hasta 30 de junio · Precio especial por todo julio
-              </p>
-            </div>
 
-            {/* CTA WhatsApp */}
-            <a
-              href={`https://wa.me/${WHATSAPP}?text=${WA_MSG}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-filled inline-flex items-center gap-3"
-            >
-              <WhatsAppIcon className="w-5 h-5" />
-              Asegura tu lugar por WhatsApp
-            </a>
-          </motion.div>
+              <span className="w-px self-stretch" style={{ backgroundColor: ROSE.line }} />
+
+              {/* Precio */}
+              <div className="flex flex-col justify-center text-center">
+                <p className="leading-none mb-1">
+                  <span className="font-serif not-italic text-4xl lg:text-5xl" style={{ color: ROSE.price, letterSpacing: '-0.01em' }}>$4,000</span>
+                  <span className="font-sans uppercase tracking-[0.2em] text-sm lg:text-base ml-2" style={{ color: ROSE.soft }}>Pesos</span>
+                </p>
+                <p className="font-serif not-italic text-base lg:text-lg" style={{ color: ROSE.dark }}>
+                  12 fechas en total
+                </p>
+                <span className="block w-24 h-px mx-auto my-1.5" style={{ backgroundColor: ROSE.line }} />
+                <p className="font-sans uppercase tracking-[0.16em] text-[0.6rem] lg:text-xs" style={{ color: ROSE.soft }}>
+                  Precio especial por todo julio
+                </p>
+              </div>
+
+              <span className="w-px self-stretch" style={{ backgroundColor: ROSE.line }} />
+
+              {/* Sello + botón WhatsApp */}
+              <div className="flex flex-col items-center justify-center gap-2.5">
+                <Seal size={120} />
+                <a
+                  href={WA_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-filled inline-flex items-center gap-2.5 whitespace-nowrap !px-6 !py-3 text-xs"
+                >
+                  <WhatsAppIcon className="w-4 h-4" />
+                  Reservar por WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
+
+      {/* ===== MÓVIL — arte vertical oficial + botón WhatsApp ===== */}
+      <div className="md:hidden">
+        <a href={WA_URL} target="_blank" rel="noopener noreferrer" className="block">
+          <Image
+            src="/images/mercado/mercado-julio-vertical.jpg"
+            alt="Convocatoria Mercado de los Ángeles — Edición Julio. $4,000 pesos por 12 fechas, precio especial por todo julio."
+            width={1080}
+            height={1440}
+            priority
+            sizes="100vw"
+            className="w-full h-auto block"
+          />
+        </a>
+        <div className="px-5 py-6 text-center" style={{ backgroundColor: ROSE.band }}>
+          <a
+            href={WA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-filled inline-flex items-center gap-3 w-full max-w-sm mx-auto justify-center"
+          >
+            <WhatsAppIcon className="w-5 h-5" />
+            Asegura tu lugar por WhatsApp
+          </a>
+          <p className="font-sans uppercase tracking-[0.18em] text-[0.65rem] mt-3" style={{ color: ROSE.dark }}>
+            Sé parte de este mercado exclusivo
+          </p>
+        </div>
+      </div>
+    </motion.section>
   )
 }
