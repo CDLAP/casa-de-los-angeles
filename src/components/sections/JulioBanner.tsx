@@ -28,6 +28,29 @@ const FEATURES = [
   { icon: Camera, label: 'Promoción en redes y medios' },
 ]
 
+/* Sello circular fino — timbre rosa/dorado, CTA secundario a WhatsApp */
+function Seal({ size = 78 }: { size?: number }) {
+  return (
+    <a
+      href={WA_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Asegura tu lugar por WhatsApp"
+      className="group relative flex items-center justify-center rounded-full shrink-0 transition-transform duration-300 hover:scale-[1.05]"
+      style={{ width: size, height: size, backgroundColor: '#FBF1EC', boxShadow: '0 3px 12px rgba(158,99,94,0.20)' }}
+    >
+      <span className="absolute rounded-full" style={{ inset: 3, border: '1.5px solid #C9A961' }} />
+      <span className="absolute rounded-full" style={{ inset: 7, border: '1px solid rgba(201,169,97,0.45)' }} />
+      <span className="text-center" style={{ color: ROSE.dark }}>
+        <span className="block font-sans uppercase leading-[1.15]" style={{ fontSize: '0.46rem', letterSpacing: '0.06em' }}>
+          Asegura<br />tu lugar
+        </span>
+        <Heart className="w-2.5 h-2.5 mx-auto mt-0.5" style={{ color: ROSE.price }} fill="currentColor" />
+      </span>
+    </a>
+  )
+}
+
 /* Bloque superior — logo, títulos, beneficios (desktop sobre el centro despejado del flat-lay) */
 function Upper() {
   return (
@@ -150,8 +173,8 @@ export default function JulioBanner() {
 
               <span className="w-px self-stretch" style={{ backgroundColor: ROSE.line }} />
 
-              {/* CTA WhatsApp — prioridad (sin sello) */}
-              <div className="flex flex-col items-center justify-center gap-2.5 text-center">
+              {/* CTA WhatsApp (prioridad) + sello circular fino */}
+              <div className="flex flex-col items-center justify-center gap-3">
                 <a
                   href={WA_URL}
                   target="_blank"
@@ -161,12 +184,15 @@ export default function JulioBanner() {
                   <WhatsAppIcon className="w-5 h-5" />
                   Reservar por WhatsApp
                 </a>
-                <p className="flex flex-col items-center gap-1" style={{ color: ROSE.dark }}>
-                  <Heart className="w-3.5 h-3.5" style={{ color: ROSE.price }} fill="currentColor" />
-                  <span className="font-sans uppercase tracking-[0.16em] text-[0.6rem] lg:text-xs leading-snug">
-                    Asegura tu lugar · sé parte<br />de este mercado exclusivo
-                  </span>
-                </p>
+                <div className="flex items-center gap-3">
+                  <Seal />
+                  <p
+                    className="text-left font-sans uppercase tracking-[0.16em] text-[0.55rem] lg:text-[0.62rem] leading-snug max-w-[130px]"
+                    style={{ color: ROSE.dark }}
+                  >
+                    Sé parte de este<br />mercado exclusivo
+                  </p>
+                </div>
               </div>
             </div>
           </div>
