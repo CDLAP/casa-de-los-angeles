@@ -17,6 +17,7 @@ import {
   Target,
   Compass,
   Eye,
+  QrCode,
 } from 'lucide-react'
 
 // ─── Configuración rápida ───────────────────────────────────────────
@@ -120,6 +121,8 @@ const packages = [
       '8 fotografías profesionales de producto',
       '4 diseños para publicaciones de feed',
       '4 historias para Instagram o WhatsApp',
+      'Página de Instagram configurada y optimizada',
+      'Código QR personalizado con tu imagen, listo para imprimir',
       'Adaptación de logo y datos de contacto',
       '1 publicación en las historias de Casa de los Ángeles',
       'Asesoría de imagen y presentación (30 min)',
@@ -137,6 +140,9 @@ const packages = [
       'Video cinematográfico mensual (45 segundos)',
       '30 fotografías profesionales para redes',
       'Diseños para publicaciones de feed e historias',
+      'Página de Instagram profesional, creada y optimizada',
+      'Código QR personalizado con tu imagen para tu exhibidor',
+      'Cartel con lista de precios, diseño listo para imprimir',
       'Dirección creativa completa',
       'Adaptación de logo, branding y datos de contacto',
       'Publicación en las historias de Casa de los Ángeles',
@@ -503,6 +509,66 @@ export default function ArtesaniaVisualPage() {
             ))}
           </div>
 
+          {/* ── Kit Expositor (pago único, para mercados) ── */}
+          <motion.div
+            className="max-w-4xl mx-auto mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.15 }}
+          >
+            <div
+              onClick={() => selectPlan('Kit Expositor')}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault()
+                  selectPlan('Kit Expositor')
+                }
+              }}
+              className="group rounded-2xl bg-cream shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 cursor-pointer p-8 md:p-10"
+            >
+              <div className="flex flex-col sm:flex-row sm:items-start gap-6">
+                <div className="w-14 h-14 bg-gold/10 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-colors duration-300">
+                  <QrCode className="w-6 h-6 text-gold-dark" />
+                </div>
+                <div className="flex-1">
+                  <div className="flex flex-wrap items-center gap-3 mb-2">
+                    <h3 className="font-serif text-2xl text-charcoal">Kit Expositor</h3>
+                    <span className="text-xs uppercase tracking-[0.16em] text-gold-dark bg-gold/10 px-3 py-1 rounded-full">
+                      Pago único · para mercados
+                    </span>
+                  </div>
+                  <p className="text-charcoal/60 text-base leading-relaxed mb-5">
+                    Todo lo que tu marca necesita para vender mejor en el mercado: presencia digital lista
+                    y materiales impresos para tu mesa.
+                  </p>
+                  <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3 mb-6">
+                    {[
+                      'Página de Instagram creada y optimizada',
+                      'Código QR personalizado con tu imagen, para tu exhibidor de mesa',
+                      'Cartel con lista de precios, listo para imprimir',
+                      'Letrero o identificador de marca para tu mesa',
+                      'Branding básico (logo y paleta) si lo necesitas',
+                      'Asesoría de montaje y presentación de tu stand',
+                    ].map((f) => (
+                      <li key={f} className="flex items-start gap-3 text-charcoal/70 text-[15px] leading-relaxed">
+                        <Check className="w-4 h-4 text-gold-dark flex-shrink-0 mt-1" />
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="flex items-center justify-between flex-wrap gap-3">
+                    <span className="font-serif text-xl text-gold-dark">Cotización a tu medida</span>
+                    <span className="inline-flex items-center gap-1.5 text-gold-dark text-sm uppercase tracking-[0.14em] font-medium group-hover:gap-3 transition-all">
+                      Me interesa <ArrowRight className="w-4 h-4" />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
           {/* ── Complemento: video por pieza ── */}
           <motion.div
             className="max-w-4xl mx-auto mb-28"
@@ -729,6 +795,7 @@ export default function ArtesaniaVisualPage() {
                   <option value="Presencia Artesanal">Presencia Artesanal — $1,500</option>
                   <option value="Impulso Artesanal">Impulso Artesanal — $3,500</option>
                   <option value="Video por pieza">Video por pieza — $1,000</option>
+                  <option value="Kit Expositor">Kit Expositor — para mercados</option>
                   <option value="No estoy seguro">No estoy seguro aún</option>
                 </select>
               </div>

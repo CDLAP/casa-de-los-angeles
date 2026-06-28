@@ -21,6 +21,10 @@ export const metadata: Metadata = {
     'contenido mensual para redes sociales',
     'cdla studio',
     'casa de los ángeles studio',
+    'página de instagram para marcas artesanales',
+    'código qr para expositores',
+    'carteles lista de precios para mercados',
+    'kit para expositores de mercado',
   ],
   alternates: { canonical: pageUrl },
   openGraph: {
@@ -64,7 +68,7 @@ const studioJsonLd = {
         'Estudio creativo, fotografía, video y marketing de contenido para marcas artesanales',
       url: pageUrl,
       description:
-        'Estudio creativo especializado en marcas artesanales, culturales y boutique de México. Ofrece fotografía de producto, video cinematográfico, dirección creativa, branding y contenido mensual para redes sociales, producido dentro de Casa de los Ángeles, una casona del Centro Histórico de Puebla.',
+        'Estudio creativo especializado en marcas artesanales, culturales y boutique de México. Ofrece fotografía de producto, video cinematográfico, dirección creativa, branding y contenido mensual para redes sociales, producido dentro de Casa de los Ángeles, una casona del Centro Histórico de Puebla. También crea materiales para expositores de mercado: páginas de Instagram, códigos QR personalizados, carteles con lista de precios y kits para tu mesa.',
       image: `${siteUrl}/images/og-image.jpg`,
       provider: { '@id': `${siteUrl}/#organization` },
       telephone: '+52 220 622 4222',
@@ -95,7 +99,7 @@ const studioJsonLd = {
             '@type': 'Offer',
             name: 'Presencia Artesanal',
             description:
-              'Plan mensual: 8 fotografías profesionales de producto, 4 diseños para feed, 4 historias, adaptación de logo y datos de contacto, 1 publicación en las historias de Casa de los Ángeles y asesoría de imagen (30 min).',
+              'Plan mensual: 8 fotografías profesionales de producto, 4 diseños para feed, 4 historias, página de Instagram configurada y optimizada, código QR personalizado listo para imprimir, adaptación de logo y datos de contacto, 1 publicación en las historias de Casa de los Ángeles y asesoría de imagen (30 min).',
             priceCurrency: 'MXN',
             price: '1500',
             priceSpecification: {
@@ -110,7 +114,7 @@ const studioJsonLd = {
             '@type': 'Offer',
             name: 'Impulso Artesanal',
             description:
-              'Plan mensual: video cinematográfico de 45 segundos, 30 fotografías para redes, diseños para feed e historias, dirección creativa completa, branding, publicación en las historias de Casa de los Ángeles y promoción dentro del ecosistema.',
+              'Plan mensual: video cinematográfico de 45 segundos, 30 fotografías para redes, diseños para feed e historias, página de Instagram profesional creada y optimizada, código QR personalizado para exhibidor, cartel con lista de precios listo para imprimir, dirección creativa completa, branding, publicación en las historias de Casa de los Ángeles y promoción dentro del ecosistema.',
             priceCurrency: 'MXN',
             price: '3500',
             priceSpecification: {
@@ -129,6 +133,14 @@ const studioJsonLd = {
             priceCurrency: 'MXN',
             price: '1000',
             category: 'Video individual',
+          },
+          {
+            '@type': 'Offer',
+            name: 'Kit Expositor',
+            description:
+              'Paquete de pago único para expositores de mercados: creación y optimización de página de Instagram, código QR personalizado con la imagen de la marca para exhibidor de mesa, cartel con lista de precios listo para imprimir, letrero o identificador de marca para la mesa, branding básico (logo y paleta) y asesoría de montaje y presentación del stand.',
+            priceCurrency: 'MXN',
+            category: 'Materiales y presencia para expositores de mercado',
           },
         ],
       },

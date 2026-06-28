@@ -12,12 +12,12 @@ const WA_URL = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
 
 /* Paleta exacta de la campaña (muestreada del arte oficial) — NO cambiar, es el concepto */
 const ROSE = {
-  band: '#F3DDD5',   // blush de la banda
-  dark: '#9E635E',   // rosa fuerte (PROMOCIÓN, 30 de junio)
-  price: '#BE7E74',  // rosa del precio
-  soft: '#C99A92',   // rosa suave (PESOS, secundarios)
-  line: '#E2C4BB',   // divisores
-  ribbon: '#C68D89', // listón Edición Julio
+  band: '#F3DDD5',
+  dark: '#9E635E',
+  price: '#BE7E74',
+  soft: '#C99A92',
+  line: '#E2C4BB',
+  ribbon: '#C68D89',
 }
 const BROWN = '#4A3526'
 
@@ -51,7 +51,7 @@ function Seal({ size = 78 }: { size?: number }) {
   )
 }
 
-/* Bloque superior — logo, títulos, beneficios (desktop sobre el centro despejado del flat-lay) */
+/* Bloque superior — logo, títulos, beneficios */
 function Upper() {
   return (
     <div className="w-full max-w-2xl mx-auto px-5 text-center">
@@ -110,6 +110,77 @@ function Upper() {
   )
 }
 
+/* Divisor — vertical en desktop, horizontal corto en móvil */
+function Div() {
+  return <span className="w-20 h-px md:w-px md:h-auto md:self-stretch" style={{ backgroundColor: ROSE.line }} />
+}
+
+/* Banda de oferta — rosa de la campaña, responsiva (apilada en móvil, en fila en desktop) */
+function OfferBand() {
+  return (
+    <div className="border-t border-gold/40" style={{ backgroundColor: ROSE.band }}>
+      <div className="container-custom py-6 md:py-4 lg:py-5">
+        <div className="flex flex-col md:flex-row items-center md:items-stretch justify-center gap-5 lg:gap-8">
+          {/* Promoción */}
+          <div className="flex flex-col justify-center text-center">
+            <p className="font-sans uppercase tracking-[0.22em] text-sm lg:text-base font-semibold" style={{ color: ROSE.dark }}>
+              Promoción
+            </p>
+            <p className="font-sans uppercase tracking-[0.18em] text-[0.6rem] lg:text-xs" style={{ color: ROSE.soft }}>
+              Válida hasta
+            </p>
+            <p className="font-serif not-italic text-lg lg:text-xl" style={{ color: ROSE.dark }}>
+              30 de junio
+            </p>
+          </div>
+
+          <Div />
+
+          {/* Precio */}
+          <div className="flex flex-col justify-center text-center">
+            <p className="leading-none mb-1">
+              <span className="font-sans align-top text-xl lg:text-2xl mr-0.5" style={{ color: ROSE.soft }}>$</span>
+              <span className="font-serif not-italic text-4xl lg:text-5xl" style={{ color: ROSE.price, letterSpacing: '-0.01em' }}>4,000</span>
+              <span className="font-sans uppercase tracking-[0.2em] text-sm lg:text-base ml-2" style={{ color: ROSE.soft }}>Pesos</span>
+            </p>
+            <p className="font-serif not-italic text-base lg:text-lg" style={{ color: ROSE.dark }}>
+              12 fechas en total
+            </p>
+            <span className="block w-24 h-px mx-auto my-1.5" style={{ backgroundColor: ROSE.line }} />
+            <p className="font-sans uppercase tracking-[0.16em] text-[0.6rem] lg:text-xs" style={{ color: ROSE.soft }}>
+              Precio especial por todo julio
+            </p>
+          </div>
+
+          <Div />
+
+          {/* CTA WhatsApp (prioridad) + sello circular fino */}
+          <div className="flex flex-col items-center justify-center gap-3">
+            <a
+              href={WA_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-filled inline-flex items-center gap-3 whitespace-nowrap shadow-md"
+            >
+              <WhatsAppIcon className="w-5 h-5" />
+              Reservar por WhatsApp
+            </a>
+            <div className="flex items-center gap-3">
+              <Seal />
+              <p
+                className="text-left font-sans uppercase tracking-[0.16em] text-[0.55rem] lg:text-[0.62rem] leading-snug max-w-[130px]"
+                style={{ color: ROSE.dark }}
+              >
+                Sé parte de este<br />mercado exclusivo
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function JulioBanner() {
   return (
     <motion.section
@@ -120,112 +191,33 @@ export default function JulioBanner() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-      {/* ===== DESKTOP — programado, alta calidad, 16:9 con banda rosa + sello ===== */}
+      {/* ===== DESKTOP — 16:9, contenido centrado, banda abajo ===== */}
       <div className="hidden md:block relative w-full aspect-[16/9] max-h-[calc(100dvh-84px)] overflow-hidden">
-        <Image
-          src="/images/mercado/backjulio.jpg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-
-        {/* Contenido centrado, dejando aire para la banda */}
-        <div className="absolute inset-0 flex items-center justify-center pb-[160px] lg:pb-[170px]">
+        <Image src="/images/mercado/backjulio.jpg" alt="" fill priority sizes="100vw" className="object-cover object-center" />
+        <div className="absolute inset-0 flex items-center justify-center pb-[170px] lg:pb-[180px]">
           <Upper />
         </div>
-
-        {/* Banda de oferta — rosa de la campaña */}
-        <div className="absolute inset-x-0 bottom-0 border-t border-gold/40" style={{ backgroundColor: ROSE.band }}>
-          <div className="container-custom py-4 lg:py-5">
-            <div className="flex items-stretch justify-center gap-5 lg:gap-8">
-              {/* Promoción */}
-              <div className="flex flex-col justify-center text-center">
-                <p className="font-sans uppercase tracking-[0.22em] text-sm lg:text-base font-semibold" style={{ color: ROSE.dark }}>
-                  Promoción
-                </p>
-                <p className="font-sans uppercase tracking-[0.18em] text-[0.6rem] lg:text-xs" style={{ color: ROSE.soft }}>
-                  Válida hasta
-                </p>
-                <p className="font-serif not-italic text-lg lg:text-xl" style={{ color: ROSE.dark }}>
-                  30 de junio
-                </p>
-              </div>
-
-              <span className="w-px self-stretch" style={{ backgroundColor: ROSE.line }} />
-
-              {/* Precio */}
-              <div className="flex flex-col justify-center text-center">
-                <p className="leading-none mb-1">
-                  <span className="font-sans align-top text-xl lg:text-2xl mr-0.5" style={{ color: ROSE.soft }}>$</span>
-                  <span className="font-serif not-italic text-4xl lg:text-5xl" style={{ color: ROSE.price, letterSpacing: '-0.01em' }}>4,000</span>
-                  <span className="font-sans uppercase tracking-[0.2em] text-sm lg:text-base ml-2" style={{ color: ROSE.soft }}>Pesos</span>
-                </p>
-                <p className="font-serif not-italic text-base lg:text-lg" style={{ color: ROSE.dark }}>
-                  12 fechas en total
-                </p>
-                <span className="block w-24 h-px mx-auto my-1.5" style={{ backgroundColor: ROSE.line }} />
-                <p className="font-sans uppercase tracking-[0.16em] text-[0.6rem] lg:text-xs" style={{ color: ROSE.soft }}>
-                  Precio especial por todo julio
-                </p>
-              </div>
-
-              <span className="w-px self-stretch" style={{ backgroundColor: ROSE.line }} />
-
-              {/* CTA WhatsApp (prioridad) + sello circular fino */}
-              <div className="flex flex-col items-center justify-center gap-3">
-                <a
-                  href={WA_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-filled inline-flex items-center gap-3 whitespace-nowrap shadow-md"
-                >
-                  <WhatsAppIcon className="w-5 h-5" />
-                  Reservar por WhatsApp
-                </a>
-                <div className="flex items-center gap-3">
-                  <Seal />
-                  <p
-                    className="text-left font-sans uppercase tracking-[0.16em] text-[0.55rem] lg:text-[0.62rem] leading-snug max-w-[130px]"
-                    style={{ color: ROSE.dark }}
-                  >
-                    Sé parte de este<br />mercado exclusivo
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="absolute inset-x-0 bottom-0">
+          <OfferBand />
         </div>
       </div>
 
-      {/* ===== MÓVIL — arte vertical oficial + botón WhatsApp ===== */}
+      {/* ===== MÓVIL — programado, alta calidad: cintillo flat-lay + contenido + banda ===== */}
       <div className="md:hidden">
-        <a href={WA_URL} target="_blank" rel="noopener noreferrer" className="block">
+        <div className="relative w-full aspect-[16/9] overflow-hidden">
           <Image
-            src="/images/mercado/verticaljulio.jpeg"
-            alt="Convocatoria Mercado de los Ángeles — Edición Julio. $4,000 pesos por 12 fechas, precio especial por todo julio."
-            width={1080}
-            height={1440}
+            src="/images/mercado/backjulio.jpg"
+            alt="Objetos vintage y de colección — Mercado de los Ángeles"
+            fill
             priority
             sizes="100vw"
-            className="w-full h-auto block"
+            className="object-cover object-center"
           />
-        </a>
-        <div className="px-5 py-6 text-center" style={{ backgroundColor: ROSE.band }}>
-          <a
-            href={WA_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-filled inline-flex items-center gap-3 w-full max-w-sm mx-auto justify-center"
-          >
-            <WhatsAppIcon className="w-5 h-5" />
-            Asegura tu lugar por WhatsApp
-          </a>
-          <p className="font-sans uppercase tracking-[0.18em] text-[0.65rem] mt-3" style={{ color: ROSE.dark }}>
-            Sé parte de este mercado exclusivo
-          </p>
         </div>
+        <div className="bg-cream pt-8 pb-9">
+          <Upper />
+        </div>
+        <OfferBand />
       </div>
 
       {/* Aire para que el querubín de la pleca caiga sobre cream, no sobre la banda */}
