@@ -39,11 +39,11 @@ function Upper() {
           width={1200}
           height={610}
           priority
-          className="w-[230px] md:w-[300px] h-auto"
+          className="w-[230px] md:w-[260px] lg:w-[300px] h-auto"
         />
       </div>
 
-      <h2 className="text-gradient-gold font-serif not-italic text-3xl md:text-5xl mb-2" style={{ letterSpacing: '0.1em' }}>
+      <h2 className="text-gradient-gold font-serif not-italic text-3xl md:text-4xl lg:text-5xl mb-2" style={{ letterSpacing: '0.1em' }}>
         CONVOCATORIA
       </h2>
 
@@ -55,7 +55,7 @@ function Upper() {
         <span className="w-10 h-px bg-gold/50" />
       </div>
 
-      <h3 className="font-serif not-italic text-xl md:text-3xl leading-tight mb-4" style={{ letterSpacing: '0.02em', color: BROWN }}>
+      <h3 className="font-serif not-italic text-xl md:text-2xl lg:text-3xl leading-tight mb-4" style={{ letterSpacing: '0.02em', color: BROWN }}>
         VINTAGE, DE COLECCIÓN<br />MODA Y DISEÑO
       </h3>
 
@@ -165,13 +165,13 @@ export default function JulioBanner() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-      {/* ===== DESKTOP — 16:9, contenido centrado, banda abajo ===== */}
-      <div className="hidden md:block relative w-full aspect-[5/4] lg:aspect-[3/2] xl:aspect-[16/10] 2xl:aspect-[16/9] max-h-[calc(100dvh-84px)] overflow-hidden">
+      {/* ===== DESKTOP — fondo flat-lay (cover) + contenido en flujo, sin recortes ===== */}
+      <div className="hidden md:flex md:flex-col relative w-full overflow-hidden md:min-h-[600px] lg:min-h-[680px]">
         <Image src="/images/mercado/backjulio.jpg" alt="" fill priority sizes="100vw" className="object-cover object-center" />
-        <div className="absolute inset-0 flex items-center justify-center pb-[170px] lg:pb-[180px]">
+        <div className="relative z-10 flex-1 flex items-center justify-center px-5 py-10 lg:py-14">
           <Upper />
         </div>
-        <div className="absolute inset-x-0 bottom-0">
+        <div className="relative z-10">
           <OfferBand />
         </div>
       </div>
