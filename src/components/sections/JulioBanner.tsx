@@ -202,7 +202,7 @@ export default function JulioBanner() {
       <div className="md:hidden">
         <a href={WA_URL} target="_blank" rel="noopener noreferrer" className="block">
           <Image
-            src="/images/mercado/mercado-julio-vertical.jpg"
+            src="/images/mercado/verticaljulio.jpeg"
             alt="Convocatoria Mercado de los Ángeles — Edición Julio. $4,000 pesos por 12 fechas, precio especial por todo julio."
             width={1080}
             height={1440}
@@ -226,6 +226,9 @@ export default function JulioBanner() {
           </p>
         </div>
       </div>
+
+      {/* Aire para que el querubín de la pleca caiga sobre cream, no sobre la banda */}
+      <div className="h-20 md:h-28 bg-cream" />
     </motion.section>
   )
 }
