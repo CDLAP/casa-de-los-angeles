@@ -28,36 +28,6 @@ const FEATURES = [
   { icon: Camera, label: 'Promoción en redes y medios' },
 ]
 
-/* Sello circular bronce — clickable a WhatsApp */
-function Seal({ size = 132 }: { size?: number }) {
-  return (
-    <a
-      href={WA_URL}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Asegura tu lugar por WhatsApp"
-      className="group relative flex items-center justify-center rounded-full shrink-0 transition-transform duration-300 hover:scale-[1.03]"
-      style={{
-        width: size,
-        height: size,
-        background: 'radial-gradient(circle at 35% 28%, #B89255 0%, #9A6F37 55%, #8A5E2E 100%)',
-        boxShadow: '0 8px 22px rgba(74,53,38,0.30)',
-      }}
-    >
-      <span
-        className="absolute rounded-full"
-        style={{ inset: 6, border: '1px solid rgba(244,234,218,0.55)' }}
-      />
-      <span className="px-3 text-center" style={{ color: '#F5EBDA' }}>
-        <span className="block font-sans uppercase leading-tight" style={{ fontSize: '0.6rem', letterSpacing: '0.1em' }}>
-          Asegura tu lugar<br />y sé parte de este<br />mercado exclusivo
-        </span>
-        <Heart className="w-3 h-3 mx-auto mt-1.5" style={{ color: '#F5EBDA' }} fill="#F5EBDA" />
-      </span>
-    </a>
-  )
-}
-
 /* Bloque superior — logo, títulos, beneficios (desktop sobre el centro despejado del flat-lay) */
 function Upper() {
   return (
@@ -85,8 +55,8 @@ function Upper() {
         <span className="w-10 h-px bg-gold/50" />
       </div>
 
-      <h3 className="font-serif not-italic text-xl md:text-3xl leading-tight mb-4" style={{ letterSpacing: '-0.01em', color: BROWN }}>
-        Vintage, de colección<br />moda y diseño
+      <h3 className="font-serif not-italic text-xl md:text-3xl leading-tight mb-4" style={{ letterSpacing: '0.02em', color: BROWN }}>
+        VINTAGE, DE COLECCIÓN<br />MODA Y DISEÑO
       </h3>
 
       <div className="flex justify-center mb-4 md:mb-5">
@@ -180,18 +150,23 @@ export default function JulioBanner() {
 
               <span className="w-px self-stretch" style={{ backgroundColor: ROSE.line }} />
 
-              {/* Sello + botón WhatsApp */}
-              <div className="flex flex-col items-center justify-center gap-2.5">
-                <Seal size={120} />
+              {/* CTA WhatsApp — prioridad (sin sello) */}
+              <div className="flex flex-col items-center justify-center gap-2.5 text-center">
                 <a
                   href={WA_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-filled inline-flex items-center gap-2.5 whitespace-nowrap !px-6 !py-3 text-xs"
+                  className="btn-filled inline-flex items-center gap-3 whitespace-nowrap shadow-md"
                 >
-                  <WhatsAppIcon className="w-4 h-4" />
+                  <WhatsAppIcon className="w-5 h-5" />
                   Reservar por WhatsApp
                 </a>
+                <p className="flex flex-col items-center gap-1" style={{ color: ROSE.dark }}>
+                  <Heart className="w-3.5 h-3.5" style={{ color: ROSE.price }} fill="currentColor" />
+                  <span className="font-sans uppercase tracking-[0.16em] text-[0.6rem] lg:text-xs leading-snug">
+                    Asegura tu lugar · sé parte<br />de este mercado exclusivo
+                  </span>
+                </p>
               </div>
             </div>
           </div>
