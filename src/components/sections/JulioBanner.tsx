@@ -31,7 +31,7 @@ const FEATURES = [
 /* Bloque superior — logo, títulos, beneficios */
 function Upper() {
   return (
-    <div className="w-full max-w-2xl mx-auto px-5 text-center">
+    <div className="w-full max-w-xl lg:max-w-2xl mx-auto px-5 text-center">
       <div className="flex justify-center mb-3 md:mb-4">
         <Image
           src="/images/mercado/mdla-horizontal.png"
@@ -166,7 +166,7 @@ export default function JulioBanner() {
       transition={{ duration: 0.8 }}
     >
       {/* ===== DESKTOP — 16:9, contenido centrado, banda abajo ===== */}
-      <div className="hidden md:block relative w-full aspect-[16/9] max-h-[calc(100dvh-84px)] overflow-hidden">
+      <div className="hidden md:block relative w-full aspect-[5/4] lg:aspect-[3/2] xl:aspect-[16/10] 2xl:aspect-[16/9] max-h-[calc(100dvh-84px)] overflow-hidden">
         <Image src="/images/mercado/backjulio.jpg" alt="" fill priority sizes="100vw" className="object-cover object-center" />
         <div className="absolute inset-0 flex items-center justify-center pb-[170px] lg:pb-[180px]">
           <Upper />
