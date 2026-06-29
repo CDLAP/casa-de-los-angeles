@@ -396,6 +396,14 @@ export default function RootLayout({
               {`
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
+                var __consent = 'denied';
+                try { if (localStorage.getItem('cdla_cookie_consent') === 'granted') __consent = 'granted'; } catch (e) {}
+                gtag('consent', 'default', {
+                  ad_storage: 'denied',
+                  ad_user_data: 'denied',
+                  ad_personalization: 'denied',
+                  analytics_storage: __consent
+                });
                 gtag('js', new Date());
                 gtag('config', '${GA_ID}');
               `}
