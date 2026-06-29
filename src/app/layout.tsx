@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { Playfair_Display, Lato, Fraunces } from 'next/font/google'
 import './globals.css'
 import LayoutShell from '@/components/layout/LayoutShell'
@@ -28,6 +29,9 @@ const fraunces = Fraunces({
 
 // URL base del sitio
 const siteUrl = 'https://www.casadelosangelespuebla.com'
+
+// Google Analytics 4 — el Measurement ID se define en Vercel como NEXT_PUBLIC_GA_ID (G-XXXXXXXXXX)
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID
 
 export const metadata: Metadata = {
   // Metadatos básicos mejorados
@@ -382,6 +386,22 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
       </head>
       <body className="font-sans antialiased overflow-x-hidden">
+        {GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_ID}');
+              `}
+            </Script>
+          </>
+        )}
         <HeroThemeProvider>
           <LayoutShell>{children}</LayoutShell>
         </HeroThemeProvider>

@@ -4,11 +4,22 @@ import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 
+// Bandera en memoria: el loader sólo se reproduce en la primera carga del sitio
+// (o tras un refresh). En navegaciones internas —p.ej. volver a Inicio desde
+// Prensa— ya no vuelve a aparecer.
+let hasPlayedLoader = false
+
 export default function Loader() {
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(!hasPlayedLoader)
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
+    // Si ya se mostró en esta sesión, no lo repetimos
+    if (hasPlayedLoader) {
+      setIsLoading(false)
+      return
+    }
+
     // Simulate loading progress
     const interval = setInterval(() => {
       setProgress((prev) => {
@@ -23,6 +34,7 @@ export default function Loader() {
     // Hide loader after animation
     const timer = setTimeout(() => {
       setIsLoading(false)
+      hasPlayedLoader = true
     }, 2500)
 
     return () => {
