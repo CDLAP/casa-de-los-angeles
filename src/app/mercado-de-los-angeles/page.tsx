@@ -52,12 +52,9 @@ export default function MercadoDeLosAngelesPage() {
         <SeasonHero
           name={season.name}
           location={season.location}
-          temporada={season.temporada}
-          firstDateIso={season.firstDateIso}
-          heroImage={season.heroImage}
-          topStamp={season.topStamp}
-          hours={season.hours}
-          description={season.description}
+          heroImageDesktop={season.heroImageDesktop}
+          heroImageMobile={season.heroImageMobile}
+          heroAlt={season.heroAlt}
         />
 
         <SeasonFechas

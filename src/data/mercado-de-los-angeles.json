@@ -9,6 +9,9 @@
     "temporada": "Temporada Mayo — Junio 2026",
     "firstDateIso": "2026-05-22",
     "heroImage": "/images/mercado/casa-noche.jpeg",
+    "heroImageDesktop": "/images/mercado/hero-vacacional-16-9.jpg",
+    "heroImageMobile": "/images/mercado/hero-vacacional-9-16.jpg",
+    "heroAlt": "Mercado de los Ángeles · Mercado Vacacional del 15 al 31 de Julio · vende de lunes a domingo en Casa de los Ángeles, Centro Histórico de Puebla",
     "topStamp": "El primer y único punto de venta nocturno del Centro de Puebla",
     "hours": {
       "label": "Horario oficial",
