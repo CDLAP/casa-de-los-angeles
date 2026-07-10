@@ -18,6 +18,7 @@ import {
   Compass,
   Eye,
   QrCode,
+  Feather,
 } from 'lucide-react'
 
 // ─── Configuración rápida ───────────────────────────────────────────
@@ -111,21 +112,33 @@ const services = [
 
 const packages = [
   {
+    icon: Feather,
+    title: 'Primer Vuelo',
+    price: '$800 MXN',
+    period: 'al mes',
+    description: 'Para emprendedores que empiezan y quieren verse profesionales sin gastar de más.',
+    features: [
+      '6 fotografías profesionales de producto',
+      '2 diseños listos para tu feed',
+      '2 historias listas para publicar',
+      'Código QR con tu imagen para tu mesa',
+      'Asesoría exprés de presentación (15 min)',
+    ],
+    featured: false,
+  },
+  {
     icon: Camera,
     title: 'Presencia Artesanal',
     price: '$1,500 MXN',
     period: 'al mes',
-    description:
-      'Ideal para artesanos, emprendedores y pequeños negocios que quieren mantener presencia digital constante.',
+    description: 'Para mantener presencia digital constante, mes con mes.',
     features: [
       '8 fotografías profesionales de producto',
-      '4 diseños para publicaciones de feed',
-      '4 historias para Instagram o WhatsApp',
-      'Página de Instagram configurada y optimizada',
-      'Código QR personalizado con tu imagen, listo para imprimir',
-      'Adaptación de logo y datos de contacto',
-      '1 publicación en las historias de Casa de los Ángeles',
-      'Asesoría de imagen y presentación (30 min)',
+      '4 diseños de feed + 4 historias',
+      'Instagram configurado y optimizado',
+      'Código QR personalizado, listo para imprimir',
+      'Historia en redes de Casa de los Ángeles',
+      'Asesoría de imagen (30 min)',
     ],
     featured: false,
   },
@@ -134,19 +147,14 @@ const packages = [
     title: 'Impulso Artesanal',
     price: '$3,500 MXN',
     period: 'al mes',
-    description:
-      'Para marcas que buscan crecer visualmente con video, más contenido y dirección creativa completa.',
+    description: 'Crecimiento completo: video, más contenido y dirección creativa.',
     features: [
-      'Video cinematográfico mensual (45 segundos)',
+      'Video cinematográfico mensual (45 seg)',
       '30 fotografías profesionales para redes',
-      'Diseños para publicaciones de feed e historias',
-      'Página de Instagram profesional, creada y optimizada',
-      'Código QR personalizado con tu imagen para tu exhibidor',
-      'Cartel con lista de precios, diseño listo para imprimir',
+      'Diseños para feed e historias',
+      'Instagram profesional + QR + cartel de precios',
       'Dirección creativa completa',
-      'Adaptación de logo, branding y datos de contacto',
-      'Publicación en las historias de Casa de los Ángeles',
-      'Promoción dentro del ecosistema (campañas y mercados)',
+      'Promoción en campañas y mercados de la Casa',
     ],
     featured: true,
   },
@@ -453,13 +461,14 @@ export default function ArtesaniaVisualPage() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="font-serif text-3xl sm:text-4xl text-gold mb-4">Planes y paquetes</h2>
+            <p className="text-gold/60 text-sm uppercase tracking-[0.3em] mb-4">Planes y paquetes</p>
+            <h2 className="font-serif text-3xl sm:text-4xl text-gold mb-4">Dale alas a tu emprendimiento</h2>
             <p className="text-cream/50 text-lg max-w-2xl mx-auto">
-              Elige el nivel que mejor acompaña a tu marca. Toca un plan y te llevamos al formulario con esa opción lista.
+              Tres planes claros. Toca el tuyo y te llevamos al formulario con esa opción lista.
             </p>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 gap-8 max-w-4xl mx-auto mb-8 items-stretch">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-8 items-stretch">
             {packages.map((pkg, index) => (
               <motion.div
                 key={pkg.title}
@@ -472,7 +481,7 @@ export default function ArtesaniaVisualPage() {
                     selectPlan(pkg.title)
                   }
                 }}
-                className={`group relative p-8 md:p-10 rounded-2xl transition-all duration-500 flex flex-col cursor-pointer bg-cream shadow-xl hover:shadow-2xl hover:-translate-y-1 ${
+                className={`group relative p-7 md:p-8 rounded-2xl transition-all duration-500 flex flex-col cursor-pointer bg-cream shadow-xl hover:shadow-2xl hover:-translate-y-1 ${
                   pkg.featured ? 'border-2 border-gold' : 'border border-cream-300'
                 }`}
                 initial={{ opacity: 0, y: 20 }}
@@ -792,6 +801,7 @@ export default function ArtesaniaVisualPage() {
                   className={inputClass}
                 />
                 <select name="plan" value={form.plan} onChange={handleChange} className={inputClass}>
+                  <option value="Primer Vuelo">Primer Vuelo — $800</option>
                   <option value="Presencia Artesanal">Presencia Artesanal — $1,500</option>
                   <option value="Impulso Artesanal">Impulso Artesanal — $3,500</option>
                   <option value="Video por pieza">Video por pieza — $1,000</option>
