@@ -338,13 +338,13 @@ export default function ArtesaniaVisualPage() {
 
           {/* ── Tira horizontal destacada (galería rápida, arriba) ── */}
           <div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen mb-28">
-            <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar px-5 sm:px-8 lg:px-12">
+            <div className="flex gap-4 overflow-x-auto overflow-y-hidden overscroll-x-contain pb-4 snap-x snap-proximity no-scrollbar px-5 sm:px-8 lg:px-12">
               {tiraImages.map((src, i) => (
                 <motion.div
                   key={src}
                   className="snap-start shrink-0 w-[240px] sm:w-[280px] aspect-[4/5] rounded-2xl overflow-hidden border border-gold/10 bg-cream/5 group"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   viewport={{ once: true, margin: '-40px' }}
                   transition={{ duration: 0.5, delay: Math.min(i * 0.05, 0.4) }}
                 >
@@ -728,13 +728,13 @@ export default function ArtesaniaVisualPage() {
           </motion.div>
 
           <div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen mb-28">
-            <div className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar px-5 sm:px-8 lg:px-12">
+            <div className="flex gap-5 overflow-x-auto overflow-y-hidden overscroll-x-contain pb-4 snap-x snap-proximity no-scrollbar px-5 sm:px-8 lg:px-12">
               {testimonials.map((t, index) => (
                 <motion.div
                   key={index}
                   className="snap-start shrink-0 w-[280px] sm:w-[340px] p-8 rounded-2xl border border-gold/10 bg-cream/5 flex flex-col"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  initial={{ opacity: 0 }}
+                  animate={isInView ? { opacity: 1 } : {}}
                   transition={{ duration: 0.5, delay: Math.min(0.1 + index * 0.06, 0.8) }}
                 >
                   <Quote className="w-8 h-8 text-gold/40 mb-4" />
