@@ -511,7 +511,7 @@ export default function ArtesaniaVisualPage() {
                     </li>
                   ))}
                 </ul>
-                <span className="mt-7 inline-flex items-center gap-1.5 text-gold-dark text-sm uppercase tracking-[0.14em] font-medium group-hover:gap-3 transition-all">
+                <span className="mt-auto pt-7 inline-flex items-center gap-1.5 text-gold-dark text-sm uppercase tracking-[0.14em] font-medium group-hover:gap-3 transition-all">
                   Me interesa <ArrowRight className="w-4 h-4" />
                 </span>
               </motion.div>
