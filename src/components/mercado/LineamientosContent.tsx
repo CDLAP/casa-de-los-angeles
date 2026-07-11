@@ -89,7 +89,6 @@ const SECTIONS: Section[] = [
     title: 'Pagos y reservaciones',
     items: [
       'Las fechas deberán quedar liquidadas en su totalidad antes del evento.',
-      'No manejamos apartados debido al cupo limitado del mercado.',
       'Los pagos normalmente se realizan vía transferencia bancaria.',
       'Ofrecemos 5% de descuento realizando pago presencial anticipado directamente en Casa de los Ángeles.',
       'En caso de requerir factura, deberá agregarse el 16% correspondiente al IVA.',
