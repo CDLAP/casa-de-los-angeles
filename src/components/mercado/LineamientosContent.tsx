@@ -37,7 +37,7 @@ const SECTIONS: Section[] = [
   {
     title: 'Horarios y montaje',
     items: [
-      'El montaje se realiza durante la hora previa a la apertura: viernes a las 4:00 PM, y sábado y domingo a las 10:00 AM.',
+      'El montaje se realiza a las 10:00 AM los tres días: viernes, sábado y domingo.',
       'Los horarios son: viernes de 5:00 PM a 9:00 PM; sábado y domingo de 11:00 AM a 8:00 PM.',
       'Todos los expositores deberán estar listos o presentes a la hora de apertura.',
       'Pasada la hora de apertura se aplica una cuota de puntualidad de $100 MXN.',
@@ -160,7 +160,7 @@ const SECTION_ICONS = [
 ]
 
 const SCHEDULE = {
-  viernes: { label: 'Viernes', montaje: '4:00 PM', apertura: '5:00 PM', cierre: '9:00 PM' },
+  viernes: { label: 'Viernes', montaje: '10:00 AM', apertura: '5:00 PM', cierre: '9:00 PM' },
   finde: { label: 'Sábado y Domingo', montaje: '10:00 AM', apertura: '11:00 AM', cierre: '8:00 PM' },
 } as const
 
