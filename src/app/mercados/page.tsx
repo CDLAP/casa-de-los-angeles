@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Mercados de Casa de los Ángeles',
     description:
-      'Mercado de los Ángeles diurno (viernes, sábado y domingo) dentro de una casona histórica del Centro de Puebla.',
+      'Mercado de los Ángeles diurno (sábado y domingo) dentro de una casona histórica del Centro de Puebla.',
     type: 'website',
   },
 }

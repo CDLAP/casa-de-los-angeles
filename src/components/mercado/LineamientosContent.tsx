@@ -37,8 +37,8 @@ const SECTIONS: Section[] = [
   {
     title: 'Horarios y montaje',
     items: [
-      'El montaje se realiza a las 10:00 AM los tres días: viernes, sábado y domingo.',
-      'Los horarios son: viernes de 5:00 PM a 9:00 PM; sábado y domingo de 11:00 AM a 8:00 PM.',
+      'El montaje se realiza a las 10:00 AM ambos días: sábado y domingo.',
+      'Los horarios son: sábado y domingo de 11:00 AM a 8:00 PM.',
       'Todos los expositores deberán estar listos o presentes a la hora de apertura.',
       'Pasada la hora de apertura se aplica una cuota de puntualidad de $100 MXN.',
     ],
@@ -160,7 +160,6 @@ const SECTION_ICONS = [
 ]
 
 const SCHEDULE = {
-  viernes: { label: 'Viernes', montaje: '10:00 AM', apertura: '5:00 PM', cierre: '9:00 PM' },
   finde: { label: 'Sábado y Domingo', montaje: '10:00 AM', apertura: '11:00 AM', cierre: '8:00 PM' },
 } as const
 
@@ -226,7 +225,7 @@ function CountUp({ value, prefix = '' }: { value: number; prefix?: string }) {
 
 export default function LineamientosContent() {
   const { settings, season } = mercadoData
-  const [day, setDay] = useState<DayKey>('viernes')
+  const [day, setDay] = useState<DayKey>('finde')
   const current = SCHEDULE[day]
 
   const reservaMessage = encodeURIComponent(

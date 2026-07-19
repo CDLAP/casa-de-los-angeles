@@ -343,7 +343,7 @@ const jsonLd = {
           name: '¿Qué eventos organizan en Casa de los Ángeles?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Martes de Artes, Mercado de las Maravillas (viernes a domingo), noches de gala, ruedas de prensa, conferencias mediáticas y eventos privados.',
+            text: 'Martes de Artes, Mercado de las Maravillas (sábado y domingo), noches de gala, ruedas de prensa, conferencias mediáticas y eventos privados.',
           },
         },
         {

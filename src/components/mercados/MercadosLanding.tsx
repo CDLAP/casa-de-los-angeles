@@ -50,13 +50,12 @@ const MARKETS = [
     id: 'angeles',
     name: 'Mercado de los Ángeles',
     schedule: [
-      { day: 'Viernes', hours: '5:00 PM — 9:00 PM' },
       { day: 'Sábado y Domingo', hours: '11:00 AM — 8:00 PM' },
     ],
     concept:
       'Turismo, café, compras, recorrido de la casa y movimiento constante durante el día.',
     logo: '/images/mercado/mercado-de-los-angeles-logo.png',
-    href: `https://wa.me/522206224222?text=${encodeURIComponent('Hola, quiero información sobre el Mercado de los Ángeles (viernes 5–9pm, sábado y domingo 11am–8pm) en Casa de los Ángeles. Mi marca se llama: __ y vendo: __.')}`,
+    href: `https://wa.me/522206224222?text=${encodeURIComponent('Hola, quiero información sobre el Mercado de los Ángeles (sábado y domingo 11am–8pm) en Casa de los Ángeles. Mi marca se llama: __ y vendo: __.')}`,
     isExternal: true,
     ctaLabel: 'Hablar por WhatsApp',
   },
