@@ -178,6 +178,7 @@ export default function Hero({ navOffset = true, showFacade = true }: { navOffse
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.6 }}
           >
+            <a href="/eden" className="inline-block px-5 py-2.5 text-xs uppercase tracking-[0.2em] font-light border border-gold/50 text-gold transition-all duration-300 hover:bg-gold hover:text-[#3F1F26]">Edén</a>
             <a href="/museo" className="inline-block px-5 py-2.5 text-xs uppercase tracking-[0.2em] font-light border border-gold/50 text-gold transition-all duration-300 hover:bg-gold hover:text-[#3F1F26]">Museo</a>
             <a href="/mercados" className="inline-block px-5 py-2.5 text-xs uppercase tracking-[0.2em] font-light border border-gold/50 text-gold transition-all duration-300 hover:bg-gold hover:text-[#3F1F26]">Mercados</a>
             <a href="/#rueda-de-prensa" className="inline-block px-5 py-2.5 text-xs uppercase tracking-[0.2em] font-light border border-gold/50 text-gold transition-all duration-300 hover:bg-gold hover:text-[#3F1F26]">Prensa</a>

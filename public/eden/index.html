@@ -143,6 +143,33 @@
   footer .house{font-family:var(--sans);font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-top:8px}
   footer .addr{font-family:var(--script);font-style:italic;font-size:1.02rem;color:var(--ink-soft);margin-top:16px;line-height:1.5}
   footer .note{font-family:var(--sans);font-size:.58rem;letter-spacing:.06em;color:var(--ink-soft);opacity:.6;margin-top:22px}
+
+  /* ---------- DESKTOP: carta enmarcada sobre fondo verde ---------- */
+  @media (min-width:768px){
+    body{
+      background:linear-gradient(165deg,var(--forest-deep) 0%,var(--forest) 55%,#0a4d3f 100%);
+      padding:56px 32px 80px;
+      min-height:100vh;
+    }
+    .wrap{
+      max-width:720px;
+      border-radius:18px;
+      box-shadow:0 40px 90px rgba(0,0,0,.45), 0 0 0 1px rgba(201,169,97,.5);
+    }
+    /* marco dorado interior, como carta impresa */
+    .wrap::before{
+      content:"";position:absolute;inset:0;
+      border:1px solid rgba(201,169,97,.5);
+      border-radius:18px;pointer-events:none;z-index:40;
+    }
+    .hero{border-radius:18px 18px 0 0;padding:64px 40px 44px}
+    .hero h1{font-size:3.8rem}
+    footer{border-radius:0 0 18px 18px;padding:52px 32px 64px}
+    section{padding-left:52px;padding-right:52px}
+    nav.index a:first-child{margin-left:auto}
+    nav.index a:last-child{margin-right:auto}
+    .eden-banner{padding:64px 40px 56px}
+  }
 </style>
 </head>
 <body>
