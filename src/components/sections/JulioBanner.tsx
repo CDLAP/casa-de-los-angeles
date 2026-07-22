@@ -30,7 +30,7 @@ export default function JulioBanner() {
           height={1080}
           priority
           sizes="100vw"
-          className="hidden md:block w-full h-auto"
+          className="hidden md:block w-full h-auto md:h-[calc(100vh-84px)] md:object-contain"
         />
         {/* Móvil — 9:16 */}
         <Image

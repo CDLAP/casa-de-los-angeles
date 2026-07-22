@@ -9,6 +9,7 @@ import { ChevronDown } from 'lucide-react'
 
 const mainLinks = [
   { href: '/', label: 'Inicio' },
+  { href: '/eden', label: 'Edén', external: true },
   { href: '/museo', label: 'Museo' },
   { href: '/mercados', label: 'Mercados' },
   { href: '/#rueda-de-prensa', label: 'Prensa' },
@@ -122,9 +123,15 @@ export default function Header() {
       >
         <nav className="flex items-center justify-center px-3">
           {mainLinks.map((link) => (
-            <Link key={link.href} href={link.href} className={navTextClass(isActive(link.href))}>
-              {link.label}
-            </Link>
+            (link as any).external ? (
+              <a key={link.href} href={link.href} className={navTextClass(isActive(link.href))}>
+                {link.label}
+              </a>
+            ) : (
+              <Link key={link.href} href={link.href} className={navTextClass(isActive(link.href))}>
+                {link.label}
+              </Link>
+            )
           ))}
 
           {/* Más */}
@@ -253,6 +260,15 @@ export default function Header() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: 0.05 + index * 0.04 }}
                   >
+                    {(link as any).external ? (
+                    <a
+                      href={link.href}
+                      onClick={() => setMenuOpen(false)}
+                      className={`block py-3 font-sans text-base uppercase tracking-[0.15em] transition-colors border-b border-gold/10 text-center text-cream/70 hover:text-gold`}
+                    >
+                      {link.label}
+                    </a>
+                    ) : (
                     <Link
                       href={link.href}
                       onClick={() => setMenuOpen(false)}
@@ -262,6 +278,7 @@ export default function Header() {
                     >
                       {link.label}
                     </Link>
+                    )}
                   </motion.div>
                 ))}
               </div>

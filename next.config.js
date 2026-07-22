@@ -65,6 +65,17 @@ const nextConfig = {
     ];
   },
 
+  // Rewrites: servir HTML estático de /public en rutas limpias
+  async rewrites() {
+    return [
+      // Menú EDÉN (public/eden/index.html no se sirve solo en /eden sin esto)
+      {
+        source: '/eden',
+        destination: '/eden/index.html',
+      },
+    ];
+  },
+
   // Redirecciones SEO (www y trailing slash)
   async redirects() {
     return [
