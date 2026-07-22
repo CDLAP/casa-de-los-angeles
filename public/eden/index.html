@@ -86,6 +86,10 @@
     transition:.2s;
   }
   nav.index a:active{background:var(--forest);color:var(--cream)}
+  nav.index a.active{background:var(--forest);color:var(--cream);border-color:var(--forest)}
+  @media (hover:hover){
+    nav.index a:hover{background:var(--forest);color:var(--cream);border-color:var(--forest)}
+  }
 
   /* ---------- SECTIONS ---------- */
   section{padding:44px 22px 12px;scroll-margin-top:60px}
@@ -144,31 +148,19 @@
   footer .addr{font-family:var(--script);font-style:italic;font-size:1.02rem;color:var(--ink-soft);margin-top:16px;line-height:1.5}
   footer .note{font-family:var(--sans);font-size:.58rem;letter-spacing:.06em;color:var(--ink-soft);opacity:.6;margin-top:22px}
 
-  /* ---------- DESKTOP: carta enmarcada sobre fondo verde ---------- */
+  /* ---------- DESKTOP: beige a todo lo ancho, contenido en columna ---------- */
   @media (min-width:768px){
-    body{
-      background:linear-gradient(165deg,var(--forest-deep) 0%,var(--forest) 55%,#0a4d3f 100%);
-      padding:56px 32px 80px;
-      min-height:100vh;
-    }
-    .wrap{
-      max-width:720px;
-      border-radius:18px;
-      box-shadow:0 40px 90px rgba(0,0,0,.45), 0 0 0 1px rgba(201,169,97,.5);
-    }
-    /* marco dorado interior, como carta impresa */
-    .wrap::before{
-      content:"";position:absolute;inset:0;
-      border:1px solid rgba(201,169,97,.5);
-      border-radius:18px;pointer-events:none;z-index:40;
-    }
-    .hero{border-radius:18px 18px 0 0;padding:64px 40px 44px}
-    .hero h1{font-size:3.8rem}
-    footer{border-radius:0 0 18px 18px;padding:52px 32px 64px}
-    section{padding-left:52px;padding-right:52px}
+    .wrap{max-width:none}
+    .hero{padding:88px 40px 64px}
+    .hero h1{font-size:4.2rem}
+    .hero .lede{max-width:540px}
+    nav.index{padding:13px 32px;z-index:50}
     nav.index a:first-child{margin-left:auto}
     nav.index a:last-child{margin-right:auto}
-    .eden-banner{padding:64px 40px 56px}
+    section{max-width:760px;margin:0 auto;padding:56px 32px 16px}
+    .eden-banner{padding:76px 26px 64px}
+    .eden-banner .branch{width:150px;bottom:-30px}
+    footer{padding:60px 32px 84px}
   }
 </style>
 </head>
@@ -357,5 +349,28 @@
   </footer>
 
 </div>
+
+<script>
+(function(){
+  var links = document.querySelectorAll('nav.index a');
+  var map = {};
+  links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+  var current = null;
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var a = map[e.target.id];
+        if (a && a !== current) {
+          if (current) current.classList.remove('active');
+          current = a;
+          a.classList.add('active');
+          a.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+        }
+      }
+    });
+  }, { rootMargin: '-25% 0px -65% 0px' });
+  document.querySelectorAll('section[id]').forEach(function(s){ obs.observe(s); });
+})();
+</script>
 </body>
 </html>
