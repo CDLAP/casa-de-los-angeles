@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>EDÉN · Barra de Café — Casa de los Ángeles</title>
+<meta name="description" content="EDÉN · Café de especialidad, brunch y barra poblana en Casa de los Ángeles, Centro Histórico de Puebla.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#005A49;
+    --forest-deep:#013b30;
+    --gold:#C9A961;
+    --gold-soft:#e2cd97;
+    --cream:#FAF8F3;
+    --cream-200:#F3EEE3;
+    --sky-top:#efe7d6;
+    --sky-bot:#f7f1e6;
+    --ink:#2c2a26;
+    --ink-soft:#6f6a60;
+    --line:rgba(201,169,97,.35);
+    --serif:'Playfair Display',Georgia,serif;
+    --script:'Cormorant Garamond',Georgia,serif;
+    --sans:'Jost',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:640px;margin:0 auto;position:relative;background:var(--cream)}
+
+  /* ---------- SKY / HERO ---------- */
+  .hero{
+    position:relative;
+    text-align:center;
+    padding:40px 24px 34px;
+    background:linear-gradient(180deg,var(--sky-top) 0%,var(--cream) 100%);
+    border-bottom:1px solid var(--line);
+  }
+  .hero h1{
+    font-family:var(--serif);font-weight:600;letter-spacing:.18em;
+    font-size:3.2rem;color:var(--forest);
+  }
+  .hero .logo{max-width:220px;height:auto;margin:0 auto;display:block}
+  .hero .tagline{
+    position:relative;z-index:3;
+    font-family:var(--sans);font-weight:400;letter-spacing:.28em;
+    text-transform:uppercase;font-size:.62rem;color:var(--gold);
+    margin-top:10px;
+  }
+  .hero .tagline .en{display:block;color:var(--ink-soft);opacity:.7;margin-top:4px;letter-spacing:.24em}
+  .hero .lede{
+    position:relative;z-index:3;
+    font-family:var(--script);font-size:1.28rem;font-style:italic;
+    color:var(--ink);max-width:440px;margin:20px auto 0;line-height:1.45;
+  }
+  .hero .lede .en{
+    display:block;font-style:normal;font-family:var(--sans);
+    font-size:.74rem;color:var(--ink-soft);margin-top:8px;line-height:1.55;
+  }
+
+  /* ---------- STICKY INDEX ---------- */
+  nav.index{
+    position:sticky;top:0;z-index:20;
+    background:rgba(250,248,243,.94);
+    backdrop-filter:blur(10px);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    display:flex;gap:4px;overflow-x:auto;
+    padding:11px 14px;scrollbar-width:none;
+  }
+  nav.index::-webkit-scrollbar{display:none}
+  nav.index a{
+    flex:0 0 auto;text-decoration:none;white-space:nowrap;
+    font-family:var(--sans);font-size:.66rem;font-weight:500;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--forest);
+    padding:7px 13px;border:1px solid var(--line);border-radius:999px;
+    transition:.2s;
+  }
+  nav.index a:active{background:var(--forest);color:var(--cream)}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:44px 22px 12px;scroll-margin-top:60px}
+  .sec-head{text-align:center;margin-bottom:26px}
+  .sec-head .motif{width:44px;height:auto;margin:0 auto 10px;display:block;color:var(--gold)}
+  .sec-head h2{
+    font-family:var(--serif);font-weight:500;font-style:italic;color:var(--forest);
+    font-size:1.85rem;letter-spacing:.02em;
+  }
+  .sec-head .en{
+    font-family:var(--sans);font-size:.62rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--gold);margin-top:6px;
+  }
+
+  .subhead{
+    font-family:var(--sans);font-size:.66rem;font-weight:500;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--ink-soft);text-align:center;
+    margin:26px 0 14px;display:flex;align-items:center;gap:12px;justify-content:center;
+  }
+  .subhead::before,.subhead::after{content:"";height:1px;width:34px;background:var(--line)}
+
+  /* item rows */
+  .item{padding:12px 2px;border-bottom:1px dotted var(--line)}
+  .item:last-child{border-bottom:none}
+  .item .top{display:flex;align-items:baseline;gap:8px}
+  .item .name{font-family:var(--serif);font-weight:500;font-size:1.02rem;color:var(--ink)}
+  .item .dots{flex:1;border-bottom:1px dotted var(--line);transform:translateY(-4px)}
+  .item .price{font-family:var(--serif);font-weight:600;color:var(--forest);font-size:1rem;white-space:nowrap}
+  .item .desc{font-family:var(--script);font-style:italic;font-size:1.02rem;color:var(--ink-soft);margin-top:3px;line-height:1.35}
+  .item .desc .en{display:block;font-family:var(--sans);font-style:normal;font-size:.68rem;opacity:.72;margin-top:2px}
+
+  /* ---------- EDÉN BANNER ---------- */
+  .eden-banner{
+    margin:8px 0 0;padding:56px 26px 48px;text-align:center;color:var(--cream);
+    background:linear-gradient(160deg,var(--forest) 0%,var(--forest-deep) 100%);
+    position:relative;overflow:hidden;
+  }
+  .eden-banner .branch{position:absolute;bottom:-24px;width:118px;color:var(--gold-soft);opacity:.26}
+  .eden-banner .branch-l{left:-18px;transform:rotate(-6deg)}
+  .eden-banner .cherry-div{width:140px;margin:16px auto 2px;display:block;color:var(--gold-soft);opacity:.85}
+  .eden-banner h2{font-family:var(--serif);font-size:2.4rem;letter-spacing:.16em;color:var(--gold-soft);position:relative}
+  .eden-banner .sub{font-family:var(--sans);font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;color:var(--cream);opacity:.85;margin-top:12px;position:relative;line-height:2}
+  .eden-banner .sub .en{display:block;opacity:.6}
+  .eden-banner p{font-family:var(--script);font-style:italic;font-size:1.24rem;max-width:420px;margin:20px auto 0;position:relative;line-height:1.5;color:#f4efe2}
+  .eden-banner p .en{display:block;font-style:normal;font-family:var(--sans);font-size:.72rem;opacity:.7;margin-top:8px;line-height:1.55}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    margin-top:36px;padding:44px 24px 60px;text-align:center;
+    background:linear-gradient(180deg,var(--cream) 0%,var(--sky-bot) 100%);
+    border-top:1px solid var(--line);
+  }
+  footer .mark{width:52px;color:var(--forest);margin:0 auto 14px;display:block}
+  footer .name{font-family:var(--serif);font-size:1.3rem;letter-spacing:.18em;color:var(--forest)}
+  footer .house{font-family:var(--sans);font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-top:8px}
+  footer .addr{font-family:var(--script);font-style:italic;font-size:1.02rem;color:var(--ink-soft);margin-top:16px;line-height:1.5}
+  footer .note{font-family:var(--sans);font-size:.58rem;letter-spacing:.06em;color:var(--ink-soft);opacity:.6;margin-top:22px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hero">
+    <!-- ===== LOGO =====
+         Cuando tengas el PNG del logo, reemplaza el <h1> por:
+         <img class="logo" src="eden-logo.png" alt="EDÉN">
+    -->
+    <h1>EDÉN</h1>
+    <div class="tagline">Barra de Café · Coffee Mexican Bar
+      <span class="en">Café de Especialidad · Brunch · Barra Poblana</span>
+    </div>
+  </header>
+
+  <!-- ===================== INDEX ===================== -->
+  <nav class="index">
+    <a href="#espresso">Espresso</a>
+    <a href="#cafe">Café</a>
+    <a href="#metodos">Métodos</a>
+    <a href="#clasicos">Clásicos</a>
+    <a href="#especialidades">Especialidades</a>
+    <a href="#emblema">Bebidas Emblema</a>
+    <a href="#momentos">Momentos</a>
+    <a href="#brunch">Brunch</a>
+    <a href="#waffles">Waffles</a>
+    <a href="#ensaladas">Ensaladas</a>
+    <a href="#compartir">Compartir</a>
+  </nav>
+
+  <!-- ===================== CAFÉ DE ESPECIALIDAD ===================== -->
+  <section id="espresso">
+    <div class="sec-head">
+      <svg class="motif" viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 14h34v10a10 10 0 0 1-10 10H18A10 10 0 0 1 8 24z"/><path d="M42 16h6a6 6 0 0 1 0 12h-6"/><path d="M18 6c0 3-3 3-3 6M26 6c0 3-3 3-3 6M34 6c0 3-3 3-3 6" stroke-linecap="round"/></svg>
+      <h2>Café de Especialidad</h2>
+      <div class="en">Specialty Coffee</div>
+    </div>
+
+    <div class="subhead">Espresso</div>
+    <div class="item"><div class="top"><span class="name">Espresso</span><span class="dots"></span><span class="price">$55</span></div><div class="desc">Shot concentrado de café<span class="en">Concentrated coffee shot</span></div></div>
+    <div class="item"><div class="top"><span class="name">Espresso Doble</span><span class="dots"></span><span class="price">$70</span></div><div class="desc">Doble shot de café concentrado<span class="en">Double concentrated coffee shot</span></div></div>
+    <div class="item"><div class="top"><span class="name">Cortado</span><span class="dots"></span><span class="price">$65</span></div><div class="desc">Espresso con un toque de leche<span class="en">Espresso with a touch of milk</span></div></div>
+    <div class="item"><div class="top"><span class="name">Flat White</span><span class="dots"></span><span class="price">$82</span></div><div class="desc">Espresso con leche vaporizada suave<span class="en">Espresso with silky steamed milk</span></div></div>
+    <div class="item"><div class="top"><span class="name">Espresso Tónico</span><span class="dots"></span><span class="price">$90</span></div><div class="desc">Espresso con agua tónica y hielo<span class="en">Espresso with tonic water and ice</span></div></div>
+    <div class="item"><div class="top"><span class="name">Affogato</span><span class="dots"></span><span class="price">$95</span></div><div class="desc">Helado con un shot de espresso<span class="en">Ice cream topped with espresso</span></div></div>
+  </section>
+
+  <section id="cafe" style="padding-top:8px">
+    <div class="subhead">Café · Coffee</div>
+    <div class="item"><div class="top"><span class="name">Café del Día</span><span class="dots"></span><span class="price">$60</span></div><div class="desc">Café filtrado del día<span class="en">Daily brewed coffee</span></div></div>
+    <div class="item"><div class="top"><span class="name">Café Gourmet</span><span class="dots"></span><span class="price">$75</span></div><div class="desc">Café de especialidad seleccionado<span class="en">Selected specialty coffee</span></div></div>
+  </section>
+
+  <section id="metodos" style="padding-top:8px">
+    <div class="subhead">Métodos de Extracción · Brew Methods</div>
+    <div class="item"><div class="top"><span class="name">Prensa Francesa</span><span class="dots"></span><span class="price">$115</span></div><div class="desc">Café infusionado por inmersión<span class="en">Immersion brewed coffee</span></div></div>
+    <div class="item"><div class="top"><span class="name">Cold Brew</span><span class="dots"></span><span class="price">$85</span></div><div class="desc">Café extraído en frío por largas horas<span class="en">Slow cold-extracted coffee</span></div></div>
+  </section>
+
+  <section id="clasicos" style="padding-top:8px">
+    <div class="subhead">Clásicos · Classics</div>
+    <div class="item"><div class="top"><span class="name">Cappuccino</span><span class="dots"></span><span class="price">$78</span></div><div class="desc">Espresso con leche vaporizada y espuma<span class="en">Espresso with steamed milk and foam</span></div></div>
+    <div class="item"><div class="top"><span class="name">Latte Macchiato de Sabores</span><span class="dots"></span><span class="price">$92</span></div><div class="desc">Con jarabe a elegir: vainilla, caramelo o avellana<span class="en">With your choice of vanilla, caramel or hazelnut syrup</span></div></div>
+    <div class="item"><div class="top"><span class="name">Freddo Cappuccino</span><span class="dots"></span><span class="price">$95</span></div><div class="desc">Espresso doble sobre hielo con espuma fría de leche<span class="en">Double espresso over ice topped with cold milk foam</span></div></div>
+  </section>
+
+  <section id="especialidades" style="padding-top:8px">
+    <div class="subhead">Especialidades · Specialty Drinks</div>
+    <div class="item"><div class="top"><span class="name">Chai</span><span class="dots"></span><span class="price">$98</span></div><div class="desc">Té especiado con leche<span class="en">Spiced tea with milk</span></div></div>
+    <div class="item"><div class="top"><span class="name">Matcha</span><span class="dots"></span><span class="price">$105</span></div><div class="desc">Té verde japonés con leche<span class="en">Japanese green tea with milk</span></div></div>
+    <div class="item"><div class="top"><span class="name">Taro</span><span class="dots"></span><span class="price">$105</span></div><div class="desc">Bebida dulce de raíz de taro<span class="en">Sweet taro root drink</span></div></div>
+    <div class="item"><div class="top"><span class="name">Té Gourmet</span><span class="dots"></span><span class="price">$70</span></div><div class="desc">Té de hoja suelta de alta calidad<span class="en">Premium loose-leaf tea</span></div></div>
+  </section>
+
+  <!-- ===================== EDÉN BANNER ===================== -->
+  <div class="eden-banner">
+    <!-- rama de café (una sola, izquierda) -->
+    <svg class="branch branch-l" viewBox="0 0 120 230" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M60 6 C55 70 55 150 60 224"/>
+      <path d="M60 40 C74 24 96 22 112 32 C98 46 78 50 60 46" fill="rgba(226,205,151,.14)"/>
+      <path d="M60 40 C46 24 24 22 8 32 C22 46 42 50 60 46" fill="rgba(226,205,151,.14)"/>
+      <path d="M60 92 C75 76 98 76 113 87 C99 100 78 104 60 98" fill="rgba(226,205,151,.14)"/>
+      <path d="M60 92 C45 76 22 76 7 87 C21 100 42 104 60 98" fill="rgba(226,205,151,.14)"/>
+      <circle cx="60" cy="64" r="5" fill="currentColor"/><circle cx="52" cy="70" r="5" fill="currentColor"/><circle cx="68" cy="70" r="5" fill="currentColor"/>
+      <circle cx="60" cy="118" r="5" fill="currentColor"/><circle cx="53" cy="124" r="5" fill="currentColor"/><circle cx="67" cy="124" r="5" fill="currentColor"/>
+    </svg>
+
+    <h2>EDÉN</h2>
+    <div class="sub">Bebidas Emblema · Momentos del Edén<span class="en">Signature Drinks · Moments of Eden</span></div>
+
+    <!-- divisor de cerezas de café -->
+    <svg class="cherry-div" viewBox="0 0 140 26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <path d="M6 13 H50"/><path d="M90 13 H134"/>
+      <path d="M62 13 C58 7 52 5 46 6" fill="none"/><path d="M78 13 C82 7 88 5 94 6" fill="none"/>
+      <circle cx="64" cy="13" r="3.6" fill="currentColor" stroke="none"/>
+      <circle cx="70" cy="16" r="3.6" fill="currentColor" stroke="none"/>
+      <circle cx="76" cy="13" r="3.6" fill="currentColor" stroke="none"/>
+    </svg>
+
+    <p>Cruza el portón y descubre un refugio donde el café mexicano de especialidad y la tranquilidad de un patio lleno de vida crean una experiencia única.
+      <span class="en">Step through our historic gateway into a courtyard where Mexican specialty coffee and lush greenery come together for an unforgettable experience.</span>
+    </p>
+  </div>
+
+  <!-- ===================== BEBIDAS EMBLEMA ===================== -->
+  <section id="emblema">
+    <div class="sec-head">
+      <svg class="motif" viewBox="0 0 60 40" fill="currentColor"><path d="M54 12C39 13 26 19 19 29 25 27 29 28 31 31 21 31 14 36 11 43 21 39 28 40 31 43 23 44 19 48 18 52 32 43 45 33 54 22Z"/></svg>
+      <h2>Bebidas Emblema</h2>
+      <div class="en">Signature Drinks</div>
+    </div>
+    <div class="item"><div class="top"><span class="name">EDÉN</span><span class="dots"></span><span class="price">$105</span></div><div class="desc">Cold Brew de café mexicano de especialidad coronado con una delicada espuma fría de vainilla.<span class="en">Mexican specialty cold brew finished with silky vanilla cold foam.</span></div></div>
+    <div class="item"><div class="top"><span class="name">La Malinche</span><span class="dots"></span><span class="price">$110</span></div><div class="desc">Café gourmet helado con cocoa, azúcar mascabado y una suave espuma fría.<span class="en">Iced specialty coffee with cocoa, unrefined cane sugar and silky cold foam.</span></div></div>
+    <div class="item"><div class="top"><span class="name">La Dama</span><span class="dots"></span><span class="price">$115</span></div><div class="desc">Capuchino preparado con rompope tradicional mexicano.<span class="en">Cappuccino crafted with traditional Mexican rompope.</span></div></div>
+    <div class="item"><div class="top"><span class="name">La Querubina</span><span class="dots"></span><span class="price">$125</span></div><div class="desc">Latte Macchiato con abundante crema Chantilly y topping de mazapán.<span class="en">Latte Macchiato topped with Chantilly cream and marzipan.</span></div></div>
+    <div class="item"><div class="top"><span class="name">La Gringa Poblana</span><span class="dots"></span><span class="price">$95</span></div><div class="desc">Coca-Cola bien fría con nieve artesanal de limón, menta fresca y un toque de limón.<span class="en">Ice-cold Coca-Cola topped with artisan lime sorbet, fresh mint and a splash of lime.</span></div></div>
+  </section>
+
+  <!-- ===================== MOMENTOS DEL EDÉN ===================== -->
+  <section id="momentos">
+    <div class="sec-head">
+      <svg class="motif" viewBox="0 0 60 40" fill="#C9A961" opacity=".8"><path d="M14 30c-7 0-12-5-12-11 0-6 5-10 11-10 2-6 7-9 13-9 7 0 13 5 15 11 1 0 2-1 4-1 5 0 9 4 9 9s-4 9-9 9z"/></svg>
+      <h2>Momentos del Edén</h2>
+      <div class="en">Moments of Eden</div>
+    </div>
+    <div class="item"><div class="top"><span class="name">Entre Nubes</span><span class="dots"></span><span class="price">$199</span></div><div class="desc">Croissant tradicional + Cappuccino<span class="en">Above the Clouds · Traditional croissant + Cappuccino</span></div></div>
+    <div class="item"><div class="top"><span class="name">Jardín del Edén</span><span class="dots"></span><span class="price">$209</span></div><div class="desc">Croissant al pesto + Café Gourmet<span class="en">Garden of Eden · Pesto croissant + Specialty coffee</span></div></div>
+    <div class="item"><div class="top"><span class="name">Desayuno Angelical</span><span class="dots"></span><span class="price">$219</span></div><div class="desc">Croissant con omelette + Café del Día<span class="en">Angelic Breakfast · Omelet croissant + Coffee of the day</span></div></div>
+    <div class="item"><div class="top"><span class="name">Capricho Celestial</span><span class="dots"></span><span class="price">$239</span></div><div class="desc">Waffle de cajeta y nuez + Bebida EDÉN<span class="en">Celestial Indulgence · Cajeta &amp; pecan waffle + EDÉN signature drink</span></div></div>
+    <div class="item"><div class="top"><span class="name">Pausa en el Edén</span><span class="dots"></span><span class="price">$135</span></div><div class="desc">Café Gourmet + Pan dulce artesanal<span class="en">A Moment in Eden · Specialty coffee + Artisan sweet bread</span></div></div>
+  </section>
+
+  <!-- ===================== BRUNCH ===================== -->
+  <section id="brunch">
+    <div class="sec-head">
+      <svg class="motif" viewBox="0 0 60 40" fill="none" stroke="#C9A961" stroke-width="1.8" stroke-linecap="round"><path d="M12 28c0-10 8-18 18-18s18 8 18 18"/><path d="M8 28h44"/><path d="M22 16c0-3 3-3 3-6M30 16c0-3 3-3 3-6"/></svg>
+      <h2>Brunch</h2>
+      <div class="en">Croissants</div>
+    </div>
+    <div class="item"><div class="top"><span class="name">Croissant Verde</span><span class="dots"></span><span class="price">$129</span></div><div class="desc">Croissant al pesto con queso panela gratinado y ensalada fresca.<span class="en">Pesto croissant with grilled panela cheese and fresh salad.</span></div></div>
+    <div class="item"><div class="top"><span class="name">Croissant Poblano</span><span class="dots"></span><span class="price">$139</span></div><div class="desc">Croissant tradicional con jamón, queso gratinado y ensalada fresca.<span class="en">Traditional croissant with ham, melted cheese and fresh salad.</span></div></div>
+    <div class="item"><div class="top"><span class="name">Croissant Edén</span><span class="dots"></span><span class="price">$149</span></div><div class="desc">Croissant con omelette preparado al momento, queso gratinado y ensalada fresca.<span class="en">Croissant filled with a freshly made omelet, melted cheese and fresh salad.</span></div></div>
+  </section>
+
+  <!-- ===================== WAFFLES ===================== -->
+  <section id="waffles">
+    <div class="sec-head">
+      <svg class="motif" viewBox="0 0 60 40" fill="none" stroke="#C9A961" stroke-width="1.6"><rect x="16" y="8" width="28" height="28" rx="4"/><path d="M25 8v28M35 8v28M16 17h28M16 27h28"/></svg>
+      <h2>Waffles</h2>
+      <div class="en">Sweet Waffles</div>
+    </div>
+    <div class="item"><div class="top"><span class="name">Clásico</span><span class="dots"></span><span class="price">$95</span></div><div class="desc">Servido con azúcar glass.<span class="en">Served with powdered sugar.</span></div></div>
+    <div class="item"><div class="top"><span class="name">Dulce Tentación</span><span class="dots"></span><span class="price">$155</span></div><div class="desc">Helado de vainilla, mermelada de fresa, crema Chantilly y mazapán.<span class="en">Vanilla ice cream, strawberry preserve, Chantilly cream and marzipan.</span></div></div>
+    <div class="item"><div class="top"><span class="name">El Pecadito</span><span class="dots"></span><span class="price">$159</span></div><div class="desc">Helado de vainilla, cajeta artesanal, nuez pecana y crema Chantilly.<span class="en">Vanilla ice cream with artisan cajeta, pecans and Chantilly cream.</span></div></div>
+  </section>
+
+  <!-- ===================== ENSALADAS ===================== -->
+  <section id="ensaladas">
+    <div class="sec-head">
+      <svg class="motif" viewBox="0 0 60 40" fill="none" stroke="#C9A961" stroke-width="1.6" stroke-linecap="round"><path d="M10 22h40a20 20 0 0 1-20 14 20 20 0 0 1-20-14z"/><path d="M30 22c-6-8-2-14 0-16 2 2 6 8 0 16"/></svg>
+      <h2>Ensaladas</h2>
+      <div class="en">Salads</div>
+    </div>
+    <div class="item"><div class="top"><span class="name">Ensalada de la Casa</span><span class="dots"></span><span class="price">$129</span></div><div class="desc">Mezcla de hojas verdes, vegetales frescos, nuez pecana, papas doradas y vinagreta artesanal.<span class="en">Fresh mixed greens, seasonal vegetables, pecans, crispy potatoes and our house vinaigrette.</span></div></div>
+  </section>
+
+  <!-- ===================== PARA COMPARTIR ===================== -->
+  <section id="compartir">
+    <div class="sec-head">
+      <svg class="motif" viewBox="0 0 60 40" fill="none" stroke="#C9A961" stroke-width="1.6" stroke-linecap="round"><path d="M18 12v18M24 12v18M30 12v18M36 12v18M42 12v18"/><path d="M14 30h34l-3 6H17z"/></svg>
+      <h2>Para Compartir</h2>
+      <div class="en">To Share</div>
+    </div>
+    <div class="item"><div class="top"><span class="name">Papas Acompañadas</span><span class="dots"></span><span class="price">$159</span></div><div class="desc">Papas crujientes con aceitunas, tomate cherry y salsas de la casa.<span class="en">Crispy fries served with olives, cherry tomatoes and our house sauces.</span></div></div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="name">EDÉN</div>
+    <div class="house">En Casa de los Ángeles</div>
+    <div class="addr">Av. Don Juan de Palafox y Mendoza 222<br>Centro Histórico de Puebla</div>
+    <div class="note">Precios en pesos mexicanos (MXN). Menú sujeto a disponibilidad.</div>
+  </footer>
+
+</div>
+</body>
+</html>
