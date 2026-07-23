@@ -16,7 +16,7 @@
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500&display=block" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500&family=Lato:wght@400;700&display=block" rel="stylesheet">
 <style>
   :root{
     --forest:#005A49;
@@ -48,22 +48,26 @@
   .wrap{max-width:640px;margin:0 auto;position:relative;background:var(--cream)}
 
   /* ---------- NAV DEL SITIO ---------- */
+  /* réplica exacta del header del sitio: Lato, text-sm/base, tracking .12/.2em,
+     px-3/lg:px-4/xl:px-5, py-4, contenedor pt-6 pb-10 */
   .site-nav{
-    display:flex;flex-wrap:wrap;justify-content:center;gap:8px 24px;
-    padding:24px 16px 26px;background:var(--cream);
+    display:flex;flex-wrap:wrap;justify-content:center;
+    padding:24px 8px 40px;background:var(--cream);
     border-bottom:1px solid var(--line);
   }
   .site-nav a{
-    font-family:var(--sans);font-size:.875rem;font-weight:400;
+    font-family:'Lato',system-ui,sans-serif;font-size:.875rem;font-weight:400;
     letter-spacing:.12em;text-transform:uppercase;
-    color:var(--ink);text-decoration:none;transition:color .3s;
-    padding:4px 8px;
+    color:#1A1A1A;text-decoration:none;transition:color .3s;
+    padding:16px 12px;white-space:nowrap;
   }
   .site-nav a:hover{color:var(--gold)}
   .site-nav a.current{color:var(--gold)}
+  @media (min-width:1024px){
+    .site-nav a{padding:16px 16px}
+  }
   @media (min-width:1280px){
-    .site-nav{gap:8px 32px;padding:28px 16px 30px}
-    .site-nav a{font-size:1rem;letter-spacing:.2em}
+    .site-nav a{font-size:1rem;letter-spacing:.2em;padding:16px 20px}
   }
 
   /* ---------- SKY / HERO ---------- */
