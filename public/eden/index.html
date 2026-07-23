@@ -142,6 +142,8 @@
   .eden-banner p{font-family:var(--script);font-style:italic;font-size:1.26rem;max-width:440px;margin:20px auto 0;position:relative;line-height:1.55;color:#f4efe2}
   .eden-banner p .en{display:block;font-style:normal;font-family:var(--sans);font-size:.92rem;opacity:.7;margin-top:8px;line-height:1.55}
 
+  .eden-banner.farewell{padding:52px 26px 48px}
+
   /* ---------- FOOTER ---------- */
   footer{
     margin-top:36px;padding:44px 24px 60px;text-align:center;
@@ -194,18 +196,79 @@
 
   <!-- ===================== INDEX ===================== -->
   <nav class="index">
+    <a href="#emblema">Bebidas Emblema</a>
+    <a href="#momentos">Momentos</a>
     <a href="#espresso">Espresso</a>
     <a href="#cafe">Café</a>
     <a href="#metodos">Métodos</a>
     <a href="#clasicos">Clásicos</a>
     <a href="#especialidades">Especialidades</a>
-    <a href="#emblema">Bebidas Emblema</a>
-    <a href="#momentos">Momentos</a>
+    <a href="#frappes">Frappés</a>
+    <a href="#refrescos">Refrescos</a>
+    <a href="#personaliza">Personaliza</a>
     <a href="#brunch">Brunch</a>
     <a href="#waffles">Waffles</a>
     <a href="#ensaladas">Ensaladas</a>
     <a href="#compartir">Compartir</a>
   </nav>
+
+  <!-- ===================== EDÉN BANNER ===================== -->
+  <div class="eden-banner">
+    <!-- rama de café (una sola, izquierda) -->
+    <svg class="branch branch-l" viewBox="0 0 120 230" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M60 6 C55 70 55 150 60 224"/>
+      <path d="M60 40 C74 24 96 22 112 32 C98 46 78 50 60 46" fill="rgba(226,205,151,.14)"/>
+      <path d="M60 40 C46 24 24 22 8 32 C22 46 42 50 60 46" fill="rgba(226,205,151,.14)"/>
+      <path d="M60 92 C75 76 98 76 113 87 C99 100 78 104 60 98" fill="rgba(226,205,151,.14)"/>
+      <path d="M60 92 C45 76 22 76 7 87 C21 100 42 104 60 98" fill="rgba(226,205,151,.14)"/>
+      <circle cx="60" cy="64" r="5" fill="currentColor"/><circle cx="52" cy="70" r="5" fill="currentColor"/><circle cx="68" cy="70" r="5" fill="currentColor"/>
+      <circle cx="60" cy="118" r="5" fill="currentColor"/><circle cx="53" cy="124" r="5" fill="currentColor"/><circle cx="67" cy="124" r="5" fill="currentColor"/>
+    </svg>
+
+    <h2>EDÉN</h2>
+    <div class="sub">Un jardín entre muros históricos<span class="en">A Hidden Garden Within Historic Walls</span></div>
+
+    <!-- divisor de cerezas de café -->
+    <svg class="cherry-div" viewBox="0 0 140 26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <path d="M6 13 H50"/><path d="M90 13 H134"/>
+      <path d="M62 13 C58 7 52 5 46 6" fill="none"/><path d="M78 13 C82 7 88 5 94 6" fill="none"/>
+      <circle cx="64" cy="13" r="3.6" fill="currentColor" stroke="none"/>
+      <circle cx="70" cy="16" r="3.6" fill="currentColor" stroke="none"/>
+      <circle cx="76" cy="13" r="3.6" fill="currentColor" stroke="none"/>
+    </svg>
+
+    <p>Cruza el portón y descubre un refugio donde el café mexicano de especialidad, la arquitectura de Casa de los Ángeles y la tranquilidad de un patio lleno de vida crean una experiencia única.
+      <span class="en">Step through our historic gateway and discover a hidden courtyard where Mexican specialty coffee, timeless architecture, and lush greenery come together to create a truly unforgettable experience.</span>
+    </p>
+  </div>
+
+  <!-- ===================== BEBIDAS EMBLEMA ===================== -->
+  <section id="emblema">
+    <div class="sec-head">
+      <svg class="motif" viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6h20l-2.5 12a7.5 7.5 0 0 1-15 0z"/><path d="M30 26v8M23 34h14"/><path d="M48 6l1.3 2.7L52 10l-2.7 1.3L48 14l-1.3-2.7L44 10l2.7-1.3z"/></svg>
+      <h2>Bebidas Emblema</h2>
+      <div class="en">Signature Drinks</div>
+    </div>
+    <div class="item"><div class="top"><span class="name">EDÉN</span><span class="dots"></span><span class="price">$105</span></div><div class="desc">Cold Brew de café mexicano de especialidad coronado con una delicada espuma fría de vainilla.<span class="en">Mexican specialty cold brew finished with silky vanilla cold foam.</span></div></div>
+    <div class="item"><div class="top"><span class="name">La Malinche</span><span class="dots"></span><span class="price">$110</span></div><div class="desc">Café gourmet helado con cocoa, azúcar mascabado y una suave espuma fría.<span class="en">Iced specialty coffee with cocoa, unrefined cane sugar and silky cold foam.</span></div></div>
+    <div class="item"><div class="top"><span class="name">La Dama</span><span class="dots"></span><span class="price">$115</span></div><div class="desc">Capuchino preparado con rompope tradicional mexicano.<span class="en">Cappuccino crafted with traditional Mexican rompope.</span></div></div>
+    <div class="item"><div class="top"><span class="name">La Querubina</span><span class="dots"></span><span class="price">$125</span></div><div class="desc">Latte Macchiato con abundante crema Chantilly y topping de mazapán.<span class="en">Latte Macchiato topped with Chantilly cream and marzipan.</span></div></div>
+    <div class="item"><div class="top"><span class="name">La Gringa Poblana</span><span class="dots"></span><span class="price">$95</span></div><div class="desc">Coca-Cola bien fría con nieve artesanal de limón, menta fresca y un toque de limón.<span class="en">Ice-cold Coca-Cola topped with artisan lime sorbet, fresh mint and a splash of lime.</span></div></div>
+  </section>
+
+  <!-- ===================== MOMENTOS DEL EDÉN ===================== -->
+  <section id="momentos">
+    <div class="sec-head">
+      <svg class="motif" viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 32a8 8 0 0 1-.5-16 11 11 0 0 1 21-2.5A7 7 0 0 1 45 27a7 7 0 0 1-4 5z"/></svg>
+      <h2>Momentos del Edén</h2>
+      <div class="en">Moments of Eden</div>
+    </div>
+    <div class="item"><div class="top"><span class="name">Entre Nubes</span><span class="dots"></span><span class="price">$199</span></div><div class="desc">Croissant tradicional + Cappuccino<span class="en">Above the Clouds · Traditional croissant + Cappuccino</span></div></div>
+    <div class="item"><div class="top"><span class="name">Jardín del Edén</span><span class="dots"></span><span class="price">$209</span></div><div class="desc">Croissant al pesto + Café Gourmet<span class="en">Garden of Eden · Pesto croissant + Specialty coffee</span></div></div>
+    <div class="item"><div class="top"><span class="name">Desayuno Angelical</span><span class="dots"></span><span class="price">$219</span></div><div class="desc">Croissant con omelette + Café del Día<span class="en">Angelic Breakfast · Omelet croissant + Coffee of the day</span></div></div>
+    <div class="item"><div class="top"><span class="name">Capricho Celestial</span><span class="dots"></span><span class="price">$239</span></div><div class="desc">Waffle de cajeta y nuez + Bebida EDÉN<span class="en">Celestial Indulgence · Cajeta &amp; pecan waffle + EDÉN signature drink</span></div></div>
+    <div class="item"><div class="top"><span class="name">Pausa en el Edén</span><span class="dots"></span><span class="price">$135</span></div><div class="desc">Café Gourmet + Pan dulce artesanal<span class="en">A Moment in Eden · Specialty coffee + Artisan sweet bread</span></div></div>
+  </section>
 
   <!-- ===================== CAFÉ DE ESPECIALIDAD ===================== -->
   <section id="espresso">
@@ -251,62 +314,41 @@
     <div class="item"><div class="top"><span class="name">Té Gourmet</span><span class="dots"></span><span class="price">$70</span></div><div class="desc">Té de hoja suelta de alta calidad<span class="en">Premium loose-leaf tea</span></div></div>
   </section>
 
-  <!-- ===================== EDÉN BANNER ===================== -->
-  <div class="eden-banner">
-    <!-- rama de café (una sola, izquierda) -->
-    <svg class="branch branch-l" viewBox="0 0 120 230" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M60 6 C55 70 55 150 60 224"/>
-      <path d="M60 40 C74 24 96 22 112 32 C98 46 78 50 60 46" fill="rgba(226,205,151,.14)"/>
-      <path d="M60 40 C46 24 24 22 8 32 C22 46 42 50 60 46" fill="rgba(226,205,151,.14)"/>
-      <path d="M60 92 C75 76 98 76 113 87 C99 100 78 104 60 98" fill="rgba(226,205,151,.14)"/>
-      <path d="M60 92 C45 76 22 76 7 87 C21 100 42 104 60 98" fill="rgba(226,205,151,.14)"/>
-      <circle cx="60" cy="64" r="5" fill="currentColor"/><circle cx="52" cy="70" r="5" fill="currentColor"/><circle cx="68" cy="70" r="5" fill="currentColor"/>
-      <circle cx="60" cy="118" r="5" fill="currentColor"/><circle cx="53" cy="124" r="5" fill="currentColor"/><circle cx="67" cy="124" r="5" fill="currentColor"/>
-    </svg>
-
-    <h2>EDÉN</h2>
-    <div class="sub">Bebidas Emblema · Momentos del Edén<span class="en">Signature Drinks · Moments of Eden</span></div>
-
-    <!-- divisor de cerezas de café -->
-    <svg class="cherry-div" viewBox="0 0 140 26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
-      <path d="M6 13 H50"/><path d="M90 13 H134"/>
-      <path d="M62 13 C58 7 52 5 46 6" fill="none"/><path d="M78 13 C82 7 88 5 94 6" fill="none"/>
-      <circle cx="64" cy="13" r="3.6" fill="currentColor" stroke="none"/>
-      <circle cx="70" cy="16" r="3.6" fill="currentColor" stroke="none"/>
-      <circle cx="76" cy="13" r="3.6" fill="currentColor" stroke="none"/>
-    </svg>
-
-    <p>Cruza el portón y descubre un refugio donde el café mexicano de especialidad y la tranquilidad de un patio lleno de vida crean una experiencia única.
-      <span class="en">Step through our historic gateway into a courtyard where Mexican specialty coffee and lush greenery come together for an unforgettable experience.</span>
-    </p>
-  </div>
-
-  <!-- ===================== BEBIDAS EMBLEMA ===================== -->
-  <section id="emblema">
+  <!-- ===================== FRAPPÉS ===================== -->
+  <section id="frappes">
     <div class="sec-head">
-      <svg class="motif" viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6h20l-2.5 12a7.5 7.5 0 0 1-15 0z"/><path d="M30 26v8M23 34h14"/><path d="M48 6l1.3 2.7L52 10l-2.7 1.3L48 14l-1.3-2.7L44 10l2.7-1.3z"/></svg>
-      <h2>Bebidas Emblema</h2>
-      <div class="en">Signature Drinks</div>
+      <svg class="motif" viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h16l-2.2 22a3 3 0 0 1-3 2.6h-5.6a3 3 0 0 1-3-2.6z"/><path d="M20 19h20"/><path d="M28.5 12l6-10"/></svg>
+      <h2>Frappés</h2>
+      <div class="en">Frappés</div>
     </div>
-    <div class="item"><div class="top"><span class="name">EDÉN</span><span class="dots"></span><span class="price">$105</span></div><div class="desc">Cold Brew de café mexicano de especialidad coronado con una delicada espuma fría de vainilla.<span class="en">Mexican specialty cold brew finished with silky vanilla cold foam.</span></div></div>
-    <div class="item"><div class="top"><span class="name">La Malinche</span><span class="dots"></span><span class="price">$110</span></div><div class="desc">Café gourmet helado con cocoa, azúcar mascabado y una suave espuma fría.<span class="en">Iced specialty coffee with cocoa, unrefined cane sugar and silky cold foam.</span></div></div>
-    <div class="item"><div class="top"><span class="name">La Dama</span><span class="dots"></span><span class="price">$115</span></div><div class="desc">Capuchino preparado con rompope tradicional mexicano.<span class="en">Cappuccino crafted with traditional Mexican rompope.</span></div></div>
-    <div class="item"><div class="top"><span class="name">La Querubina</span><span class="dots"></span><span class="price">$125</span></div><div class="desc">Latte Macchiato con abundante crema Chantilly y topping de mazapán.<span class="en">Latte Macchiato topped with Chantilly cream and marzipan.</span></div></div>
-    <div class="item"><div class="top"><span class="name">La Gringa Poblana</span><span class="dots"></span><span class="price">$95</span></div><div class="desc">Coca-Cola bien fría con nieve artesanal de limón, menta fresca y un toque de limón.<span class="en">Ice-cold Coca-Cola topped with artisan lime sorbet, fresh mint and a splash of lime.</span></div></div>
+    <div class="item"><div class="top"><span class="name">Vainilla</span><span class="dots"></span><span class="price">$105</span></div><div class="desc">Frappé cremoso sabor vainilla<span class="en">Creamy vanilla frappé</span></div></div>
+    <div class="item"><div class="top"><span class="name">Caramelo</span><span class="dots"></span><span class="price">$115</span></div><div class="desc">Frappé cremoso con caramelo y cajeta<span class="en">Creamy caramel and cajeta frappé</span></div></div>
+    <div class="item"><div class="top"><span class="name">Avellana</span><span class="dots"></span><span class="price">$115</span></div><div class="desc">Frappé cremoso con crema de avellana<span class="en">Creamy hazelnut frappé</span></div></div>
   </section>
 
-  <!-- ===================== MOMENTOS DEL EDÉN ===================== -->
-  <section id="momentos">
+  <!-- ===================== REFRESCOS ===================== -->
+  <section id="refrescos">
     <div class="sec-head">
-      <svg class="motif" viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 32a8 8 0 0 1-.5-16 11 11 0 0 1 21-2.5A7 7 0 0 1 45 27a7 7 0 0 1-4 5z"/></svg>
-      <h2>Momentos del Edén</h2>
-      <div class="en">Moments of Eden</div>
+      <svg class="motif" viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M26.5 4h7v6c3.5 2 5.5 5.5 5.5 9.5V33a3 3 0 0 1-3 3H24a3 3 0 0 1-3-3V19.5c0-4 2-7.5 5.5-9.5z"/><path d="M26.5 8h7"/></svg>
+      <h2>Refrescos</h2>
+      <div class="en">Soft Drinks</div>
     </div>
-    <div class="item"><div class="top"><span class="name">Entre Nubes</span><span class="dots"></span><span class="price">$199</span></div><div class="desc">Croissant tradicional + Cappuccino<span class="en">Above the Clouds · Traditional croissant + Cappuccino</span></div></div>
-    <div class="item"><div class="top"><span class="name">Jardín del Edén</span><span class="dots"></span><span class="price">$209</span></div><div class="desc">Croissant al pesto + Café Gourmet<span class="en">Garden of Eden · Pesto croissant + Specialty coffee</span></div></div>
-    <div class="item"><div class="top"><span class="name">Desayuno Angelical</span><span class="dots"></span><span class="price">$219</span></div><div class="desc">Croissant con omelette + Café del Día<span class="en">Angelic Breakfast · Omelet croissant + Coffee of the day</span></div></div>
-    <div class="item"><div class="top"><span class="name">Capricho Celestial</span><span class="dots"></span><span class="price">$239</span></div><div class="desc">Waffle de cajeta y nuez + Bebida EDÉN<span class="en">Celestial Indulgence · Cajeta &amp; pecan waffle + EDÉN signature drink</span></div></div>
-    <div class="item"><div class="top"><span class="name">Pausa en el Edén</span><span class="dots"></span><span class="price">$135</span></div><div class="desc">Café Gourmet + Pan dulce artesanal<span class="en">A Moment in Eden · Specialty coffee + Artisan sweet bread</span></div></div>
+    <div class="item"><div class="top"><span class="name">Coca-Cola</span><span class="dots"></span><span class="price">$50</span></div><div class="desc">Refresco clásico<span class="en">Classic soft drink</span></div></div>
+    <div class="item"><div class="top"><span class="name">Jarritos</span><span class="dots"></span><span class="price">$50</span></div><div class="desc">Refresco mexicano de sabores<span class="en">Traditional Mexican soft drink</span></div></div>
+    <div class="item"><div class="top"><span class="name">Agua Mineral</span><span class="dots"></span><span class="price">$50</span></div><div class="desc">Agua mineral con gas<span class="en">Sparkling mineral water</span></div></div>
+  </section>
+
+  <!-- ===================== PERSONALIZA ===================== -->
+  <section id="personaliza">
+    <div class="sec-head">
+      <svg class="motif" viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M30 6l2.6 7.4L40 16l-7.4 2.6L30 26l-2.6-7.4L20 16l7.4-2.6z"/><path d="M45 26l1.3 3.7L50 31l-3.7 1.3L45 36l-1.3-3.7L40 31l3.7-1.3z"/></svg>
+      <h2>Personaliza tu Bebida</h2>
+      <div class="en">Customize Your Drink</div>
+    </div>
+    <div class="item"><div class="top"><span class="name">Versión fría</span><span class="dots"></span><span class="price">+$10</span></div><div class="desc">Servida con hielo<span class="en">Served over ice</span></div></div>
+    <div class="item"><div class="top"><span class="name">Leche de avena</span><span class="dots"></span><span class="price">+$10</span></div><div class="desc">Sustituye la leche por avena<span class="en">Substitute with oat milk</span></div></div>
+    <div class="item"><div class="top"><span class="name">Shot extra de espresso</span><span class="dots"></span><span class="price">+$20</span></div><div class="desc">Un shot adicional de café de especialidad<span class="en">Add an extra shot of specialty espresso</span></div></div>
+    <div class="item"><div class="top"><span class="name">Helado de vainilla</span><span class="dots"></span><span class="price">+$45</span></div><div class="desc">Agrega una bola de helado artesanal de vainilla<span class="en">Add a scoop of artisan vanilla ice cream</span></div></div>
   </section>
 
   <!-- ===================== BRUNCH ===================== -->
@@ -352,6 +394,15 @@
     </div>
     <div class="item"><div class="top"><span class="name">Papas Acompañadas</span><span class="dots"></span><span class="price">$159</span></div><div class="desc">Papas crujientes con aceitunas, tomate cherry y salsas de la casa.<span class="en">Crispy fries served with olives, cherry tomatoes and our house sauces.</span></div></div>
   </section>
+
+  <!-- ===================== DESPEDIDA ===================== -->
+  <div class="eden-banner farewell">
+    <h2>EDÉN</h2>
+    <div class="sub">Un jardín entre muros históricos<span class="en">A Hidden Garden Within Historic Walls</span></div>
+    <p>Gracias por visitarnos. Disfruta el momento, el café y la historia.
+      <span class="en">Thank you for visiting us. Enjoy the moment, the coffee, and the history.</span>
+    </p>
+  </div>
 
   <!-- ===================== FOOTER ===================== -->
   <footer>
