@@ -1,9 +1,16 @@
 'use client'
 
+import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 
 export default function MuseoPage() {
+  const trackRef = useRef<HTMLDivElement>(null)
+  const [foto, setFoto] = useState<number | null>(null)
+
+  const slide = (dir: number) =>
+    trackRef.current?.scrollBy({ left: dir * (trackRef.current.clientWidth * 0.7), behavior: 'smooth' })
+
   return (
     <main className="min-h-screen bg-cream">
       {/* Hero */}
@@ -82,19 +89,50 @@ export default function MuseoPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="columns-2 md:columns-3 gap-3 mt-12"
+            className="relative mt-12"
           >
-            {[1, 2, 3, 4, 5, 6, 7].map((n) => (
-              <Image
-                key={n}
-                src={`/images/museo/casa/cdla${n}.jpeg`}
-                alt={`Casa de los Ángeles, Casa Museo, imagen ${n}`}
-                width={900}
-                height={1200}
-                sizes="(min-width: 768px) 33vw, 50vw"
-                className="w-full h-auto rounded-xl break-inside-avoid mb-3 shadow-sm"
-              />
-            ))}
+            <div
+              ref={trackRef}
+              className="flex gap-3 overflow-x-auto snap-x snap-mandatory py-2 px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            >
+              {[1, 2, 3, 4, 5, 6, 7].map((n) => (
+                <button
+                  key={n}
+                  type="button"
+                  onClick={() => setFoto(n)}
+                  className="flex-none snap-center focus:outline-none"
+                  aria-label={`Ver foto ${n} en grande`}
+                >
+                  <Image
+                    src={`/images/museo/casa/cdla${n}.jpeg`}
+                    alt={`Casa de los Ángeles, Casa Museo, imagen ${n}`}
+                    width={900}
+                    height={1200}
+                    sizes="(min-width: 768px) 360px, 70vw"
+                    className="h-72 md:h-[420px] w-auto rounded-xl shadow-sm cursor-zoom-in"
+                  />
+                </button>
+              ))}
+            </div>
+            <button
+              type="button"
+              onClick={() => slide(-1)}
+              aria-label="Fotos anteriores"
+              className="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 w-11 h-11 items-center justify-center rounded-full bg-white shadow-lg text-charcoal/70 hover:text-gold transition-colors text-2xl"
+            >
+              ‹
+            </button>
+            <button
+              type="button"
+              onClick={() => slide(1)}
+              aria-label="Más fotos"
+              className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 w-11 h-11 items-center justify-center rounded-full bg-white shadow-lg text-charcoal/70 hover:text-gold transition-colors text-2xl"
+            >
+              ›
+            </button>
+            <p className="md:hidden text-center text-charcoal/40 text-xs font-sans uppercase tracking-[0.2em] mt-3">
+              Desliza · toca para ampliar
+            </p>
           </motion.div>
 
           <motion.div
@@ -155,6 +193,32 @@ export default function MuseoPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Lightbox para ver las fotos a detalle */}
+      {foto !== null && (
+        <div
+          className="fixed inset-0 z-[100] bg-black/85 flex items-center justify-center p-4 cursor-zoom-out"
+          onClick={() => setFoto(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <Image
+            src={`/images/museo/casa/cdla${foto}.jpeg`}
+            alt={`Casa de los Ángeles, Casa Museo, foto ${foto} ampliada`}
+            width={1400}
+            height={1867}
+            sizes="92vw"
+            className="max-h-[88vh] w-auto rounded-lg shadow-2xl"
+          />
+          <button
+            type="button"
+            aria-label="Cerrar"
+            className="absolute top-5 right-6 text-cream/90 text-4xl leading-none hover:text-gold transition-colors"
+          >
+            ×
+          </button>
+        </div>
+      )}
     </main>
   )
 }
