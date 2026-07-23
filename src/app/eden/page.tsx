@@ -23,11 +23,35 @@ export const metadata: Metadata = {
   },
 }
 
+// Encapsula el CSS del menú bajo .eden-page prefijando cada selector
+// (compatible con navegadores viejos, sin depender de CSS nesting).
+// Así los selectores genéricos del menú (footer, *, section…) no tocan el sitio.
+function scopeCss(css: string): string {
+  const scoped = css
+    // html/body/:root pasan a ser el contenedor del menú
+    .replace('html{scroll-behavior:smooth}', '')
+    .replace(':root{', '.eden-page{')
+    .replace(/\bbody\{/, '.eden-page{')
+    // overflow en el contenedor rompería position:sticky del índice
+    .replace('overflow-x:hidden;', '')
+    // prefijar cada selector de regla (líneas que abren bloque, excepto @media);
+    // el selector y su "{" viven siempre en la misma línea
+    .replace(/^([ \t]*)([^@\s}{][^{\n]*)\{/gm, (_m, indent: string, selector: string) => {
+      if (selector.startsWith('.eden-page')) return `${indent}${selector}{`
+      const prefixed = selector
+        .split(',')
+        .map((s) => `.eden-page ${s.trim()}`)
+        .join(',')
+      return `${indent}${prefixed}{`
+    })
+  return `html{scroll-behavior:smooth}\n${scoped}`
+}
+
 // El menú vive en public/eden/index.html (fuente única, también accesible por QR).
-// Aquí lo servimos dentro de la app para que traiga el Header y Footer reales del sitio.
+// Aquí lo servimos dentro de la app; el CSS llega ya encapsulado desde el servidor.
 export default function EdenPage() {
   const file = fs.readFileSync(path.join(process.cwd(), 'public', 'eden', 'index.html'), 'utf8')
-  const css = file.match(/<style>([\s\S]*?)<\/style>/)?.[1] ?? ''
+  const rawCss = file.match(/<style>([\s\S]*?)<\/style>/)?.[1] ?? ''
   const body = file.match(/<body>([\s\S]*?)<\/body>/)?.[1] ?? ''
-  return <EdenMenu css={css} html={body} />
+  return <EdenMenu css={scopeCss(rawCss)} html={body} />
 }
