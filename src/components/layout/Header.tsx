@@ -9,7 +9,7 @@ import { ChevronDown } from 'lucide-react'
 
 const mainLinks = [
   { href: '/', label: 'Inicio' },
-  { href: '/eden', label: 'Edén', external: true },
+  { href: '/eden', label: 'Edén' },
   { href: '/museo', label: 'Museo' },
   { href: '/mercados', label: 'Mercados' },
   { href: '/#rueda-de-prensa', label: 'Prensa' },
@@ -32,6 +32,7 @@ const allLinks = [
 export default function Header() {
   const pathname = usePathname()
   const isBistro = pathname === '/bistro'
+  const isEden = pathname === '/eden'
   const isCultura = pathname === '/cultura'
   const isEventos = pathname === '/eventos'
   const isPromocion = pathname === '/promocion'
@@ -47,6 +48,7 @@ export default function Header() {
 
   useEffect(() => {
     if (isBistro) { setActiveSection('/bistro'); return }
+    if (isEden) { setActiveSection('/eden'); return }
     if (isCultura) { setActiveSection('/cultura'); return }
     if (isEventos) { setActiveSection('/eventos'); return }
     if (isPromocion) { setActiveSection('/promocion'); return }
@@ -66,7 +68,7 @@ export default function Header() {
     )
     sections.forEach((s) => observer.observe(s))
     return () => observer.disconnect()
-  }, [isBistro, isCultura, isEventos, isPromocion, isRP, isArtesania, isMuseo, isMercado, pathname])
+  }, [isBistro, isEden, isCultura, isEventos, isPromocion, isRP, isArtesania, isMuseo, isMercado, pathname])
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50)
