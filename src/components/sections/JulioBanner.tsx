@@ -21,7 +21,7 @@ export default function JulioBanner() {
     >
       {/* Poster oficial de la campaña — responsive: 16:9 en desktop, 9:16 en móvil.
           Todo el arte es clickeable hacia WhatsApp. */}
-      <a href={WA_URL} target="_blank" rel="noopener noreferrer" className="block">
+      <a href={WA_URL} target="_blank" rel="noopener noreferrer" className="block md:py-8">
         {/* Desktop — 16:9 */}
         <Image
           src="/images/mercado/16-9.png"
@@ -30,7 +30,7 @@ export default function JulioBanner() {
           height={1080}
           priority
           sizes="100vw"
-          className="hidden md:block w-full h-auto md:h-[calc(100vh-84px)] md:object-contain"
+          className="hidden md:block md:w-auto md:h-auto md:max-h-[calc((100vh-84px)*0.75)] md:max-w-[90%] md:mx-auto md:rounded-2xl md:shadow-2xl"
         />
         {/* Móvil — 9:16 */}
         <Image
