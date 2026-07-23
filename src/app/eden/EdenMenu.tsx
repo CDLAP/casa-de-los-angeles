@@ -2,15 +2,8 @@
 
 import { useEffect, useRef } from 'react'
 
-// Ajustes para convivir con el header fijo del sitio (solo desktop; en móvil el
-// sitio usa la hamburguesa flotante y el contenido arranca desde arriba).
-const overrides = `
-  @media (min-width:768px){
-    .eden-page{padding-top:116px}
-    .eden-page nav.index{top:116px}
-    .eden-page section{scroll-margin-top:180px}
-  }
-`
+// Sin header del sitio en /eden: el menú arranca desde arriba tal cual.
+const overrides = ''
 
 const FONTS_HREF =
   'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500&display=block'

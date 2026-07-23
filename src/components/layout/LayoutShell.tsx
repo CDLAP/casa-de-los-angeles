@@ -22,7 +22,7 @@ export default function LayoutShell({ children }: { children: React.ReactNode })
   return (
     <>
       {isHome && <Loader />}
-      <Header />
+      {!isEden && <Header />}
       {!isEden && <StickyAngel />}
       <main>{children}</main>
       <Footer />
