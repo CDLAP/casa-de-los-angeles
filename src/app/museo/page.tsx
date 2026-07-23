@@ -484,7 +484,7 @@ export default function MuseoPage() {
             <p>
               En el número 222 de esa avenida, a media cuadra del Zócalo, se encuentra Casa de los
               Ángeles: una casona del siglo XVIII que guarda en sus patios, herrerías y vitrales la
-              memoria de la ciudad que la vio nacer — y los guardianes de luz que le dan nombre.
+              memoria de la ciudad que la vio nacer y los guardianes de luz que le dan nombre.
             </p>
           </motion.div>
 
@@ -499,7 +499,7 @@ export default function MuseoPage() {
               <Image
                 key={n}
                 src={`/images/museo/casa/cdla${n}.jpeg`}
-                alt={`Casa de los Ángeles — Casa Museo, imagen ${n}`}
+                alt={`Casa de los Ángeles, Casa Museo, imagen ${n}`}
                 width={900}
                 height={1200}
                 sizes="(min-width: 768px) 33vw, 50vw"

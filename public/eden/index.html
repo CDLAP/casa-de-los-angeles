@@ -144,6 +144,26 @@
 
   .eden-banner.farewell{padding:52px 26px 48px}
 
+  /* ---------- PROMO DEL MES ---------- */
+  .promo-mes{padding:48px 22px 0;text-align:center}
+  .promo-mes a{display:block;max-width:760px;margin:24px auto 0;border-radius:14px;overflow:hidden;transition:.25s;box-shadow:0 14px 40px rgba(44,42,38,.14)}
+  .promo-mes a:hover{transform:translateY(-3px);box-shadow:0 20px 50px rgba(44,42,38,.2)}
+  .promo-mes img{width:100%;height:auto;display:block}
+
+  /* ---------- DESCUBRE LA CASA ---------- */
+  .discover{padding:48px 22px 8px;text-align:center}
+  .discover .d-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:560px;margin:26px auto 0}
+  .discover .d-grid a{
+    display:block;padding:18px 12px;border:1px solid var(--line);border-radius:14px;
+    text-decoration:none;background:#fff;transition:.25s;
+  }
+  .discover .d-grid a:hover{border-color:var(--gold);transform:translateY(-2px)}
+  .discover .d-name{font-family:var(--serif);font-weight:500;font-size:1.12rem;color:var(--forest)}
+  .discover .d-sub{font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-top:5px}
+  @media (min-width:768px){
+    .discover .d-grid{grid-template-columns:repeat(4,1fr);max-width:760px}
+  }
+
   /* ---------- FOOTER ---------- */
   footer{
     margin-top:36px;padding:44px 24px 60px;text-align:center;
@@ -394,6 +414,36 @@
     <p>Gracias por visitarnos. Disfruta el momento, el café y la historia.
       <span class="en">Thank you for visiting us. Enjoy the moment, the coffee, and the history.</span>
     </p>
+  </div>
+
+  <!-- ===================== PROMO DEL MES =====================
+       Campaña vigente. Para cambiarla cada mes: sustituir las dos imágenes
+       (desktop 16:9 y móvil 9:16), el alt y el enlace del <a>. -->
+  <div class="promo-mes">
+    <div class="sec-head">
+      <h2 style="font-size:1.6rem">El Momento del Mes</h2>
+      <div class="en">Lo que está pasando en la casa</div>
+    </div>
+    <a href="https://wa.me/522206224222?text=Hola%2C%20quiero%20asegurar%20mi%20lugar%20en%20el%20Mercado%20Vacacional%20de%20Casa%20de%20los%20%C3%81ngeles%20(del%2015%20al%2031%20de%20julio%2C%20de%20lunes%20a%20domingo).%20Mi%20marca%20se%20llama%3A%20__%20y%20vendo%3A%20__." target="_blank" rel="noopener noreferrer">
+      <picture>
+        <source media="(min-width:768px)" srcset="/images/mercado/16-9.png">
+        <img src="/images/mercado/9-16.jpeg" alt="Mercado Vacacional en Casa de los Ángeles — del 15 al 31 de julio. Aumenta tus ventas por solo 250 pesos por día." loading="lazy">
+      </picture>
+    </a>
+  </div>
+
+  <!-- ===================== DESCUBRE LA CASA ===================== -->
+  <div class="discover">
+    <div class="sec-head">
+      <h2 style="font-size:1.6rem">Descubre la Casa</h2>
+      <div class="en">Casa de los Ángeles guarda más experiencias</div>
+    </div>
+    <div class="d-grid">
+      <a href="/museo"><span class="d-name">Casa Museo</span><span class="d-sub" style="display:block">Tour por la casa</span></a>
+      <a href="/mercados"><span class="d-name">Mercados</span><span class="d-sub" style="display:block">Artesanía y diseño</span></a>
+      <a href="/eventos"><span class="d-name">Eventos</span><span class="d-sub" style="display:block">Celebra aquí</span></a>
+      <a href="/"><span class="d-name">La Casa</span><span class="d-sub" style="display:block">Conócela toda</span></a>
+    </div>
   </div>
 
   <!-- ===================== FOOTER ===================== -->
