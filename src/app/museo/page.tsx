@@ -1,15 +1,45 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 
+const NUM_FOTOS = 7
+
 export default function MuseoPage() {
   const trackRef = useRef<HTMLDivElement>(null)
+  const lastTouch = useRef(0)
   const [foto, setFoto] = useState<number | null>(null)
 
-  const slide = (dir: number) =>
-    trackRef.current?.scrollBy({ left: dir * (trackRef.current.clientWidth * 0.7), behavior: 'smooth' })
+  // bucle infinito: el track tiene las fotos duplicadas; al pasar la mitad
+  // se recorre de regreso sin animación y nunca "regresa" visualmente
+  const normalize = () => {
+    const el = trackRef.current
+    if (!el) return
+    const half = el.scrollWidth / 2
+    if (el.scrollLeft >= half) el.scrollLeft -= half
+    if (el.scrollLeft <= 0) el.scrollLeft += half
+  }
+
+  const slide = (dir: number) => {
+    lastTouch.current = Date.now()
+    const el = trackRef.current
+    if (!el) return
+    if (dir < 0 && el.scrollLeft <= 10) el.scrollLeft += el.scrollWidth / 2
+    const card = el.firstElementChild as HTMLElement | null
+    el.scrollBy({ left: dir * ((card?.offsetWidth ?? 320) + 12), behavior: 'smooth' })
+  }
+
+  // autoplay: avanza solo y se reanuda tras interacción
+  useEffect(() => {
+    const t = setInterval(() => {
+      const el = trackRef.current
+      if (!el || Date.now() - lastTouch.current < 4500) return
+      const card = el.firstElementChild as HTMLElement | null
+      el.scrollBy({ left: (card?.offsetWidth ?? 320) + 12, behavior: 'smooth' })
+    }, 3500)
+    return () => clearInterval(t)
+  }, [])
 
   return (
     <main className="min-h-screen bg-cream">
@@ -93,26 +123,32 @@ export default function MuseoPage() {
           >
             <div
               ref={trackRef}
-              className="flex gap-3 overflow-x-auto snap-x snap-mandatory py-2 px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              onScroll={normalize}
+              onPointerDown={() => { lastTouch.current = Date.now() }}
+              onTouchStart={() => { lastTouch.current = Date.now() }}
+              className="flex gap-3 overflow-x-auto snap-x snap-mandatory py-2 -mx-6 px-6 md:mx-0 md:px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
-              {[1, 2, 3, 4, 5, 6, 7].map((n) => (
-                <button
-                  key={n}
-                  type="button"
-                  onClick={() => setFoto(n)}
-                  className="flex-none snap-center focus:outline-none"
-                  aria-label={`Ver foto ${n} en grande`}
-                >
-                  <Image
-                    src={`/images/museo/casa/cdla${n}.jpeg`}
-                    alt={`Casa de los Ángeles, Casa Museo, imagen ${n}`}
-                    width={900}
-                    height={1200}
-                    sizes="(min-width: 768px) 360px, 70vw"
-                    className="h-72 md:h-[420px] w-auto rounded-xl shadow-sm cursor-zoom-in"
-                  />
-                </button>
-              ))}
+              {Array.from({ length: NUM_FOTOS * 2 }, (_, i) => {
+                const n = (i % NUM_FOTOS) + 1
+                return (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => setFoto(n)}
+                    className="flex-none snap-center focus:outline-none"
+                    aria-label={`Ver foto ${n} en grande`}
+                  >
+                    <Image
+                      src={`/images/museo/casa/cdla${n}.jpeg`}
+                      alt={`Casa de los Ángeles, Casa Museo, imagen ${n}`}
+                      width={900}
+                      height={1200}
+                      sizes="(min-width: 768px) 360px, 70vw"
+                      className="h-72 md:h-[420px] w-auto rounded-xl shadow-sm cursor-zoom-in"
+                    />
+                  </button>
+                )
+              })}
             </div>
             <button
               type="button"

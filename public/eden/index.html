@@ -156,9 +156,21 @@
   .fs-dots{display:flex;gap:8px;justify-content:center;margin-top:16px}
   .fs-dots button{width:8px;height:8px;border-radius:50%;border:1px solid var(--gold);background:transparent;padding:0;cursor:pointer;transition:.2s}
   .fs-dots button.on{background:var(--gold)}
+  .fs-wrap{position:relative}
+  .fs-btn{
+    display:none;position:absolute;top:50%;transform:translateY(-50%);
+    width:44px;height:44px;border-radius:50%;border:1px solid var(--line);
+    background:#fff;box-shadow:0 8px 24px rgba(44,42,38,.18);
+    color:var(--forest);font-size:26px;line-height:1;cursor:pointer;
+    align-items:center;justify-content:center;z-index:5;transition:.2s;
+  }
+  .fs-btn:hover{color:var(--gold);border-color:var(--gold)}
   @media (min-width:768px){
-    .fs-track{justify-content:flex-start;max-width:1000px;margin:0 auto}
+    .fs-wrap{max-width:1000px;margin:0 auto}
     .fs-track img{flex:0 0 300px}
+    .fs-btn{display:flex}
+    .fs-prev{left:-4px}
+    .fs-next{right:-4px}
   }
 
   /* ---------- PROMO DEL MES ---------- */
@@ -391,13 +403,17 @@
       <h2 style="font-size:1.6rem">De Nuestra Cocina</h2>
       <div class="en">Fresh from our kitchen</div>
     </div>
-    <div class="fs-track" id="fs-track">
+    <div class="fs-wrap">
+      <div class="fs-track" id="fs-track">
       <img src="/eden/fotos/m1.jpeg" alt="Mesa de brunch en EDÉN: waffles, croissant y café" loading="lazy">
       <img src="/eden/fotos/m2.jpeg" alt="Croissant Edén con omelette y ensalada fresca" loading="lazy">
       <img src="/eden/fotos/m3.jpeg" alt="Croissant Verde al pesto con queso panela" loading="lazy">
       <img src="/eden/fotos/m4.jpeg" alt="Waffle El Pecadito con cajeta, nuez y crema" loading="lazy">
       <img src="/eden/fotos/m5.jpeg" alt="Croissant Poblano con jamón y queso gratinado" loading="lazy">
       <img src="/eden/fotos/m6.jpeg" alt="Waffle Dulce Tentación con helado y fresa" loading="lazy">
+      </div>
+      <button class="fs-btn fs-prev" id="fs-prev" type="button" aria-label="Foto anterior">&#8249;</button>
+      <button class="fs-btn fs-next" id="fs-next" type="button" aria-label="Siguiente foto">&#8250;</button>
     </div>
     <div class="fs-dots" id="fs-dots" aria-hidden="true"></div>
   </div>
@@ -505,33 +521,63 @@
   var track = document.getElementById('fs-track');
   var dotsBox = document.getElementById('fs-dots');
   if (!track || !dotsBox) return;
+  var originals = [].slice.call(track.children);
+  var n = originals.length;
+  // clones para bucle infinito: siempre hacia adelante, sin regresar
+  originals.forEach(function(el){ track.appendChild(el.cloneNode(true)); });
   var slides = [].slice.call(track.children);
-  var idx = 0, timer = null, paused = false;
-  slides.forEach(function(_, i){
+  var idx = 0, last = 0;
+
+  originals.forEach(function(_, i){
     var b = document.createElement('button');
     b.setAttribute('aria-label', 'Foto ' + (i + 1));
-    b.addEventListener('click', function(){ pause(); go(i); });
+    b.addEventListener('click', function(){ last = Date.now(); goTo(i); });
     dotsBox.appendChild(b);
   });
   var dots = [].slice.call(dotsBox.children);
+
   function mark(){ dots.forEach(function(d, i){ d.className = i === idx ? 'on' : ''; }); }
-  function go(i){
-    idx = (i + slides.length) % slides.length;
-    var sl = slides[idx];
-    track.scrollTo({ left: sl.offsetLeft - (track.clientWidth - sl.offsetWidth) / 2, behavior: 'smooth' });
-    mark();
-  }
-  track.addEventListener('scroll', function(){
+  function centerOf(el){ return el.offsetLeft + el.offsetWidth / 2; }
+  function currentAbs(){
     var c = track.scrollLeft + track.clientWidth / 2, best = 0, bd = 1e9;
-    slides.forEach(function(sl, i){
-      var d = Math.abs(sl.offsetLeft + sl.offsetWidth / 2 - c);
-      if (d < bd) { bd = d; best = i; }
-    });
-    if (best !== idx) { idx = best; mark(); }
+    for (var i = 0; i < slides.length; i++){
+      var d = Math.abs(centerOf(slides[i]) - c);
+      if (d < bd){ bd = d; best = i; }
+    }
+    return best;
+  }
+  function scrollToSlide(el){
+    track.scrollTo({ left: el.offsetLeft - (track.clientWidth - el.offsetWidth) / 2, behavior: 'smooth' });
+  }
+  function goTo(i){
+    var a = currentAbs();
+    var t = a - (a % n) + i;
+    if (i < a % n) t += n;
+    if (t >= slides.length) t -= n;
+    scrollToSlide(slides[t]);
+  }
+  function forward(){ scrollToSlide(slides[(currentAbs() + 1) % slides.length]); }
+  function back(){
+    var a = currentAbs();
+    if (a === 0){ track.scrollLeft += track.scrollWidth / 2; a = currentAbs(); }
+    scrollToSlide(slides[a - 1]);
+  }
+
+  track.addEventListener('scroll', function(){
+    var half = track.scrollWidth / 2;
+    if (track.scrollLeft >= half) track.scrollLeft -= half;
+    var a = currentAbs() % n;
+    if (a !== idx){ idx = a; mark(); }
   }, { passive: true });
-  function pause(){ paused = true; clearInterval(timer); }
-  ['touchstart', 'pointerdown'].forEach(function(ev){ track.addEventListener(ev, pause, { passive: true }); });
-  timer = setInterval(function(){ if (!paused) go(idx + 1); }, 3500);
+
+  ['touchstart', 'pointerdown'].forEach(function(ev){
+    track.addEventListener(ev, function(){ last = Date.now(); }, { passive: true });
+  });
+  document.getElementById('fs-prev').addEventListener('click', function(){ last = Date.now(); back(); });
+  document.getElementById('fs-next').addEventListener('click', function(){ last = Date.now(); forward(); });
+
+  // autoplay: avanza solo, y tras una interacción espera y se reanuda
+  setInterval(function(){ if (Date.now() - last > 4500) forward(); }, 3500);
   mark();
 })();
 </script>
