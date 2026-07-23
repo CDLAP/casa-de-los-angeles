@@ -446,6 +446,95 @@ export default function MuseoPage() {
       </section>
 
       {/* Sección informativa */}
+      {/* ===== CASA MUSEO — historia y tour presencial ===== */}
+      <section className="py-16 md:py-24 bg-cream">
+        <div className="max-w-5xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12"
+          >
+            <h2 className="font-serif text-3xl md:text-5xl text-charcoal mb-4">Casa Museo</h2>
+            <p className="font-sans uppercase tracking-[0.2em] text-gold text-xs md:text-sm">
+              Un recorrido por la historia de Puebla
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="max-w-3xl mx-auto space-y-6 text-charcoal/70 text-base md:text-lg leading-relaxed font-sans"
+          >
+            <p>
+              Cuenta la leyenda que Puebla nació de un sueño: en 1531, los ángeles trazaron sus
+              calles ante los ojos del obispo Julián Garcés, y de aquel sueño se fundó la Puebla de
+              los Ángeles, la ciudad que llegaría a ser puente entre el puerto de Veracruz y la
+              capital del virreinato.
+            </p>
+            <p>
+              Su eje ha sido siempre el mismo: la Avenida Don Juan de Palafox y Mendoza, la calle
+              que nace frente a la Catedral y el Zócalo y atraviesa el corazón antiguo de la ciudad.
+              Por ella caminaron virreyes y comerciantes, artesanos y poetas; sobre ella se
+              levantaron las casonas que hoy cuentan, piedra a piedra, la historia poblana.
+            </p>
+            <p>
+              En el número 222 de esa avenida, a media cuadra del Zócalo, se encuentra Casa de los
+              Ángeles: una casona del siglo XVIII que guarda en sus patios, herrerías y vitrales la
+              memoria de la ciudad que la vio nacer — y los guardianes de luz que le dan nombre.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="columns-2 md:columns-3 gap-3 mt-12"
+          >
+            {[1, 2, 3, 4, 5, 6, 7].map((n) => (
+              <Image
+                key={n}
+                src={`/images/museo/casa/cdla${n}.jpeg`}
+                alt={`Casa de los Ángeles — Casa Museo, imagen ${n}`}
+                width={900}
+                height={1200}
+                sizes="(min-width: 768px) 33vw, 50vw"
+                className="w-full h-auto rounded-xl break-inside-avoid mb-3 shadow-sm"
+              />
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-center mt-14"
+          >
+            <p className="font-serif italic text-xl md:text-2xl text-charcoal/80 max-w-2xl mx-auto leading-relaxed mb-4">
+              Un tour personalizado, guiado por los dueños de la casa.
+            </p>
+            <p className="text-charcoal/60 text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-sans mb-8">
+              No es una visita con guion: quienes te abren las puertas son quienes hacen su vida
+              entre estos muros. Cada recorrido se adapta a ti, entre anécdotas, rincones y siglos
+              de historia. Agenda tu visita por WhatsApp.
+            </p>
+            <a
+              href="https://wa.me/522206224222?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20el%20tour%20de%20Casa%20Museo%20en%20Casa%20de%20los%20%C3%81ngeles."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-filled inline-flex items-center justify-center gap-3"
+            >
+              Agendar tour por WhatsApp
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-4xl mx-auto text-center px-6">
           <motion.div
