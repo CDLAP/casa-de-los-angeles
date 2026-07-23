@@ -13,6 +13,7 @@ export default function LayoutShell({ children }: { children: React.ReactNode })
   const pathname = usePathname()
   const isStandalone = standalonePages.includes(pathname)
   const isHome = pathname === '/'
+  const isEden = pathname === '/eden'
 
   if (isStandalone) {
     return <main>{children}</main>
@@ -22,7 +23,7 @@ export default function LayoutShell({ children }: { children: React.ReactNode })
     <>
       {isHome && <Loader />}
       <Header />
-      <StickyAngel />
+      {!isEden && <StickyAngel />}
       <main>{children}</main>
       <Footer />
       <CookieConsent />
