@@ -11,6 +11,16 @@ export default function EdenMenu({ css, html }: { css: string; html: string }) {
 
   // Los <script> inyectados con dangerouslySetInnerHTML no se ejecutan solos;
   // los reemplazamos por nodos vivos (scrollspy del índice + botón compartir).
+  // Al recargar, el navegador restaura la posición anterior de scroll y la
+  // página "aparece abajo"; en un menú lo esperado es arrancar arriba.
+  useEffect(() => {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual'
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior })
+    return () => {
+      if ('scrollRestoration' in history) history.scrollRestoration = 'auto'
+    }
+  }, [])
+
   useEffect(() => {
     const root = ref.current
     if (!root || root.dataset.revived) return
