@@ -12,6 +12,8 @@ function scopeCss(css: string): string {
     .replace(':root{', '&{')
     .replace('html{scroll-behavior:smooth}', '')
     .replace(/\bbody\{/, '&{')
+    // overflow en el contenedor rompe position:sticky del índice
+    .replace('overflow-x:hidden;', '')
   return `html{scroll-behavior:smooth}\n.eden-page{\n${scoped}\n}`
 }
 
