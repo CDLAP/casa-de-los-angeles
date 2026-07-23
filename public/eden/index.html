@@ -54,8 +54,12 @@
     padding:26px 24px 28px;
     background:#fff;
     border-bottom:1px solid var(--line);
+    overflow:hidden;
   }
-  .hero .logo{max-width:330px;width:78%;height:auto;margin:0 auto;display:block}
+  .hero .h-branch{position:absolute;top:-12px;width:112px;color:#8a8352;opacity:.85;z-index:1;pointer-events:none}
+  .hero .h-branch-l{left:-10px;transform:rotate(-9deg)}
+  .hero .h-branch-r{right:-10px;transform:scaleX(-1) rotate(-9deg)}
+  .hero .logo{max-width:330px;width:78%;height:auto;margin:0 auto;display:block;position:relative;z-index:2}
   .hero .tagline{
     position:relative;z-index:3;
     font-family:var(--sans);font-weight:400;letter-spacing:.28em;
@@ -144,6 +148,19 @@
 
   .eden-banner.farewell{padding:52px 26px 48px}
 
+  /* ---------- SLIDER DE PLATILLOS ---------- */
+  .food-slider{padding:48px 0 8px;text-align:center}
+  .fs-track{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:22px 22px 6px;scrollbar-width:none}
+  .fs-track::-webkit-scrollbar{display:none}
+  .fs-track img{flex:0 0 76%;max-width:400px;aspect-ratio:3/4;object-fit:cover;border-radius:16px;scroll-snap-align:center;box-shadow:0 12px 32px rgba(44,42,38,.16)}
+  .fs-dots{display:flex;gap:8px;justify-content:center;margin-top:16px}
+  .fs-dots button{width:8px;height:8px;border-radius:50%;border:1px solid var(--gold);background:transparent;padding:0;cursor:pointer;transition:.2s}
+  .fs-dots button.on{background:var(--gold)}
+  @media (min-width:768px){
+    .fs-track{justify-content:flex-start;max-width:1000px;margin:0 auto}
+    .fs-track img{flex:0 0 300px}
+  }
+
   /* ---------- PROMO DEL MES ---------- */
   .promo-mes{padding:48px 22px 0;text-align:center}
   .promo-mes a{display:block;max-width:760px;margin:24px auto 0;border-radius:14px;overflow:hidden;transition:.25s;box-shadow:0 14px 40px rgba(44,42,38,.14)}
@@ -196,6 +213,9 @@
     .wrap{max-width:none}
     .hero{padding:44px 40px 46px}
     .hero .logo{max-width:420px}
+    .hero .h-branch{width:190px;top:-8px}
+    .hero .h-branch-l{left:4%}
+    .hero .h-branch-r{right:4%}
     nav.index{padding:13px 32px;z-index:50}
     nav.index a:first-child{margin-left:auto}
     nav.index a:last-child{margin-right:auto}
@@ -212,18 +232,20 @@
 
   <!-- ===================== HERO ===================== -->
   <header class="hero">
+    <svg class="h-branch h-branch-l" viewBox="0 0 120 230" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M60 6 C55 70 55 150 60 224"/><path d="M60 40 C74 24 96 22 112 32 C98 46 78 50 60 46" fill="rgba(138,131,82,.15)"/><path d="M60 40 C46 24 24 22 8 32 C22 46 42 50 60 46" fill="rgba(138,131,82,.15)"/><path d="M60 92 C75 76 98 76 113 87 C99 100 78 104 60 98" fill="rgba(138,131,82,.15)"/><path d="M60 92 C45 76 22 76 7 87 C21 100 42 104 60 98" fill="rgba(138,131,82,.15)"/><path d="M60 150 C74 136 94 134 110 142 C97 155 78 159 60 155" fill="rgba(138,131,82,.15)"/><circle cx="60" cy="64" r="5" fill="#a03434" stroke="none"/><circle cx="52" cy="70" r="5" fill="#a03434" stroke="none"/><circle cx="68" cy="70" r="5" fill="#8a8352" stroke="none"/><circle cx="60" cy="118" r="5" fill="#a03434" stroke="none"/><circle cx="53" cy="124" r="5" fill="#8a8352" stroke="none"/><circle cx="67" cy="124" r="5" fill="#a03434" stroke="none"/></svg>
+    <svg class="h-branch h-branch-r" viewBox="0 0 120 230" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M60 6 C55 70 55 150 60 224"/><path d="M60 40 C74 24 96 22 112 32 C98 46 78 50 60 46" fill="rgba(138,131,82,.15)"/><path d="M60 40 C46 24 24 22 8 32 C22 46 42 50 60 46" fill="rgba(138,131,82,.15)"/><path d="M60 92 C75 76 98 76 113 87 C99 100 78 104 60 98" fill="rgba(138,131,82,.15)"/><path d="M60 92 C45 76 22 76 7 87 C21 100 42 104 60 98" fill="rgba(138,131,82,.15)"/><path d="M60 150 C74 136 94 134 110 142 C97 155 78 159 60 155" fill="rgba(138,131,82,.15)"/><circle cx="60" cy="64" r="5" fill="#a03434" stroke="none"/><circle cx="52" cy="70" r="5" fill="#a03434" stroke="none"/><circle cx="68" cy="70" r="5" fill="#8a8352" stroke="none"/><circle cx="60" cy="118" r="5" fill="#a03434" stroke="none"/><circle cx="53" cy="124" r="5" fill="#8a8352" stroke="none"/><circle cx="67" cy="124" r="5" fill="#a03434" stroke="none"/></svg>
     <img class="logo" src="/eden/eden-logo.jpg" alt="EDÉN · Barra de Café · Mexican Coffee Bar" width="840" height="840">
   </header>
 
   <!-- ===================== INDEX ===================== -->
   <nav class="index">
-    <a href="#especialidades">Especialidades</a>
     <a href="#emblema">Bebidas Emblema</a>
     <a href="#espresso">Espresso</a>
     <a href="#cafe">Café</a>
     <a href="#metodos">Métodos</a>
     <a href="#clasicos">Clásicos</a>
     <a href="#frappes">Frappés</a>
+    <a href="#especialidades">Especialidades</a>
     <a href="#refrescos">Refrescos</a>
     <a href="#personaliza">Personaliza</a>
     <a href="#brunch">Brunch</a>
@@ -231,19 +253,6 @@
     <a href="#ensaladas">Ensaladas</a>
     <a href="#compartir">Compartir</a>
   </nav>
-
-  <!-- ===================== ESPECIALIDADES ===================== -->
-  <section id="especialidades">
-    <div class="sec-head">
-      <svg class="motif" viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M30 36c-9-3-14-10-14-18 0-6 4-11 9-13 1 6 4 9 9 11 5 2 8 6 8 11 0 5-5 9-12 9z"/><path d="M30 36c0-10-2-18-6-26"/></svg>
-      <h2>Especialidades</h2>
-      <div class="en">Specialty Drinks</div>
-    </div>
-    <div class="item"><div class="top"><span class="name">Chai</span><span class="dots"></span><span class="price"><span class="ps">$</span>98</span></div><div class="desc">Té especiado con leche · 300 ml<span class="en">Spiced tea with milk · 300 ml</span></div></div>
-    <div class="item"><div class="top"><span class="name">Matcha</span><span class="dots"></span><span class="price"><span class="ps">$</span>105</span></div><div class="desc">Té verde japonés con leche · 300 ml<span class="en">Japanese green tea with milk · 300 ml</span></div></div>
-    <div class="item"><div class="top"><span class="name">Taro</span><span class="dots"></span><span class="price"><span class="ps">$</span>105</span></div><div class="desc">Bebida dulce de raíz de taro · 300 ml<span class="en">Sweet taro root drink · 300 ml</span></div></div>
-    <div class="item"><div class="top"><span class="name">Té Gourmet</span><span class="dots"></span><span class="price"><span class="ps">$</span>70</span></div><div class="desc">Té de hoja suelta de alta calidad · 300 ml<span class="en">Premium loose-leaf tea · 300 ml</span></div></div>
-  </section>
 
   <!-- ===================== EDÉN BANNER ===================== -->
   <div class="eden-banner">
@@ -338,6 +347,19 @@
     <div class="item"><div class="top"><span class="name">Avellana</span><span class="dots"></span><span class="price"><span class="ps">$</span>115</span></div><div class="desc">Frappé cremoso con crema de avellana · 420 ml<span class="en">Creamy hazelnut frappé · 420 ml</span></div></div>
   </section>
 
+  <!-- ===================== ESPECIALIDADES ===================== -->
+  <section id="especialidades">
+    <div class="sec-head">
+      <svg class="motif" viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M30 36c-9-3-14-10-14-18 0-6 4-11 9-13 1 6 4 9 9 11 5 2 8 6 8 11 0 5-5 9-12 9z"/><path d="M30 36c0-10-2-18-6-26"/></svg>
+      <h2>Especialidades</h2>
+      <div class="en">Specialty Drinks</div>
+    </div>
+    <div class="item"><div class="top"><span class="name">Chai</span><span class="dots"></span><span class="price"><span class="ps">$</span>98</span></div><div class="desc">Té especiado con leche · 300 ml<span class="en">Spiced tea with milk · 300 ml</span></div></div>
+    <div class="item"><div class="top"><span class="name">Matcha</span><span class="dots"></span><span class="price"><span class="ps">$</span>105</span></div><div class="desc">Té verde japonés con leche · 300 ml<span class="en">Japanese green tea with milk · 300 ml</span></div></div>
+    <div class="item"><div class="top"><span class="name">Taro</span><span class="dots"></span><span class="price"><span class="ps">$</span>105</span></div><div class="desc">Bebida dulce de raíz de taro · 300 ml<span class="en">Sweet taro root drink · 300 ml</span></div></div>
+    <div class="item"><div class="top"><span class="name">Té Gourmet</span><span class="dots"></span><span class="price"><span class="ps">$</span>70</span></div><div class="desc">Té de hoja suelta de alta calidad · 300 ml<span class="en">Premium loose-leaf tea · 300 ml</span></div></div>
+  </section>
+
   <!-- ===================== REFRESCOS ===================== -->
   <section id="refrescos">
     <div class="sec-head">
@@ -362,6 +384,23 @@
     <div class="item"><div class="top"><span class="name">Shot extra de espresso</span><span class="dots"></span><span class="price">+<span class="ps">$</span>20</span></div><div class="desc">Un shot adicional de café de especialidad<span class="en">Add an extra shot of specialty espresso</span></div></div>
     <div class="item"><div class="top"><span class="name">Helado de vainilla</span><span class="dots"></span><span class="price">+<span class="ps">$</span>45</span></div><div class="desc">Agrega una bola de helado artesanal de vainilla<span class="en">Add a scoop of artisan vanilla ice cream</span></div></div>
   </section>
+
+  <!-- ===================== PLATILLOS (SLIDER) ===================== -->
+  <div class="food-slider">
+    <div class="sec-head">
+      <h2 style="font-size:1.6rem">De Nuestra Cocina</h2>
+      <div class="en">Fresh from our kitchen</div>
+    </div>
+    <div class="fs-track" id="fs-track">
+      <img src="/eden/fotos/eden-food-1.jpg" alt="Mesa de brunch en EDÉN: waffles, croissant y café" loading="lazy">
+      <img src="/eden/fotos/eden-food-2.jpg" alt="Croissant Edén con omelette y ensalada fresca" loading="lazy">
+      <img src="/eden/fotos/eden-food-3.jpg" alt="Croissant Verde al pesto con queso panela" loading="lazy">
+      <img src="/eden/fotos/eden-food-4.jpg" alt="Waffle El Pecadito con cajeta, nuez y crema" loading="lazy">
+      <img src="/eden/fotos/eden-food-5.jpg" alt="Croissant Poblano con jamón y queso gratinado" loading="lazy">
+      <img src="/eden/fotos/eden-food-6.jpg" alt="Waffle Dulce Tentación con helado y fresa" loading="lazy">
+    </div>
+    <div class="fs-dots" id="fs-dots" aria-hidden="true"></div>
+  </div>
 
   <!-- ===================== BRUNCH ===================== -->
   <section id="brunch">
@@ -460,6 +499,42 @@
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
   Compartir
 </button>
+
+<script>
+(function(){
+  var track = document.getElementById('fs-track');
+  var dotsBox = document.getElementById('fs-dots');
+  if (!track || !dotsBox) return;
+  var slides = [].slice.call(track.children);
+  var idx = 0, timer = null, paused = false;
+  slides.forEach(function(_, i){
+    var b = document.createElement('button');
+    b.setAttribute('aria-label', 'Foto ' + (i + 1));
+    b.addEventListener('click', function(){ pause(); go(i); });
+    dotsBox.appendChild(b);
+  });
+  var dots = [].slice.call(dotsBox.children);
+  function mark(){ dots.forEach(function(d, i){ d.className = i === idx ? 'on' : ''; }); }
+  function go(i){
+    idx = (i + slides.length) % slides.length;
+    var sl = slides[idx];
+    track.scrollTo({ left: sl.offsetLeft - (track.clientWidth - sl.offsetWidth) / 2, behavior: 'smooth' });
+    mark();
+  }
+  track.addEventListener('scroll', function(){
+    var c = track.scrollLeft + track.clientWidth / 2, best = 0, bd = 1e9;
+    slides.forEach(function(sl, i){
+      var d = Math.abs(sl.offsetLeft + sl.offsetWidth / 2 - c);
+      if (d < bd) { bd = d; best = i; }
+    });
+    if (best !== idx) { idx = best; mark(); }
+  }, { passive: true });
+  function pause(){ paused = true; clearInterval(timer); }
+  ['touchstart', 'pointerdown'].forEach(function(ev){ track.addEventListener(ev, pause, { passive: true }); });
+  timer = setInterval(function(){ if (!paused) go(idx + 1); }, 3500);
+  mark();
+})();
+</script>
 
 <script>
 document.getElementById('share-menu').addEventListener('click', function(){
