@@ -41,15 +41,11 @@
   .hero{
     position:relative;
     text-align:center;
-    padding:40px 24px 34px;
-    background:linear-gradient(180deg,var(--sky-top) 0%,var(--cream) 100%);
+    padding:26px 24px 28px;
+    background:#fff;
     border-bottom:1px solid var(--line);
   }
-  .hero h1{
-    font-family:var(--serif);font-weight:600;letter-spacing:.18em;
-    font-size:3.2rem;color:var(--forest);
-  }
-  .hero .logo{max-width:220px;height:auto;margin:0 auto;display:block}
+  .hero .logo{max-width:330px;width:78%;height:auto;margin:0 auto;display:block}
   .hero .tagline{
     position:relative;z-index:3;
     font-family:var(--sans);font-weight:400;letter-spacing:.28em;
@@ -151,9 +147,8 @@
   /* ---------- DESKTOP: beige a todo lo ancho, contenido en columna ---------- */
   @media (min-width:768px){
     .wrap{max-width:none}
-    .hero{padding:88px 40px 64px}
-    .hero h1{font-size:4.2rem}
-    .hero .lede{max-width:540px}
+    .hero{padding:44px 40px 46px}
+    .hero .logo{max-width:420px}
     nav.index{padding:13px 32px;z-index:50}
     nav.index a:first-child{margin-left:auto}
     nav.index a:last-child{margin-right:auto}
@@ -169,14 +164,7 @@
 
   <!-- ===================== HERO ===================== -->
   <header class="hero">
-    <!-- ===== LOGO =====
-         Cuando tengas el PNG del logo, reemplaza el <h1> por:
-         <img class="logo" src="eden-logo.png" alt="EDÉN">
-    -->
-    <h1>EDÉN</h1>
-    <div class="tagline">Barra de Café · Coffee Mexican Bar
-      <span class="en">Café de Especialidad · Brunch · Barra Poblana</span>
-    </div>
+    <img class="logo" src="eden-logo.png" alt="EDÉN · Barra de Café · Mexican Coffee Bar" width="1000" height="1000">
   </header>
 
   <!-- ===================== INDEX ===================== -->
