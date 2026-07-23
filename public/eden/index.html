@@ -429,18 +429,40 @@ document.getElementById('share-menu').addEventListener('click', function(){
   var map = {};
   links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
   var current = null;
+  var suppress = false;
+  var t;
+
+  function setActive(a){
+    if (!a || a === current) return;
+    if (current) current.classList.remove('active');
+    current = a;
+    a.classList.add('active');
+    var nav = a.parentElement;
+    nav.scrollTo({ left: a.offsetLeft - (nav.clientWidth - a.offsetWidth) / 2, behavior: 'smooth' });
+  }
+
+  // Al hacer clic: pinta el destino de inmediato y pausa el resaltado
+  // automático para que el verde no "viaje" por los pills intermedios.
+  links.forEach(function(a){
+    a.addEventListener('click', function(){
+      suppress = true;
+      clearTimeout(t);
+      t = setTimeout(function(){ suppress = false; }, 600);
+      setActive(a);
+    });
+  });
+
+  // La pausa termina cuando el scroll se asienta (150 ms sin movimiento).
+  window.addEventListener('scroll', function(){
+    if (!suppress) return;
+    clearTimeout(t);
+    t = setTimeout(function(){ suppress = false; }, 150);
+  }, { passive: true });
+
   var obs = new IntersectionObserver(function(entries){
+    if (suppress) return;
     entries.forEach(function(e){
-      if (e.isIntersecting) {
-        var a = map[e.target.id];
-        if (a && a !== current) {
-          if (current) current.classList.remove('active');
-          current = a;
-          a.classList.add('active');
-          var nav = a.parentElement;
-          nav.scrollTo({ left: a.offsetLeft - (nav.clientWidth - a.offsetWidth) / 2, behavior: 'smooth' });
-        }
-      }
+      if (e.isIntersecting) setActive(map[e.target.id]);
     });
   }, { rootMargin: '-25% 0px -65% 0px' });
   document.querySelectorAll('section[id]').forEach(function(s){ obs.observe(s); });
