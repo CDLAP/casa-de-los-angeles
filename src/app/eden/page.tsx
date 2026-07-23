@@ -44,7 +44,9 @@ function scopeCss(css: string): string {
         .join(',')
       return `${indent}${prefixed}{`
     })
-  return `html{scroll-behavior:smooth}\n${scoped}`
+  // overflow-x:hidden en html/body (globals.css) rompe position:sticky;
+  // clip recorta igual sin crear contenedor de scroll. Solo aplica en esta página.
+  return `html{scroll-behavior:smooth}\nhtml,body{overflow-x:clip}\n${scoped}`
 }
 
 // El menú vive en public/eden/index.html (fuente única, también accesible por QR).
