@@ -51,10 +51,54 @@
   /* réplica exacta del header del sitio: Lato, text-sm/base, tracking .12/.2em,
      px-3/lg:px-4/xl:px-5, py-4, contenedor pt-6 pb-10 */
   .site-nav{
-    display:flex;flex-wrap:wrap;justify-content:center;
+    display:none;flex-wrap:wrap;justify-content:center;
     padding:24px 8px 40px;background:var(--cream);
     border-bottom:1px solid var(--line);
   }
+  @media (min-width:768px){ .site-nav{display:flex} }
+
+  /* ---------- MÓVIL: hamburguesa + panel (igual al sitio) ---------- */
+  .burger{
+    position:fixed;top:20px;right:20px;z-index:80;
+    width:44px;height:44px;border-radius:50%;border:0;cursor:pointer;
+    background:rgba(250,248,243,.9);backdrop-filter:blur(8px);
+    box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+    transition:background .3s;
+  }
+  .burger span{display:block;width:20px;height:2px;border-radius:999px;background:#1A1A1A;transition:.3s}
+  .burger.open{background:transparent;box-shadow:none}
+  .burger.open span{background:var(--cream)}
+  .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  @media (min-width:768px){ .burger{display:none} }
+
+  .mobile-menu{
+    position:fixed;inset:0;z-index:75;background:#3F1F26;
+    display:flex;flex-direction:column;overflow-y:auto;
+    transform:translateX(100%);transition:transform .35s cubic-bezier(.25,.46,.45,.94);
+  }
+  .mobile-menu.open{transform:translateX(0)}
+  @media (min-width:768px){ .mobile-menu{display:none} }
+  .mobile-menu .mm-logo{width:144px;height:144px;object-fit:contain;margin:24px auto 16px;display:block;filter:drop-shadow(0 25px 25px rgba(0,0,0,.15))}
+  .mobile-menu .mm-links{padding:0 40px}
+  .mobile-menu .mm-div{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+  .mobile-menu .mm-div::before,.mobile-menu .mm-div::after{content:"";flex:1;height:1px;background:rgba(201,169,97,.2)}
+  .mobile-menu .mm-div i{width:6px;height:6px;background:rgba(201,169,97,.4);transform:rotate(45deg)}
+  .mobile-menu a{
+    display:block;padding:12px 0;text-align:center;text-decoration:none;
+    font-family:'Lato',system-ui,sans-serif;font-size:1rem;
+    text-transform:uppercase;letter-spacing:.15em;
+    color:rgba(250,248,243,.7);border-bottom:1px solid rgba(201,169,97,.1);
+    transition:color .3s;
+  }
+  .mobile-menu a:hover{color:var(--gold)}
+  .mobile-menu a.current{color:var(--gold)}
+  .mobile-menu .mm-foot{margin-top:auto;padding:32px 40px}
+  .mobile-menu .mm-foot p{text-align:center;font-family:'Lato',system-ui,sans-serif;font-size:.75rem;text-transform:uppercase;letter-spacing:.2em;color:rgba(250,248,243,.3)}
+  .mobile-menu .mm-foot p+p{text-transform:none;letter-spacing:0;color:rgba(250,248,243,.2);margin-top:4px}
+  body.menu-open{overflow:hidden}
   .site-nav a{
     font-family:'Lato',system-ui,sans-serif;font-size:.875rem;font-weight:400;
     letter-spacing:.12em;text-transform:uppercase;
@@ -63,11 +107,32 @@
   }
   .site-nav a:hover{color:var(--gold)}
   .site-nav a.current{color:var(--gold)}
+  .site-nav .more{position:relative}
+  .site-nav .more>button{
+    all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;
+    font-family:'Lato',system-ui,sans-serif;font-size:.875rem;font-weight:400;
+    letter-spacing:.12em;text-transform:uppercase;color:#1A1A1A;
+    padding:16px 12px;transition:color .3s;white-space:nowrap;
+  }
+  .site-nav .more>button:hover{color:var(--gold)}
+  .site-nav .more svg{width:14px;height:14px;transition:transform .25s}
+  .site-nav .more.open svg{transform:rotate(180deg)}
+  .site-nav .more-menu{
+    display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);
+    background:var(--cream);box-shadow:0 12px 32px rgba(0,0,0,.14);
+    min-width:230px;padding:10px 0;z-index:70;
+  }
+  .site-nav .more.open .more-menu{display:block}
+  .site-nav .more-menu a{
+    display:block;padding:12px 24px;font-size:.875rem;letter-spacing:.12em;
+  }
   @media (min-width:1024px){
     .site-nav a{padding:16px 16px}
   }
   @media (min-width:1280px){
     .site-nav a{font-size:1rem;letter-spacing:.2em;padding:16px 20px}
+    .site-nav .more>button{font-size:1rem;letter-spacing:.2em;padding:16px 20px}
+    .site-nav .more-menu a{font-size:.875rem;letter-spacing:.12em;padding:12px 24px}
   }
 
   /* ---------- SKY / HERO ---------- */
@@ -221,6 +286,41 @@
     <a href="/mercados">Mercados</a>
     <a href="/#rueda-de-prensa">Prensa</a>
     <a href="/cdla-studio">Studio</a>
+    <div class="more" id="nav-more">
+      <button type="button" aria-haspopup="true" aria-expanded="false">Más
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="more-menu">
+        <a href="/eventos">Eventos</a>
+        <a href="/promocion">Promoción del Día</a>
+        <a href="/relaciones-publicas">Relaciones Públicas</a>
+        <a href="/#contacto">Contacto</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===================== MÓVIL: hamburguesa + panel ===================== -->
+  <button class="burger" id="burger" aria-label="Menú"><span></span><span></span><span></span></button>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Menú del sitio">
+    <img class="mm-logo" src="/images/logo-short-1000x1000.png" alt="Casa de los Ángeles" width="144" height="144">
+    <div class="mm-links">
+      <div class="mm-div"><i></i></div>
+      <a href="/">Inicio</a>
+      <a href="/eden" class="current">Edén</a>
+      <a href="/museo">Museo</a>
+      <a href="/mercados">Mercados</a>
+      <a href="/#rueda-de-prensa">Prensa</a>
+      <a href="/cdla-studio">Studio</a>
+      <a href="/eventos">Eventos</a>
+      <a href="/promocion">Promoción del Día</a>
+      <a href="/relaciones-publicas">Relaciones Públicas</a>
+      <a href="/#contacto">Contacto</a>
+    </div>
+    <div class="mm-foot">
+      <div class="mm-div"><i></i></div>
+      <p>Casa de los Ángeles</p>
+      <p>Don Juan de Palafox y Mendoza 222, Centro</p>
+    </div>
   </nav>
 
   <!-- ===================== HERO ===================== -->
@@ -445,6 +545,27 @@
 </button>
 
 <script>
+(function(){
+  var burger = document.getElementById('burger');
+  var panel = document.getElementById('mobile-menu');
+  burger.addEventListener('click', function(){
+    var open = panel.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    document.body.classList.toggle('menu-open', open);
+  });
+})();
+
+(function(){
+  var more = document.getElementById('nav-more');
+  var btn = more.querySelector('button');
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    more.classList.toggle('open');
+    btn.setAttribute('aria-expanded', more.classList.contains('open'));
+  });
+  document.addEventListener('click', function(){ more.classList.remove('open'); btn.setAttribute('aria-expanded','false'); });
+})();
+
 document.getElementById('share-menu').addEventListener('click', function(){
   var url = 'https://www.casadelosangelespuebla.com/eden';
   var text = 'Mira el menú de EDÉN · Barra de Café en Casa de los Ángeles ☕';
