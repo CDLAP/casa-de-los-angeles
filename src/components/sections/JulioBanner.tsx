@@ -14,7 +14,7 @@ export default function JulioBanner() {
     <motion.section
       id="inicio"
       aria-label="Mercado Vacacional en Casa de los Ángeles — del 15 al 31 de julio"
-      className="relative w-full bg-cream pt-16 md:pt-[84px]"
+      className="relative w-full bg-cream pt-16 md:pt-[116px]"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
@@ -30,7 +30,7 @@ export default function JulioBanner() {
           height={1080}
           priority
           sizes="100vw"
-          className="hidden md:block md:w-auto md:h-auto md:max-h-[calc((100vh-84px)*0.75)] md:max-w-[90%] md:mx-auto md:rounded-2xl md:shadow-2xl"
+          className="hidden md:block md:w-auto md:h-auto md:max-h-[calc((100vh-116px)*0.75)] md:max-w-[90%] md:mx-auto md:rounded-2xl"
         />
         {/* Móvil — 9:16 */}
         <Image
