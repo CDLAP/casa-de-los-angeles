@@ -47,6 +47,20 @@
   }
   .wrap{max-width:640px;margin:0 auto;position:relative;background:var(--cream)}
 
+  /* ---------- NAV DEL SITIO ---------- */
+  .site-nav{
+    display:flex;flex-wrap:wrap;justify-content:center;gap:12px 26px;
+    padding:18px 16px;background:var(--cream);
+    border-bottom:1px solid var(--line);
+  }
+  .site-nav a{
+    font-family:var(--sans);font-size:.74rem;font-weight:500;
+    letter-spacing:.18em;text-transform:uppercase;
+    color:var(--ink);text-decoration:none;transition:color .2s;
+  }
+  .site-nav a:hover{color:var(--gold)}
+  .site-nav a.current{color:var(--gold)}
+
   /* ---------- SKY / HERO ---------- */
   .hero{
     position:relative;
@@ -190,6 +204,16 @@
 </head>
 <body>
 <div class="wrap">
+
+  <!-- ===================== NAV DEL SITIO ===================== -->
+  <nav class="site-nav" aria-label="Navegación del sitio">
+    <a href="/">Inicio</a>
+    <a href="/eden" class="current">Edén</a>
+    <a href="/museo">Museo</a>
+    <a href="/mercados">Mercados</a>
+    <a href="/#rueda-de-prensa">Prensa</a>
+    <a href="/cdla-studio">Studio</a>
+  </nav>
 
   <!-- ===================== HERO ===================== -->
   <header class="hero">
