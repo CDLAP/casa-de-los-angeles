@@ -437,7 +437,8 @@ document.getElementById('share-menu').addEventListener('click', function(){
           if (current) current.classList.remove('active');
           current = a;
           a.classList.add('active');
-          a.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+          var nav = a.parentElement;
+          nav.scrollTo({ left: a.offsetLeft - (nav.clientWidth - a.offsetWidth) / 2, behavior: 'smooth' });
         }
       }
     });
