@@ -50,9 +50,15 @@ function scopeCss(css: string): string {
   // Solo aplica en esta página.
   // El offset real del header se mide en el cliente (EdenMenu) y se expone como
   // la variable --eden-h; aquí solo declaramos su uso con un fallback de 116px.
+  // IMPORTANTE: va DESPUÉS de `scoped` para ganarle en orden al `top:0` base
+  // del índice; y el índice queda por debajo del header (z-index 40 < header 50).
   const headerOffset =
-    '@media (min-width:768px){.eden-page{padding-top:var(--eden-h,116px)}.eden-page nav.index{top:var(--eden-h,116px)}.eden-page section{scroll-margin-top:calc(var(--eden-h,116px) + 64px)}}'
-  return `html{scroll-behavior:smooth}\nhtml,body,.overflow-x-hidden{overflow-x:clip}\n${headerOffset}\n${scoped}`
+    '@media (min-width:768px){' +
+    '.eden-page{padding-top:var(--eden-h,116px)}' +
+    '.eden-page nav.index{top:var(--eden-h,116px);z-index:40}' +
+    '.eden-page section{scroll-margin-top:calc(var(--eden-h,116px) + 64px)}' +
+    '}'
+  return `html{scroll-behavior:smooth}\nhtml,body,.overflow-x-hidden{overflow-x:clip}\n${scoped}\n${headerOffset}`
 }
 
 // El menú vive en public/eden/index.html (fuente única, también accesible por QR).
