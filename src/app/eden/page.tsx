@@ -48,10 +48,10 @@ function scopeCss(css: string): string {
   // rompe position:sticky; clip recorta igual sin crear contenedor de scroll.
   // Se incluye .overflow-x-hidden para ganarle en especificidad a la utility.
   // Solo aplica en esta página.
-  // Con el header fijo del sitio visible, en desktop el menú baja 116px y el
-  // índice sticky se ancla debajo de él (en móvil el sitio usa hamburguesa flotante).
+  // El offset real del header se mide en el cliente (EdenMenu) y se expone como
+  // la variable --eden-h; aquí solo declaramos su uso con un fallback de 116px.
   const headerOffset =
-    '@media (min-width:768px){.eden-page{padding-top:116px}.eden-page nav.index{top:116px}.eden-page section{scroll-margin-top:180px}}'
+    '@media (min-width:768px){.eden-page{padding-top:var(--eden-h,116px)}.eden-page nav.index{top:var(--eden-h,116px)}.eden-page section{scroll-margin-top:calc(var(--eden-h,116px) + 64px)}}'
   return `html{scroll-behavior:smooth}\nhtml,body,.overflow-x-hidden{overflow-x:clip}\n${headerOffset}\n${scoped}`
 }
 

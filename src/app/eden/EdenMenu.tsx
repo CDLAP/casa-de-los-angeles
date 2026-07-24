@@ -21,6 +21,25 @@ export default function EdenMenu({ css, html }: { css: string; html: string }) {
     }
   }, [])
 
+  // Mide la altura real del header fijo del sitio y la publica como --eden-h,
+  // para que el índice sticky se ancle justo debajo sin traslape ni hueco.
+  useEffect(() => {
+    const sync = () => {
+      const header = document.querySelector('header') as HTMLElement | null
+      const h = header?.offsetHeight
+      if (h) document.documentElement.style.setProperty('--eden-h', `${h}px`)
+    }
+    sync()
+    // el header aparece con animación; remedimos un momento después
+    const t = setTimeout(sync, 800)
+    window.addEventListener('resize', sync)
+    return () => {
+      clearTimeout(t)
+      window.removeEventListener('resize', sync)
+      document.documentElement.style.removeProperty('--eden-h')
+    }
+  }, [])
+
   useEffect(() => {
     const root = ref.current
     if (!root || root.dataset.revived) return
