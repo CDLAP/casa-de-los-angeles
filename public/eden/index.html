@@ -56,9 +56,9 @@
     border-bottom:1px solid var(--line);
     overflow:hidden;
   }
-  .hero .h-branch{position:absolute;top:-12px;width:112px;color:#8a8352;opacity:.85;z-index:1;pointer-events:none}
-  .hero .h-branch-l{left:-10px;transform:rotate(-9deg)}
-  .hero .h-branch-r{right:-10px;transform:scaleX(-1) rotate(-9deg)}
+  .hero .h-angel{position:absolute;top:6px;width:96px;height:auto;z-index:1;pointer-events:none;opacity:.92}
+  .hero .h-angel-l{left:2px}
+  .hero .h-angel-r{right:2px}
   .hero .logo{max-width:330px;width:78%;height:auto;margin:0 auto;display:block;position:relative;z-index:2}
   .hero .tagline{
     position:relative;z-index:3;
@@ -225,9 +225,9 @@
     .wrap{max-width:none}
     .hero{padding:44px 40px 46px}
     .hero .logo{max-width:420px}
-    .hero .h-branch{width:190px;top:-8px}
-    .hero .h-branch-l{left:4%}
-    .hero .h-branch-r{right:4%}
+    .hero .h-angel{width:150px;top:10px}
+    .hero .h-angel-l{left:5%}
+    .hero .h-angel-r{right:5%}
     nav.index{padding:13px 32px;z-index:50}
     nav.index a:first-child{margin-left:auto}
     nav.index a:last-child{margin-right:auto}
@@ -244,8 +244,10 @@
 
   <!-- ===================== HERO ===================== -->
   <header class="hero">
-    <svg class="h-branch h-branch-l" viewBox="0 0 120 230" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M60 6 C55 70 55 150 60 224"/><path d="M60 40 C74 24 96 22 112 32 C98 46 78 50 60 46" fill="rgba(138,131,82,.15)"/><path d="M60 40 C46 24 24 22 8 32 C22 46 42 50 60 46" fill="rgba(138,131,82,.15)"/><path d="M60 92 C75 76 98 76 113 87 C99 100 78 104 60 98" fill="rgba(138,131,82,.15)"/><path d="M60 92 C45 76 22 76 7 87 C21 100 42 104 60 98" fill="rgba(138,131,82,.15)"/><path d="M60 150 C74 136 94 134 110 142 C97 155 78 159 60 155" fill="rgba(138,131,82,.15)"/><circle cx="60" cy="64" r="5" fill="#a03434" stroke="none"/><circle cx="52" cy="70" r="5" fill="#a03434" stroke="none"/><circle cx="68" cy="70" r="5" fill="#8a8352" stroke="none"/><circle cx="60" cy="118" r="5" fill="#a03434" stroke="none"/><circle cx="53" cy="124" r="5" fill="#8a8352" stroke="none"/><circle cx="67" cy="124" r="5" fill="#a03434" stroke="none"/></svg>
-    <svg class="h-branch h-branch-r" viewBox="0 0 120 230" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M60 6 C55 70 55 150 60 224"/><path d="M60 40 C74 24 96 22 112 32 C98 46 78 50 60 46" fill="rgba(138,131,82,.15)"/><path d="M60 40 C46 24 24 22 8 32 C22 46 42 50 60 46" fill="rgba(138,131,82,.15)"/><path d="M60 92 C75 76 98 76 113 87 C99 100 78 104 60 98" fill="rgba(138,131,82,.15)"/><path d="M60 92 C45 76 22 76 7 87 C21 100 42 104 60 98" fill="rgba(138,131,82,.15)"/><path d="M60 150 C74 136 94 134 110 142 C97 155 78 159 60 155" fill="rgba(138,131,82,.15)"/><circle cx="60" cy="64" r="5" fill="#a03434" stroke="none"/><circle cx="52" cy="70" r="5" fill="#a03434" stroke="none"/><circle cx="68" cy="70" r="5" fill="#8a8352" stroke="none"/><circle cx="60" cy="118" r="5" fill="#a03434" stroke="none"/><circle cx="53" cy="124" r="5" fill="#8a8352" stroke="none"/><circle cx="67" cy="124" r="5" fill="#a03434" stroke="none"/></svg>
+    <!-- ÁNGELES: cuando tengas los PNG, colócalos en /eden/fotos/ y descomenta.
+         angel-izq.png y angel-der.png (fondo transparente). -->
+    <!-- <img class="h-angel h-angel-l" src="/eden/fotos/angel-izq.png" alt="" aria-hidden="true"> -->
+    <!-- <img class="h-angel h-angel-r" src="/eden/fotos/angel-der.png" alt="" aria-hidden="true"> -->
     <img class="logo" src="/eden/eden-logo.jpg" alt="EDÉN · Barra de Café · Mexican Coffee Bar" width="840" height="840">
   </header>
 
@@ -523,60 +525,57 @@
   if (!track || !dotsBox) return;
   var originals = [].slice.call(track.children);
   var n = originals.length;
-  // clones para bucle infinito: siempre hacia adelante, sin regresar
+  // duplicamos para el bucle: siempre hay contenido idéntico por delante
   originals.forEach(function(el){ track.appendChild(el.cloneNode(true)); });
-  var slides = [].slice.call(track.children);
-  var idx = 0, last = 0;
+  var last = 0, idx = 0;
+
+  function step(){
+    var card = track.firstElementChild;
+    var gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || 12) || 12;
+    return card.offsetWidth + gap;
+  }
+  function half(){ return track.scrollWidth / 2; }
+  // salto instantáneo (invisible, contenido idéntico) para no salir del rango
+  function keepInRange(before){
+    if (track.scrollLeft >= half()) track.scrollLeft -= half();
+    if (track.scrollLeft < 0) track.scrollLeft += half();
+  }
+  function forward(){
+    if (track.scrollLeft + step() >= half()) track.scrollLeft -= half();
+    track.scrollBy({ left: step(), behavior: 'smooth' });
+  }
+  function back(){
+    if (track.scrollLeft - step() < 0) track.scrollLeft += half();
+    track.scrollBy({ left: -step(), behavior: 'smooth' });
+  }
 
   originals.forEach(function(_, i){
     var b = document.createElement('button');
     b.setAttribute('aria-label', 'Foto ' + (i + 1));
-    b.addEventListener('click', function(){ last = Date.now(); goTo(i); });
+    b.addEventListener('click', function(){
+      last = Date.now();
+      var card = track.firstElementChild;
+      var target = (i * step());
+      track.scrollTo({ left: target, behavior: 'smooth' });
+    });
     dotsBox.appendChild(b);
   });
   var dots = [].slice.call(dotsBox.children);
-
-  function mark(){ dots.forEach(function(d, i){ d.className = i === idx ? 'on' : ''; }); }
-  function centerOf(el){ return el.offsetLeft + el.offsetWidth / 2; }
-  function currentAbs(){
-    var c = track.scrollLeft + track.clientWidth / 2, best = 0, bd = 1e9;
-    for (var i = 0; i < slides.length; i++){
-      var d = Math.abs(centerOf(slides[i]) - c);
-      if (d < bd){ bd = d; best = i; }
-    }
-    return best;
-  }
-  function scrollToSlide(el){
-    track.scrollTo({ left: el.offsetLeft - (track.clientWidth - el.offsetWidth) / 2, behavior: 'smooth' });
-  }
-  function goTo(i){
-    var a = currentAbs();
-    var t = a - (a % n) + i;
-    if (i < a % n) t += n;
-    if (t >= slides.length) t -= n;
-    scrollToSlide(slides[t]);
-  }
-  function forward(){ scrollToSlide(slides[(currentAbs() + 1) % slides.length]); }
-  function back(){
-    var a = currentAbs();
-    if (a === 0){ track.scrollLeft += track.scrollWidth / 2; a = currentAbs(); }
-    scrollToSlide(slides[a - 1]);
-  }
+  function mark(){ dots.forEach(function(d, i){ d.className = (i === idx ? 'on' : ''); }); }
 
   track.addEventListener('scroll', function(){
-    var half = track.scrollWidth / 2;
-    if (track.scrollLeft >= half) track.scrollLeft -= half;
-    var a = currentAbs() % n;
+    keepInRange();
+    var a = Math.round(track.scrollLeft / step()) % n;
+    if (a < 0) a += n;
     if (a !== idx){ idx = a; mark(); }
   }, { passive: true });
 
-  ['touchstart', 'pointerdown'].forEach(function(ev){
+  ['touchstart', 'pointerdown', 'wheel'].forEach(function(ev){
     track.addEventListener(ev, function(){ last = Date.now(); }, { passive: true });
   });
   document.getElementById('fs-prev').addEventListener('click', function(){ last = Date.now(); back(); });
   document.getElementById('fs-next').addEventListener('click', function(){ last = Date.now(); forward(); });
 
-  // autoplay: avanza solo, y tras una interacción espera y se reanuda
   setInterval(function(){ if (Date.now() - last > 4500) forward(); }, 3500);
   mark();
 })();

@@ -11,34 +11,50 @@ export default function MuseoPage() {
   const lastTouch = useRef(0)
   const [foto, setFoto] = useState<number | null>(null)
 
-  // bucle infinito: el track tiene las fotos duplicadas; al pasar la mitad
-  // se recorre de regreso sin animación y nunca "regresa" visualmente
+  // paso = ancho de una foto + gap
+  const stepPx = () => {
+    const el = trackRef.current
+    const card = el?.firstElementChild as HTMLElement | null
+    return (card?.offsetWidth ?? 320) + 12
+  }
+
+  // bucle infinito: fotos duplicadas; el salto de media pista es instantáneo
+  // (contenido idéntico), así nunca hay "backspin" visible
   const normalize = () => {
     const el = trackRef.current
     if (!el) return
     const half = el.scrollWidth / 2
     if (el.scrollLeft >= half) el.scrollLeft -= half
-    if (el.scrollLeft <= 0) el.scrollLeft += half
+    else if (el.scrollLeft < 0) el.scrollLeft += half
+  }
+
+  const forward = () => {
+    const el = trackRef.current
+    if (!el) return
+    if (el.scrollLeft + stepPx() >= el.scrollWidth / 2) el.scrollLeft -= el.scrollWidth / 2
+    el.scrollBy({ left: stepPx(), behavior: 'smooth' })
   }
 
   const slide = (dir: number) => {
     lastTouch.current = Date.now()
     const el = trackRef.current
     if (!el) return
-    if (dir < 0 && el.scrollLeft <= 10) el.scrollLeft += el.scrollWidth / 2
-    const card = el.firstElementChild as HTMLElement | null
-    el.scrollBy({ left: dir * ((card?.offsetWidth ?? 320) + 12), behavior: 'smooth' })
+    if (dir < 0) {
+      if (el.scrollLeft - stepPx() < 0) el.scrollLeft += el.scrollWidth / 2
+      el.scrollBy({ left: -stepPx(), behavior: 'smooth' })
+    } else {
+      forward()
+    }
   }
 
-  // autoplay: avanza solo y se reanuda tras interacción
+  // autoplay: avanza solo, siempre hacia adelante; se reanuda tras interacción
   useEffect(() => {
     const t = setInterval(() => {
-      const el = trackRef.current
-      if (!el || Date.now() - lastTouch.current < 4500) return
-      const card = el.firstElementChild as HTMLElement | null
-      el.scrollBy({ left: (card?.offsetWidth ?? 320) + 12, behavior: 'smooth' })
+      if (Date.now() - lastTouch.current < 4500) return
+      forward()
     }, 3500)
     return () => clearInterval(t)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

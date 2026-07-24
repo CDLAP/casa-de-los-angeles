@@ -70,8 +70,7 @@ export default function LineamientosPage() {
               <div className="bg-emerald/5 p-4 rounded-lg">
                 <h4 className="font-serif text-emerald mb-2">Venta</h4>
                 <p className="text-sm text-charcoal-50">
-                  <strong>11:00 am - 8:00 pm</strong><br />
-                  Sábados y Domingos
+                  <strong>11:00 am - 8:00 pm</strong>
                 </p>
               </div>
               <div className="bg-emerald/5 p-4 rounded-lg">
@@ -95,7 +94,6 @@ export default function LineamientosPage() {
                 <span className="text-3xl font-serif text-gold-dark">$1,000</span>
                 <span className="text-charcoal-50 text-sm"> MXN</span>
                 <p className="font-medium mt-2">Fin de Semana Completo</p>
-                <p className="text-xs text-gold-dark mt-1">Sábado y Domingo</p>
               </div>
             </div>
             <div className="bg-emerald/5 p-4 rounded-lg mb-4">
