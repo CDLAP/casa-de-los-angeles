@@ -51,7 +51,7 @@
   .hero{
     position:relative;
     text-align:center;
-    padding:26px 24px 28px;
+    padding:0;
     background:#fff;
     border-bottom:1px solid var(--line);
     overflow:hidden;
@@ -59,7 +59,7 @@
   .hero .h-angel{position:absolute;top:6px;width:96px;height:auto;z-index:1;pointer-events:none;opacity:.92}
   .hero .h-angel-l{left:2px}
   .hero .h-angel-r{right:2px}
-  .hero .logo{max-width:330px;width:78%;height:auto;margin:0 auto;display:block;position:relative;z-index:2}
+  .hero .banner{display:block;width:100%;height:auto;position:relative;z-index:2}
   .hero .tagline{
     position:relative;z-index:3;
     font-family:var(--sans);font-weight:400;letter-spacing:.28em;
@@ -223,8 +223,7 @@
   /* ---------- DESKTOP: beige a todo lo ancho, contenido en columna ---------- */
   @media (min-width:768px){
     .wrap{max-width:none}
-    .hero{padding:44px 40px 46px}
-    .hero .logo{max-width:420px}
+    .hero{padding:0}
     .hero .h-angel{width:150px;top:10px}
     .hero .h-angel-l{left:5%}
     .hero .h-angel-r{right:5%}
@@ -248,7 +247,10 @@
          angel-izq.png y angel-der.png (fondo transparente). -->
     <!-- <img class="h-angel h-angel-l" src="/eden/fotos/angel-izq.png" alt="" aria-hidden="true"> -->
     <!-- <img class="h-angel h-angel-r" src="/eden/fotos/angel-der.png" alt="" aria-hidden="true"> -->
-    <img class="logo" src="/eden/eden-logo.jpg" alt="EDÉN · Barra de Café · Mexican Coffee Bar" width="840" height="840">
+    <picture>
+      <source media="(min-width:768px)" srcset="/eden/eden-banner.jpg">
+      <img class="banner" src="/eden/eden-banner-movil.jpg" alt="EDÉN · Barra de Café · Mexican Coffee Bar" width="1100" height="1375" fetchpriority="high">
+    </picture>
   </header>
 
   <!-- ===================== INDEX ===================== -->
